@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import PostCard from '../components/PostCard';
-import { POSTS } from '../data/posts';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL
 
 export default function NewestPosts() {
   // const newest = [...POSTS]
@@ -14,20 +15,25 @@ export default function NewestPosts() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3001/posts")
-      .then(res => res.json())
+    fetch(`${API_BASE}/posts?limit=3`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not okay: ' + res.statusText);
+        }
+        return res.json();
+      })
       .then(data => {
-        setNewestPosts([data]);
+        const sortedPosts = [...data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 3);
+        setNewestPosts(sortedPosts);
         setIsLoading(false);
       })
       .catch(error => {
-        setError("An error has occured")
+        setIsLoading(false);
+        setError("An error has occurred")
         console.log("Error fetching data:", error);
       });
-    // .sort((a, b) => new Date(b.date) - new Date(a.date))
-    // .slice(0, 6);
 
-    console.log(newestPosts)
+      
   }, []);
 
   return(

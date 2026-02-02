@@ -15,9 +15,9 @@ export default function PostCard({ post }) {
       </a>
 
       <section className="post-card__meta">
-        <span className="post-card__cat pill">{post.category}</span>
-        <time dateTime={post.date}>
-          {new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+        <span className="post-card__cat pill">{post.slug}</span>
+        <time dateTime={post.created_at}>
+          {new Date(post.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
         </time>
         <span aria-hidden="true">•</span>
         <span>{post.minutes} min read</span>

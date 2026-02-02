@@ -28,6 +28,7 @@ Thumbs.db
 
 # Env files (don’t commit secrets)
 .env
+server/.env
 .env.*
 **/.env
 **/.env.*
