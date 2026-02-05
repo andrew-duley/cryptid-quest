@@ -1,52 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { sfx } from './logic/sfx';
+import { cryptidList } from './logic/cryptids';
 
 import '../shared/styles/index.scss';
 import './styles/index.scss';
-
-const cryptidList = [
-    {
-      id: "sasquatch",
-      label: "Sasquatch"
-    },
-    {
-      id: "mothman",
-      label: "Mothman"
-    },
-    {
-      id: "jersey-devil",
-      label: "Jersey Devil"
-    },
-    {
-      id: "chupacabra",
-      label: "Chupacabra"
-    },
-    {
-      id: "dogman",
-      label: "Dogman"
-    },
-    {
-      id: "loch-ness-monster",
-      label: "Loch Ness Monster"
-    },
-    {
-      id: "yeti",
-      label: "Yeti"
-    },
-    {
-      id: "mokele-mbembe",
-      label: "Mokele-mbembe"
-    },
-    // {
-    //   id: "minotaur",
-    //   label: "Minotaur"
-    // },
-    // {
-    //   id: "thunderbird",
-    //   label: "Thunderbird"
-    // },
-  ];
 
 // Function that performs a Fisher Yates shuffle and then returns the shuffled deck
 function shuffleCards(array) {
@@ -101,6 +59,7 @@ function fallbackUrl(id, w = 256, ext = "jpg") {
 export default function CryptidMixup() {
 
   const audioStartedRef = useRef(false);
+  const boardRef = useRef(null);
 
   const [deck, setDeck] = useState(() => buildDeck(cryptidList));
   const [moves, setMoves] = useState(0);
@@ -111,30 +70,38 @@ export default function CryptidMixup() {
   const [focusIdx, setFocusIdx] = useState(0);
 
   function handleGridKeys(e) {
-    if (deck.length === 0) return;
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      setFocusIdx(i => Math.min(i + 1, deck.length - 1));
-    }
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      setFocusIdx(i => Math.min(i - 1, 0));
-    }
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setFocusIdx(i => Math.min(i + close, deck.length - 1));
-    }
-    if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setFocusIdx(i => Math.min(i - cols, 0));
-    }
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const card = deck[focusIdx];
-      if (card && card.state === 'facedDown' && !isResolving) handleFlip(card.instanceId);
-    }
+  if (deck.length === 0) return;
+
+  const cols = 4; // 4x4 board
+
+  if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    setFocusIdx(i => Math.min(i + 1, deck.length - 1));
   }
 
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    setFocusIdx(i => Math.max(i - 1, 0)); // FIX: max, not min
+  }
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setFocusIdx(i => Math.min(i + cols, deck.length - 1)); // FIX: cols (not close)
+  }
+
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    setFocusIdx(i => Math.max(i - cols, 0)); // FIX: max, not min
+  }
+
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    const card = deck[focusIdx];
+    if (card && card.state === 'faceDown' && !isResolving) { // FIX: faceDown spelling
+      handleFlip(card.instanceId);
+    }
+  }
+}
   function handleReset() {
     setDeck(() => buildDeck(cryptidList)); // fresh shuffled deck
     setMoves(0);
@@ -147,6 +114,12 @@ export default function CryptidMixup() {
 
   const fmtTime = s => `${String(Math.floor(s/60)).padStart(2, '0')}:${String(s%60).padStart(2, '0')}`;
   const isWin = deck.length > 0 && deck.every(c => c.state === 'matched');
+
+  useEffect(() => {
+    if (deck.length > 0) {
+      boardRef.current?.focus();
+    }
+  }, [deck.length]);
 
   useEffect(() => {
     if (!timerOn) return;
@@ -231,83 +204,118 @@ export default function CryptidMixup() {
   }
 
   return (
-    <section id="cmx" className="cmx" aria-labelledby="cmx-title">
-      <header className="cmx__header">
-        <h1 id="cmx-title" className="cmx__title">
-          Cryptid Mix-up
-        </h1>
-      </header>
+    <main className="page page--bg-dark cmx" aria-labelledby="cmx-title">
+      <div className="container">
+        <header id="top" className="section">
+          <h1 id="cmx-title" className="section__title">
+            Cryptid Mix-up
+          </h1>
 
-      <main className="cmx__main">
+          <p className="cmx__lede">
+            Flip two cards at a time and match the cryptids. Fewer moves and faster time wins.
+          </p>
+        </header>
 
-        <div className="sr-only" aria-live="polite">{liveText}</div>
+        {/* Live region for screen readers */}
+        <div className="sr-only" aria-live="polite">
+          {liveText}
+        </div>
 
+        {/* Win banner */}
         {isWin && (
-          <div className="cmx__win" role="status">
-            You win! 🎉
-            <button className="cmx__btn"
-            onClick={handleReset}>
-            Play again
-            </button>
-          </div>
+          <section className="section" aria-label="Game result">
+            <div className="cmx__win" role="status">
+              <p className="cmx__win-text">You win! 🎉</p>
+              <button className="cmx__btn" type="button" onClick={handleReset}>
+                Play again
+              </button>
+            </div>
+          </section>
         )}
-        
-        {/* Board placeholder */}
-        <div className="cmx__board" role="grid" aria-labelledby="cmx__board--title" tabIndex={0} aria-activedescendant={`cmx-card-${focusIdx}`} onKeyDown={handleGridKeys}>
-          <h2 id="cmx__board--title" className="sr-only">Memory board, 4 by 4</h2>
-          {deck.map(card => (
-            <button
-              key={card.instanceId}
-              type="button"
-              className={`cmx__card ${card.state}`} // faceDown | faceUp | matched
-              onClick={() => handleFlip(card.instanceId)}
-              disabled={isResolving || card.state !== 'faceDown'}
-              aria-pressed={card.state !== 'faceDown'}
-              aria-label={card.state === 'faceDown' ? 'face-down card' : card.label}
-            >
-              <span className="cmx__card-inner" aria-hidden="true">
-                <span className="cmx__card-face cmx__card-face--back"></span>
-              <span className="cmx__card-face cmx__card-face--front">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet={buildSrcSet(card.pairId, "avif")}
-                    sizes={SIZES_ATTR}
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet={buildSrcSet(card.pairId, "webp")}
-                    sizes={SIZES_ATTR}
-                  />
-                  <img
-                    src={fallbackUrl(card.pairId, 256, "jpg")} // final fallback
-                    width="500" height="700"                  // preserve 5:7; avoid CLS
-                    alt=""                                    // decorative (label handles a11y)
-                    loading="lazy"
-                    decoding="async"
-                    draggable="false"
-                  />
-                </picture>
-                            </span>
-              </span>
-            </button>
-          ))}
-        </div>
 
-        {/* Controls placeholder */}
-        <div className="cmx__controls">
-          <button 
-            className="cmx__btn" 
-            type="button"
-            onClick={handleReset}>
-            Reset Deck
-          </button>
-          <div className="cmx__hud" aria-live="polite">
-            <span className="cmx__moves">Moves: {moves}</span>
-            <span className="cmx__time">Time: {fmtTime(seconds)}</span>
+        <section className="section" aria-labelledby="cmx-board-title">
+          <h2 id="cmx-board-title" className="section__heading">
+            Board
+          </h2>
+
+          <div
+            ref={boardRef}
+            className="cmx__board"
+            role="grid"
+            aria-describedby="cmx-board-help"
+            tabIndex={0}
+            aria-activedescendant={`cmx-card-${focusIdx}`}
+            onKeyDown={handleGridKeys}
+          >
+            <p id="cmx-board-help" className="sr-only">
+              Memory board. Use arrow keys to move. Press Enter or Space to flip.
+            </p>
+
+            {deck.map((card, idx) => (
+              <button
+                key={card.instanceId}
+                id={`cmx-card-${idx}`}
+                role="gridcell"
+                type="button"
+                tabindex={-1}
+                className={`cmx__card ${card.state}`} // faceDown | faceUp | matched
+                onClick={() => handleFlip(card.instanceId)}
+                disabled={isResolving || card.state !== "faceDown"}
+                aria-pressed={card.state !== "faceDown"}
+                aria-label={card.state === "faceDown" ? "Face-down card" : card.label}
+              >
+                <span className="cmx__card-inner" aria-hidden="true">
+                  <span className="cmx__card-face cmx__card-face--back" />
+                  <span className="cmx__card-face cmx__card-face--front">
+                    <picture>
+                      <source
+                        type="image/avif"
+                        srcSet={buildSrcSet(card.pairId, "avif")}
+                        sizes={SIZES_ATTR}
+                      />
+                      <source
+                        type="image/webp"
+                        srcSet={buildSrcSet(card.pairId, "webp")}
+                        sizes={SIZES_ATTR}
+                      />
+                      <img
+                        src={fallbackUrl(card.pairId, 256, "jpg")}
+                        width="500"
+                        height="700"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        draggable="false"
+                      />
+                    </picture>
+                  </span>
+                </span>
+              </button>
+            ))}
           </div>
-        </div>
-      </main>
-    </section>
+        </section>
+
+        <section className="section" aria-labelledby="cmx-stats-title">
+          <h2 id="cmx-stats-title" className="section__heading">
+            Stats & Controls
+          </h2>
+
+          <div className="cmx__controls">
+            <button className="cmx__btn" type="button" onClick={handleReset}>
+              Reset deck
+            </button>
+
+            <div className="cmx__hud" aria-live="polite">
+              <span className="cmx__moves">Moves: {moves}</span>
+              <span className="cmx__time">Time: {fmtTime(seconds)}</span>
+            </div>
+          </div>
+        </section>
+
+        <footer className="section">
+          <a href="#top">↑ Back to top</a>
+        </footer>
+      </div>
+    </main>
   );
 }
