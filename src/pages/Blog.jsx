@@ -1,4 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
+import PageTemplate from '../layout/PageTemplate';
+import Block from '../layout/Block';
+import PageFooter from '../layout/PageFooter';
 
 import '../games/shared/styles/index.scss'; 
 import '../scss/pages/_blog.scss';    
@@ -10,30 +14,33 @@ export default function Blog() {
   }, []);
 
   return(
-    <main id="blog" className="blog" aria-labelledby="blog-title">
-      <header className="blog__hero">
-        <h1 id="blog-title" className="blog__title">Blog — Coming soon</h1>
-        <p className="blog__blurb">
-          Dev logs, cryptid lore, and behind-the-scenes art & code are on the way.
-        </p>
-      </header>
+    <PageTemplate slug="blog" title="Blog">
 
-      <section className="blog__cta" aria-labelledby="blog-cta-title">
-        <h2 id="blog-cta-title" className="blog__subtitle">Want an update when we launch?</h2>
+      <Block title="Coming soon">
+        <p>
+          The blog chronicles the misadventures of the Cryptid Quest crew in the Northern Fringe — the creatures they cross paths with, the trouble they get into, the music they create, and the challenges that shape their journey.
+        </p>
+        <p>
+          Along the way, I also share dev logs, design notes, and behind-the-scenes looks at the code, art, and systems that bring the world to life.
+        </p>
+      </Block>
+
+      <Block title="Want an update when we launch?">
         <p className="blog__text">
           Shoot us an email:&nbsp;
-          <a href="mailto:you@example.com?subject=Blog%20updates" className="blog__link">you@example.com</a>
+          <a href="mailto:you@example.com?subject=Blog%20updates" className="blog__link">feedback@cryptid.quest</a>
         </p>
-      </section>
-
-      <section className="blog__teasers" aria-labelledby="blog-teasers-title">
-        <h2 id="blog-teaser-title" className="blog__subtitle">Planned posts</h2>
+      </Block>
+    
+      <Block title="Planned posts">
         <ul className="blog__list">
           <li className="blog__card">Mascots: sketch → token → in-game (process)</li>
           <li className="blog__card">Tic-Tac-Toe AI ideas: from random to minimax</li>
-          <li className="blog__card">Image pipeline: AVIF/WebPJPG, sizes, and crispness</li>
+          <li className="blog__card">Image pipeline: AVIF/WebP, JPG, sizes, and crispness</li>
         </ul>
-      </section>
-    </main>
+      </Block>
+  
+      <PageFooter />
+    </PageTemplate>
   );
 }

@@ -17,10 +17,6 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  .cmx__main {
-    
-  }
-
   &__header {
     margin-bottom: 1rem;
     text-align: center;
@@ -305,11 +301,11 @@
   }
 }
 
-@media (max-height: $bp-md) {
-  .cmx__board {
-    grid-template-columns: repeat(4, clamp(5.5rem, 7.5vh, 7.75rem));
-  }
-}
+// @media (max-height: $bp-md) {
+//   .cmx__board {
+//     grid-template-columns: repeat(4, clamp(5.5rem, 7.5vh, 7.75rem));
+//   }
+// }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {

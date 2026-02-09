@@ -5,6 +5,10 @@ import { Game } from './logic/dypets-brikker-logic.js';
 import '../shared/styles/index.scss';
 import './styles/index.scss';
 
+import PageTemplate from '../../layout/PageTemplate';
+import Block from '../../layout/Block';
+import PageFooter from '../../layout/PageFooter';
+
 export default function DypetsBrikker() {
 
   const [boardGrid, setBoardGrid] = useState(null);
@@ -58,12 +62,14 @@ export default function DypetsBrikker() {
   }
 
   return(
-    <main className="db">
-      <header className="db__header">
-        <h1>Dypets Brikker</h1>
-        <h3>Wage an epic war between the mighty Lyngbakr and the dreaded Kraken in this Scandinavian-themed game of checkers.</h3>
-      </header>
-      <section className="db__board">
+    <PageTemplate slug="dypets-brikker" title="Dypets Brikker">
+
+      <Block title="How to Play">
+        <p>NOTE: Work in progress — rules and balancing still being tuned.</p>
+        <p>Wage an epic war between the mighty Lyngbakr and the dreaded Kraken in this Scandinavian-themed game of checkers.</p>
+      </Block>
+    
+      <Block label="Board">
         {boardGrid ? (
           <div className="db__grid">
             {boardGrid.map((row, rowIndex) => (
@@ -138,8 +144,9 @@ export default function DypetsBrikker() {
             Board goes here
           </div>
         )}
-      </section>
-      <section className="db__info">
+      </Block>
+
+      <Block title="Status & Controls">
         <div className="db__info-item db__info-item--winner">
 
         </div>
@@ -153,9 +160,11 @@ export default function DypetsBrikker() {
           }
         </div>
         <div className="db__info-item db__info-item--new-game">
-          <button type="button" onClick={handleNewGameClick}>New Game</button>
+          <button className="btn btn--db" type="button" onClick={handleNewGameClick}>New Game</button>
         </div>
-      </section>
-    </main>
+      </Block>
+
+      <PageFooter />
+    </PageTemplate>
   );
 }

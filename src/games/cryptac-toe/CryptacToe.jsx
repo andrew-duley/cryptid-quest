@@ -3,6 +3,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../shared/styles/index.scss';
 import './styles/index.scss';
 
+import PageTemplate from '../../layout/PageTemplate';
+import Block from '../../layout/Block';
+import PageFooter from '../../layout/PageFooter';
+
 const PLACE_SFX = '/games/cryptac-toe/sounds/place.mp3';
 const WIN_SAS_SFX = '/games/cryptac-toe/sounds/win-sasquatch.mp3';
 const WIN_DOG_SFX = '/games/cryptac-toe/sounds/win-dogman.mp3';
@@ -140,29 +144,37 @@ export default function CryptacToe() {
   }
 
   return(
-    <main id="ctt" className="ctt" aria-labelledby="ctt-title">
-      <h1 id="ctt-title" className="ctt__title">
-        Cryptac-Toe</h1>
-      <section className="ctt__board">
-        {squares.map((v, i) => {
-          return(<button 
-            key={i} 
-            className={`ctt__square ${
-              winLine?.includes(i)
-                ? winner === 'dogman'
-                  ? 'ctt__square--win ctt__square--win-dogman'
-                  : 'ctt__square--win ctt__square--win-sasquatch'
-                : ''
-            }`} 
-            type="button" 
-            disabled={!!v || hasWon || isDraw}
-            onClick={() => handleSquareClick(i)}>
-            {getSquareIcon(v)}
-          </button>);
-        })}
-      </section>
-      <section className="ctt__status">
-        <span className="ctt__status-text" role="status" aria-live="polite">
+    <PageTemplate slug="cryptac-toe" title="Cryptac-Toe">
+
+      <Block title="How to Play">
+        <p>
+          Get three in a row to win. Sasquatch goes first, because they rule and Dogmen drool.
+        </p>
+      </Block>
+
+      <Block label="Board">
+        <div className="ctt__board">
+          {squares.map((v, i) => {
+            return(<button 
+              key={i} 
+              className={`ctt__square ${
+                winLine?.includes(i)
+                  ? winner === 'dogman'
+                    ? 'ctt__square--win ctt__square--win-dogman'
+                    : 'ctt__square--win ctt__square--win-sasquatch'
+                  : ''
+              }`} 
+              type="button" 
+              disabled={!!v || hasWon || isDraw}
+              onClick={() => handleSquareClick(i)}>
+              {getSquareIcon(v)}
+            </button>);
+          })}
+        </div>
+      </Block>
+
+      <Block title="Status & Controls">
+        <span className="ctt__status-text" role="status">
           {hasWon
             ? `${winner === 'sasquatch' ? 'Sasquatch' : 'Dogman'} wins!`
             : isDraw
@@ -171,7 +183,9 @@ export default function CryptacToe() {
           }
         </span>
         <button className="ctt__reset" type="button" onClick={() => { handleReset(); setMuted(false); }} aria-label="Reset the game and unmute sound effects">Reset</button>
-      </section>
-    </main>
+      </Block>
+
+      <PageFooter />
+    </PageTemplate>
   );
 }

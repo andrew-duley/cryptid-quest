@@ -1,26 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import PageTemplate from '../layout/PageTemplate';
+import Block from '../layout/Block';
+import PageFooter from '../layout/PageFooter';
 
 export default function Contact() {
   return(
-    <main className="page page--bg-dark contact" aria-labelledby="contact-title">
-      <header id="top" className="section">
-        <h1 id="contact-title" className="section__title">Contact</h1>
+    <PageTemplate
+      slug="contact"
+      title="Contact Me"
+    >
+      <Block label="Contact introduction">
         <p>Want to report a bug, share feedback, or talk dev work? Send a message anytime.</p>
-      </header>
+      </Block>
 
-      <section className="section prose" aria-labelledby="contact-email">
-        <h2 id="contact-email" className="section__heading">Email</h2>
-        <p><a href="mailto:feedback@cryptid.quest">feedback@cryptid.quest</a></p>
-        <p style={{'font-size': '.9rem'}}contact__note>Get it? It's like feedback from a guitar amplifier!</p>
+      <Block title="Email">
+        <p><a contact__email href="mailto:feedback@cryptid.quest">feedback@cryptid.quest</a></p>
+        <p className="contact__note">Get it? It's like feedback from a guitar amplifier!</p>
         <p>Helpful details (optional): the page URL, what you expected to happen, what happened, and your browser/device.</p>
-      </section>
+      </Block>
 
-      <footer className="section">
-        <a href="#top">&uarr; Back to top</a>
-        <span aria-hidden="true"> | </span>
-        <Link to="/">&larr; Back to home</Link>
-      </footer>
-    </main>
+      <PageFooter />
+    </PageTemplate>
   );
 }
