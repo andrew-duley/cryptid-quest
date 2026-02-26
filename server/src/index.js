@@ -150,12 +150,16 @@ app.use((err, req, res, next) => {
 });
 
 console.log("ROUTES:");
-app._router.stack
-  .filter(r => r.route)
-  .forEach(r => {
-    const methods = Object.keys(r.route.methods).join(",").toUpperCase();
-    console.log(`${methods} ${r.route.path}`);
-  });
+if (app.router && app.router.stack) {
+  app.router.stack
+    .filter(r => r.route)
+    .forEach(r => {
+      const methods = Object.keys(r.route.methods).join(",").toUpperCase();
+      console.log(`${methods} ${r.route.path}`);
+    });
+} else {
+  console.log("(router not initialized yet)");
+}
 
 app.listen(PORT, () => {
   console.log(`API running on http://localhost:${PORT}`);
