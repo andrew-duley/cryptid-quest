@@ -73,7 +73,7 @@ app.post("/admin/login", checkAdminKey, (req, res) => {
 });
 
 app.post("/posts", requireAdminSession,  async (req, res, next) => {
-  const { title, slug, body, category = null, excerpt = null } = req.body;
+  const { title, slug, body, category = null, excerpt = null } = req.body ?? {};
   const missingFields = [];
   if (!title) missingFields.push("title");
   if (!slug) missingFields.push("slug");
