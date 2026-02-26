@@ -37,6 +37,8 @@ app.use(express.json());
 app.use(createSessionMiddleware(pool));
 app.use(cors({ origin: allowedOrigins }));
 
+app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
+
 app.get("/posts", async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts ORDER BY created_at DESC";
