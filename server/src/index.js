@@ -149,6 +149,14 @@ app.use((err, req, res, next) => {
   res.status(status).json({ error: { message, code, status }});
 });
 
+console.log("ROUTES:");
+app._router.stack
+  .filter(r => r.route)
+  .forEach(r => {
+    const methods = Object.keys(r.route.methods).join(",").toUpperCase();
+    console.log(`${methods} ${r.route.path}`);
+  });
+
 app.listen(PORT, () => {
   console.log(`API running on http://localhost:${PORT}`);
 });
