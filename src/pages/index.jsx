@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PageTemplate from '../layout/PageTemplate';
+
 import NewestPosts from '../sections/NewestPosts';
 import GamesTeaser from '../sections/GamesTeaser';
 import CraftTeaser from '../sections/CraftTeaser';
@@ -8,10 +10,10 @@ import CraftTeaser from '../sections/CraftTeaser';
 
 export default function Home() {
   return(
-    <main>
+    <PageTemplate slug="home">
       <NewestPosts />
       <GamesTeaser />  
       <CraftTeaser />  
-    </main>
+    </PageTemplate>
   );
 }

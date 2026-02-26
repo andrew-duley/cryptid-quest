@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Block from '../layout/Block';
+
 const TOOLS = [
   { key: 'react', label: 'React', runeWord: 'REACT', etched: 'React', glow: '#4cc3ff', glyph: 'ᚱ' },
   { key: 'router', label: 'React Router', runeWord: 'PATH', etched: 'React Router', glow: '#35f3b3', glyph: 'ᛉ' },
@@ -12,12 +14,13 @@ const TOOLS = [
 ];
 
 export default function CraftTeaser() {
+
   return(
-    <section className="section section--bg-dark craft-teaser" aria-labelledby="craft-heading">
-      <div className="container">
-        <h2 id="craft-heading" className="section__heading">Craft & Tools of Cryptid Woods</h2>
-        <p className="section__subheading">A quick look at what powers Cryptid Quest behind the scenes</p>
-        <p className="section__dev-note">
+    <Block title="Craft & Tools of Cryptid Woods" subtitle="A quick look at what powers Cryptid Quest behind the scenes">
+   
+      <div className="craft-teaser">
+        
+        <p className="craft-teaser__dev-note dev-note">
           <small><strong>Portfolio signal:</strong> This site is built to ship—responsive, accessible, and performance-minded</small>
         </p>
         <ul className="craft-teaser__grid">
@@ -41,6 +44,7 @@ export default function CraftTeaser() {
           ))}
         </ul>
       </div>
-    </section>
+
+    </Block>
   );
 }

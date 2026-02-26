@@ -30,7 +30,7 @@ export default function Block({
     <section className="block" {...
       (hasTitle
         ? { "aria-labelledby" : headingId}
-        : { "aria-labelledby" : String(label).trim() }
+        : { "aria-label" : String(label).trim() }
       )
     }>
       <header className="block__header">

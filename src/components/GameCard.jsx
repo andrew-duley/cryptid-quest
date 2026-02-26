@@ -34,7 +34,7 @@ export default function GameCard({ game }) {
   const sizes = '(max-width: 700px) 92vw, 26rem';
 
   return(
-    <article className={`game-card came-card--{$status}`}>
+    <article className={`game-card game-card--${status}`}>
       <div className="game-card__media">
         {coverBase ? (
           <picture>

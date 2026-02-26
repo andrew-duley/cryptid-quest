@@ -16,3 +16,8 @@ export const checkAdminKey = (req, res, next) => {
       return res.status(401).json({ error: 'Unauthorized' });
   }
 };  
+
+export function requireAdminSession(req, res, next) {
+  if (req.session?.isAdmin === true) return next();
+  return res.status(401).json({ error: "Unauthorized" });
+}

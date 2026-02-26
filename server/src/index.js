@@ -11,7 +11,8 @@ import pg from "pg";
 const { Pool } = pg;
 // const { Pool } = require('pg'); // Use pool for most applications
 
-import { checkAdminKey } from "../middleware/requireAdmin.js";
+import { checkAdminKey, requireAdminSession } from "../middleware/requireAdmin.js";
+import { createSessionMiddleware } from "../middleware/session.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,16 +26,16 @@ const allowedOrigins = [
   "https://still-mode-3d71.duleyalaska.workers.dev"
 ];
 
-app.use(express.json());
-
-// Middleware
-app.use(cors({ origin: allowedOrigins }));
-
 // Configure the pool with SSL settings required for Render connections
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
+
+// Middleware
+app.use(express.json());
+app.use(createSessionMiddleware(pool));
+app.use(cors({ origin: allowedOrigins }));
 
 app.get("/posts", async (req, res, next) => {
   try {
@@ -65,7 +66,13 @@ app.get("/posts/:slug", async (req, res, next) => {
   } 
 });
 
-app.post("/posts", checkAdminKey,  async (req, res, next) => {
+// Check to make sure ADMIN_KEY matches
+app.post("/admin/login", checkAdminKey, (req, res) => {
+  req.session.isAdmin = true;
+  return res.status(200).json({ data: { ok: true } });
+});
+
+app.post("/posts", requireAdminSession,  async (req, res, next) => {
   const { title, slug, body, category = null, excerpt = null } = req.body;
   const missingFields = [];
   if (!title) missingFields.push("title");
