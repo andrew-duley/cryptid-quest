@@ -25,7 +25,6 @@ export default function NewestPosts() {
         return res.json();
       })
       .then(json => {
-        // const sortedPosts = [...data.data];
         setNewestPosts(json.data ?? []);
         setError(null);
       })
