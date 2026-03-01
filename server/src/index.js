@@ -80,7 +80,7 @@ app.get("/admin/me", (req, res, next) => {
   if (req.session?.isAdmin === true) {
     return res.json({ isAuthed: true, isAdmin: true});
   }
-  return res.status(200).json({ isAuthed: false });
+  return res.json({ isAuthed: false });
 });
 
 // Check that email and password match
