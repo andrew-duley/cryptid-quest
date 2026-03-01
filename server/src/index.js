@@ -11,11 +11,15 @@ import pg from "pg";
 const { Pool } = pg;
 // const { Pool } = require('pg'); // Use pool for most applications
 
+import bcrypt from "bcrypt";
+
 import { checkAdminKey, requireAdminSession } from "../middleware/requireAdmin.js";
 import { createSessionMiddleware } from "../middleware/session.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+app.set("trust proxy", 1);
 
 
 const allowedOrigins = [
@@ -35,7 +39,10 @@ const pool = new Pool({
 // Middleware
 app.use(express.json());
 app.use(createSessionMiddleware(pool));
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ 
+  origin: allowedOrigins,
+  credentials: true
+}));
 
 app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
@@ -68,10 +75,51 @@ app.get("/posts/:slug", async (req, res, next) => {
   } 
 });
 
-// Check to make sure ADMIN_KEY matches
-app.post("/admin/login", checkAdminKey, (req, res) => {
-  req.session.isAdmin = true;
-  return res.status(200).json({ data: { ok: true } });
+// Check if there is a valid admin session
+app.get("/admin/me", (req, res, next) => {
+  if (req.session?.isAdmin === true) {
+    return res.json({ isAuthed: true, isAdmin: true});
+  }
+  return res.status(200).json({ isAuthed: false });
+});
+
+// Check that email and password match
+app.post("/admin/login", async (req, res, next) => {
+  try {
+    const { email, password } = req.body ?? {};
+
+    if (!email || !password) {
+      return res.status(401).json({ error: { status: 401, code: "EMAIL_OR_PASSWORD_MISSING", message: "One or more fields missing" } });
+    }
+
+    const result = await pool.query("SELECT id, email, password_hash, role FROM users WHERE email = $1", [email.trim().toLowerCase()]);
+
+    if (result.rows.length === 0) {
+      return res.status(400).json({ error: { status: 400, code: "DENIED", message: "Login denied" } }); 
+    }
+
+    if (result.rows[0].role !== "admin") {
+      return res.status(403).json({ error: { status: 403, code: "ROLE_MUST_BE_ADMIN_TO_POST", message: "You must be an admin to post" } })
+    }
+
+    const passwordMatch = await bcrypt.compare(password, result.rows[0].password_hash);
+
+    if (!passwordMatch) {
+       return res.status(401).json({ error: { status: 401, code: "DENIED", message: "Login denied" } }); 
+    }
+
+      req.session.isAdmin = true;
+      req.session.userId = result.rows[0].id;
+      req.session.role = result.rows[0].role;
+      req.session.save(err => {
+        if (err) return next(err);
+        return res.status(200).json({ data: {message: "Login Successful"} });
+      });
+
+  }
+  catch (err) {
+      return next(err);
+  }
 });
 
 app.post("/posts", requireAdminSession,  async (req, res, next) => {
@@ -111,7 +159,7 @@ app.put('/posts/:slug', checkAdminKey, async (req, res, next) => {
 
     if (didUpdate.rowCount === 1) {
       return res.status(200).json({ data: {message: "Post updated successfully"} });
-      }
+    }
     if (didUpdate.rowCount === 0) {
       return res.status(404).json({ error: { status: 404, code: "POST_NOT_FOUND", message: "Post could not be found" } });
     }
