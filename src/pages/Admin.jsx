@@ -46,7 +46,7 @@ export default function Admin() {
     const res = await fetch(`${API_BASE}/admin/login`, { method: "POST", credentials: "include", headers, body: JSON.stringify({ email, password })});
     const json = await res.json();
     if (!res.ok) {
-      { setError(json.error?.message ?? "Login failed"); return; };
+      setError(json.error?.message ?? "Login failed"); return;
     }
     await checkAuth();
   }
@@ -64,9 +64,6 @@ export default function Admin() {
       
       {authStatus === "guest" && (
         <Block title="Login">
-          <p style={{ padding: 8, border: "2px solid red" }}>
-            ADMIN MARKER: 2026-03-04
-          </p>
           <div className="admin__login">
             <p>Admin login.</p>
             <form onSubmit={handleSubmit}>
