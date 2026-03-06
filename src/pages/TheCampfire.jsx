@@ -22,7 +22,7 @@ export default function TheCampfire() {
     setIsLoading(true);
     setError(null);
 
-    fetch(`${API_BASE}/the-campfire`)
+    fetch(`${API_BASE}/posts`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Error retrieving posts ' + res.statusText);
@@ -46,7 +46,7 @@ export default function TheCampfire() {
   return(
     <PageTemplate slug="the-campfire" title="The Campfire">
 
-      <Block title="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster" actions={<Link to="/the-campfire" className="btn btn--the-campfire">View all campfire posts</Link>}>
+      <Block title="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster">
     
         <p className="the-campfire__dev-note dev-note">
           <small><strong>Build note:</strong> All Campfire entries—cryptid encounters, crew mishaps, project updates, and whatever else wanders in from the woods...</small>
