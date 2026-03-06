@@ -28,7 +28,7 @@ export default function PostCard({ post }) {
       </h3>
 
       <p className="post-card__excerpt">{post.excerpt}</p>
-      <a href={`/blog/${post.slug}`} className="post-card__more">Read more</a>
+      <a href={`/the-campfire/${post.slug}`} className="post-card__more">Read more</a>
     </article>
   );
 }
