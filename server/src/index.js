@@ -122,17 +122,37 @@ app.post("/admin/login", async (req, res, next) => {
   }
 });
 
-app.post("/posts", requireAdminSession,  async (req, res, next) => {
-  const { title, slug, body, category = null, excerpt = null } = req.body ?? {};
+app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
+  let { title, slug, body, category, excerpt = null } = req.body ?? {};
+
+  function normalizeString(input) {
+    return String(input ?? "")
+      .trim()
+      .toLowerCase()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^a-z0-9-]/g, "")
+      .replace(/-+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  title = (title ?? "").trim();
+  slug = normalizeString(slug);
+  body = (body ?? "").trim();
+  category = (category ?? "").trim() || "field-notes"
+  category = normalizeString(category);
+
+  
+
   const missingFields = [];
   if (!title) missingFields.push("title");
+  if (!slug) slug = normalizeSlug(title);
   if (!slug) missingFields.push("slug");
   if (!body) missingFields.push("body");
   if (missingFields.length > 0) {
     return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: `Missing required fields: ${missingFields.join(", ")}` } });
   } 
   try {
-    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt) VALUES ($1, $2, $3, $4, $5) RETURNING id, created_at`, [title, slug, body, category, excerpt]);
+    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt) VALUES ($1, $2, $3, $4, $5) RETURNING *`, [title, slug, body, category, excerpt]);
   
     return res.status(201).set("Location", `/posts/${slug}`).json({ data: result.rows[0] });
   } catch (err) {
