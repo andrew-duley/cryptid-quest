@@ -22,7 +22,7 @@ export default function TheCampfire() {
     setIsLoading(true);
     setError(null);
 
-    fetch(`${API_BASE}/posts`)
+    fetch(`${API_BASE}/posts?limit=10`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Error retrieving posts ' + res.statusText);
