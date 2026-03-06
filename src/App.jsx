@@ -7,7 +7,7 @@ import Footer from './layout/Footer.jsx';
 import Home from './pages'; 
 import About from './pages/About.jsx';
 import Accessibility from './pages/Accessibility.jsx';
-import Blog from './pages/Blog.jsx';
+import Blog from './pages/TheCampfire.jsx';
 import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -32,10 +32,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/accessibility" element={<Accessibility />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/the-campfire" element={<TheCampfire />} />
+          {/*<Route path="/the-campfire/:slug" element={<TheCampfirePost />*/}
           <Route path="/the-crew" element={<TheCrew />} />
           <Route path="/the-crew/:slug" element={<CrewMember />} />
           <Route path="/the-crypt/cryptid-mixup" element={<CryptidMixup />} />

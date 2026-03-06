@@ -13,7 +13,7 @@ export default function About() {
       <Block label="About introduction">
         <p>Cryptid Quest is my playground for building polished, modern web experiences. It's also home to the Cryptid Quest Woods—the foggy treeline where my ragtag crew of anti-heroes—equal parts game-addicted troublemakers and the masterminds behind the would-be Viking band, Cairn Fjell, roam.</p>
 
-        <p>You can jump into their world by playing quick web games in <Link to="/the-crypt">The Crypt</Link>, following their antics through blog updates, and (soon) listening to the band's first full album, <em>Welcome to the Northern Fringe</em>, currently in production.</p>
+        <p>You can jump into their world by playing quick web games in <Link to="/the-crypt">The Crypt</Link>, following their antics with updates from around <Link to="/the-campfire">the campfire</Link>, and (soon) listening to the band's first full album, <em>Welcome to the Northern Fringe</em>, currently in production.</p>
 
         <p>Behind the lore, this site is my living portfolio: I build and refine everything here to push my JavaScript and front-end skills further. If you're looking for a developer who ships, iterates, and obsesses over polish, I'm available.</p>
       </Block>
@@ -22,7 +22,7 @@ export default function About() {
         <ul>
           <li><strong>Meet:</strong> Our outrageous band and team members, AKA <Link to="/the-crew">The Crew</Link>.</li>
           <li><strong>Play:</strong> Mini-games live in <Link to="/the-crypt">The Crypt</Link>.</li>
-          <li><strong>Follow:</strong> Updates and lore drop on the <Link to="/blog">Blog</Link>.</li>
+          <li><strong>Follow:</strong> Updates and lore drops from around the <Link to="/the-campfire">The Campfire</Link>.</li>
           <li><strong>Listen:</strong> The band's music will live on <Link to="/music">Music</Link> (soon).</li>
         </ul>
       </Block>

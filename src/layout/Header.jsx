@@ -67,7 +67,7 @@ function Header() {
           <ul className="hero__nav-list">
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
-            <li><NavLink to="/blog">Blog</NavLink></li>
+            <li><NavLink to="/the-campfire">The Campfire</NavLink></li>
             <li><NavLink to="/the-crew">The Crew</NavLink></li>
             <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
           </ul>

@@ -57,7 +57,8 @@ export default function Admin() {
     const res = await fetch(`${API_BASE}/admin/login`, { method: "POST", credentials: "include", headers, body: JSON.stringify({ email, password })});
     const json = await res.json();
     if (!res.ok) {
-      setError(json.error?.message ?? "Login failed"); return;
+      setError(json.error?.message ?? "Login failed"); 
+      return;
     }
     await checkAuth();
   }

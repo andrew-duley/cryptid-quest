@@ -39,7 +39,7 @@ export default function NewestPosts() {
   }, []);
 
     return(
-    <Block title="What's new in the Cryptid Quest Woods" subtitle="New footprints on the trail—some definitely not human" actions={<Link to="/posts" className="btn btn--posts">View all posts</Link>}>
+    <Block title="What's new in the Cryptid Quest Woods" subtitle="New footprints on the trail—some definitely not human" actions={<Link to="/the-campfire" className="btn btn--the-campfire">View all campfire posts</Link>}>
     
         <p className="posts__dev-note dev-note">
           <small><strong>Build note:</strong> Dev logs, lore drops, and new releases.</small>
