@@ -145,7 +145,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
 
   const missingFields = [];
   if (!title) missingFields.push("title");
-  if (!slug) slug = normalizeSlug(title);
+  if (!slug) slug = normalizeString(title);
   if (!slug) missingFields.push("slug");
   if (!body) missingFields.push("body");
   if (missingFields.length > 0) {
