@@ -34,9 +34,11 @@ export default function Block({
       )
     }>
       <header className="block__header">
-        <h2 id={headingId} className="block__title">
-          {title}
-        </h2>
+        {hasTitle && (
+          <h2 id={headingId} className="block__title">
+            {title}
+          </h2>
+        )}
 
         {subtitle ? <p className="block__subtitle">{subtitle}</p> : null}
 

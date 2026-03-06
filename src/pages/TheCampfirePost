@@ -4,15 +4,13 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import PostCard from '../components/PostCard';
-
 import '../games/shared/styles/index.scss'; 
 import '../scss/pages/_blog.scss';    
 
-export default function TheCampfire() {
+export default function TheCampfirePost() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
