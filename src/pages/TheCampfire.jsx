@@ -46,7 +46,7 @@ export default function TheCampfire() {
   return(
     <PageTemplate slug="the-campfire" title="The Campfire">
 
-      <Block title="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster">
+      <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster">
     
         <p className="the-campfire__dev-note dev-note">
           <small><strong>Build note:</strong> All Campfire entries—cryptid encounters, crew mishaps, project updates, and whatever else wanders in from the woods...</small>

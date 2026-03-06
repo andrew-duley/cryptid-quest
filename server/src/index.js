@@ -46,7 +46,7 @@ app.use(cors({
 
 app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
-app.get("/posts", async (req, res, next) => {
+app.get("/posts?limit=10", async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts ORDER BY created_at DESC";
     const limit = Number(req.query.limit);
