@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';gi 
+import { Link } from 'react-router-dom';
 
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
