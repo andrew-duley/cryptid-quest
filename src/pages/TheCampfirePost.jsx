@@ -59,27 +59,23 @@ export default function TheCampfirePost() {
 
       <Block label="Body">
     
-      {isLoading ? <p className="the-campfire-post__loading">Loading posts...</p> : null}
-      {error ? <p className="the-campfire__error">{error}</p> : null}
+        {isLoading ? <p className="the-campfire-post__loading">Loading posts...</p> : null}
+        {error ? <p className="the-campfire__error">{error}</p> : null}
 
-      {
-        !isLoading && !error ? (
-        posts.length > 0 ? 
-        <div className="the-campfire-post__post">
-          {body}
-        </div>
-      :
-        <div className="posts posts--none">
-          <p>No posts yet—check back soon</p>
-        </div>)  
-        : null
-      }
-      
-    </Block>
-
-      
-    
-      
+        {
+          !isLoading && !error ? (
+          posts.length > 0 ? 
+          <div className="the-campfire-post__post">
+            {body}
+          </div>
+        :
+          <div className="posts posts--none">
+            <p>No posts yet—check back soon</p>
+          </div>)  
+          : null
+        }
+        
+      </Block>
   
       <PageFooter />
     </PageTemplate>
