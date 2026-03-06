@@ -7,12 +7,12 @@ import Footer from './layout/Footer.jsx';
 import Home from './pages'; 
 import About from './pages/About.jsx';
 import Accessibility from './pages/Accessibility.jsx';
-import Blog from './pages/TheCampfire.jsx';
 import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Admin from './pages/Admin';
 
+import TheCampfire from './pages/TheCampfire.jsx';
 import TheCrew from './pages/TheCrew.jsx';
 import CrewMember from './pages/CrewMember.jsx';
 import TheCrypt from './pages/TheCrypt.jsx';
