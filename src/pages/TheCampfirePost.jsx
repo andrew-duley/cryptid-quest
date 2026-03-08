@@ -49,7 +49,7 @@ export default function TheCampfirePost() {
   return(
     <PageTemplate slug={`the-campfire/${slug}`} title={post.title}>
 
-      <Block>
+      <Block label="Meta data">
         <div className="the-campfire-post__meta">
           <span>Filed in: {post.category}</span>
           <time dateTime={post.created_at}>
