@@ -13,6 +13,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Admin from './pages/Admin';
 
 import TheCampfire from './pages/TheCampfire.jsx';
+import TheCampfirePost from './pages/TheCampfirePost.jsx';
 import TheCrew from './pages/TheCrew.jsx';
 import CrewMember from './pages/CrewMember.jsx';
 import TheCrypt from './pages/TheCrypt.jsx';
