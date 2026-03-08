@@ -15,11 +15,11 @@ export default function PostCardSkeleton() {
       </section>
 
       <h3 className="post-card__title">
-        <a href={`/blog/${post.slug}`}>{post.title}</a>
+        <a href={`/the-campfire/${post.slug}`}>{post.title}</a>
       </h3>
 
       <p className="post-card__excerpt">{post.excerpt}</p>
-      <a href={`/blog/${post.slug}`} className="post-card__more">Read more</a>
+      <a href={`/the-campfire/${post.slug}`} className="post-card__more">Read more</a>
     </article>
   );
 }

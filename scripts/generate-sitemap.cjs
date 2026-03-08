@@ -8,10 +8,10 @@ const siteUrl = 'https://cryptid.quest';
 const routes = [
   '/',                                // home
   '/about',                           // about
-  '/blog',                            // blog
-  '/games',                           // games hub
-  '/games/cryptid-mixup',             // first game
-  '/games/cryptac-toe',               // second game
+  '/the-campfire',                            // blog
+  '/the-crypt',                           // games hub
+  '/the-crypt/cryptid-mixup',             // first game
+  '/the-crypt/cryptac-toe',               // second game
 ];
 
 const today = new Date().toISOString().split('T')[0];

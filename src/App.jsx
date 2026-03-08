@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/the-campfire" element={<TheCampfire />} />
-          <Route path="/the-campfire/:slug" element={<TheCampfirePost} />
+          <Route path="/the-campfire/:slug" element={<TheCampfirePost />} />
           <Route path="/the-crew" element={<TheCrew />} />
           <Route path="/the-crew/:slug" element={<CrewMember />} />
           <Route path="/the-crypt/cryptid-mixup" element={<CryptidMixup />} />

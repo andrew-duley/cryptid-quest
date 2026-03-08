@@ -11,17 +11,16 @@ import '../scss/pages/_blog.scss';
 export default function TheCampfirePost() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-  const [post, setPost] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [post, setPost] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const { slug } = useParams();
-  const { title, category, body, created_at } = post;
-
+  
   useEffect(() => {
+    setPost();
     setIsLoading(true);
     setError(null);
-
     fetch(`${API_BASE}/posts/${slug}`)
       .then(res => {
         if (!res.ok) {
@@ -30,51 +29,40 @@ export default function TheCampfirePost() {
         return res.json();
       })
       .then(json => {
-        setPost(json.data ?? []);
-        setError(null);
+        setPost(json.data);
       })
       .catch(error => {
-        setPost([]);
         setError("An error has occurred")
         console.log("Error fetching data:", error);
       })
       .finally(() => {
         setIsLoading(false);
-        console.log(post)
       });     
-  }, []);
+  }, [slug]);
 
+  if (isLoading) return <p>Loading...</p>
+
+  if (error) return <p>{error}</p> 
+
+  if (!post) return <p>Sorry, post not found</p>
+  
   return(
-    <PageTemplate slug={`the-campfire/${slug}`} title={title}>
+    <PageTemplate slug={`the-campfire/${slug}`} title={post.title}>
 
       <Block>
         <div className="the-campfire-post__meta">
-          <span>Filed in: {category}</span>
-          <time dateTime={created_at}>
-            {new Date(created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
+          <span>Filed in: {post.category}</span>
+          <time dateTime={post.created_at}>
+            {new Date(post.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
           </time>
           <span aria-hidden="true">•</span>
         </div>
       </Block>
 
       <Block label="Body">
-    
-        {isLoading ? <p className="the-campfire-post__loading">Loading posts...</p> : null}
-        {error ? <p className="the-campfire__error">{error}</p> : null}
-
-        {
-          !isLoading && !error ? (
-          posts.length > 0 ? 
-          <div className="the-campfire-post__post">
-            {body}
-          </div>
-        :
-          <div className="posts posts--none">
-            <p>No posts yet—check back soon</p>
-          </div>)  
-          : null
-        }
-        
+        <div className="the-campfire-post__post">
+          {post.body}
+        </div> 
       </Block>
   
       <PageFooter />

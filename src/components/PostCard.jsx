@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function PostCard({ post }) {
   return(
     <article className="post-card card">
-      <a href={`/blog/${post.slug}`} className="post-card__media media-frame media-frame--contain">
+      <Link to={`/the-campfire/${post.slug}`} className="post-card__media media-frame media-frame--contain">
         <img 
           src={post.cover} 
           alt="" 
@@ -12,7 +13,7 @@ export default function PostCard({ post }) {
           loading="lazy"
           decoding="async"
         />
-      </a>
+      </Link>
 
       <section className="post-card__meta">
         <span className="post-card__cat pill">{post.slug}</span>
@@ -24,11 +25,11 @@ export default function PostCard({ post }) {
       </section>
 
       <h3 className="post-card__title">
-        <a href={`/blog/${post.slug}`}>{post.title}</a>
+        <Link to={`/the-campfire/${post.slug}`}>{post.title}</Link>
       </h3>
 
       <p className="post-card__excerpt">{post.excerpt}</p>
-      <a href={`/the-campfire/${post.slug}`} className="post-card__more">Read more</a>
+      <Link to={`/the-campfire/${post.slug}`} className="post-card__more">Read more</Link>
     </article>
   );
 }
