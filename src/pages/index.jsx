@@ -9,6 +9,7 @@ import CraftTeaser from '../sections/CraftTeaser';
 // import OrbCatcher from '../the-crypt/orb-catcher';
 
 export default function Home() {
+  
   return(
     <PageTemplate slug="home">
       <NewestPosts />

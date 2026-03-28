@@ -48,6 +48,7 @@ export default function About() {
           <Link to="/contact" className="about__button">
             Get in Touch
           </Link>
+          <span> | </span>
           <a href="https://github.com/awduley" className="about__button about__button--secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </Block> 

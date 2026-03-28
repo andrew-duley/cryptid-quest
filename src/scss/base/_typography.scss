@@ -46,11 +46,6 @@ h6 {
   font-size: 0.95rem; line-height: 1.35; 
 }
 
-/* Body text defaults (optional, but nice to have centralized) */
-p {
-  line-height: 1.6;
-}
-
 /* Inline semantic sizing */
 small {
   font-size: 0.875rem; // ~14px if base is 16px
@@ -61,6 +56,17 @@ small,
 .small {
   line-height: 1.4;
 }
+
+// Base list style
+  ol,
+  ul {
+    margin: 0;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-block: .4rem;
+  }
 
 // Base link
 a {

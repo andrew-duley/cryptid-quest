@@ -12,12 +12,13 @@ function makeIdFromTitle(title) {
 export default function Block({
   label,
   title, 
+  devNote,
   subtitle,
   actions,
   id, 
   children
 }) {
-  const hasTitle = Boolean(title && String(title).trim());
+  const hasTitle = Boolean(title && String(title).trim()); 
 
   // Safeguard:
   // - If there's no visible title, we still need an accessible name.
@@ -41,6 +42,8 @@ export default function Block({
         )}
 
         {subtitle ? <p className="block__subtitle">{subtitle}</p> : null}
+
+        {devNote ? <p className="block__dev-note">{devNote}</p> : null}
 
         {actions ? <div className="block__actions">{actions}</div> : null}
       </header>

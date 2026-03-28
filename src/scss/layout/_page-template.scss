@@ -1,0 +1,86 @@
+@use '../abstracts' as *;
+
+.page {
+
+  // &__header {
+  
+  // }
+
+  &__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: clamp(1.2rem, 3vw, 2rem);
+  }
+
+  &__eyebrow {
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 1.6rem;
+    color: $color-accent-ice;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: .6rem;
+      height: 2px;
+      background: currentColor;
+    }
+  }
+
+  // Page title (H1)
+  &__title {
+    margin-block: 1rem;
+  }
+
+  &__description {
+    line-height: 1.6;
+    max-width: 60ch;
+    margin-bottom: 1.6rem;
+    color: $color-text-muted;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.6rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__actions a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all .2s ease;
+  }
+
+  &__actions a:hover {
+    border-color: $color-accent-ice;
+    color: $color-accent-ice;
+  }
+
+  &__body {
+    
+    .page__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      line-height: 1.7;
+
+    }
+  }
+}
+

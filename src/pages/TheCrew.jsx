@@ -22,12 +22,12 @@ export default function TheCrew() {
       </Block>
           
       <Block label="Crew Members">
-        <div className="the-crew__grid">
+        <div className="card-grid crew-grid">
           {CREW_MEMBERS.map(crewMember => (
             <Link
               key={crewMember.slug}
               to={`/the-crew/${crewMember.slug}`}
-              className="crew-card"
+              className="card crew-card"
             >
               <div className="crew-card__header">
                 <h3 className="crew-card__name">{crewMember.name}</h3>

@@ -1,0 +1,112 @@
+@use '../abstracts' as *;
+
+/* ==================
+   Shared card layout
+   ================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+}
+
+/* =========
+   Crew card
+   ========= */
+
+.crew-card {
+  border-radius: 1rem;
+  border: 1px solid rgba($color-neon-purple, .30);
+  background: rgba(#000, .28);
+  box-shadow: 0 1.1rem 2.1rem rgba(#000, .35);
+  backdrop-filter: blur(.6rem);
+
+  overflow: hidden;
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba($color-neon-purple, .65);
+    box-shadow:
+      0 1.3rem 2.4rem rgba(#000, .42),
+      0 0 1rem rgba($color-neon-purple, .18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($color-neon-purple, .55);
+    outline-offset: 3px;
+  }
+}
+
+.crew-card__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  min-height: clamp(12rem, 12vw, 14rem);
+}
+
+.crew-card__name {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: inherit;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.crew-card__tagline {
+  margin: 0;
+  color: $color-text-muted;
+  font-size: clamp(1.4rem, 1vw, 1.6rem);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.crew-card__media {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  flex: 1;
+}
+
+.crew-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform .22s ease, filter .22s ease;
+
+  .crew-card:hover &,
+  .crew-card:focus-visible & {
+    transform: scale(1.02);
+    filter: saturate(1.03) contrast(1.02);
+  }
+}
+
+// .card {
+//   background: rgba($color-bg-light, .55);
+//   border: 1px solid rgba($color-border, .85);
+//   border-radius: .75rem;
+//   overflow: hidden;
+//   transition: box-shadow .2 ease, transform .2s ease;
+
+//   &:hover {
+//     box-shadow: 0 0 .9rem rgba($color-neon-green, .22);
+//     transform: translateY(-1px);
+//   }
+// }
