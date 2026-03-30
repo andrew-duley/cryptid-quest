@@ -8,6 +8,7 @@ export default function PageTemplate({
   meta,
   actions,
   children,
+  className,
 }) {
 
   const hasHeaderContent = eyebrow || title || description || meta || actions;
@@ -15,7 +16,7 @@ export default function PageTemplate({
   const pageTitleId = "page-title";
 
   return(
-    <main className={`page ${slug ? `page--${slug}` : ""}`} aria-labelledby={title ? pageTitleId : undefined}>
+    <main className={`page ${slug ? `page--${slug}` : ""} ${className || ""}`} aria-labelledby={title ? pageTitleId : undefined}>
       <div id="top" />
       {hasHeaderContent ? (<header className="page__header">
         <div className="page__inner">

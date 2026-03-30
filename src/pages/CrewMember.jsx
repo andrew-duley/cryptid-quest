@@ -28,7 +28,7 @@ export default function CrewMember() {
   const hasFunFacts = Array.isArray(crewMember.funFacts) && crewMember.funFacts.length > 0;
 
   return (
-    <PageTemplate slug={`the-crew/${crewMember.slug}`} title={crewMember.name}>
+    <PageTemplate slug={`the-crew/${crewMember.slug}`} title={crewMember.name} className={'crew-member'}>
     
       <Block label="Back to the crew">
         <Link to="/the-crew" className="crew-member__back">
@@ -36,7 +36,7 @@ export default function CrewMember() {
         </Link>
       </Block>
 
-      <Block label={crewMember.name}>
+      <Block label={crewMember.name}> 
         <div className="crew-member__hero">
           <div className="crew-member__media">
             <CrewMemberImage
@@ -48,7 +48,7 @@ export default function CrewMember() {
             />
           </div>
           <div className="crew-member__text">
-            <p className="crew-member__tagline">{crewMember.tagline}</p>
+            <h2 className="crew-member__tagline">{crewMember.tagline}</h2>
             <p className="crew-member__summary">{crewMember.summary}</p>
           </div>
         </div>

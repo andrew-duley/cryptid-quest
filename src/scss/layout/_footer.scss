@@ -1,6 +1,6 @@
 @use '../abstracts' as *;
 
-#footer {
+#footer {clear: both;
   background-image: 
   radial-gradient(120% 80% at 50% 78%, rgba(0, 0, 0, .35) 70%, transparent 100%), 
   linear-gradient(
