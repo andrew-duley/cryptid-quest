@@ -19,7 +19,7 @@ export default function PageTemplate({
     <main className={`page ${slug ? `page--${slug}` : ""} ${className || ""}`} aria-labelledby={title ? pageTitleId : undefined}>
       <div id="top" />
       {hasHeaderContent ? (<header className="page__header">
-        <div className="page__inner">
+        <div className="page__inner narrow">
           {eyebrow ? <p className="page__eyebrow">{eyebrow}</p> : null}
 
           {title ? <h1 id={pageTitleId} className="page__title">
@@ -33,7 +33,7 @@ export default function PageTemplate({
       </header>) : null}
 
       <div className="page__body">
-        <div className="page__inner">{children}</div>
+        <div className="page__inner narrow">{children}</div>
       </div>
     </main>
   );

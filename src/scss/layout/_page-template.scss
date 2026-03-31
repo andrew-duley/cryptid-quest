@@ -11,6 +11,10 @@
     max-width: none;
     margin: 0 auto;
     padding: clamp(1.2rem, 3vw, 2rem);
+
+    &.narrow {
+      max-width: 100rem;
+    }
   }
 
   &__eyebrow {
@@ -80,6 +84,10 @@
       gap: 4rem;
       line-height: 1.7;
 
+    }
+
+    .narrow {
+      max-width: 100rem;
     }
   }
 }

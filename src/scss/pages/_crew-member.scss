@@ -14,51 +14,30 @@
 
   /* Hero layout */
   &__hero {
-    // display: grid;
-    // gap: clamp(1.25rem, 3vw, 2.25rem);
-    // align-items: start;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
 
-    // @media (min-width: $bp-md) {
-    //   grid-template-columns: minmax(0, 50rem) minmax(0, 1fr);
-    //   align-items: start;
-    // }
     @media (min-width: $bp-lg) {
       flex-direction: row;
-    }
-  }
-
-  &__legend {
-    margin-bottom: 5rem;
-
-    h2 {
-      margin-bottom: 1.4rem;
+      align-items: flex-start;
     }
   }
 
   /* Media block */
   &__media {
-    /* This is the “it will shrink” constraint */
-    // max-width: min(50rem, 100%);
-    // margin-inline: auto;
-    // width: 60rem;
     margin-bottom: 5rem;
-    flex: 1;
-    
 
     @media (min-width: $bp-md) {
     
     }
 
     @media (min-width: $bp-lg) {
-      
+      margin-right: 2rem;
+      flex: 1;
+      margin-bottom: 1rem;
     }
-
-    
 
     /* picture needs to behave like a block and fill the media box */
     picture {
@@ -79,9 +58,7 @@
   }
 
   &__text {
-    // float: right;
-    // width: 58%;
-    flex: 1;
+    flex: 2;
   }
 
   &__tagline {
@@ -90,6 +67,14 @@
 
   &__summary {
     margin-bottom: 5rem;
+  }
+
+  &__legend {
+    margin-bottom: 5rem;
+
+    h2 {
+      margin-bottom: 1.4rem;
+    }
   }
 
   &__fun-facts {
