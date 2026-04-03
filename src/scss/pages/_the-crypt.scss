@@ -1,162 +1,40 @@
 @use '../abstracts' as *;
 
-/* Shared card interaction (prevents duplication per grid) */
 .the-crypt {
+  position: relative;
+  padding-block: 6rem 8rem; // adjust to taste
 
-  /* Shared card interaction (prevents duplication per grid) */
-  .game-card {
-  transition: transform .18s ease, box-shadow .18s    ease, border-color .18s ease, filter .18s ease;
+  background-image: 
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.85) 25%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0) 70%
+    ),
 
-  will-change: transform; 
+    /* BOTTOM FADE */
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.7) 80%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    image-set (
+      url("/images/the-crypt/the-crypt-dredsky/the-crypt-dredsky-1/the-crypt-dredsky-1.avif"),
+      url("/images/the-crypt/the-crypt-dredsky/the-crypt-dredsky-1/the-crypt-dredsky-1.webp"),
+      url("/images/the-crypt/the-crypt-dredsky/the-crypt-dredsky-1/the-crypt-dredsky-1.jpeg")
+    );
+    
 
-    &:hover {
-      transform: translateY(-2px);
-    }
+    
 
-    /* Keyboard polish: match hover energy */
-    &:focus-within {
-      transform: translateY(-2px);
-    }
-  }
+  background-size: 100% 100%, 100%, 100%, min(1536px, 100%) auto;
+  background-position: right top;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
 
-  .game-card :focus-visible {
-    outline: 2px solid rgba($color-neon-blue, .65);
-    outline-offset: 3px;
-    border-radius: .6rem;
-  }
-}
-
-.the-crypt__grid--featured {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.2rem, 4.6vw, 2rem);
-
-  .game-card {
-    border: 1px solid rgba($color-neon-blue, .30);
-    box-shadow:
-      0 1.2rem 2.4rem rgba(#000, .35),
-      0 0 .55rem rgba($color-neon-blue, .35);
-
-    /* Optional: a *very* subtle “runic frame” vibe */
-    position: relative;
-    isolation: isolate;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      pointer-events: none;
-      opacity: .55;
-      z-index: -1;
-
-      /* faint gradient edge — reads like enchanted stone, not neon */
-      background: linear-gradient(
-        135deg,
-        rgba($color-neon-blue, .22),
-        rgba($color-neon-green, .12),
-        rgba($color-neon-purple, .16)
-      );
-
-      filter: blur(8px);
-    }
-
-    &:hover,
-    &:focus-within {
-      border-color: rgba($color-neon-blue, .55);
-      box-shadow:
-        0 1.4rem 2.6rem rgba(#000, .40),
-        0 0 1.1rem rgba($color-neon-blue, .55);
-      filter: brightness(1.02);
-    }
-  }
-}
-
-.the-crypt__grid--all {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(.8rem, 3.6vw, 1.4rem);
-
-  .game-card {
-    border: 1px solid rgba($color-border, .65);
-    box-shadow: 0 .9rem 1.8rem rgba(#000, .28);
-
-    &:hover,
-    &:focus-within {
-      border-color: rgba($color-border, .95);
-      box-shadow:
-        0 1.2rem 2.2rem rgba(#000, .36),
-        0 0 .85rem rgba(#fff, .06); /* tiny haze, not a glow */
-    }
-  }
-}
-
-/* =========================================================
-   Optional: If you add a featured badge inside GameCard later
-   (example class: .game-card__badge--featured)
-   ========================================================= */
-// .the-crypt__grid--all {
-//   .game-card__badge--featured {
-//     display: inline-flex;
-//     align-items: center;
-//     gap: .35rem;
-//     padding: .25rem .5rem;
-//     border-radius: 999px;
-//     font-size: .75rem;
-//     font-weight: 800;
-//     letter-spacing: .02em;
-
-//     background: rgba($color-neon-blue, .12);
-//     border: 1px solid rgba($color-neon-blue, .35);
-//     color: rgba(#fff, .92);
-//   }
-// }
-
-// /* =========================================================
-//    Optional: status accent hooks (only if you want them)
-//    Assumes you already output .game-card__status--playable etc.
-//    ========================================================= */
-// .the-crypt__grid--all {
-
-//   .game-card__status--playable {
-//     /* slightly “alive” */
-//     border-color: rgba($color-neon-green, .35);
-//     background: rgba($color-neon-green, .10);
-//   }
-
-//   .game-card__status--prototype {
-//     border-color: rgba($color-neon-blue, .30);
-//     background: rgba($color-neon-blue, .08);
-//   }
-
-//   .game-card__status--comingSoon {
-//     border-color: rgba($color-border, .45);
-//     background: rgba(#000, .08);
-//     color: rgba(#fff, .72);
-//   }
-// }
-
-
-@media (min-width: $bp-lg) {
-  .the-crypt__grid--featured {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: $bp-md) {
-  .the-crypt__grid--all {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: $bp-lg) {
-  .the-crypt__grid--all {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: $bp-xl) {
-  .the-crypt__grid--all {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  p {
+    margin-bottom: 2rem;
   }
 }

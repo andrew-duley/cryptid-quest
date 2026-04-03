@@ -1,0 +1,31 @@
+@use '../abstracts' as *;
+
+.dev-note {
+  position: relative;
+  margin-block: 1.6rem;
+  padding: 1.2rem 3.8rem;
+  max-width: 100%;
+  display: inline-block;
+
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+  border-radius: 0.8rem;
+
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: $color-text-muted;
+
+   &::before {
+    content: "🪵";
+    position: absolute;
+    left: .8rem;
+    top: .8rem;
+    font-size: 1.8rem;
+    opacity: 0.6;
+  }
+
+  strong {
+    color: $color-text-light;
+    font-weight: 500;
+  }
+}

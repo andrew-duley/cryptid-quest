@@ -7,14 +7,14 @@ function Footer() {
 
   return(
     <footer id="footer" className="">
-      <h2 className="sr-only">Footer</h2>
+      <h2 className="sr-only">Footer</h2> 
       <div className="orb orb-1"></div>
       <div className="orb orb-2"></div>
       <div className="orb orb-3"></div>
       <div className="orb orb-4"></div>
       <div className="sasquatch"></div>
-      <div className="footer-columns p-lg grid">
-        <section className="column-f column-f-1">
+      <div className="footer__columns">
+        <section className="footer__column footer__column--1">
           <h3>Cryptid Quest</h3>
           <p>A <em>living</em> world of games, lore, and UI craft from the Northern Fringe</p>
           <ul>
@@ -23,7 +23,7 @@ function Footer() {
             <li><NavLink to="/the-crypt">Enter the Crypt</NavLink></li>
           </ul>
         </section>
-        <section className="column-f column-f-2">
+        <section className="footer__column footer__column--2">
           <h3>Camp Notes</h3>
           <ul>
             <li><NavLink to="/about">About the Project</NavLink></li>
@@ -32,7 +32,7 @@ function Footer() {
             <li><NavLink to="/accessibility">Accessibility</NavLink></li>
           </ul>
         </section>
-        <section className="column-f column-f-3">
+        <section className="footer__column footer__column--3">
           <h3>Campfire Board</h3>
           <ul>
             <li><NavLink to="/community-rules">Camp Rules</NavLink></li>
@@ -42,7 +42,7 @@ function Footer() {
           </ul>
         </section>
       </div> 
-      <section className="copy p-xl">
+      <section className="copy">
         <small>&copy; 2025-{year} <strong>Cryptid Quest</strong>. All rights reserved.</small>
       </section>
     </footer>

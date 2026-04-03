@@ -9,17 +9,19 @@ export default function PageTemplate({
   actions,
   children,
   className,
+  narrow,
 }) {
 
   const hasHeaderContent = eyebrow || title || description || meta || actions;
   
   const pageTitleId = "page-title";
+  const pageInnerClassName = `page__inner ${narrow ? "page__inner--narrow" : ""}`;
 
   return(
     <main className={`page ${slug ? `page--${slug}` : ""} ${className || ""}`} aria-labelledby={title ? pageTitleId : undefined}>
       <div id="top" />
       {hasHeaderContent ? (<header className="page__header">
-        <div className="page__inner narrow">
+        <div className={pageInnerClassName}>
           {eyebrow ? <p className="page__eyebrow">{eyebrow}</p> : null}
 
           {title ? <h1 id={pageTitleId} className="page__title">
@@ -33,7 +35,7 @@ export default function PageTemplate({
       </header>) : null}
 
       <div className="page__body">
-        <div className="page__inner narrow">{children}</div>
+        <div className={pageInnerClassName}>{children}</div>
       </div>
     </main>
   );

@@ -28,7 +28,7 @@ export default function CrewMember() {
   const hasFunFacts = Array.isArray(crewMember.funFacts) && crewMember.funFacts.length > 0;
 
   return (
-    <PageTemplate slug={`the-crew/${crewMember.slug}`} title={crewMember.name} className={'crew-member'}>
+    <PageTemplate slug={`the-crew/${crewMember.slug}`} title={crewMember.name} className={'crew-member'} narrow={true}>
     
       <Block label="Back to the crew">
         <Link to="/the-crew" className="crew-member__back">
