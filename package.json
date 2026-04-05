@@ -10,7 +10,8 @@
     "build:full": "npm run build && npm run build:sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
-    "optimize:mascots": "node scripts/optimize-mascots.js"
+    "optimize:mascots": "node scripts/optimize-mascots.js",
+    "optimize:backgrounds": "node scripts/optimize-bg-image.js"
   },
   "dependencies": {
     "react": "^19.1.1",

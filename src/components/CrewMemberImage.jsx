@@ -8,7 +8,7 @@ export default function CrewMemberImage({
   loading = 'lazy',
 }) {
   // Example: /images/mascots/bif-goot/bif-goot-800
-  const basePath = `/images/crew-members/${slug}/${slug}-${size}`;
+  const basePath = `/images/the-crew/${slug}/${slug}-${size}`;
 
   return (
     <picture>

@@ -20,11 +20,12 @@
       rgba(0, 0, 0, 0.7) 80%,
       rgba(0, 0, 0, 1) 100%
     ),
-    image-set (
-      url("/images/the-crypt/the-crypt-dredsky/the-crypt-dredsky-1/the-crypt-dredsky-1.avif"),
-      url("/images/the-crypt/the-crypt-dredsky/the-crypt-dredsky-1/the-crypt-dredsky-1.webp"),
-      url("/images/the-crypt/the-crypt-dredsky/the-crypt-dredsky-1/the-crypt-dredsky-1.jpeg")
+    image-set(
+      url("/images/backgrounds/the-crypt/dredsky-stairs/dredsky-stairs.avif") type("image/avif"),
+      url("/images/backgrounds/the-crypt/dredsky-stairs/dredsky-stairs.webp") type("image/webp"),
+      url("/images/backgrounds/the-crypt/dredsky-stairs/dredsky-stairs.jpg") type("image/jpeg")
     );
+  
     
 
     
