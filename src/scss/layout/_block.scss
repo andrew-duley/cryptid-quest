@@ -3,8 +3,12 @@
 .block {
   padding-bottom: clamp(1rem, 3vw, 2rem);
 
-  &__header {
+  .narrow {
+      max-width: 100rem;
+    }
 
+  &__header {
+    
   }
 
   &__title {
@@ -33,6 +37,6 @@
   }
 
   &__body {
-
+   
   }
 }

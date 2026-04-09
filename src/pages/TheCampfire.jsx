@@ -40,12 +40,12 @@ export default function TheCampfire() {
       .finally(() => {
         setIsLoading(false);
       });     
-  }, []);
+  }, []); 
 
   return(
     <PageTemplate slug="the-campfire" title="The Campfire">
 
-      <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster">
+      <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster" narrow={true}>
     
         <p className="the-campfire__dev-note dev-note">
           <small><strong>Build note:</strong> All Campfire entries—cryptid encounters, crew mishaps, project updates, and whatever else wanders in from the woods...</small>
@@ -58,7 +58,7 @@ export default function TheCampfire() {
           !isLoading && !error ? (
           posts.length > 0 ? 
           <div className="the-campfire__posts">
-            <div className="the-campfire__posts-grid">
+            <div className="card-grid card-grid__the-campfire">
               {posts.map(p => (
                   <PostCard key={p.id ?? p.slug} post={p} />
                 ))}

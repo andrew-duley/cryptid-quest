@@ -16,7 +16,9 @@ export default function Block({
   subtitle,
   actions,
   id, 
-  children
+  children,
+  className,
+  narrow
 }) {
   const hasTitle = Boolean(title && String(title).trim()); 
 
@@ -28,7 +30,7 @@ export default function Block({
   const headingId = hasTitle ? ( id || `block-${makeIdFromTitle(title)}`) : undefined;
 
   return(
-    <section className="block" {...
+    <section className={`block ${className ? `${className}` : ""} ${narrow ? `narrow` : ""}`} {...
       (hasTitle
         ? { "aria-labelledby" : headingId}
         : { "aria-label" : String(label).trim() }

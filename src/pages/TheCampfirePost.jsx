@@ -30,7 +30,7 @@ export default function TheCampfirePost() {
       })
       .then(json => {
         setPost(json.data);
-      })
+      }) 
       .catch(error => {
         setError("An error has occurred")
         console.log("Error fetching data:", error);
