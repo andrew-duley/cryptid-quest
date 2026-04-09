@@ -7,10 +7,11 @@ import PageFooter from '../layout/PageFooter';
 import PostCard from '../components/PostCard';
 
 import '../games/shared/styles/index.scss'; 
-import '../scss/pages/_blog.scss';    
+import '../scss/pages/_blog.scss';  
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 export default function TheCampfire() {
-  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,31 +52,40 @@ export default function TheCampfire() {
           <small><strong>Build note:</strong> All Campfire entries—cryptid encounters, crew mishaps, project updates, and whatever else wanders in from the woods...</small>
         </p>
 
-        {isLoading ? <p className="the-campfire__loading">Loading posts...</p> : null}
-        {error ? <p className="the-campfire__error">{error}</p> : null}
+        {isLoading && !error && ( 
+          <p className="the-campfire__loading">Loading posts...</p> 
+        )}
 
-        {error ? <div className="posts posts--none">
-          <p>No posts yet—check back soon</p>
-        </div> : null}
+        {error && !isLoading && (
+          <p className="the-campfire__error">{error}</p>
+        )}
+
+        {!isLoading && !error && posts.length === 0 && (
+          <div className="the-campfire__posts-none">
+            <p>No posts yet—check back soon</p>
+          </div>
+        )}
       </Block>
 
+      
+      {!isLoading && !error && posts.length > 0 &&
       <Block title="Newest Posts" narrow={true}>
-        {!isLoading && !error ?
         <div className="the-campfire__newest-posts">
           {posts.slice(0, 3).map(p => (
               <PostCard key={p.id ?? p.slug} post={p} />
           ))}
-        </div> : null}
-      </Block>
+        </div>
+      </Block>}
 
+      
+      {!isLoading && !error && posts.length > 3 &&
       <Block title="Archive Posts">
-        {!isLoading && !error ?
         <div className="card-grid the-campfire__archive-posts">
           {posts.slice(3).map(p => (
             <PostCard key={p.id ?? p.slug} post={p} />
           ))}
-        </div> : null}
-      </Block>
+        </div>
+      </Block>}
 
       <PageFooter />
     </PageTemplate>
