@@ -45,7 +45,7 @@ export default function TheCampfire() {
   return(
     <PageTemplate slug="the-campfire" title="The Campfire">
 
-      <Block label="The Campfire Newest Posts" subtitle="Where the crew shares sightings, stories, and the occasional disaster" narrow={true}>
+      <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster" narrow={true}>
     
         <p className="the-campfire__dev-note dev-note">
           <small><strong>Build note:</strong> All Campfire entries—cryptid encounters, crew mishaps, project updates, and whatever else wanders in from the woods...</small>
@@ -54,28 +54,27 @@ export default function TheCampfire() {
         {isLoading ? <p className="the-campfire__loading">Loading posts...</p> : null}
         {error ? <p className="the-campfire__error">{error}</p> : null}
 
-        {
-          !isLoading && !error ? (
-          posts.length > 0 ? 
-          <div className="the-campfire__posts">
-            <div className="the-campfire__newest-posts">
-              {posts.slice(0, 3).map(p => (
-                  <PostCard key={p.id ?? p.slug} post={p} />
-                ))}
-            </div>
-            <div className="card-grid the-campfire__archive-posts">
-              {posts.slice(3).map(p => (
-                <PostCard key={p.id ?? p.slug} post={p} />
-              ))}
-            </div>
-          </div>
-          
-        :
-          <div className="posts posts--none">
-            <p>No posts yet—check back soon</p>
-          </div>)  
-          : null
-        } 
+        {error ? <div className="posts posts--none">
+          <p>No posts yet—check back soon</p>
+        </div> : null}
+      </Block>
+
+      <Block title="Newest Posts" narrow={true}>
+        {!isLoading && !error ?
+        <div className="the-campfire__newest-posts">
+          {posts.slice(0, 3).map(p => (
+              <PostCard key={p.id ?? p.slug} post={p} />
+          ))}
+        </div> : null}
+      </Block>
+
+      <Block title="Archive Posts">
+        {!isLoading && !error ?
+        <div className="card-grid the-campfire__archive-posts">
+          {posts.slice(3).map(p => (
+            <PostCard key={p.id ?? p.slug} post={p} />
+          ))}
+        </div> : null}
       </Block>
 
       <PageFooter />
