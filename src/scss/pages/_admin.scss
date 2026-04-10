@@ -10,26 +10,13 @@
   }
 
   &__email,
-  &__password {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__email > *,
-  &__password > *,
-  &__post-form > * {
-    margin-block: 1rem;
-  }
-
+  &__password,
   &__title,
   &__body, 
   &__category {
     display: flex;
     flex-direction: column;
-  }
-
-  &__title {
-    width: 50rem
+    margin-block: 1rem;
   }
 
   input {
@@ -44,5 +31,6 @@
 
   button {
     cursor: pointer;
+    margin-top: 2rem;
   }
 }
