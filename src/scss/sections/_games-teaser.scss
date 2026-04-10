@@ -1,18 +1,18 @@
-@use '../abstracts' as *;
+// @use '../abstracts' as *;
 
-.games-teaser {
+// .games-teaser {
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
-    justify-content: center;
-    align-items: start;
-    gap: clamp(1rem, 2vw, 1.4rem);
-  } 
+//   &__grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+//     justify-content: center;
+//     align-items: start;
+//     gap: clamp(1rem, 2vw, 1.4rem);
+//   } 
 
-  @media (min-width: $bp-lg) {
-    &__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-}
+//   @media (min-width: $bp-lg) {
+//     &__grid {
+//       grid-template-columns: repeat(3, minmax(0, 1fr));
+//     }
+//   }
+// }

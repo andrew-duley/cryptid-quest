@@ -1,5 +1,9 @@
 @use '../abstracts' as *;
 
+.block-the-campfire__newest-posts {
+  margin-inline: auto;
+}
+
 .the-campfire {
 
   background-image: 
@@ -34,7 +38,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-inline: auto;
   }
 
   .post-card {

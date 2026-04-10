@@ -14,7 +14,7 @@ export default function GamesTeaser() {
         <p className="games-teaser__dev-note dev-note">
           <small><strong>Build note:</strong> Responsive card grid + image srcset pipeline; routing to game detail pages next</small>
         </p>
-        <div className="games-teaser__grid">
+        <div className="card-grid games-teaser__grid">
           {GAMES.map(game => (
             <GameCard key={game.id ?? game.slug} game={game} />
           ))}
