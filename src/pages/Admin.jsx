@@ -171,6 +171,10 @@ export default function Admin() {
         </Block>
       )}
 
+      <Block title="Post Status">
+        {postSuccess && <p className="success">{postSuccess}</p>}
+      </Block>
+
       <Block title="Status/Errors">
         <p>Auth status: {authStatus}</p>
         {error && <p className="error">{error}</p>}
