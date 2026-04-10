@@ -122,6 +122,18 @@ app.post("/admin/login", async (req, res, next) => {
   }
 });
 
+app.post("/admin/logout", (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.log("There was a problem logging out");
+      return res.status(500).json({ error: { message: "Logout failed" } });
+    }
+    res.clearCookie("cq.sid");
+    
+    return res.status(200).json({ data: {message: "Logout successful"} });
+  })
+});
+
 app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   let { title, slug, body, category, excerpt = null } = req.body ?? {};
 

@@ -108,6 +108,22 @@ export default function Admin() {
     setCategory("");
   }
 
+  async function handleLogout() {
+    try {
+      const res = await fetch(`${API_BASE}/admin/logout`, {
+        method: "POST",
+        credentials: "include"
+      });
+
+      if (!res.ok) {
+        throw new Error("Logout failed");
+      }
+      setAuthStatus("guest");
+    } catch (err) {
+      console.log("Logout error:", err);
+    }
+  }
+
   return(
     <PageTemplate 
       slug="admin"
@@ -180,6 +196,12 @@ export default function Admin() {
         {error && <p className="error">{error}</p>}
       </Block>
 
+      {authStatus === "authed" && (
+        <Block title="Logout">
+          <button type="button" className="btn" onClick={handleLogout}>Logout</button>
+        </Block>
+      )}
+  
       <PageFooter />
     </PageTemplate>
   );
