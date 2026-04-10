@@ -16,21 +16,23 @@
   &__category {
     display: flex;
     flex-direction: column;
-    margin-block: 1rem;
+    margin-block: 2rem;
   }
 
-  input {
+  input,
+  textarea {
     padding-block: 1rem;
-    padding-inline: 2rem
+    padding-inline: 2rem;
+    color: $color-text-light;
   }
 
-  textarea { 
-    padding-block: 1rem;
-    padding-inline: 2rem
+  textarea {
+    min-height: 20rem;
+    resize: vertical;
   }
 
   button {
     cursor: pointer;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }
