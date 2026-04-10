@@ -6,7 +6,7 @@
     linear-gradient(
       to right,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0.85) 25%,
+      rgba(0, 0, 0, 0.2) 25%,
       rgba(0, 0, 0, 0.4) 50%,
       rgba(0, 0, 0, 0) 70%
     ),
@@ -27,6 +27,7 @@
   background-size: 100% 100%, 100%, 100%, min(1536px, 100%) auto;
   background-position: right top 32rem;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
   &__newest-posts {
     display: flex;
