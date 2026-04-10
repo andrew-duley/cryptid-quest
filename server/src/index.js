@@ -129,13 +129,13 @@ app.post("/admin/logout", (req, res) => {
       return res.status(500).json({ error: { message: "Logout failed" } });
     }
     res.clearCookie("cq.sid");
-    
+
     return res.status(200).json({ data: {message: "Logout successful"} });
   })
 });
 
 app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
-  let { title, slug, body, category, excerpt = null } = req.body ?? {};
+  let { title, slug, body, category } = req.body ?? {};
 
   function normalizeString(input) {
     return String(input ?? "")
@@ -153,8 +153,17 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   category = (category ?? "").trim() || "field-notes"
   category = normalizeString(category);
 
-  
+  // Auto generate excerpts here
+  const cleanedBody = body.replace(/\s+/g, ' ').trim();
 
+  let autoExcerpt;
+
+  if (cleanedBody.length < 160) {
+    autoExcerpt = cleanedBody;
+  } else {
+    autoExcerpt = cleanedBody.slice(0, 160) + "...";
+  }
+   
   const missingFields = [];
   if (!title) missingFields.push("title");
   if (!slug) slug = normalizeString(title);
@@ -164,7 +173,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
     return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: `Missing required fields: ${missingFields.join(", ")}` } });
   } 
   try {
-    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt) VALUES ($1, $2, $3, $4, $5) RETURNING *`, [title, slug, body, category, excerpt]);
+    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt) VALUES ($1, $2, $3, $4, $5) RETURNING *`, [title, slug, body, category, autoExcerpt]);
   
     return res.status(201).set("Location", `/posts/${slug}`).json({ data: result.rows[0] });
   } catch (err) {

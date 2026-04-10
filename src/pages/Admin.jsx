@@ -163,7 +163,6 @@ export default function Admin() {
 
       {authStatus === "authed" && (
         <Block title="Authed">
-          {postSuccess && <p className="success">{postSuccess}</p>}
           <form className="admin__post-form" onSubmit={handlePostSubmit}>
             <div className="admin__title">
               <label htmlFor="title">Title:</label>
