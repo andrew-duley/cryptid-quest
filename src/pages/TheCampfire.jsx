@@ -16,7 +16,6 @@ export default function TheCampfire() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
  
   useEffect(() => {
     setIsLoading(true);
@@ -69,7 +68,7 @@ export default function TheCampfire() {
 
       
       {!isLoading && !error && posts.length > 0 &&
-      <Block title="At the Fire" className="block-the-campfire__newest-posts" narrow={true}>
+      <Block title="At the Fire" narrow={true} className="block-centered">
         <div className="the-campfire__newest-posts">
           {posts.slice(0, 3).map(p => (
               <PostCard key={p.id ?? p.slug} post={p} />
