@@ -7,6 +7,7 @@ export default function Contact() {
     <PageTemplate
       slug="contact"
       title="Contact Me"
+      narrow="true"
     >
       <Block label="Contact introduction">
         <p>Want to report a bug, share feedback, or talk dev work? Send a message anytime.</p>

@@ -29,7 +29,7 @@ export default function NotFound() {
   const [line] = useState(() => randomLine(cryptid404Lines));
 
   return(
-    <PageTemplate slug="404-not-found" title="404 — Page not found">
+    <PageTemplate slug="404-not-found" title="404 — Page not found" narrow="true">
       
       <Block label="Not found">
         <p className="not-found__lede">{line}</p>

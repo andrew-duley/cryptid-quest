@@ -9,6 +9,7 @@ export default function About() {
     <PageTemplate 
       slug="about"
       title="About Cryptid Quest"
+      narrow="true"
     >
       <Block label="About introduction">
         <p>Cryptid Quest is my playground for building polished, modern web experiences. It's also home to the Cryptid Quest Woods—the foggy treeline where my ragtag crew of anti-heroes—equal parts game-addicted troublemakers and the masterminds behind the would-be Viking band, Cairn Fjell, roam.</p>

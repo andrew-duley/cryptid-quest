@@ -6,7 +6,7 @@ import PageFooter from '../layout/PageFooter';
 
 export default function PrivacyPolicyPage() {
   return (
-    <PageTemplate slug="privacy-policy" title="Privacy Policy">
+    <PageTemplate slug="privacy-policy" title="Privacy Policy" narrow="true">
     
       <Block label="Privacy policy introduction">
         <p>This page explains what information Cryptid Quest collects and how it's used.

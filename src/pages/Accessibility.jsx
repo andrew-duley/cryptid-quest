@@ -4,7 +4,7 @@ import PageFooter from '../layout/PageFooter';
 
 export default function Accessibility() {
   return(
-    <PageTemplate slug="accessibility" title="Accessibility">
+    <PageTemplate slug="accessibility" title="Accessibility" narrow="true">
     
       <Block label="Accessibility introduction">
           <p>Cryptid Quest is built to be usable for as many people as possible, including people who use screen readers, keyboard-only navigation, or other assistive technologies.</p>
