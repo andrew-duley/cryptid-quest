@@ -127,7 +127,9 @@ export default function Admin() {
   return(
     <PageTemplate 
       slug="admin"
-      title="Admin Page"  
+      title="Admin Page"
+      className="admin" 
+      narrow={true} 
     >
       {authStatus === "checking" && (
         <Block title="Admin">
@@ -140,12 +142,12 @@ export default function Admin() {
           <div className="admin__login">
             <p>Admin login.</p>
             <form onSubmit={handleLoginSubmit}>
-              <div>
+              <div className="admin__email">
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" onChange={handleEmail} value={email} required />
               </div>
               
-              <div>
+              <div className="admin__password">
                 <label htmlFor="password">Password</label>
                 <input type="password"  id="password" onChange={handlePassword} value={password} required />
               </div>
@@ -162,18 +164,18 @@ export default function Admin() {
       {authStatus === "authed" && (
         <Block title="Authed">
           {postSuccess && <p className="success">{postSuccess}</p>}
-          <form className="authed__post-form" onSubmit={handlePostSubmit}>
-            <div>
+          <form className="admin__post-form" onSubmit={handlePostSubmit}>
+            <div className="admin__title">
               <label htmlFor="title">Title:</label>
               <input type="text" id="title" onChange={handleTitle} value={title} required />
             </div>
 
-            <div>
+            <div className="admin__body">
               <label htmlFor="body">Body:</label>
               <textarea id="body" onChange={handleBody} value={body} required />
             </div>
 
-            <div>
+            <div className="admin__category">
               <label htmlFor="category">Category:</label>
               <input type="text" id="category" onChange={handleCategory} value={category} />
             </div>

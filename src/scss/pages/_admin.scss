@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+.admin {
+
+  &__login {
+    
+    p {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__email,
+  &__password {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__email > *,
+  &__password > *,
+  &__post-form > * {
+    margin-block: 1rem;
+  }
+
+  &__title,
+  &__body, 
+  &__category {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    width: 50rem
+  }
+
+  input {
+    padding-block: 1rem;
+    padding-inline: 2rem
+  }
+
+  textarea { 
+    padding-block: 1rem;
+    padding-inline: 2rem
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
