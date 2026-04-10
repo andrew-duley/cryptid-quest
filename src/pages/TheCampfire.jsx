@@ -68,15 +68,14 @@ export default function TheCampfire() {
 
       
       {!isLoading && !error && posts.length > 0 &&
-      <Block title="At the Fire" narrow={true} className="block-centered">
+      <Block title="At the Fire">
         <div className="the-campfire__newest-posts">
           {posts.slice(0, 3).map(p => (
               <PostCard key={p.id ?? p.slug} post={p} />
           ))}
         </div>
       </Block>}
-
-      
+ 
       {!isLoading && !error && posts.length > 3 &&
       <Block title="More from the Fire">
         <div className="card-grid the-campfire__archive-posts">
