@@ -44,7 +44,7 @@ export default function TheCampfire() {
   }, []); 
 
   return(
-    <PageTemplate slug="the-campfire" title="The Campfire" className={"the-campfire"}>
+    <PageTemplate slug="the-campfire" title="The Campfire" className="the-campfire">
 
       <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster" narrow={true}>
     
