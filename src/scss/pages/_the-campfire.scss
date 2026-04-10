@@ -16,13 +16,14 @@
       to bottom,
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.7) 80%,
-      rgba(0, 0, 0, 1) 100%
+      rgba(0, 0, 0, 1) 100% 
     ),
     image-set(
-      url("/images/backgrounds/the-campfire/campfire-gathering.avif") type("image/avif"),
-      url("/images/backgrounds/the-campfire/campfire-gathering.webp") type("image/webp"),
-      url("/images/backgrounds/the-campfire/campfire-gathering.jpg") type("image/jpeg")
+      url("/images/backgrounds/the-campfire/campfire-gathering/campfire-gathering.avif") type("image/avif"),
+      url("/images/backgrounds/the-campfire/campfire-gathering/campfire-gathering.webp") type("image/webp"),
+      url("/images/backgrounds/the-campfire/campfire-gathering/campfire-gathering.jpg") type("image/jpeg")
     );
+    background: blue;
   
   background-size: 100% 100%, 100%, 100%, min(1536px, 100%) auto;
   background-position: right top 32rem;
