@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 
+import NotFound from './NotFound';
+
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
@@ -14,6 +16,7 @@ export default function TheCampfirePost() {
   const [post, setPost] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [is404, setIs404] = useState(false);
 
   const { slug } = useParams();
   
@@ -21,14 +24,22 @@ export default function TheCampfirePost() {
     setPost();
     setIsLoading(true);
     setError(null);
+    setIs404(false);
     fetch(`${API_BASE}/posts/${slug}`)
       .then(res => {
+        if (res.status === 404) {
+          setIs404(true);
+          return null;
+        }
         if (!res.ok) {
           throw new Error('Error retrieving posts ' + res.statusText);
         }
         return res.json();
       })
       .then(json => {
+        if (json === null) {
+          return;
+        }
         setPost(json.data);
       }) 
       .catch(error => {
@@ -42,9 +53,9 @@ export default function TheCampfirePost() {
 
   if (isLoading) return <p>Loading...</p>
 
-  if (error) return <p>{error}</p> 
+  if (is404) return <NotFound />
 
-  if (!post) return <p>Sorry, post not found</p>
+  if (error) return <p>{error}</p> 
   
   return(
     <PageTemplate slug={`the-campfire/${slug}`} title={post.title}>
