@@ -13,7 +13,8 @@
   &__password,
   &__title,
   &__body, 
-  &__category {
+  &__category
+  .tiptap {
     display: flex;
     flex-direction: column;
     margin-block: 2rem;
@@ -29,6 +30,10 @@
   .tiptap {
     min-height: 20rem;
     resize: vertical;
+    background-color: $color-bg-dark;
+    border-width: 2px;
+    border-style: inset;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
   }
 
   button {
