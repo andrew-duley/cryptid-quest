@@ -1,7 +1,7 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-export default function TiptapEditor({onEditorChange}) {
+export default function TiptapEditor({ id, onEditorChange }) {
   const editor = useEditor({
     extensions: [
       StarterKit, // Includes basic text formatting
@@ -14,5 +14,5 @@ export default function TiptapEditor({onEditorChange}) {
 
   if (!editor) return null;
 
-  return <EditorContent editor={editor} />
+  return <EditorContent id={id} editor={editor} />
 }

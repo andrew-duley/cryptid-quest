@@ -20,13 +20,13 @@
   }
 
   input,
-  textarea {
+  .tiptap {
     padding-block: 1rem;
     padding-inline: 2rem;
     color: $color-text-light;
   }
 
-  textarea {
+  .tiptap {
     min-height: 20rem;
     resize: vertical;
   }
