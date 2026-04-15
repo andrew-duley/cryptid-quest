@@ -13,7 +13,7 @@
   &__password,
   &__title,
   &__body, 
-  &__category
+  &__category,
   .tiptap {
     display: flex;
     flex-direction: column;
@@ -28,11 +28,10 @@
   }
 
   .tiptap {
-    min-height: 20rem;
-    resize: vertical;
-    background-color: $color-bg-dark;
-    border-width: 2px;
-    border-style: inset;
+    min-height: 60rem;
+    // resize: vertical;
+    background-color: #3b3b3b;
+    border-width: 1px;
     border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
   }
 
