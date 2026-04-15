@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import TiptapEditor from '../components/TiptapEditor';
+
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
@@ -61,6 +63,11 @@ export default function Admin() {
       return;
     }
     await checkAuth();
+  }
+
+  function handleEditorUpdate(newHtml) {
+    setBody(newHtml);
+    console.log(newHtml);
   }
 
   function handleTitle(e) {
@@ -171,7 +178,7 @@ export default function Admin() {
 
             <div className="admin__body">
               <label htmlFor="body">Body:</label>
-              <textarea id="body" onChange={handleBody} value={body} required />
+              <TipTapEditor id={"body"} onEditorChange={handleEditorUpdate} />
             </div>
 
             <div className="admin__category">
