@@ -178,7 +178,7 @@ export default function Admin() {
 
             <div className="admin__body">
               <label htmlFor="body">Body:</label>
-              <TiptapEditor id={"body"} onEditorChange={handleEditorUpdate} />
+              <TiptapEditor onEditorChange={handleEditorUpdate} />
             </div>
 
             <div className="admin__category">
