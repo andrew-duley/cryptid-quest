@@ -9,16 +9,11 @@
     }
   }
 
-  &__body label {
-    margin-bottom: 0;
-  }
-
   &__email,
   &__password,
   &__title,
   &__body, 
-  &__category,
-  .tiptap {
+  &__category {
     display: flex;
     flex-direction: column;
     margin-block: 2rem;
