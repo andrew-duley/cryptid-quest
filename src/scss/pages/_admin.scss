@@ -9,6 +9,10 @@
     }
   }
 
+  &__body label {
+    margin-bottom: 0;
+  }
+
   &__email,
   &__password,
   &__title,
@@ -33,10 +37,6 @@
     overflow: auto;
     background-color: #3b3b3b;
     border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-
-    label {
-      margin-bottom: 0;
-    }
   }
 
    label {
