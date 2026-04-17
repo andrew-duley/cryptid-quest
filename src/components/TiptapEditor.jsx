@@ -14,5 +14,5 @@ export default function TiptapEditor({ onEditorChange }) {
 
   if (!editor) return null;
 
-  return <EditorContent className="tiptap"  editor={editor} />
+  return <EditorContent editor={editor} />
 }

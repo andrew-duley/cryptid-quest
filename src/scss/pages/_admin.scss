@@ -28,10 +28,15 @@
   }
 
   .tiptap {
-    min-height: 60rem;
-    // resize: vertical;
+    min-height: 40rem;
+    resize: vertical;
+    overflow: auto;
     background-color: #3b3b3b;
     border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  }
+
+   label {
+    margin-bottom: 1rem;
   }
 
   button {
