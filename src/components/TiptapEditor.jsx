@@ -13,6 +13,10 @@ export default function TiptapEditor({ onEditorChange }) {
         openOnClick: false,
         autolink: true,
         linkOnPaste: true,
+        HTMLAttributes: {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        }
       }),
     ],
     content: '<p>Hello Andrew! What are you going to write about today?</p>',
