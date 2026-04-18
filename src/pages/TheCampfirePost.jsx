@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom'
+import DOMPurify from 'dompurify';
 
 import NotFound from './NotFound';
 
@@ -51,6 +52,10 @@ export default function TheCampfirePost() {
       });     
   }, [slug]);
 
+  const safeHTML = useMemo(() => {
+    return DOMPurify.sanitize(post?.body ?? '');
+  }, [post?.body]);
+
   if (isLoading) return <p>Loading...</p>
 
   if (is404) return <NotFound />
@@ -71,9 +76,9 @@ export default function TheCampfirePost() {
       </Block>
 
       <Block label="Body">
-        <div className="the-campfire-post__post">
-          {post.body}
-        </div> 
+        <div className="the-campfire-post__post"
+          dangerouslySetInnerHTML={{ __html: safeHTML }}
+        /> 
       </Block>
   
       <PageFooter />

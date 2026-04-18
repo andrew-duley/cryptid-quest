@@ -1,12 +1,18 @@
-import { useEditor, EditorContent } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
-import Underline from '@tiptap/extension-underline'
+import { useEditor, EditorContent } from '@tiptap/react';
+import { Link, Link2Off } from 'lucide-react';
+import StarterKit from '@tiptap/starter-kit';
+import Underline from '@tiptap/extension-underline';
 
 export default function TiptapEditor({ onEditorChange }) {
   const editor = useEditor({
     extensions: [
       StarterKit, // Includes basic text formatting
       Underline,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        linkOnPaste: true,
+      }),
     ],
     content: '<p>Hello Andrew! What are you going to write about today?</p>',
     onUpdate: ({ editor }) => {
@@ -55,6 +61,17 @@ export default function TiptapEditor({ onEditorChange }) {
         <div className="formatting-section">
           <button onClick={() => editor?.chain().focus().toggleBlockquote().run()}>Blockquote</button>
           <button onClick={() => editor?.chain().focus().toggleCodeBlock().run()}>Code Block</button>
+        </div>
+
+        <div className="formatting-section">
+          <button onClick={() => {
+            const url = prompt('Enter URL');
+
+            if (url) {
+              editor?.chain().focus().setLink({ href: url }).run()
+            }}
+          }><Link size={18} /></button>
+          <button onClick={() => editor?.chain().focus().unsetLink().run()}><Link2Off size={18} /></button>
         </div>
 
       </div>
