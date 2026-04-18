@@ -1,7 +1,8 @@
 import { useEditor, EditorContent } from '@tiptap/react';
-import { Link, Link2Off } from 'lucide-react';
+import { Link2, Link2Off } from 'lucide-react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
+import Link from '@tiptap/extension-link'
 
 export default function TiptapEditor({ onEditorChange }) {
   const editor = useEditor({
@@ -70,7 +71,7 @@ export default function TiptapEditor({ onEditorChange }) {
             if (url) {
               editor?.chain().focus().setLink({ href: url }).run()
             }}
-          }><Link size={18} /></button>
+          }><Link2 size={18} /></button>
           <button onClick={() => editor?.chain().focus().unsetLink().run()}><Link2Off size={18} /></button>
         </div>
 
