@@ -38,6 +38,27 @@
     margin-bottom: 1rem;
   }
 
+  .formatting {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #3b3b3b;
+    border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  }
+
+  .formatting-section {
+    margin-block: 1rem;
+    margin-inline: 2rem;
+  }
+
+  .formatting > * {
+    margin-inline: 1rem;
+    border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+
+  }
+
   button {
     cursor: pointer;
     margin-top: 1rem;

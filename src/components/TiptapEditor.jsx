@@ -19,11 +19,11 @@ export default function TiptapEditor({ onEditorChange }) {
   
   return (
     <div>
-      <div>
+      <div className="formatting">
 
         <div className="formatting-section">
-          <button onClick={() => editor?.chain().focus().undo().run()}>Undo</button>
-          <button onClick={() => editor?.chain().focus().redo().run()}>Redo</button>
+          <button onClick={() => editor?.chain().focus().undo().run()} aria-label="undo">↺</button>
+          <button onClick={() => editor?.chain().focus().redo().run()} aria-label="redo">↻</button>
         </div>
 
         <div className="formatting-section">
