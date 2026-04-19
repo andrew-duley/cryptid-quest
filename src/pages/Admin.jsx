@@ -67,7 +67,6 @@ export default function Admin() {
 
   function handleEditorUpdate(newHtml) {
     setBody(newHtml);
-    console.log(newHtml);
   }
 
   function handleTitle(e) {
