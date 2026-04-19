@@ -48,7 +48,7 @@ app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
 app.get("/posts", async (req, res, next) => {
   try {
-    const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts ORDER BY created_at DESC";
+    const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts WHERE status = 'published' ORDER BY created_at DESC";
     const limit = Number(req.query.limit);
     const postLimit = limit > 0 && limit <= 50 ? limit : null;
 
@@ -65,7 +65,7 @@ app.get("/posts", async (req, res, next) => {
 app.get("/posts/:slug", async (req, res, next) => {
   try {
     const urlSlug = req.params.slug;
-    const result = await pool.query("SELECT id, title, slug, category, excerpt, body, created_at FROM posts WHERE slug = $1", [urlSlug])
+    const result = await pool.query("SELECT id, title, slug, category, excerpt, body, created_at FROM posts WHERE slug = $1 AND status = 'published'", [urlSlug]);
     if (result.rows.length === 0) {
       return res.status(404).json( { error: { status: 404, code: "POST_NOT_FOUND", message: "Post not found" } });
     }
@@ -135,7 +135,7 @@ app.post("/admin/logout", (req, res) => {
 });
 
 app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
-  let { title, slug, body, category } = req.body ?? {};
+  let { title, slug, body, category, status="draft" } = req.body ?? {};
 
   function normalizeString(input) {
     return String(input ?? "")
@@ -158,7 +158,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
 
   let autoExcerpt;
 
-  if (cleanedBody.length < 160) {
+  if (cleanedBody.length <= 160) {
     autoExcerpt = cleanedBody;
   } else {
     autoExcerpt = cleanedBody.slice(0, 160) + "...";
@@ -173,12 +173,12 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
     return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: `Missing required fields: ${missingFields.join(", ")}` } });
   } 
   try {
-    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt) VALUES ($1, $2, $3, $4, $5) RETURNING *`, [title, slug, body, category, autoExcerpt]);
+    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [title, slug, body, category, autoExcerpt, status]);
   
     return res.status(201).set("Location", `/posts/${slug}`).json({ data: result.rows[0] });
   } catch (err) {
     if (err.code === "23505") {
-        return res.status(409).json({ error: { status: 409, code: "SLUG_ALREADY_EXISTS", message: "Slug already exists" } });
+        return res.status(409).json({ error: { status: 409, code: "SLUG_ALREADY_EXISTS", message: "A post with this title already exists. Try a slightly different title." } });
       }
     return next(err);
   }

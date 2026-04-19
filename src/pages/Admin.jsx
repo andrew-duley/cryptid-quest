@@ -18,6 +18,7 @@ export default function Admin() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [category, setCategory] = useState("");
+  const [draftSuccess, setDraftSuccess] = useState(null);
   const [postSuccess, setPostSuccess] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -81,9 +82,10 @@ export default function Admin() {
     setCategory(e.target.value)
   }
 
-  async function handlePostSubmit(e) {
+  async function handlePostSubmit(status) {
     setPostSuccess(null);
-    e.preventDefault();
+    setDraftSuccess(null);
+   
     if (authStatus !== "authed") {
       setError("You're not logged in!");
       return
@@ -91,8 +93,9 @@ export default function Admin() {
 
     setError(null);
     setIsSubmitting(true);
+
     try {
-      const res = await fetch(`${API_BASE}/admin/posts`, { method: "POST", credentials: "include", headers, body: JSON.stringify({ title, body, category })});
+      const res = await fetch(`${API_BASE}/admin/posts`, { method: "POST", credentials: "include", headers, body: JSON.stringify({ title, body, category, status })});
 
       let json = null;
       
@@ -102,16 +105,25 @@ export default function Admin() {
       catch {}
 
       if (!res.ok) {
-        setError(json?.error?.message ?? "Post creation failed"); return;
+        setError(json?.error?.message ?? "Post creation failed"); 
+        return;
       }
-    } finally {
-      setIsSubmitting(false);
-    }
 
-    setPostSuccess("Post created successfully");
-    setTitle("");
-    setBody("");
-    setCategory("");
+      if (status === "published") {
+      setPostSuccess("Post created successfully");
+      }
+
+      if (status === "draft") {
+        setDraftSuccess("Draft saved successfully");
+      } 
+
+      setTitle("");
+      setBody("");
+      setCategory("");
+
+    } finally {
+        setIsSubmitting(false);
+    }  
   }
 
   async function handleLogout() {
@@ -169,7 +181,7 @@ export default function Admin() {
 
       {authStatus === "authed" && (
         <Block title="Authed">
-          <form className="admin__post-form" onSubmit={handlePostSubmit}>
+          <form className="admin__post-form">
             <div className="admin__title">
               <label htmlFor="title">Title:</label>
               <input type="text" id="title" onChange={handleTitle} value={title} required />
@@ -186,8 +198,11 @@ export default function Admin() {
             </div>
 
             <div>
-              <button type="submit" className="btn" disabled={isSubmitting}>
+              <button type="button" className="btn" onClick={() => {handlePostSubmit('published')}} disabled={isSubmitting}>
                 {isSubmitting ? "Posting..." : "Submit post"}
+              </button>
+              <button type="button" className="btn" onClick={() => {handlePostSubmit('draft')}} disabled={isSubmitting}>
+                {isSubmitting ? "Saving..." : "Save draft"}
               </button>
             </div>
           </form>
@@ -196,6 +211,7 @@ export default function Admin() {
 
       <Block title="Post Status">
         {postSuccess && <p className="success">{postSuccess}</p>}
+        {draftSuccess && <p className="success">{draftSuccess}</p>}
       </Block>
 
       <Block title="Status/Errors">
