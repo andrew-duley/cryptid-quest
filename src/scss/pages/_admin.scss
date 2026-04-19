@@ -78,5 +78,10 @@
 
   .btn {
     margin-right: 2rem;
+    transition: background-color .2s ease; 
+
+      &:hover {
+        background-color: #2b2b2b;
+      }
   }
 }
