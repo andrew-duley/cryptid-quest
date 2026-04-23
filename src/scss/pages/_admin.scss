@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .admin {
-  background: url('/images/backgrounds/admin/bg-knight-troll.avif') no-repeat center center;
+  background: url('/images/backgrounds/admin/admin-background/admin-background.avif') no-repeat center center;
   background-size: cover;
 
   &__login {
@@ -79,6 +79,7 @@
   .btn {
     margin-right: 2rem;
     transition: background-color .2s ease; 
+    border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 
       &:hover {
         background-color: #2b2b2b;

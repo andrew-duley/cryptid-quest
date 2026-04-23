@@ -46,6 +46,17 @@ app.use(cors({
 
 app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
+app.get("/admin/drafts", async (req, res, next) => {
+  try {
+    const baseSql = "SELECT id, created_at, title, category FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
+
+    const result = await pool.query(baseSql);
+    return res.status(200).json({ data: result.rows });
+  } catch (err) {
+      return next(err);
+  }
+});
+
 app.get("/posts", async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts WHERE status = 'published' ORDER BY created_at DESC";
