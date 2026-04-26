@@ -195,6 +195,44 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   }
 });
 
+app.put('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
+  const urlId = req.params.id;
+  const { title, body, category, status } = req.body;
+  const safeCategory = category?.trim() || "Field-notes";
+  const fields = [title, body, status];
+  
+  if(status !== "draft" && status !== "published") {
+    return res.status(400).json({
+      error: {
+        status: 400,
+        code: "INVALID_STATUS",
+        message: "Status must be 'draft' or 'published'"
+      }
+    });
+  }
+
+  if (
+    !fields.every(field => typeof(field) === 'string' && field.trim()  !== "")
+  ) {
+    return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: "One or more fields missing"} })
+  }
+
+  try {
+    const didUpdate = await pool.query(`UPDATE posts SET title = $1, body = $2, category = $3, status = $4 WHERE id = $5`, [ title, body, safeCategory, status, urlId ]);
+
+    if (didUpdate.rowCount === 1) {
+      return res.status(200).json({ data: {message: "Update successful"} });
+    }
+    if (didUpdate.rowCount === 0) {
+      return res.status(404).json({ error: { status: 404, code: "POST_NOT_FOUND", message: "Post could not be found" } });
+    }
+  } 
+
+  catch (err) {
+      return next(err);
+  }
+});
+
 app.put('/posts/:slug', checkAdminKey, async (req, res, next) => {
   const urlSlug = req.params.slug;
   const { title, body, category, excerpt } = req.body;
