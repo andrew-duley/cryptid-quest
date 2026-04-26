@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import TiptapEditor from '../components/TiptapEditor';
+import Draft from '../components/Drafts';
 
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
@@ -20,9 +21,13 @@ export default function Admin() {
   const [category, setCategory] = useState("");
   const [draftSuccess, setDraftSuccess] = useState(null);
   const [postSuccess, setPostSuccess] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const headers = { "Content-Type": "application/json" };
+  const [drafts, setDrafts] = useState(null);
+  const [selectedDraft, setSelectedDraft] = useState(null);
+
+  const headers = { "Content-Type": "application/json" };  
 
   useEffect(() => {
     checkAuth();
@@ -94,8 +99,19 @@ export default function Admin() {
     setError(null);
     setIsSubmitting(true);
 
+    let methodToUse;
+    let urlToUse;
+
+    if (selectedDraft) {
+      methodToUse = "PUT";
+      urlToUse = `${API_BASE}/admin/posts/${selectedDraft.id}`;
+    } else {
+      methodToUse = "POST";
+      urlToUse = `${API_BASE}/admin/posts`;
+    }
+
     try {
-      const res = await fetch(`${API_BASE}/admin/posts`, { method: "POST", credentials: "include", headers, body: JSON.stringify({ title, body, category, status })});
+      const res = await fetch(urlToUse, { method: methodToUse, credentials: "include", headers, body: JSON.stringify({ title, body, category, status })});
 
       let json = null;
       
@@ -110,20 +126,72 @@ export default function Admin() {
       }
 
       if (status === "published") {
-      setPostSuccess("Post created successfully");
+        setPostSuccess("Post created successfully");
+        setSelectedDraft(null);
+        setTitle("");
+        setBody("");
+        setCategory(""); 
       }
 
       if (status === "draft") {
         setDraftSuccess("Draft saved successfully");
       } 
-
-      setTitle("");
-      setBody("");
-      setCategory("");
-
     } finally {
         setIsSubmitting(false);
     }  
+  }
+
+  useEffect(() => {
+    async function fetchDrafts() {
+      setError(null);
+      setIsLoading(true);
+
+      try {
+        const res = await fetch(`${API_BASE}/admin/drafts`, { method: "GET", credentials: "include"} );
+
+        let json = null;
+          
+        try {
+          json = await res.json(); 
+        }
+        catch {}
+
+        if (!res.ok) {
+          setError(json?.error?.message ?? "Unable to fetch drafts"); 
+          return;
+        }
+
+        if (!Array.isArray(json?.data)) {
+          setError(json?.error?.message ?? "Unexpected return value"); 
+          return;
+        }
+
+        setDrafts(json.data)
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchDrafts();
+  }, []);
+
+  function onSelectDraft(draft) {
+
+    const loadDraftIntoForm = () => {
+      setTitle(draft.title);
+      setBody(draft.body);
+      setCategory(draft.category);
+      setSelectedDraft(draft);
+    }
+
+    if (!title && !body && !category) {
+      loadDraftIntoForm();
+    } else {
+
+      if (confirm("Are you sure you want to load this draft? If so, make sure your current draft is saved.")) {
+        loadDraftIntoForm();
+      }
+    }
   }
 
   async function handleLogout() {
@@ -140,6 +208,18 @@ export default function Admin() {
     } catch (err) {
       console.log("Logout error:", err);
     }
+  }
+  
+  let content;
+
+  if (isLoading) {
+    content = <p>Loading drafts...</p>
+  } else if (error) {
+    content = <p>{error}</p>
+  } else if (drafts.length === 0) {
+    content = <p>No drafts yet</p>
+  } else {
+    content = <Draft drafts={drafts}/>
   }
 
   return(
@@ -206,6 +286,10 @@ export default function Admin() {
               </button>
             </div>
           </form>
+
+          <div className="drafts">
+            {content}
+          </div>
         </Block>
       )}
 

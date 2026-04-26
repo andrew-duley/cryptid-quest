@@ -48,7 +48,7 @@ app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
 app.get("/admin/drafts", async (req, res, next) => {
   try {
-    const baseSql = "SELECT id, created_at, title, category FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
+    const baseSql = "SELECT id, title, body, created_at, category FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
 
     const result = await pool.query(baseSql);
     return res.status(200).json({ data: result.rows });
