@@ -184,7 +184,7 @@ export default function Admin() {
       setSelectedDraft(draft);
     }
 
-    if (!title && !body && !category) {
+    if (!title && !body) {
       loadDraftIntoForm();
     } else {
 
@@ -219,7 +219,7 @@ export default function Admin() {
   } else if (drafts.length === 0) {
     content = <p>No drafts yet</p>
   } else {
-    content = <Draft drafts={drafts}/>
+    content = <Draft drafts={drafts} onSelectDraft={onSelectDraft} />
   }
 
   return(

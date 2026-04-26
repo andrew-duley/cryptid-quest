@@ -161,7 +161,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   title = (title ?? "").trim();
   slug = normalizeString(slug);
   body = (body ?? "").trim();
-  category = (category ?? "").trim() || "field-notes"
+  category = (category ?? "").trim() || "Field-notes"
   category = normalizeString(category);
 
   // Auto generate excerpts here
