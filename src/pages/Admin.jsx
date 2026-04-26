@@ -139,6 +139,7 @@ export default function Admin() {
     } finally {
         setIsSubmitting(false);
     }  
+    console.log("selectedDraft before submit:", selectedDraft);
   }
 
   useEffect(() => {

@@ -162,7 +162,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   slug = normalizeString(slug);
   body = (body ?? "").trim();
   category = (category ?? "").trim() || "Field-notes"
-  category = normalizeString(category);
+  // category = normalizeString(category);
 
   // Auto generate excerpts here
   const cleanedBody = body.replace(/\s+/g, ' ').trim();
