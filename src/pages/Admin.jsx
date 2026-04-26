@@ -24,7 +24,7 @@ export default function Admin() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [drafts, setDrafts] = useState(null);
+  const [drafts, setDrafts] = useState([]);
   const [selectedDraft, setSelectedDraft] = useState(null);
 
   const headers = { "Content-Type": "application/json" };  
@@ -166,7 +166,7 @@ export default function Admin() {
           return;
         }
 
-        setDrafts(json.data)
+        setDrafts(json.data ?? []);
       } finally {
         setIsLoading(false);
       }
