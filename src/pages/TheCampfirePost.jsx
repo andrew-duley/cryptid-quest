@@ -67,7 +67,7 @@ export default function TheCampfirePost() {
 
       <Block label="Meta data">
         <div className="the-campfire-post__meta">
-          <span>Filed in: {post.category}</span>
+          <span>Filed in: {post.category} </span>
           <time dateTime={post.created_at}>
             {new Date(post.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
           </time>
