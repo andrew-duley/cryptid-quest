@@ -125,6 +125,10 @@ i {
   font-style: italic;
 }
 
+strong {
+  font-weight: 700;
+}
+
 @media (prefers-reduced-motion: reduce) {
   a {
     transition: none; 
