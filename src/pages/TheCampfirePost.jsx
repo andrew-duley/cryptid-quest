@@ -63,7 +63,7 @@ export default function TheCampfirePost() {
   if (error) return <p>{error}</p> 
   
   return(
-    <PageTemplate slug={`the-campfire/${slug}`} title={post.title}>
+    <PageTemplate slug={`the-campfire/${slug}`} title={post.title} narrow={true}>
 
       <Block label="Meta data">
         <div className="the-campfire-post__meta">
