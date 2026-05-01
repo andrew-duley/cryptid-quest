@@ -111,9 +111,11 @@ export default function Admin() {
     let methodToUse;
     let urlToUse;
 
-    if (selectedDraft) {
+    const selectedPost = selectedDraft ?? selectedPublishedPost;
+
+    if (selectedPost) {
       methodToUse = "PUT";
-      urlToUse = `${API_BASE}/admin/posts/${selectedDraft.id}`;
+      urlToUse = `${API_BASE}/admin/posts/${selectedPost.id}`;
     } else {
       methodToUse = "POST";
       urlToUse = `${API_BASE}/admin/posts`;
@@ -136,6 +138,7 @@ export default function Admin() {
 
       if (status === "published") {
         setPostSuccess("Post created successfully");
+        setSelectedPublishedPost(null);
         setSelectedDraft(null);
         setTitle("");
         setBody("");
@@ -231,6 +234,7 @@ export default function Admin() {
       setBody(draft.body);
       setCategory(draft.category);
       setSelectedDraft(draft);
+      setSelectedPublishedPost(null);
     }
 
     if (!title && !body) {
@@ -250,6 +254,7 @@ export default function Admin() {
       setBody(post.body);
       setCategory(post.category);
       setSelectedPublishedPost(post);
+      setSelectedDraft(null);
     }
 
     if (!title && !body) {
