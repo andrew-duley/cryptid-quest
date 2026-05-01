@@ -365,10 +365,10 @@ export default function Admin() {
 
             <div>
               <button type="button" className="btn" onClick={() => {handlePostSubmit('published')}} disabled={isSubmitting}>
-                {isSubmitting ? "Posting..." : "Submit post"}
+                {isSubmitting ? "Posting..." : selectedPublishedPost ? "Update post" : "Publish post"}
               </button>
               <button type="button" className="btn" onClick={() => {handlePostSubmit('draft')}} disabled={isSubmitting}>
-                {isSubmitting ? "Saving..." : "Save draft"}
+                {isSubmitting ? "Saving..." : selectedPublishedPost ? "Unpublish to draft" : "Save draft"}
               </button>
             </div>
           </form>
