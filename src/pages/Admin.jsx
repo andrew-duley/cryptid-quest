@@ -197,7 +197,9 @@ export default function Admin() {
       try {
         json = await res.json(); 
       }
-      catch {}draftsE
+      catch (err) {
+        console.log("Error parsing JSON:", err);
+      }
       if (!res.ok) {
         setPublishedPostsError(json?.error?.message ?? "Unable to fetch published posts"); 
         return;
@@ -292,7 +294,7 @@ export default function Admin() {
 
   // Logic of what to show in the published posts area
   if (publishedPostsLoading) {
-    publishedPostsContent = <p>Loading public posts...</p>
+    publishedPostsContent = <p>Loading published posts...</p>
   } else if (publishedPostsError) {
     publishedPostsContent = <p>{publishedPostsError}</p>
   } else if (publishedPosts.length === 0) {

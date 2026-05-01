@@ -1,6 +1,6 @@
 import react from 'react';
 
-export default function PublishedPosts({ publishedPosts, onSelectedPublishedPosts }) {
+export default function PublishedPosts({ publishedPosts, onSelectedPublishedPost }) {
   return(
     <ul>
       {publishedPosts.map(post => {
