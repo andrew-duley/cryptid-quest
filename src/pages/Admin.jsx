@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import TiptapEditor from '../components/TiptapEditor';
-import Draft from '../components/Drafts';
+import Drafts from '../components/Drafts';
+import PublishedPosts from '../components/PublishedPosts';
 
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
@@ -21,11 +22,19 @@ export default function Admin() {
   const [category, setCategory] = useState("");
   const [draftSuccess, setDraftSuccess] = useState(null);
   const [postSuccess, setPostSuccess] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [draftsError, setDraftsError] = useState(null);
+  const [publishedPostsError, setPublishedPostsError] = useState(null);
+
+  const [draftsLoading, setDraftsLoading] = useState(false);
+  const [publishedPostsLoading, setPublishedPostsLoading] = useState(false);
 
   const [drafts, setDrafts] = useState([]);
   const [selectedDraft, setSelectedDraft] = useState(null);
+
+  const [publishedPosts, setPublishedPosts] = useState([]);
+  const [selectedPublishedPost, setSelectedPublishedPost] = useState(null);
 
   const headers = { "Content-Type": "application/json" };  
 
@@ -131,10 +140,14 @@ export default function Admin() {
         setTitle("");
         setBody("");
         setCategory(""); 
+
+        await fetchDrafts();
+        await fetchPublishedPosts();
       }
 
       if (status === "draft") {
         setDraftSuccess("Draft saved successfully");
+        await fetchDrafts();
       } 
     } finally {
         setIsSubmitting(false);
@@ -142,41 +155,74 @@ export default function Admin() {
     console.log("selectedDraft before submit:", selectedDraft);
   }
 
-  useEffect(() => {
-    async function fetchDrafts() {
-      setError(null);
-      setIsLoading(true);
+  async function fetchDrafts() {
+    setDraftsError(null);
+    setDraftsLoading(true);
 
+    try {
+      const res = await fetch(`${API_BASE}/admin/drafts`, { method: "GET", credentials: "include"} );
+
+      let json = null;
+        
       try {
-        const res = await fetch(`${API_BASE}/admin/drafts`, { method: "GET", credentials: "include"} );
-
-        let json = null;
-          
-        try {
-          json = await res.json(); 
-        }
-        catch {}
-
-        if (!res.ok) {
-          setError(json?.error?.message ?? "Unable to fetch drafts"); 
-          return;
-        }
-
-        if (!Array.isArray(json?.data)) {
-          setError(json?.error?.message ?? "Unexpected return value"); 
-          return;
-        }
-
-        setDrafts(json.data ?? []);
-      } finally {
-        setIsLoading(false);
+        json = await res.json(); 
       }
-    }
+      catch {}
 
+      if (!res.ok) {
+        setDraftsError(json?.error?.message ?? "Unable to fetch drafts"); 
+        return;
+      }
+
+      if (!Array.isArray(json?.data)) {
+        setDraftsError(json?.error?.message ?? "Unexpected return value"); 
+        return;
+      }
+
+      setDrafts(json.data ?? []);
+    } finally {
+      setDraftsLoading(false);
+    }
+  }
+
+  async function fetchPublishedPosts() {
+    setPublishedPostsError(null);
+    setPublishedPostsLoading(true);
+
+    try {
+      const res = await fetch(`${API_BASE}/admin/posts`, { method: "GET", credentials: "include"} );
+
+      let json = null;
+        
+      try {
+        json = await res.json(); 
+      }
+      catch {}draftsE
+      if (!res.ok) {
+        setPublishedPostsError(json?.error?.message ?? "Unable to fetch published posts"); 
+        return;
+      }
+
+      if (!Array.isArray(json?.data)) {
+        setPublishedPostsError(json?.error?.message ?? "Unexpected return value"); 
+        return;
+      }
+
+      setPublishedPosts(json.data ?? []);
+    } finally {
+      setPublishedPostsLoading(false);
+    }
+  }
+
+  useEffect(() => {
     fetchDrafts();
   }, []);
 
-  function onSelectDraft(draft) {
+  useEffect(() => {
+    fetchPublishedPosts();
+  }, []);
+
+  function onSelectedDraft(draft) {
 
     const loadDraftIntoForm = () => {
       setTitle(draft.title);
@@ -191,6 +237,25 @@ export default function Admin() {
 
       if (confirm("Are you sure you want to load this draft? If so, make sure your current draft is saved.")) {
         loadDraftIntoForm();
+      }
+    }
+  }
+
+  function onSelectedPublishedPost(post) {
+
+    const loadPublishedPostIntoForm = () => {
+      setTitle(post.title);
+      setBody(post.body);
+      setCategory(post.category);
+      setSelectedPublishedPost(post);
+    }
+
+    if (!title && !body) {
+      loadPublishedPostIntoForm();
+    } else {
+
+      if (confirm("Are you sure you want to load this published post?")) {
+        loadPublishedPostIntoForm();
       }
     }
   }
@@ -211,16 +276,29 @@ export default function Admin() {
     }
   }
   
-  let content;
+  let draftsContent;
+  let publishedPostsContent;
 
-  if (isLoading) {
-    content = <p>Loading drafts...</p>
-  } else if (error) {
-    content = <p>{error}</p>
+  // Logic of what to show in the drafts area
+  if (draftsLoading) {
+    draftsContent = <p>Loading drafts...</p>
+  } else if (draftsError) {
+    draftsContent = <p>{draftsError}</p>
   } else if (drafts.length === 0) {
-    content = <p>No drafts yet</p>
+    draftsContent = <p>No drafts yet</p>
   } else {
-    content = <Draft drafts={drafts} onSelectDraft={onSelectDraft} />
+    draftsContent = <Drafts drafts={drafts} onSelectedDraft={onSelectedDraft} />
+  }
+
+  // Logic of what to show in the published posts area
+  if (publishedPostsLoading) {
+    publishedPostsContent = <p>Loading public posts...</p>
+  } else if (publishedPostsError) {
+    publishedPostsContent = <p>{publishedPostsError}</p>
+  } else if (publishedPosts.length === 0) {
+    publishedPostsContent = <p>No published posts yet</p>
+  } else {
+    publishedPostsContent = <PublishedPosts publishedPosts={publishedPosts} onSelectedPublishedPost={onSelectedPublishedPost} />
   }
 
   return(
@@ -288,8 +366,12 @@ export default function Admin() {
             </div>
           </form>
 
-          <div className="drafts">
-            {content}
+          <div className="posts drafts">
+            {draftsContent}
+          </div>
+
+          <div className="posts published">
+            {publishedPostsContent}
           </div>
         </Block>
       )}

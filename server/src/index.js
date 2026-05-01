@@ -57,6 +57,18 @@ app.get("/admin/drafts", async (req, res, next) => {
   }
 });
 
+app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
+  try {
+    const baseSql = "SELECT id, title, body, slug, status, created_at, category FROM posts WHERE status = 'published' ORDER BY created_at DESC";
+
+    const result = await pool.query(`${baseSql}`);
+    return res.status(200).json({ data: result.rows });
+
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.get("/posts", async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts WHERE status = 'published' ORDER BY created_at DESC";

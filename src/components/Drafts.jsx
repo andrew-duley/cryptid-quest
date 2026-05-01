@@ -1,6 +1,6 @@
 import react from 'react';
 
-export default function Drafts({ drafts, onSelectDraft }) {
+export default function Drafts({ drafts, onSelectedDraft }) {
   return(
     <ul>
       {drafts.map(draft => {
@@ -11,7 +11,7 @@ export default function Drafts({ drafts, onSelectDraft }) {
         });
         const formattedCategory = draft.category ?? "General";
         return <li key={draft.id} className="draft">
-          <button type="button" onClick={() => onSelectDraft(draft)}>
+          <button type="button" onClick={() => onSelectedDraft(draft)}>
             <div className="draft__title">
               {draft.title}
             </div>
