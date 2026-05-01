@@ -26,18 +26,18 @@
   }
 }
 
-.post-card,
-.game-card,
-.crew-card {
-  border-radius: 1rem;
-  box-shadow: 0 1rem 2rem rgba(#000, .35);
+// .post-card,
+// .game-card,
+// .crew-card {
+//   border-radius: 1rem;
+//   box-shadow: 0 1rem 2rem rgba(#000, .35);
 
-  transition:
-    box-shadow 0.18s ease,
-    border-color 0.18s ease,
-    filter 0.18s ease;
+//   transition:
+//     box-shadow 0.18s ease,
+//     border-color 0.18s ease,
+//     filter 0.18s ease;
   
-}
+// }
 
 /* =========
    Post card
@@ -73,7 +73,6 @@
     display: block;
     overflow: hidden;
     aspect-ratio: 2 / 3;
-    overflow: hidden;
     border: none;
     background: transparent;
 
@@ -93,14 +92,6 @@
     display: flex;
     align-items: center;
     margin-block: 1rem;
-  }
-
-  &__title {
-
-  }
-
-  &__more {
-
   }
 }
 
