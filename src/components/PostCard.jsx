@@ -7,15 +7,17 @@ export default function PostCard({ post }) {
 
   return(
     <article className="post-card card">
-      <Link to={`/the-campfire/${post.slug}`} className="post-card__media">
-        <img 
-          src={post.cover} 
-          alt="" 
-          width="800"
-          height="450"
-          loading="lazy"
-          decoding="async"
-        />
+      <Link to={`/the-campfire/${post.slug}`} className="post-card__media-link">
+        <div className="post-card__media">
+          <img 
+            src={post.cover} 
+            alt="" 
+            width="800"
+            height="450"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </Link>
 
       <div className="post-card__body">
