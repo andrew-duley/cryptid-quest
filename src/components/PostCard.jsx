@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function PostCard({ post }) {
+
+  const plainExcerpt = post.excerpt?.replace(/<[^>]*>/g, "") ?? "";
+
   return(
     <article className="post-card card">
       <Link to={`/the-campfire/${post.slug}`} className="post-card__media media-frame media-frame--contain">
@@ -28,7 +31,7 @@ export default function PostCard({ post }) {
         <Link to={`/the-campfire/${post.slug}`}>{post.title}</Link>
       </h3>
 
-      <p className="post-card__excerpt">{post.excerpt}</p>
+      <p className="post-card__excerpt">{plainExcerpt}</p>
       <Link to={`/the-campfire/${post.slug}`} className="post-card__more">Read more</Link>
     </article>
   );
