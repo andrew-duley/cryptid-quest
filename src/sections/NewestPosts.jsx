@@ -41,22 +41,22 @@ export default function NewestPosts() {
     return(
     <Block title="What's new in the Cryptid Quest Woods" subtitle="New footprints on the trail—some definitely not human" actions={<Link to="/the-campfire" className="btn btn--the-campfire">View all campfire posts</Link>}>
     
-        <p className="posts__dev-note dev-note">
+        <p className="newest-posts__dev-note dev-note">
           <small><strong>Build note:</strong> Dev logs, lore drops, and new releases.</small>
         </p>
 
-      {isLoading ? <p className="posts__loading">Loading posts...</p> : null}
-      {error ? <p className="posts__error">{error}</p> : null}
+      {isLoading ? <p className="newest-posts__loading">Loading posts...</p> : null}
+      {error ? <p className="newest-posts__error">{error}</p> : null}
 
       {
         !isLoading && !error ? (
         newestPosts.length > 0 ? 
-        <div className="posts">
-          <div className="posts__grid">
-            <div className="posts__featured">
+        <div className="newest-posts">
+          <div className="card-grid newest-posts__grid">
+            <div className="newest-posts__featured">
               <PostCard post={newestPosts[0]} />
             </div>
-            <div className="posts__secondary">
+            <div className="newest-posts__secondary">
               {newestPosts.slice(1, 3).map(p => (
                 <PostCard key={p.id ?? p.slug} post={p} />
               ))}
@@ -64,7 +64,7 @@ export default function NewestPosts() {
           </div>
         </div>
       :
-        <div className="posts posts--none">
+        <div className="newest-posts newest-posts--none">
           <p>No posts yet—check back soon</p>
         </div>)  
         : null
