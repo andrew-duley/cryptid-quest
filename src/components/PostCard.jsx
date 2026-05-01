@@ -7,7 +7,7 @@ export default function PostCard({ post }) {
 
   return(
     <article className="post-card card">
-      <Link to={`/the-campfire/${post.slug}`} className="post-card__media media-frame media-frame--contain">
+      <Link to={`/the-campfire/${post.slug}`} className="post-card__media">
         <img 
           src={post.cover} 
           alt="" 
@@ -19,10 +19,10 @@ export default function PostCard({ post }) {
       </Link>
 
       <div className="post-card__body">
-        <h3 className="post-card__title">
+        <h2 className="post-card__title">
           <Link to={`/the-campfire/${post.slug}`}>{post.title}</Link>
-        </h3>
-        
+        </h2>
+
         <section className="post-card__meta">
         <span className="post-card__cat pill">{post.slug}</span>
         <time dateTime={post.created_at}>

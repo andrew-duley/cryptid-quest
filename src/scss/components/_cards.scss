@@ -21,9 +21,8 @@
   }
 
   .pill {
-    padding: 1rem;
     font-size: 1.2rem;
-    margin-inline: 1rem;
+    margin-right: 1rem;
   }
 }
 
@@ -72,11 +71,14 @@
 
   &__media {
 
-    img {
-      width: 100;
-      object-fit: cover;
-      border: none;
-    }
+  }
+
+  img {
+    display: block;
+    width: 100;
+    height: 30rem;
+    object-fit: cover;
+    border: none;
   }
 
   &__body {
@@ -90,7 +92,7 @@
   }
 
   &__title {
-    
+
   }
 
   &__more {
