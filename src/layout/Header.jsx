@@ -8,7 +8,7 @@ function Header() {
 
       {/* Background image {responsive} */}
       <picture className="hero__bg" aria-hidden="true">
-        <source
+        {/* <source
           type="image/avif"
           srcSet="/images/backgrounds/misty-forest-800.avif 800w,
                   /images/backgrounds/misty-forest-1200.avif 1200w,
@@ -23,14 +23,11 @@ function Header() {
                   /images/backgrounds/misty-forest-1600.webp 1600w,
                   /images/backgrounds/misty-forest-2400.webp 2400w"
           sizes="100vw"
-        />
+        /> */}
         <img 
           className="hero__bg-img"
-          src="/images/backgrounds/misty-forest-1200.jpg"
-          srcSet="/images/backgrounds/misty-forest-800.jpg 800w,
-                  /images/backgrounds/misty-forest-1200.jpg 1200w,
-                  /images/backgrounds/misty-forest-1600.jpg 1600w,
-                  /images/backgrounds/misty-forest-2400.jpg 2400w"
+          src="/images/backgrounds/hero-backgrounds/hero-background-1/hero-background-1.jpg"
+          srcSet="/images/backgrounds/hero-backgrounds/hero-background-1/hero-background-1.jpg 1536w"
           sizes="100vw"
           alt=""
           width="2400" height="1000"

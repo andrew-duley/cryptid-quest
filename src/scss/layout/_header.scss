@@ -10,6 +10,7 @@
   border-bottom: 1px solid $color-border;
 
   min-height: clamp(18rem, 42vw, 26rem);
+  min-height: clamp(30rem, 50vh, 60rem);
 
   &__bg,
   &__overlay,
