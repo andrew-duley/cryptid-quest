@@ -3,12 +3,17 @@
 .cmx {
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 1rem;
   position: relative;
   isolation: isolate;
-  z-index: 0;
 
-  background: image-set(
+  background-image: linear-gradient(
+    to bottom, 
+    rgba($color-bg-dark, 1) 0%, 
+    rgba($color-bg-dark, 1) 5%, 
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 50%,
+    $color-bg-dark 100%),
+  image-set(
     url('/games/cryptid-mixup/bg/cmx-bg-wide-1920.avif') type('image/avif'),
     url('/games/cryptid-mixup/bg/cmx-bg-wide-1920.webp') type('image/webp'),
     url('/games/cryptid-mixup/bg/cmx-bg-wide-1920.jpg') type('image/jpeg')
@@ -17,15 +22,35 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  &__header {
-    margin-bottom: 1rem;
-    text-align: center;
+   &__win {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid $color-border;
+    background-image: linear-gradient($color-forest-deep, $color-bg-light);
+    border-radius: 1rem;
+    font-weight: 700;
+    box-shadow: 0 2px 20px 4px $color-bg-dark;
+
   }
 
-  &__title {
-    font-size: clamp(1.25rem, 1rem + 2vw, 2rem);
-    letter-spacing: .02rem;
-    margin-block: 1.4rem;
+  &__win-text {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  &__win-subtext {
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  &__btn {
+
   }
 
   &__board {
@@ -35,6 +60,10 @@
     margin: 0 auto;
     gap: clamp(.8rem, 1.6vw, 1.6rem);
     width: max-content;
+  }
+
+  &__board-help {
+
   }
 
   &__card {
@@ -48,119 +77,118 @@
     overflow: hidden;
     perspective: 120rem;
 
-    &.faceDown {
+    &--face-down {
       cursor: pointer;
     }
 
-    &.faceUp .cmx__card-inner,
-    &.matched .cmx__card-inner {
+    &--face-up .cmx__card-inner,
+    &--matched .cmx__card-inner {
       transform: rotateY(180deg);
     }
+  }
 
-    &.matched .cmx__card-face--front {
-      // background: #1c3321;
-      // border: 2px solid #2b6b37;
-    }
+  &__card-inner {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    transform-style: preserve-3d;
+    transition: transform 360ms cubic-bezier(.2, .7, .2, 1);
+    will-change: transform;
+    background: transparent;
 
-    &-inner {
-      position: absolute;
-      inset: 0;
+    picture,
+    img {
+      display: block;
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      transform-style: preserve-3d;
-      transition: transform 360ms cubic-bezier(.2, .7, .2, 1);
-      will-change: transform;
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 0;
+    clip-path: inset(.5px round 1.2rem);
+    transform: translateZ(0);
+    background: transparent;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    &--front {
+      transform: rotateY(180deg);
       background: transparent;
     }
 
-    &-face {
+    &--back {
       position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 0;
-      clip-path: inset(.5px round 1.2rem);
-      transform: translateZ(0);
-      background: transparent;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+      background: radial-gradient(120% 100% at 50% 45%, #11182a 0%, #0c1120 65%, #070c18 100%);
 
-      picture,
-      img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border-radius: inherit;
-      }
-
-      img {
-        object-fit: cover;
-      }
-
-      &--front {
-        transform: rotateY(180deg);
-        background: transparent;
-      }
-
-      &--back {
+      &::before {
+        content: "";
         position: absolute;
-        overflow: hidden;
-        background: radial-gradient(120% 100% at 50% 45%, #11182a 0%, #0c1120 65%, #070c18 100%);
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
 
-        &::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          pointer-events: none;
+        mix-blend-mode: screen;
+        opacity: .65;
 
-          mix-blend-mode: screen;
-          opacity: .65;
+        background: 
+          repeating-conic-gradient(
+            from 0deg,
+          rgba(255,255,255,.06) 0 2deg,
+          rgba(255,255,255,0)   2deg 6deg
+        ),
+        /* subtle crosshatch */
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,.03) 0 3px,
+          transparent            3px 7px
+        );
 
-          background: 
-            repeating-conic-gradient(
-              from 0deg,
-            rgba(255,255,255,.06) 0 2deg,
-            rgba(255,255,255,0)   2deg 6deg
-          ),
-          /* subtle crosshatch */
-          repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,.03) 0 3px,
-            transparent            3px 7px
-          );
+        -webkit-mask: radial-gradient(closest-side, transparent calc(100% -   8px), #000 100%);
+        mask: radial-gradient(closest-side, transparent calc(100% - 8px), #000 100%);
+      }
 
-          -webkit-mask: radial-gradient(closest-side, transparent calc(100% -   8px), #000 100%);
-          mask: radial-gradient(closest-side, transparent calc(100% - 8px), #000 100%);
-        }
+      &::after {
+        content: "Cryptid\A Mix-up";
+        white-space: pre;
+        position: absolute;
+        inset: -8%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: rotate(-35deg);  /* corner-to-corner */
+        transform-origin: center;
+        line-height: 1;
+        color: rgba(255,255,210, .4);
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: .8em;
 
-        &::after {
-          content: "Cryptid\A Mix-up";
-          white-space: pre;
-          position: absolute;
-          inset: -8%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transform: rotate(-35deg);  /* corner-to-corner */
-          transform-origin: center;
-          line-height: 1;
-          color: rgba(255,255,210, .4);
-          letter-spacing: .18em;
-          text-transform: uppercase;
-          font-weight: 800;
-          font-size: 1.8rem;
-
-          text-shadow:
-            0 0 1px  rgba(255,255,255,.30),
-            0 0 18px rgba(255,240,130,.28),
-            0 0 40px rgba(255,240,130,.16);
-          pointer-events: none;
-          user-select: none;
-          mix-blend-mode: screen;
-        }
+        text-shadow:
+          0 0 1px  rgba(255,255,255,.30),
+          0 0 18px rgba(255,240,130,.28),
+          0 0 40px rgba(255,240,130,.16);
+        pointer-events: none;
+        user-select: none;
+        mix-blend-mode: screen;
       }
     }
+  }
+
+  &__stats-controls {
+    text-align: center;
   }
 
   &__controls {
@@ -169,8 +197,9 @@
     align-items: center;
     gap: 1rem;
     margin: 1rem auto 0;
-    padding: .6rem 1rem;
+    padding: 1rem;
     background: rgba(10, 15, 28, .55);
+    // background: $color-bg-light;
     border: 1px solid rgba(255, 255, 255, .08);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .25);
     backdrop-filter: blur(.4rem);
@@ -184,6 +213,7 @@
     padding: .55rem 1rem;
     font-weight: 700;
     color: #e7f0ff;
+    margin-block: 0 1rem;
     background: linear-gradient(#243155, #1b2236);
     transition: transform .08s ease, box-shadow .12s ease, filter .12s ease;
     cursor: pointer;
@@ -222,14 +252,7 @@
     border: 1px solid rgba(255, 255, 255, .07);
   }
 
-  &__win {
-    margin: 0 0 1rem;
-    padding: 1rem;
-    border: 1px solid #2b6b37;
-    background: #15311d;
-    border-radius: 1rem;
-    font-weight: 700;
-  }
+ 
 
 
 
@@ -246,21 +269,21 @@
   }
 }
 
-@media (max-width: 1400px) and (min-width: 900px) {
-  .cmx {
-    background-image: image-set(
-      url("/games/cryptid-mixup/bg/cmx-bg-wide-1280.avif") type("image/avif"),
-      url("/games/cryptid-mixup/bg/cmx-bg-wide-1280.webp") type("image/webp"),
-      url("/games/cryptid-mixup/bg/cmx-bg-wide-1280.jpg")  type("image/jpeg")
-    );
-  }
-}
+// @media (max-width: 1400px) and (min-width: 900px) {
+//   .cmx {
+//     background-image: image-set(
+//       url("/games/cryptid-mixup/bg/cmx-bg-wide-1280.avif") type("image/avif"),
+//       url("/games/cryptid-mixup/bg/cmx-bg-wide-1280.webp") type("image/webp"),
+//       url("/games/cryptid-mixup/bg/cmx-bg-wide-1280.jpg")  type("image/jpeg")
+//     );
+//   }
+// }
 
-@media (min-width: $bp-md) {
-  .cmx__card-face--back::after {
-    font-size: 1rem;
-  }
-}
+// @media (min-width: $bp-md) {
+//   .cmx__card-face--back::after {
+//     font-size: 1rem;
+//   }
+// }
 
 @media (max-width: $bp-sm) {
   .cmx__controls {
@@ -275,24 +298,24 @@
   }
 }
 
-@media (max-width: $bp-md), (max-aspect-ratio: 3/4) {
-  .cmx {
-     background-image: image-set(
-      url("/games/cryptid-mixup/bg/cmx-bg-tall-1080.avif") type("image/avif"),
-      url("/games/cryptid-mixup/bg/cmx-bg-tall-1080.webp") type("image/webp"),
-      url("/games/cryptid-mixup/bg/cmx-bg-tall-1080.jpg")  type("image/jpeg")
-    );
-  }
-}
+// @media (max-width: $bp-md), (max-aspect-ratio: 3/4) {
+//   .cmx {
+//      background-image: image-set(
+//       url("/games/cryptid-mixup/bg/cmx-bg-tall-1080.avif") type("image/avif"),
+//       url("/games/cryptid-mixup/bg/cmx-bg-tall-1080.webp") type("image/webp"),
+//       url("/games/cryptid-mixup/bg/cmx-bg-tall-1080.jpg")  type("image/jpeg")
+//     );
+//   }
+// }
 
 @media (min-width: $bp-xxl) and (min-aspect-ratio: 16/10) {
   .cmx__board {
     grid-template-columns: repeat(8, clamp(9rem, 9vw, 16rem));
   }
 
-  .cmx__card-face--back::after {
-    font-size: 1.2rem;
-  }
+  // .cmx__card-face--back::after {
+  //   font-size: 1.2rem;
+  // }
 }
 
 @media (max-width: $bp-md) {

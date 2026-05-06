@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import '../shared/styles/index.scss';
+import '../a11y/index.scss';
 import './styles/index.scss';
 
 import PageTemplate from '../../layout/PageTemplate';

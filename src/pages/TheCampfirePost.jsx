@@ -7,8 +7,7 @@ import NotFound from './NotFound';
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
-
-import '../games/shared/styles/index.scss'; 
+ 
 import '../scss/pages/_blog.scss';    
 
 export default function TheCampfirePost() {

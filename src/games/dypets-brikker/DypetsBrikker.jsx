@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import { Game } from './logic/dypets-brikker-logic.js';
 
-import '../shared/styles/index.scss';
+import '../a11y/index.scss';
 import './styles/index.scss';
 
 import PageTemplate from '../../layout/PageTemplate';

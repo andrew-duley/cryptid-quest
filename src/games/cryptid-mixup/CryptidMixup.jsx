@@ -4,47 +4,21 @@ import PageTemplate from '../../layout/PageTemplate';
 import Block from '../../layout/Block';
 import PageFooter from '../../layout/PageFooter';
 
+import { buildDeck } from './logic/buildDeck';
 import { sfx } from './logic/sfx';
 import { cryptidList } from './logic/cryptids';
 
-import '../shared/styles/index.scss';
+import '../a11y/index.scss';
 import './styles/index.scss';
-
-// Function that performs a Fisher Yates shuffle and then returns the shuffled deck
-function shuffleCards(array) {
-  // Make a shallow copy (new array, same element references)
-  const deck = array.slice();
-
-  // Shuffle the copy in place
-  let i = deck.length;
-
-  while (i > 0) {
-    const j = Math.floor(Math.random() * i);
-    i --;
-    [deck[i], deck[j]] = [deck[j], deck[i]];
-  }
- 
-  // Return the shuffled copy
-  return deck
-}
-
-function buildDeck(baseList, pairs = 8) {
-  // 1) pick the first N cryptids (N = pairs)
-  const chosen = shuffleCards(baseList).slice(0, pairs);
-
-  // 2) duplicate each cryptid into two card instances
-  const duplicated = chosen.flatMap(({ id, label }) => ([
-    { pairId: id, instanceId: `${id}#1`, label, state: 'faceDown' },
-    { pairId: id, instanceId: `${id}#2`, label, state: 'faceDown' },
-  ]));
-
-  // 3) shuffle the 16-card array
-  return shuffleCards(duplicated)
-}
 
 const BASE = import.meta.env.BASE_URL;
 const SIZES_W = [128, 192, 256, 384, 512];
 
+
+
+
+
+// Below is where we will continue later to work out the file size issue
 const SIZES_ATTR =
   "(min-width:1400px) and (min-aspect-ratio:16/10) 12vw, " +
   "(max-width:768px) 40vw, " +
@@ -59,6 +33,11 @@ function buildSrcSet(id, ext) {
 function fallbackUrl(id, w = 256, ext = "jpg") {
   return `${BASE}games/cryptid-mixup/cryptids/${id}/${id}-${w}.${ext}`;
 }
+// End of image issue chunk
+
+
+
+
 
 export default function CryptidMixup() {
 
@@ -74,36 +53,36 @@ export default function CryptidMixup() {
   const [focusIdx, setFocusIdx] = useState(0);
   const [cols, setCols] = useState(4);
 
-  function handleGridKeys(e) {
-  if (deck.length === 0) return;
+//   function handleGridKeys(e) {
+//   if (deck.length === 0) return;
 
-  const key = e.key;
+//   const key = e.key;
 
-  if (!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp','Enter',' '].includes(key)) return;
-  e.preventDefault();
+//   if (!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp','Enter',' '].includes(key)) return;
+//   e.preventDefault();
 
-  if (key === 'ArrowRight') {
-    setFocusIdx(i => (i % cols === cols - 1 ? i : Math.min(i + 1, deck.length - 1)));
-  }
+//   if (key === 'ArrowRight') {
+//     setFocusIdx(i => (i % cols === cols - 1 ? i : Math.min(i + 1, deck.length - 1)));
+//   }
 
-  if (key === 'ArrowLeft') {
-    setFocusIdx(i => (i % cols === 0 ? i : Math.max(i - 1, 0)));
-  }
+//   if (key === 'ArrowLeft') {
+//     setFocusIdx(i => (i % cols === 0 ? i : Math.max(i - 1, 0)));
+//   }
 
-  if (key === 'ArrowDown') {
-    setFocusIdx(i => Math.min(i + cols, deck.length - 1));
-    console.log(focusIdx)
-  }
+//   if (key === 'ArrowDown') {
+//     setFocusIdx(i => Math.min(i + cols, deck.length - 1));
+//     console.log(focusIdx)
+//   }
 
-  if (key === 'ArrowUp') {
-    setFocusIdx(i => Math.max(i - cols, 0));
-  }
+//   if (key === 'ArrowUp') {
+//     setFocusIdx(i => Math.max(i - cols, 0));
+//   }
 
-  if (key === 'Enter' || key === ' ') {
-    const card = deck[focusIdx];
-    if (card && card.state === 'faceDown' && !isResolving) handleFlip(card.instanceId);
-  }
-}
+//   if (key === 'Enter' || key === ' ') {
+//     const card = deck[focusIdx];
+//     if (card && card.state === 'faceDown' && !isResolving) handleFlip(card.instanceId);
+//   }
+// }
 
   function handleReset() {
     setDeck(() => buildDeck(cryptidList)); // fresh shuffled deck
@@ -116,36 +95,37 @@ export default function CryptidMixup() {
     audioStartedRef.current = false;
   }
 
+  // Function to display time
   const fmtTime = s => `${String(Math.floor(s/60)).padStart(2, '0')}:${String(s%60).padStart(2, '0')}`;
   const isWin = deck.length > 0 && deck.every(c => c.state === 'matched');
 
-  useEffect(() => {
-    const board = boardRef.current;
-    if (!board) return;
+  // useEffect(() => {
+  //   const board = boardRef.current;
+  //   if (!board) return;
 
-    const measure = () => {
+  //   const measure = () => {
 
-      const computedStyle = window.getComputedStyle(board);
-      const currentColumns = computedStyle.gridTemplateColumns.trim().split(/\s+/).length;
-      setCols(currentColumns);
-      console.log(computedStyle.gridTemplateColumns);
-      console.log(currentColumns);
-    };
+  //     const computedStyle = window.getComputedStyle(board);
+  //     const currentColumns = computedStyle.gridTemplateColumns.trim().split(/\s+/).length;
+  //     setCols(currentColumns);
+  //     console.log(computedStyle.gridTemplateColumns);
+  //     console.log(currentColumns);
+  //   };
 
-    measure();
+  //   measure();
 
-    // Re-run whenever the board changes size (responsive columns)
-    const ro = new ResizeObserver(() => (measure()));
-    ro.observe(board);
+  //   // Re-run whenever the board changes size (responsive columns)
+  //   const ro = new ResizeObserver(() => (measure()));
+  //   ro.observe(board);
 
-    return () => ro.disconnect();
-  }, []);
+  //   return () => ro.disconnect();
+  // }, []);
 
-  useEffect(() => {
-    if (deck.length > 0) {
-      boardRef.current?.focus();
-    }
-  }, [deck.length]);
+  // useEffect(() => {
+  //   if (deck.length > 0) {
+  //     boardRef.current?.focus();
+  //   }
+  // }, [deck.length]);
 
   useEffect(() => {
     if (!timerOn) return;
@@ -206,8 +186,15 @@ export default function CryptidMixup() {
       audioStartedRef.current = false;     // so a new game can start it again
       sfx.win();
       setLiveText('You win!');
-    } 
+    }
   }, [isWin]);
+
+  useEffect(() => {
+    return () => {
+      sfx.ambient.stop();
+      audioStartedRef.current = false;
+    }
+  }, []);
 
   function handleFlip(instanceId) {
     if (isResolving) return;
@@ -236,7 +223,7 @@ export default function CryptidMixup() {
   }
 
   return (
-    <PageTemplate slug="cryptid-mixup" title="Cryptid Mixup">
+    <PageTemplate slug="cryptid-mixup" title="Cryptid Mixup" className="cmx">
       <Block label="How to Play">
         <p>
           Flip two cards at a time and match the cryptids. Fewer moves and faster time wins.
@@ -253,8 +240,9 @@ export default function CryptidMixup() {
           isWin && (
             <Block label="Game result">
               <div className="cmx__win" role="status">
-                <p className="cmx__win-text">You win! 🎉</p>
-                <button className="cmx__btn" type="button" onClick={handleReset}>
+                <p className="cmx__win-text">You've found the missing cryptids!</p>
+                <p className="cmx__win-subtext">The forest is quiet... for now.</p>
+                <button className="cmx__btn btn" type="button" onClick={handleReset}>
                   Play again
                 </button>
               </div>
@@ -270,7 +258,7 @@ export default function CryptidMixup() {
           aria-describedby="cmx-board-help"
           tabIndex={0}
           aria-activedescendant={`cmx-card-${focusIdx}`}
-          onKeyDown={handleGridKeys}
+          // onKeyDown={handleGridKeys}
         >
           <p id="cmx-board-help" className="sr-only">
             Memory board. Use arrow keys to move. Press Enter or Space to flip.
@@ -323,7 +311,7 @@ export default function CryptidMixup() {
         </div>
       </Block>
 
-      <Block title="Stats & Controls">
+      <Block title="Stats & Controls" className="cmx__stats-controls">
         <div className="cmx__controls">
           <button className="cmx__btn" type="button" onClick={handleReset}>
             Reset deck

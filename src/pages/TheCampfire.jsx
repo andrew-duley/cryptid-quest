@@ -6,7 +6,6 @@ import PageFooter from '../layout/PageFooter';
 
 import PostCard from '../components/PostCard';
 
-import '../games/shared/styles/index.scss'; 
 import '../scss/pages/_blog.scss';  
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
