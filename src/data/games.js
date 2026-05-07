@@ -18,6 +18,15 @@ export const GAMES = [
     featured: true,
   },
   {
+    slug: 'cryptipong',
+    title: 'Cryptipong',
+    blurb: 'Who can score the most points in this classic game of pong?',
+    status: 'playable',
+    difficulty: 1,
+    coverBase: '/games/cryptipong/images/hero',
+    featured: true,
+  },
+  {
     slug: 'dypets-brikker',
     title: 'Dypets Brikker',
     blurb: 'Command Lyngbakr and Kraken in a deep-sea duel of strategy.',

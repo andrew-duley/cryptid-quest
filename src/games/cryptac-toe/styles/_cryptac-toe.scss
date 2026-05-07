@@ -1,32 +1,29 @@
 @use '../../../scss/abstracts' as *;
+@use 'sass:color';
 
 .ctt {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 2rem 1rem;
-  position: relative;
-  isolation: isolate;
-  z-index: 0;
   background: radial-gradient(circle at top, #111827, #020305);
-
-  &__title {
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    text-transform: uppercase;
-  }
+  background:
+  radial-gradient(circle at 50% 85%, rgba(255, 140, 60, 0.08), transparent 40%),
+  radial-gradient(circle at 50% 90%, rgba(255, 90, 20, 0.05), transparent 60%),
+  linear-gradient(
+    to bottom,
+    #0a0f14 0%,
+    #0c1218 100%
+  );
 
   &__board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(0.5rem, 1vw, 0.9rem);
-    width: min(90vw, 32rem);
+    gap: clamp(0.5rem, 1.2vw, 1rem);
+    width: 90%;
+    max-width: 54rem;
     aspect-ratio: 1 / 1;
     border-radius: 1rem;
     background: $color-bg-dark;
+    margin: 0 auto;
   }
 
   &__square {
@@ -38,7 +35,6 @@
     background: $color-bg-light;
     border: none;
     box-shadow: 0 .4rem .8rem rgba(0, 0, 0, 0.5);
-    padding: 0;
     transition: 
       transform 0.12s ease,
       box-shadow 0.12s ease,
@@ -62,14 +58,12 @@
     pointer-events: none;
   }
 
-  &__status {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  &__status-controls {
+    text-align: center;
   }
 
   &__status-text {
-    opacity: 0.9;
+    font-size: 2rem;
   }
 
   &__square--win {
@@ -96,11 +90,18 @@
     padding: .4rem 1rem;
     border-radius: 100rem;
     border: none;
-    background: $color-neon-green;
+    background-color: $color-accent-ice;
     color: #020308;
     font-weight: 600;
     cursor: pointer;
-    font-size: .8rem;
+    font-size: 1.8rem;
+    margin-inline: 2rem;
+    transition: background-color .2s ease;
+    box-shadow: 0 2px 20px $color-bg-dark;
+
+    &:hover {
+      background-color: color.scale($color-accent-ice, $lightness: -10%);
+    }
   }
 }
 

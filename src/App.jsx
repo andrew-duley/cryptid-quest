@@ -20,6 +20,7 @@ import TheCrypt from './pages/TheCrypt.jsx';
 
 import CryptidMixup from './games/cryptid-mixup/CryptidMixup.jsx';
 import CryptacToe from './games/cryptac-toe/CryptacToe.jsx';
+import Cryptipong from './games/cryptipong/Cryptipong.jsx';
 import DypetsBrikker from './games/dypets-brikker/DypetsBrikker.jsx';
 
 
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/the-crew/:slug" element={<CrewMember />} />
           <Route path="/the-crypt/cryptid-mixup" element={<CryptidMixup />} />
           <Route path="/the-crypt/cryptac-toe" element={<CryptacToe />} />
+          <Route path="/the-crypt/cryptipong" element={<Cryptipong />} />
           <Route path="/the-crypt/dypets-brikker" element={<DypetsBrikker />} />
           <Route path="/the-crypt" element={<TheCrypt />} />
           <Route path="*" element={<NotFound />} />

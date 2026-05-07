@@ -3,6 +3,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../a11y/index.scss';
 import './styles/index.scss';
 
+import { isBoardFull } from './logic/isBoardFull';
+import { winConditions } from './logic/winConditions';
+import { checkForWin } from './logic/checkForWin';
+
 import PageTemplate from '../../layout/PageTemplate';
 import Block from '../../layout/Block';
 import PageFooter from '../../layout/PageFooter';
@@ -11,17 +15,6 @@ const PLACE_SFX = '/games/cryptac-toe/sounds/place.mp3';
 const WIN_SAS_SFX = '/games/cryptac-toe/sounds/win-sasquatch.mp3';
 const WIN_DOG_SFX = '/games/cryptac-toe/sounds/win-dogman.mp3';
 const DRAW_SFX = '/games/cryptac-toe/sounds/draw.mp3';
-
-const winConditions = [
-  [0, 1, 2], // Rows
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6], // Columns
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8], // Diagonals
-  [2, 4, 6]
-];
 
 export default function CryptacToe() {
 
@@ -33,7 +26,6 @@ export default function CryptacToe() {
   const [isDraw, setIsDraw] = useState(false);
   const [muted, setMuted] = useState(false);
 
-  
   const placeRef = useRef(null);
   const winSasRef = useRef(null);
   const winDogRef = useRef(null);
@@ -49,6 +41,15 @@ export default function CryptacToe() {
     [placeRef, winSasRef, winDogRef, drawRef].forEach(ref => {
       if (ref.current) ref.current.volume = .35;
     });
+
+    return () => {
+      [placeRef, winSasRef, winDogRef, drawRef].forEach(ref => {
+        if (ref.current) {
+          ref.current.pause();
+          ref.current.currentTime = 0;
+        }
+      });
+    }
   }, []);
 
   function play(ref) {
@@ -72,8 +73,11 @@ export default function CryptacToe() {
     setIsSasquatchTurn(prev => !prev);
 
     const line = checkForWin(next);
+    console.log(line);
     if (line) {
       setWinLine(line);
+      setHasWon(true);
+      setWinner(player);
       if (player === 'sasquatch') play(winSasRef);
       else play(winDogRef);
       return;
@@ -111,22 +115,7 @@ export default function CryptacToe() {
     }
     return null;
   }
-
-  function checkForWin(squares) {
-    for (const [a, b, c] of winConditions) {
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        setHasWon(true);
-        setWinner(squares[a])
-        return [a, b, c];
-      }
-    }
-    return null
-  }
-
-  function isBoardFull(squares) {
-    return squares.every(Boolean);
-  }
-
+  
   function handleReset() {
     setSquares(new Array(9).fill(null));
     setIsSasquatchTurn(true);
@@ -144,7 +133,7 @@ export default function CryptacToe() {
   }
 
   return(
-    <PageTemplate slug="cryptac-toe" title="Cryptac-Toe">
+    <PageTemplate slug="cryptac-toe" title="Cryptac-Toe" className="ctt">
 
       <Block title="How to Play">
         <p>
@@ -173,10 +162,10 @@ export default function CryptacToe() {
         </div>
       </Block>
 
-      <Block title="Status & Controls">
+      <Block title="Status & Controls" className="ctt__status-controls">
         <span className="ctt__status-text" role="status">
           {hasWon
-            ? `${winner === 'sasquatch' ? 'Sasquatch' : 'Dogman'} wins!`
+            ? winner === 'sasquatch' ? 'The mighty sasquatch triumphs!' : 'The fearsome dogman is victorious!'
             : isDraw
               ? "It's a draw!"
               : (isSasquatchTurn ? "Sasquatch's turn" : "Dogman's turn")

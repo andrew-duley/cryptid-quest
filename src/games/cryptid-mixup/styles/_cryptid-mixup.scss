@@ -197,7 +197,7 @@
     align-items: center;
     gap: 1rem;
     margin: 1rem auto 0;
-    padding: 1rem;
+    padding: 1.4rem 1rem;
     background: rgba(10, 15, 28, .55);
     // background: $color-bg-light;
     border: 1px solid rgba(255, 255, 255, .08);
@@ -213,7 +213,6 @@
     padding: .55rem 1rem;
     font-weight: 700;
     color: #e7f0ff;
-    margin-block: 0 1rem;
     background: linear-gradient(#243155, #1b2236);
     transition: transform .08s ease, box-shadow .12s ease, filter .12s ease;
     cursor: pointer;

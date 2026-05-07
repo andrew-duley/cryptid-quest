@@ -1,0 +1,13 @@
+@use '../../../scss/abstracts' as *;
+
+.cryptipong__game {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  overflow: hidden;
+
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+}
