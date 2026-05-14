@@ -80,7 +80,13 @@ export default function TiptapEditor({ body, onEditorChange }) {
         </div>
 
         <div className="formatting-section">
-          <button type="button" onClick={() => editor?.chain().focus().toggleOrderedList().run()}>Ordered List</button>
+          <button type="button" onClick={() => {
+            const imageUrl = prompt("Enter image URL");
+
+            if (imageUrl) {
+              editor?.chain().focus().toggleOrderedList().run();
+            }
+          }}>Ordered List</button>
           <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()}>UnorderedList</button>
         </div> 
         
