@@ -3,6 +3,7 @@ import { Link2, Link2Off } from 'lucide-react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
+import Image from '@tiptap/extension-image';
 
 import { useEffect } from 'react';
 
@@ -18,6 +19,13 @@ export default function TiptapEditor({ body, onEditorChange }) {
         HTMLAttributes: {
           target: '_blank',
           rel: 'noopener noreferrer',
+        }
+      }),
+      Image.configure({
+        inline: false,
+        allowBase64: false,
+        HTMLAttributes: {
+          class: 'the-campfire-post-image'
         }
       }),
     ],
@@ -65,6 +73,10 @@ export default function TiptapEditor({ body, onEditorChange }) {
           <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()}>Italic</button>
           <button type="button" onClick={() => editor?.chain().focus().toggleUnderline().run()}>Underline</button>
           <button type="button" onClick={() => editor?.chain().focus().toggleStrikethrough().run()}>Strikethrough</button>
+        </div>
+
+        <div className="formatting-section">
+          <button type="button" onClick={() => editor?.chain().focus().setImage({ src: imageUrl }).run()}>Image</button>
         </div>
 
         <div className="formatting-section">
