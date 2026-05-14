@@ -48,7 +48,7 @@ app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
 app.get("/admin/drafts", async (req, res, next) => {
   try {
-    const baseSql = "SELECT id, title, body, created_at, category FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
+    const baseSql = "SELECT id, title, body, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
 
     const result = await pool.query(baseSql);
     return res.status(200).json({ data: result.rows });
@@ -59,7 +59,7 @@ app.get("/admin/drafts", async (req, res, next) => {
 
 app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
   try {
-    const baseSql = "SELECT id, title, body, slug, status, created_at, category FROM posts WHERE status = 'published' ORDER BY created_at DESC";
+    const baseSql = "SELECT id, title, body, slug, status, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
 
     const result = await pool.query(`${baseSql}`);
     return res.status(200).json({ data: result.rows });
@@ -71,7 +71,7 @@ app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
 
 app.get("/posts", async (req, res, next) => {
   try {
-    const baseSql = "SELECT id, title, slug, category, excerpt, created_at FROM posts WHERE status = 'published' ORDER BY created_at DESC";
+    const baseSql = "SELECT id, title, slug, category, excerpt, created_at, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
     const limit = Number(req.query.limit);
     const postLimit = limit > 0 && limit <= 50 ? limit : null;
 
@@ -88,7 +88,7 @@ app.get("/posts", async (req, res, next) => {
 app.get("/posts/:slug", async (req, res, next) => {
   try {
     const urlSlug = req.params.slug;
-    const result = await pool.query("SELECT id, title, slug, category, excerpt, body, created_at FROM posts WHERE slug = $1 AND status = 'published'", [urlSlug]);
+    const result = await pool.query("SELECT id, title, slug, category, excerpt, body, created_at, hero_image_url, hero_image_alt FROM posts WHERE slug = $1 AND status = 'published'", [urlSlug]);
     if (result.rows.length === 0) {
       return res.status(404).json( { error: { status: 404, code: "POST_NOT_FOUND", message: "Post not found" } });
     }
@@ -158,7 +158,7 @@ app.post("/admin/logout", (req, res) => {
 });
 
 app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
-  let { title, slug, body, category, status="draft" } = req.body ?? {};
+  let { title, slug, body, category, status="draft", hero_image_url, hero_image_alt } = req.body ?? {};
 
   function normalizeString(input) {
     return String(input ?? "")
@@ -173,8 +173,11 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   title = (title ?? "").trim();
   slug = normalizeString(slug);
   body = (body ?? "").trim();
-  category = (category ?? "").trim() || "Field-notes"
+  category = (category ?? "").trim() || "Field-notes";
   // category = normalizeString(category);
+
+  hero_image_url = (hero_image_url ?? "").trim() || null;
+  hero_image_alt = (hero_image_alt ?? "").trim() || null;
 
   // Auto generate excerpts here
   const cleanedBody = body.replace(/\s+/g, ' ').trim();
@@ -196,7 +199,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
     return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: `Missing required fields: ${missingFields.join(", ")}` } });
   } 
   try {
-    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [title, slug, body, category, autoExcerpt, status]);
+    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [title, slug, body, category, autoExcerpt, status, hero_image_url, hero_image_alt]);
   
     return res.status(201).set("Location", `/posts/${slug}`).json({ data: result.rows[0] });
   } catch (err) {
@@ -209,9 +212,12 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
 
 app.put('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
   const urlId = req.params.id;
-  const { title, body, category, status } = req.body;
+  let { title, body, category, status, hero_image_url, hero_image_alt } = req.body;
   const safeCategory = category?.trim() || "Field-notes";
   const fields = [title, body, status];
+
+  hero_image_url = (hero_image_url ?? "").trim() || null;
+  hero_image_alt = (hero_image_alt ?? "").trim() || null;
   
   if(status !== "draft" && status !== "published") {
     return res.status(400).json({
@@ -230,7 +236,7 @@ app.put('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
   }
 
   try {
-    const didUpdate = await pool.query(`UPDATE posts SET title = $1, body = $2, category = $3, status = $4 WHERE id = $5`, [ title, body, safeCategory, status, urlId ]);
+    const didUpdate = await pool.query(`UPDATE posts SET title = $1, body = $2, category = $3, hero_image_url = $4, hero_image_alt = $5, status = $6 WHERE id = $7`, [ title, body, safeCategory, hero_image_url, hero_image_alt, status, urlId ]);
 
     if (didUpdate.rowCount === 1) {
       return res.status(200).json({ data: {message: "Update successful"} });
@@ -245,32 +251,32 @@ app.put('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
   }
 });
 
-app.put('/posts/:slug', checkAdminKey, async (req, res, next) => {
-  const urlSlug = req.params.slug;
-  const { title, body, category, excerpt } = req.body;
-  const fields = [title, body, category, excerpt];
+// app.put('/posts/:slug', checkAdminKey, async (req, res, next) => {
+//   const urlSlug = req.params.slug;
+//   const { title, body, category, excerpt } = req.body;
+//   const fields = [title, body, category, excerpt];
 
-  if (
-    !fields.every(field => typeof(field) === 'string' && field.trim()  !== "")
-  ) {
-    return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: "One or more fields missing"} })
-  }
+//   if (
+//     !fields.every(field => typeof(field) === 'string' && field.trim()  !== "")
+//   ) {
+//     return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: "One or more fields missing"} })
+//   }
 
-  try {
-    const didUpdate = await pool.query(`UPDATE posts SET title = $1, body = $3, category = $4, excerpt = $5 WHERE slug = $2`, [ title, urlSlug, body, category, excerpt ]);
+//   try {
+//     const didUpdate = await pool.query(`UPDATE posts SET title = $1, body = $3, category = $4, excerpt = $5 WHERE slug = $2`, [ title, urlSlug, body, category, excerpt ]);
 
-    if (didUpdate.rowCount === 1) {
-      return res.status(200).json({ data: {message: "Post updated successfully"} });
-    }
-    if (didUpdate.rowCount === 0) {
-      return res.status(404).json({ error: { status: 404, code: "POST_NOT_FOUND", message: "Post could not be found" } });
-    }
-  } 
+//     if (didUpdate.rowCount === 1) {
+//       return res.status(200).json({ data: {message: "Post updated successfully"} });
+//     }
+//     if (didUpdate.rowCount === 0) {
+//       return res.status(404).json({ error: { status: 404, code: "POST_NOT_FOUND", message: "Post could not be found" } });
+//     }
+//   } 
   
-  catch (err) {
-      return next(err);
-  }
-});
+//   catch (err) {
+//       return next(err);
+//   }
+// });
 
 app.delete('/posts/:slug', checkAdminKey, async (req, res, next) => {
   const urlSlug = req.params.slug;

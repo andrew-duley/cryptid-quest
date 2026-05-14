@@ -20,6 +20,9 @@ export default function Admin() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [category, setCategory] = useState("");
+  const [heroImageUrl, setHeroImageUrl] = useState(null);
+  const [heroImageAlt, setHeroImageAlt] = useState(null);
+
   const [draftSuccess, setDraftSuccess] = useState(null);
   const [postSuccess, setPostSuccess] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,15 +88,15 @@ export default function Admin() {
   }
 
   function handleTitle(e) {
-    setTitle(e.target.value)
+    setTitle(e.target.value);
   }
 
   function handleBody(e) {
-    setBody(e.target.value)
+    setBody(e.target.value);
   }
 
   function handleCategory(e) {
-    setCategory(e.target.value)
+    setCategory(e.target.value);
   }
 
   async function handlePostSubmit(status) {
@@ -104,6 +107,14 @@ export default function Admin() {
       setError("You're not logged in!");
       return
     }
+
+  async function handleHeroImageUrl(e) {
+    setHeroImageUrl(e.target.value);
+  }
+
+  async function handleHeroImageAlt(e) {
+    setHeroImageAlt(e.target.value);
+  }
 
     setError(null);
     setIsSubmitting(true);
@@ -351,6 +362,13 @@ export default function Admin() {
             <div className="admin__title">
               <label htmlFor="title">Title:</label>
               <input type="text" id="title" onChange={handleTitle} value={title} required />
+            </div>
+
+            <div className="admin__hero-image">
+              <label htmlFor="hero-image-url">Hero Image URL:</label>
+              <input type="text" id="hero-image-url" onChange={handleHeroImageUrl} value={heroImageUrl} />
+              <label htmlFor="hero-image-alt">Hero Image Alt:</label>
+              <input type="text" id="hero-image-alt" onChange={handleHeroImageAlt} value={heroImageAlt} />
             </div>
 
             <div className="admin__body">
