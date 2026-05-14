@@ -14,6 +14,7 @@
     "optimize:backgrounds": "node scripts/optimize-bg-image.js"
   },
   "dependencies": {
+    "@tiptap/extension-image": "^3.22.3",
     "@tiptap/extension-link": "^3.22.4",
     "@tiptap/extension-underline": "^3.22.4",
     "@tiptap/react": "^3.22.3",
