@@ -1,11 +1,9 @@
 @use '../abstracts' as *;
+.the-campfire-post__meta {
+  padding-bottom: 0;
+}
 
 .the-campfire-post__post {
-
-  // p {
-  //   margin: 0 0 1.6rem;
-  //   line-height: 1.7;
-  // }
  
   h2,
   h3 {
@@ -16,4 +14,8 @@
   h3:first-child {
     margin-top: 0;
   }
-}
+
+  p:first-child {
+    margin-top: 2rem;
+  }
+} 
