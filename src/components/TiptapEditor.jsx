@@ -76,17 +76,17 @@ export default function TiptapEditor({ body, onEditorChange }) {
         </div>
 
         <div className="formatting-section">
-          <button type="button" onClick={() => editor?.chain().focus().setImage({ src: imageUrl }).run()}>Image</button>
-        </div>
-
-        <div className="formatting-section">
           <button type="button" onClick={() => {
             const imageUrl = prompt("Enter image URL");
 
             if (imageUrl) {
-              editor?.chain().focus().toggleOrderedList().run();
+              editor?.chain().focus().setImage({ src: imageUrl}).run();
             }
-          }}>Ordered List</button>
+          }}>Image</button>
+        </div>
+
+        <div className="formatting-section">
+          <button type="button" onClick={() => editor?.chain().focus().toggleOrderedList().run()}>Ordered List</button>
           <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()}>UnorderedList</button>
         </div> 
         
@@ -97,9 +97,9 @@ export default function TiptapEditor({ body, onEditorChange }) {
 
         <div className="formatting-section">
           <button type="button" onClick={() => {
-            const url = prompt('Enter URL');
+            const linkUrl = prompt('Enter link URL');
 
-            if (url) {
+            if (linkUrl) {
               editor?.chain().focus().setLink({ href: url }).run()
             }}
           }><Link2 size={18} /></button>
