@@ -21,6 +21,21 @@
     margin-block: 2rem;
   }
 
+  &__hero-image {
+    display: flex;
+    flex-direction: column;
+  
+    &--url,
+    &--alt {
+      display: flex;
+      flex-direction: column
+    }
+
+    label {
+      margin-bottom: 1rem;
+    }
+  }
+
   input,
   .tiptap {
     padding-block: 1rem;

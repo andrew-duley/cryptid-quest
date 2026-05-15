@@ -365,10 +365,14 @@ export default function Admin() {
             </div>
 
             <div className="admin__hero-image">
-              <label htmlFor="hero-image-url">Hero Image URL:</label>
-              <input type="text" id="hero-image-url" onChange={handleHeroImageUrl} value={heroImageUrl} />
-              <label htmlFor="hero-image-alt">Hero Image Alt:</label>
-              <input type="text" id="hero-image-alt" onChange={handleHeroImageAlt} value={heroImageAlt} />
+              <div className="admin__hero-image--url">
+                <label htmlFor="hero-image-url">Hero Image URL:</label>
+                <input type="text" id="hero-image-url" onChange={handleHeroImageUrl} value={heroImageUrl} />
+              </div>
+              <div className="admin__hero-image--alt">
+                <label htmlFor="hero-image-alt">Hero Image Alt:</label>
+                <input type="text" id="hero-image-alt" onChange={handleHeroImageAlt} value={heroImageAlt} />
+              </div>
             </div>
 
             <div className="admin__body">
