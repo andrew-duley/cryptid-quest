@@ -133,7 +133,7 @@ export default function Admin() {
     }
 
     try {
-      const res = await fetch(urlToUse, { method: methodToUse, credentials: "include", headers, body: JSON.stringify({ title, body, category, status })});
+      const res = await fetch(urlToUse, { method: methodToUse, credentials: "include", headers, body: JSON.stringify({ title, body, category, status, hero_image_url, hero_image_alt })});
 
       let json = null;
       
@@ -266,8 +266,8 @@ export default function Admin() {
 
     const loadPublishedPostIntoForm = () => {
       setTitle(post.title);
-      setHeroImageUrl(draft.hero_image_url);
-      setHeroImageAlt(draft.hero_image_alt);
+      setHeroImageUrl(post.hero_image_url);
+      setHeroImageAlt(post.hero_image_alt);
       setBody(post.body);
       setCategory(post.category);
       setSelectedPublishedPost(post);
