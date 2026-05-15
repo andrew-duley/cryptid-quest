@@ -73,6 +73,12 @@ export default function TheCampfirePost() {
         </div>
       </Block>
 
+      <Block label="Header Image">
+        <div className="the-campfire-post__header-image">
+          <img src={post.hero_image_url} alt={post.hero_image_alt} />
+        </div>
+      </Block>
+
       <Block label="Body">
         <div className="the-campfire-post__post"
           dangerouslySetInnerHTML={{ __html: safeHTML }}
