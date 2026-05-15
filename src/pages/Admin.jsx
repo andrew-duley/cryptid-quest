@@ -244,8 +244,8 @@ export default function Admin() {
 
     const loadDraftIntoForm = () => {
       setTitle(draft.title);
-      setHeroImageUrl(draft.heroImageUrl);
-      setHeroImageAlt(draft.heroImageAlt);
+      setHeroImageUrl(draft.hero_image_url);
+      setHeroImageAlt(draft.hero_image_alt);
       setBody(draft.body);
       setCategory(draft.category);
       setSelectedDraft(draft);
@@ -266,8 +266,8 @@ export default function Admin() {
 
     const loadPublishedPostIntoForm = () => {
       setTitle(post.title);
-      setHeroImageUrl(draft.heroImageUrl);
-      setHeroImageAlt(draft.heroImageAlt);
+      setHeroImageUrl(draft.hero_image_url);
+      setHeroImageAlt(draft.hero_image_alt);
       setBody(post.body);
       setCategory(post.category);
       setSelectedPublishedPost(post);

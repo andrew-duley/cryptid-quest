@@ -15,9 +15,7 @@
   &__password,
   &__title,
   &__body, 
-  &__category,
-  &--url,
-  &--alt {
+  &__category {
     display: flex;
     flex-direction: column;
     margin-block: 2rem;
@@ -27,11 +25,12 @@
     display: flex;
     flex-direction: column;
   
-    // &--url,
-    // &--alt {
-    //   display: flex;
-    //   flex-direction: column
-    // }
+    &--url,
+    &--alt {
+      display: flex;
+      flex-direction: column;
+      margin-block: 2rem;
+    }
 
     label {
       margin-bottom: 1rem;
