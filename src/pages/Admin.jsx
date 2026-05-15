@@ -133,7 +133,7 @@ export default function Admin() {
     }
 
     try {
-      const res = await fetch(urlToUse, { method: methodToUse, credentials: "include", headers, body: JSON.stringify({ title, body, category, status, heroImageUrl, heroImageAlt })});
+      const res = await fetch(urlToUse, { method: methodToUse, credentials: "include", headers, body: JSON.stringify({ title, body, category, status, hero_image_url: heroImageUrl, hero_image_alt: heroImageAlt })});
 
       let json = null;
       
