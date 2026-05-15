@@ -99,6 +99,14 @@ export default function Admin() {
     setCategory(e.target.value);
   }
 
+  async function handleHeroImageUrl(e) {
+    setHeroImageUrl(e.target.value);
+  }
+
+  async function handleHeroImageAlt(e) {
+    setHeroImageAlt(e.target.value);
+  }
+
   async function handlePostSubmit(status) {
     setPostSuccess(null);
     setDraftSuccess(null);
@@ -107,14 +115,6 @@ export default function Admin() {
       setError("You're not logged in!");
       return
     }
-
-  async function handleHeroImageUrl(e) {
-    setHeroImageUrl(e.target.value);
-  }
-
-  async function handleHeroImageAlt(e) {
-    setHeroImageAlt(e.target.value);
-  }
 
     setError(null);
     setIsSubmitting(true);
