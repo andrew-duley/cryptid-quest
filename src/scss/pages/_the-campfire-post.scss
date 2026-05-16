@@ -1,24 +1,24 @@
 @use '../abstracts' as *;
-.the-campfire-post__meta {
-  padding-bottom: 0;
+
+.the-campfire-post {
+
+  &__meta {
+    padding-bottom: 0;
+  }
+
+  &__post {
+    h2,
+    h3 {
+      line-height: 1.1;
+      margin: 6rem 0 1.4rem;
+    }
+
+    h3:first-child {
+      margin-top: 0;
+    }
+
+    p:first-child {
+      margin-top: 2rem;
+    }
+  }
 }
-
-.the-campfire-post__post {
-  background-image: url('https://media.cryptid.quest/backgrounds/northern-ocean/northern-ocean.avif') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
- 
-  h2,
-  h3 {
-    line-height: 1.1;
-    margin: 6rem 0 1.4rem;
-  }
-
-  h3:first-child {
-    margin-top: 0;
-  }
-
-  p:first-child {
-    margin-top: 2rem;
-  }
-} 
