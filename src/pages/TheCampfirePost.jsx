@@ -8,7 +8,7 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
  
-import '../scss/pages/_blog.scss';    
+import '../scss/pages/_the-campfire-post.scss';    
 
 export default function TheCampfirePost() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
