@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .admin {
-  background: url('/images/backgrounds/admin/admin-background/admin-background.avif') no-repeat center center;
+  background: url('https://media.cryptid.quest/admin/backgrounds/admin-background.avif') no-repeat center center;
   background-size: cover;
 
   &__login {
