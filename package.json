@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize:mascots": "node scripts/optimize-mascots.js",
-    "optimize:backgrounds": "node scripts/optimize-bg-image.js"
+    "optimize:backgrounds": "node scripts/optimize-background-image.js"
   },
   "dependencies": {
     "@tiptap/extension-image": "^3.22.3",
