@@ -1,4 +1,4 @@
-// scripts/optimize-crew-member-image.js
+// scripts/optimize-game-card-image.js
 
 import fs from 'fs';
 import path from 'path';
@@ -13,7 +13,7 @@ const MEDIA_DIR = path.join(ROOT_DIR, 'public', 'media');
 // These are the accepted master file extensions
 const MASTER_EXTENSIONS = ['.png', '.jpg', '.jpeg'];
 
-// These are the widths we'll generate for each mascot image
+// These are the widths we'll generate for each game card image
 const TARGET_WIDTHS = [400, 800, 1024];
 
 // Helper: does this file look like a master image?
@@ -27,7 +27,7 @@ async function processAssetDir(assetPath) {
   const assetDir = path.join(MEDIA_DIR, assetPath);
 
   if (!fs.existsSync(assetDir)) {
-    console.warn(`⚠️  Crew member folder not found: ${assetDir}`);
+    console.warn(`⚠️  Game card folder not found: ${assetDir}`);
     return;
   }
 
@@ -47,7 +47,7 @@ async function processAssetDir(assetPath) {
 
   // Load the master image and resize the new generated images to the target widths.
   for (const width of TARGET_WIDTHS) {
-    const height = Math.round(width * 7 / 5);
+    const height = Math.round(width * 9 / 16);
     const image = sharp(fullPath).resize({ 
       width, 
       height,
@@ -81,14 +81,14 @@ async function processAssetDir(assetPath) {
   const assetPath = process.argv[2];
 
   if (!assetPath) {
-    console.error("Usage: npm run optimize:crew-member-image -- <assetPath>");
+    console.error("Usage: npm run optimize:game-card-image -- <assetPath>");
     process.exit(1);
   }
 
   try {
     await processAssetDir(assetPath);
   } catch (error) {
-    console.error('❌ Error optimizing crew member image:', error);
+    console.error('❌ Error optimizing game-card image:', error);
     process.exit(1);
   }
 })();

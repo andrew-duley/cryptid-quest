@@ -10,8 +10,9 @@
     "build:full": "npm run build && npm run build:sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
-    "optimize:mascots": "node scripts/optimize-mascots.js",
-    "optimize:backgrounds": "node scripts/optimize-background-image.js"
+    "optimize:background-image": "node scripts/images/optimize-background-images.js",
+    "optimize:crew-member-image": "node scripts/images/optimize-crew-member-image.js",
+    "optimize:hero-image": "node scripts/images/optimize-hero-image.js"
   },
   "dependencies": {
     "@tiptap/extension-image": "^3.22.3",
