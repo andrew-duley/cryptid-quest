@@ -7,6 +7,8 @@ import NotFound from './NotFound';
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
+
+import Picture from '../components/Picture';
  
 import '../scss/pages/_the-campfire-post.scss';    
 
