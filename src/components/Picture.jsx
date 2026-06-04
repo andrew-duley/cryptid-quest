@@ -3,8 +3,9 @@ import React from 'react';
 const IMAGE_WIDTHS = [768, 1024, 1536];
 
 export default function Picture({ 
-  hero_image_url: src, 
-  hero_image_alt: alt, 
+  src,
+  alt,
+  className, 
 }) {
 
   // URL to the master image in the database with -master.<extension> removed
