@@ -9,7 +9,7 @@ export default function CrewMemberImage({
   loading = 'lazy',
   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 }) {
-  // Example: /images/mascots/bif-goot/bif-goot-800
+  // Example: https://media.cryptid.quest/the-crew//bif-goot/bif-goot-800
   const basePath = `https://media.cryptid.quest/the-crew/${slug}/${slug}-`;
 
   const avifSrcSet = IMAGE_WIDTHS.map(width => {
@@ -29,7 +29,8 @@ export default function CrewMemberImage({
       <source srcSet={avifSrcSet} type="image/avif" sizes={sizes} />
       <source srcSet={webpSrcSet} type="image/webp" sizes={sizes} />
       <img 
-        src={jpgSrcSet} 
+        src={`${basePath}800.jpg`}
+        srcSet={jpgSrcSet} 
         alt={alt} 
         className={className}
         loading={loading}

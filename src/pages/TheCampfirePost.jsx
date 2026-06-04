@@ -73,10 +73,8 @@ export default function TheCampfirePost() {
         </div>
       </Block>
 
-      <Block label="Header Image">
-        <div className="the-campfire-post__header-image">
-          <img src={post.hero_image_url} alt={post.hero_image_alt} />
-        </div>
+      <Block label="Hero Image" className="the-campfire-post__hero-image">
+        <Picture src={post.hero_image_url} alt={post.hero_image_alt} />
       </Block>
 
       <Block label="Body">
