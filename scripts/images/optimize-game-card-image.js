@@ -88,7 +88,7 @@ async function processAssetDir(assetPath) {
   try {
     await processAssetDir(assetPath);
   } catch (error) {
-    console.error('❌ Error optimizing game-card image:', error);
+    console.error('❌ Error optimizing game card image:', error);
     process.exit(1);
   }
 })();

@@ -41,10 +41,10 @@ export default function CrewMember() {
           <div className="crew-member__media">
             <CrewMemberImage
               slug={crewMember.slug}
-              size={800}
               alt={crewMember.name}
               className="crew-member__image"
               loading="eager"
+              sizes="(min-width: 991px) 320px, 100vw"
             />
           </div>
           <div className="crew-member__text">

@@ -13,7 +13,7 @@ const MEDIA_DIR = path.join(ROOT_DIR, 'public', 'media');
 // These are the accepted master file extensions
 const MASTER_EXTENSIONS = ['.png', '.jpg', '.jpeg'];
 
-// These are the widths we'll generate for each mascot image
+// These are the widths we'll generate for each crew member image
 const TARGET_WIDTHS = [400, 800, 1024];
 
 // Helper: does this file look like a master image?
@@ -47,7 +47,7 @@ async function processAssetDir(assetPath) {
 
   // Load the master image and resize the new generated images to the target widths.
   for (const width of TARGET_WIDTHS) {
-    const height = Math.round(width * 7 / 5);
+    const height = Math.round(width * 3 / 2);
     const image = sharp(fullPath).resize({ 
       width, 
       height,
