@@ -50,9 +50,9 @@ function Header() {
 
           <NavLink to="/" className="hero__home" aria-label="Crypted Quest home">
             <picture className="hero__logo">
-              <source type="image/avif" srcSet="/images/branding/logo/logo-img-600.avif 1x" />
-              <source type="image/webp" srcSet="/images/branding/logo/logo-img-600.webp 1x" />
-              <img className="hero__logo-img" src="/images/branding/logo/logo-img-600.png" alt="" width="600" height="600" />                
+              <source type="image/avif" srcSet="/site-ui/logos/logo-img-600.avif 1x" />
+              <source type="image/webp" srcSet="/site-ui/logos/logo-img-600.webp 1x" />
+              <img className="hero__logo-img" src="/site-ui//logo/logo-img-600.png" alt="Cryptid Quest logo" width="600" height="600" />                
             </picture>
           </NavLink>
 
