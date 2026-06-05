@@ -8,8 +8,19 @@ export default function Picture({
   className, 
 }) {
 
+  console.log("Picture rendered");
+  console.log("src:", src);
+
+  if (!src) {
+    console.warn("Picture missing src");
+    return null;
+  }
   // URL to the master image in the database with -master.<extension> removed
   const basePath = src.replace(/-master\.[^.]+$/, "-");
+
+  console.log("src:", src);
+  console.log("basePath:", basePath);
+  console.log("jpg:", `${basePath}1536.jpg`);
 
   const avifSrcSet = IMAGE_WIDTHS.map(width => {
     return `${basePath}${width}.avif ${width}w`

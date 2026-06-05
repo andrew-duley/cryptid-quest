@@ -63,6 +63,9 @@ export default function TheCampfirePost() {
 
   if (error) return <p>{error}</p> 
   
+  console.log("TheCampfirePost post:", post);
+  console.log("TheCampfirePost hero:", post?.hero_image_url);
+
   return(
     <PageTemplate className="the-campfire-post" slug={`the-campfire/${slug}`} title={post.title} narrow={true}>
 
