@@ -1,14 +1,16 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
 
+import Picture from '../components/Picture';
+
 function Header() {
 
   return(
     <header id="header" className="hero">
 
-      {/* Background image {responsive} */}
+      {/* Background image {responsive}
       <picture className="hero__bg" aria-hidden="true">
-        {/* <source
+        <source
           type="image/avif"
           srcSet="/images/backgrounds/misty-forest-800.avif 800w,
                   /images/backgrounds/misty-forest-1200.avif 1200w,
@@ -23,7 +25,7 @@ function Header() {
                   /images/backgrounds/misty-forest-1600.webp 1600w,
                   /images/backgrounds/misty-forest-2400.webp 2400w"
           sizes="100vw"
-        /> */}
+        />
         <img 
           className="hero__bg-img"
           src="/images/backgrounds/hero-backgrounds/hero-background-1/hero-background-1.jpg"
@@ -34,7 +36,9 @@ function Header() {
           fetchPriority="high"
           decoding="async"
         />
-      </picture>
+      </picture> */}
+
+      <Picture src="./media/headers/winter/winter-tracks/winter-tracks-master.png" alt="Winter tracks" />
 
       {/* Overlay tint so text reads well */}
       <div className="hero__overlay" aria-hidden="true" />

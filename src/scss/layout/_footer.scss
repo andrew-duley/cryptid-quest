@@ -10,7 +10,11 @@
   //   rgba($color-bg-dark, .65)
   // ),
   linear-gradient(rgba($color-neon-purple, .12), rgba($color-neon-purple, 0)),
-  url('/images/backgrounds/bg-footer.png');
+   image-set(
+    url('https://media.cryptid.quest/footers/summer/summer-misty-forest/summer-misty-forest-1536.avif') type('image/avif'),
+    url('https://media.cryptid.quest/footers/summer/summer-misty-forest/summer-misty-forest-1536.webp') type('image/webp'),
+    url('https://media.cryptid.quest/footers/summer/summer-misty-forest/summer-misty-forest-1536.jpg') type('image/jpeg')
+  );;
 
   // Multiply applies the tint to the photo without getting muddy
   background-blend-mode: normal, normal, multiply, normal;
