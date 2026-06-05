@@ -38,7 +38,7 @@ function Header() {
         />
       </picture> */}
 
-      <Picture src="./media/headers/winter/winter-tracks/winter-tracks-master.png" alt="Winter tracks" />
+      <Picture src="./media/headers/winter/winter-tracks/winter-tracks-master.png" alt="Winter tracks" className="hero__bg" imgClassName="hero__bg-img" />
 
       {/* Overlay tint so text reads well */}
       <div className="hero__overlay" aria-hidden="true" />

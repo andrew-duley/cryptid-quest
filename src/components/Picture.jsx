@@ -5,7 +5,8 @@ const IMAGE_WIDTHS = [768, 1024, 1536];
 export default function Picture({ 
   src,
   alt,
-  className, 
+  className = '', 
+  imgClassName = '',
 }) {
 
   console.log("Picture rendered");
@@ -35,13 +36,14 @@ export default function Picture({
   }).join(', ');
 
   return(
-    <picture>
+    <picture className={className}>
       <source srcSet={avifSrcSet} type="image/avif" />
       <source srcSet={webpSrcSet} type="image/webp" />
       <img
         src={`${basePath}1536.jpg`}
         srcSet={jpgSrcSet}
         alt={alt}
+        className={imgClassName}
       />
     </picture>
   );
