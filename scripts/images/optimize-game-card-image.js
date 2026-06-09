@@ -8,7 +8,7 @@ import sharp from 'sharp';
 const ROOT_DIR = process.cwd();
 
 // Where your media folder lives
-const MEDIA_DIR = path.join(ROOT_DIR, 'public', 'media');
+const GAMES_DIR = path.join(ROOT_DIR, 'public', 'games');
 
 // These are the accepted master file extensions
 const MASTER_EXTENSIONS = ['.png', '.jpg', '.jpeg'];
@@ -24,7 +24,7 @@ function isMasterFile(fileName) {
 }
 
 async function processAssetDir(assetPath) {
-  const assetDir = path.join(MEDIA_DIR, assetPath);
+  const assetDir = path.join(GAMES_DIR, assetPath);
 
   if (!fs.existsSync(assetDir)) {
     console.warn(`⚠️  Game card folder not found: ${assetDir}`);
