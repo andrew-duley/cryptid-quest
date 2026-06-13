@@ -1,5 +1,6 @@
 @use '../abstracts' as *;
 
+.admin,
 .the-campfire,
 .the-codex,
 .the-crew,
@@ -41,8 +42,16 @@
   } 
 }
 
+.admin {
+  
+}
+
 .the-crypt {
   &__background-img {
     object-position: 75% top;
   } 
+}
+
+.the-campfire-post {
+
 }

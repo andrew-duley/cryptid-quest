@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import PictureGameCard from './PictureGameCard';
+
 const STATUS_LABEL = {
   playable: 'Playable',
   prototype: 'Prototype',
@@ -22,7 +24,7 @@ export default function GameCard({ game }) {
     status = 'comingSoon',
     difficulty = 1,
     cover,      // single image path (fallback)
-    coverBase,  // optional base path for 9-image set
+    cardImageUrl,  // optional base path for 9-image set
   } = game;
 
   const isPlayable = status === 'playable';
@@ -38,7 +40,8 @@ export default function GameCard({ game }) {
       <Link to={`/the-crypt/${slug}`} 
       className="game-card__media-link">
         <div className="game-card__media">
-          {coverBase ? (
+          <PictureGameCard src={cardImageUrl} alt={title} className={`${slug}__background`} imgClassName={`${slug}__background-img`} />
+          {/* {coverBase ? (
             <picture>
               <source 
                 type="image/avif"
@@ -81,7 +84,7 @@ export default function GameCard({ game }) {
               loading="lazy"
               decoding="async"
             />
-          )}
+          )} */}
         </div>
       </Link>
 

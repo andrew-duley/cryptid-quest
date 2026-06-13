@@ -5,7 +5,7 @@ export const GAMES = [
     blurb: 'Match the cryptids and find the pairs.',
     status: 'playable',
     difficulty: 1,
-    coverBase: '/games/cryptid-mixup/images/hero', 
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptid-mixup/cryptid-mixup-card-master.png', 
     featured: true,
   },
   {
@@ -14,7 +14,7 @@ export const GAMES = [
     blurb: 'Be the first to get three in a row.',
     status: 'playable',
     difficulty: 1,
-    coverBase: '/games/cryptac-toe/images/hero',
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptac-toe/cryptac-toe-master.png',
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ export const GAMES = [
     blurb: 'Who can score the most points in this classic game of pong?',
     status: 'playable',
     difficulty: 1,
-    coverBase: '/games/cryptipong/images/hero',
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptipong/cryptipong-master.png',
     featured: true,
   },
   {
@@ -32,7 +32,7 @@ export const GAMES = [
     blurb: 'Command Lyngbakr and Kraken in a deep-sea duel of strategy.',
     status: 'prototype',
     difficulty: 1,
-    coverBase: '/games/dypets-brikker/images/hero',
+    cardImageUrl: '/games/dypets-brikker/images/hero',
   },
   {
     slug: 'orb-catcher',
@@ -40,6 +40,6 @@ export const GAMES = [
     blurb: 'Catch the mysterious orbs and try and top your best score.',
     status: 'comingSoon',
     difficulty: 1,
-    coverBase: '/games/orb-catcher/images/hero',
+    cardImageUrl: '/games/orb-catcher/images/hero',
   },
 ];
