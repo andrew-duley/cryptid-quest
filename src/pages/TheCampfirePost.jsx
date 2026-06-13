@@ -9,6 +9,7 @@ import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
 import PictureHero from '../components/PictureHero';
+import PictureBackground from '../components/PictureBackground';
  
 import '../scss/pages/_the-campfire-post.scss';    
 
@@ -68,6 +69,8 @@ export default function TheCampfirePost() {
 
   return(
     <PageTemplate className="the-campfire-post" slug={`the-campfire/${slug}`} title={post.title} narrow={true}>
+
+      <PictureBackground src="https://media.cryptid.quest/the-campfire/post-backgrounds/northern-ocean/northern-ocean-master.png" alt="A dreamy night at sea" className="the-campfire-post__background" imgClassName="the-campfire-post__background-img" />
 
       <Block label="Meta data">
         <div className="the-campfire-post__meta">

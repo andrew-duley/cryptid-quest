@@ -1,48 +1,7 @@
 @use '../abstracts' as *;
 
 .the-campfire {
-  position: relative;
-  overflow: hidden;
-  // background-image: 
-  //   linear-gradient(
-  //     to right,
-  //     rgba(0, 0, 0, 1) 0%,
-  //     rgba(0, 0, 0, 0.2) 25%,
-  //     rgba(0, 0, 0, 0.4) 50%,
-  //     rgba(0, 0, 0, 0) 70%
-  //   ),
-
-  //   /* BOTTOM FADE */
-  //   linear-gradient(
-  //     to bottom,
-  //     rgba(0, 0, 0, 0) 60%,
-  //     rgba(0, 0, 0, 0.7) 80%,
-  //     rgba(0, 0, 0, 1) 100% 
-  //   ),
-  //   image-set(
-  //     url("/images/backgrounds/the-campfire/campfire-gathering/campfire-gathering.avif") type("image/avif"),
-  //     url("/images/backgrounds/the-campfire/campfire-gathering/campfire-gathering.webp") type("image/webp"),
-  //     url("/images/backgrounds/the-campfire/campfire-gathering/campfire-gathering.jpg") type("image/jpeg")
-  //   );
-  
-  // background-size: 100% 100%, 100%, 100%, min(1536px, 100%) auto;
-  // background-position: right top 32rem;
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
-
-  &__background {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  &__background-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
+ 
   &__newest-posts {
     display: flex;
     flex-direction: column;
