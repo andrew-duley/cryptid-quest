@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Picture from './Picture';
+import PictureHero from './PictureHero';
 
 export default function PostCard({ post }) {
 
@@ -11,15 +11,7 @@ export default function PostCard({ post }) {
     <article className="post-card card">
       <Link to={`/the-campfire/${post.slug}`} className="post-card__media-link">
         <div className="post-card__media">
-          {/* <img 
-            src={post.hero_image_url} 
-            alt={post.hero_image_alt}
-            width="800"
-            height="450"
-            loading="lazy"
-            decoding="async"
-          /> */}
-          <Picture src={post.hero_image_url} alt={post.hero_image_alt} />
+          <PictureHero src={post.hero_image_url} alt={post.hero_image_alt} />
         </div>
       </Link>
 

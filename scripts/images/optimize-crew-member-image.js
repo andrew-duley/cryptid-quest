@@ -1,4 +1,4 @@
-// scripts/optimize-crew-member-image.js
+// Script to optimize crew member images
 
 import fs from 'fs';
 import path from 'path';

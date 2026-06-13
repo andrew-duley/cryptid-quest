@@ -1,44 +1,14 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
 
-import Picture from '../components/Picture';
+import PictureBackground from '../components/PictureBackground';
 
 function Header() {
 
   return(
     <header id="header" className="hero">
-
-      {/* Background image {responsive}
-      <picture className="hero__bg" aria-hidden="true">
-        <source
-          type="image/avif"
-          srcSet="/images/backgrounds/misty-forest-800.avif 800w,
-                  /images/backgrounds/misty-forest-1200.avif 1200w,
-                  /images/backgrounds/misty-forest-1600.avif 1600w,
-                  /images/backgrounds/misty-forest-2400.avif 2400w"
-          sizes="100vw"
-        />
-        <source
-          type="image/webp"
-          srcSet="/images/backgrounds/misty-forest-800.webp 800w,
-                  /images/backgrounds/misty-forest-1200.webp 1200w,
-                  /images/backgrounds/misty-forest-1600.webp 1600w,
-                  /images/backgrounds/misty-forest-2400.webp 2400w"
-          sizes="100vw"
-        />
-        <img 
-          className="hero__bg-img"
-          src="/images/backgrounds/hero-backgrounds/hero-background-1/hero-background-1.jpg"
-          srcSet="/images/backgrounds/hero-backgrounds/hero-background-1/hero-background-1.jpg 1536w"
-          sizes="100vw"
-          alt=""
-          width="2400" height="1000"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </picture> */}
-
-      <Picture src="./media/headers/winter/winter-tracks/winter-tracks-master.png" alt="Winter tracks" className="hero__bg" imgClassName="hero__bg-img" />
+      
+      <PictureBackground src="https://media.cryptid.quest/headers/winter/winter-tracks/winter-tracks-master.png" alt="Winter tracks" className="hero__bg" imgClassName="hero__bg-img" />
 
       {/* Overlay tint so text reads well */}
       <div className="hero__overlay" aria-hidden="true" />
@@ -50,9 +20,9 @@ function Header() {
 
           <NavLink to="/" className="hero__home" aria-label="Crypted Quest home">
             <picture className="hero__logo">
-              <source type="image/avif" srcSet="/site-ui/logos/logo-img-600.avif 1x" />
-              <source type="image/webp" srcSet="/site-ui/logos/logo-img-600.webp 1x" />
-              <img className="hero__logo-img" src="/site-ui//logo/logo-img-600.png" alt="Cryptid Quest logo" width="600" height="600" />                
+              <source type="image/avif" srcSet="https://media.cryptid.quest/site-ui/logos/logo-img-600.avif 1x" />
+              <source type="image/webp" srcSet="https://media.cryptid.quest/site-ui/logos/logo-img-600.webp 1x" />
+              <img className="hero__logo-img" src="https://media.cryptid.quest/site-ui/logos/logo-img-600.png" alt="Cryptid Quest logo" width="600" height="600" />                
             </picture>
           </NavLink>
 

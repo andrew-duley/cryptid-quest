@@ -1,8 +1,23 @@
 @use '../abstracts' as *;
 
 .admin {
-  background: url('https://media.cryptid.quest/admin/backgrounds/admin-background.avif') no-repeat center center;
-  background-size: cover;
+  position: relative;
+  
+  &__background {
+    position: absolute;
+    overflow: hidden;
+  }
+
+  &__background-img {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  
 
   &__login {
     

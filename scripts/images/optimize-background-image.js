@@ -1,4 +1,4 @@
-// scripts/optimize-background-image.js
+// Script to optimize background images
 
 import fs from 'fs';
 import path from 'path';

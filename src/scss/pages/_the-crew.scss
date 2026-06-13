@@ -1,2 +1,21 @@
 @use '../abstracts' as *;
 
+.the-crew {
+  position: relative;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    // inset: 0 0 auto 0;
+    height: 100vh;
+    z-index: 0;
+  }
+
+  &__background-img {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+}

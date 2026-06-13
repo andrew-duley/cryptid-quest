@@ -1,6 +1,7 @@
+// Script to add picture element for background images
 import React from 'react';
 
-const IMAGE_WIDTHS = [768, 1024, 1536];
+const IMAGE_WIDTHS = [768, 1536, 1920];
 
 export default function Picture({ 
   src,
@@ -9,19 +10,13 @@ export default function Picture({
   imgClassName = '',
 }) {
 
-  console.log("Picture rendered");
-  console.log("src:", src);
-
   if (!src) {
     console.warn("Picture missing src");
     return null;
   }
-  // URL to the master image in the database with -master.<extension> removed
+  
+  // URL to the master image from R2 with -master.<extension> removed
   const basePath = src.replace(/-master\.[^.]+$/, "-");
-
-  console.log("src:", src);
-  console.log("basePath:", basePath);
-  console.log("jpg:", `${basePath}1536.jpg`);
 
   const avifSrcSet = IMAGE_WIDTHS.map(width => {
     return `${basePath}${width}.avif ${width}w`

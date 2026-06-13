@@ -8,7 +8,7 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import Picture from '../components/Picture';
+import PictureHero from '../components/PictureHero';
  
 import '../scss/pages/_the-campfire-post.scss';    
 
@@ -79,7 +79,7 @@ export default function TheCampfirePost() {
       </Block>
 
       <Block label="Hero Image" className="the-campfire-post__hero-image">
-        <Picture src={post.hero_image_url} alt={post.hero_image_alt} />
+        <PictureHero src={post.hero_image_url} alt={post.hero_image_alt} />
       </Block>
 
       <Block label="Body">

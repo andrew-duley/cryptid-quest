@@ -9,6 +9,8 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
+import PictureBackground from '../components/PictureBackground';
+
 export default function Admin() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
@@ -332,6 +334,7 @@ export default function Admin() {
       className="admin" 
       narrow={true} 
     >
+      <PictureBackground src="https://media.cryptid.quest/admin/backgrounds/admin-lake-overlook/admin-lake-overlook-master.png" alt="The awesome background image for the awesome admin area" className="admin__background" imgClassName="admin__background-img" />
       {authStatus === "checking" && (
         <Block title="Admin">
           <p>Checking session...</p>

@@ -10,9 +10,10 @@
     "build:full": "npm run build && npm run build:sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
-    "optimize:background-image": "node scripts/images/optimize-background-images.js",
+    "optimize:background-image": "node scripts/images/optimize-background-image.js",
     "optimize:crew-member-image": "node scripts/images/optimize-crew-member-image.js",
     "optimize:game-card-image": "node scripts/images/optimize-game-card-image.js",
+    "optimize:game-element-image": "node scripts/images/optimize-game-element-image.js",
     "optimize:hero-image": "node scripts/images/optimize-hero-image.js"
   },
   "dependencies": {

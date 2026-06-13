@@ -1,4 +1,4 @@
-// scripts/optimize-hero-image.js
+// Script to optimize hero images
 
 import fs from 'fs';
 import path from 'path';

@@ -7,9 +7,13 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
+import PictureBackground from '../components/PictureBackground';
+
 export default function TheCrew() {
   return (
-    <PageTemplate slug="the-crew" title="The Cryptid Quest Crew">
+    <PageTemplate slug="the-crew" title="The Cryptid Quest Crew" className="the-crew">
+
+      <PictureBackground src="https://media.cryptid.quest/the-crew/backgrounds/spring/portrait-hall/portrait-hall-master.png" alt="Scandinavian style background for the portrait hall" className="the-crew__background" imgClassName="the-crew__background-img" />
    
       <Block label="The faces of Cryptid Quest">
         <p>
