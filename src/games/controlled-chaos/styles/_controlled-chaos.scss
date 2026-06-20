@@ -1,0 +1,144 @@
+@use '../../../scss/abstracts' as *;
+
+.cc {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+
+  &__background {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 100vh;
+    z-index: 0;
+  }
+
+  &__background-img {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  &__board {
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    background: #111;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+  }
+
+  &__ui {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    background: #368BC1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    box-shadow: inset 0 0 10px 2px purple;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    z-index: 10;
+    overflow: hidden;
+    
+    /* Semi-transparent base color for the glass look */
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0) 100%);
+    
+    /* Blurs the content behind the ball */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* Inner and outer glows to simulate light refraction */
+    box-shadow: 
+      inset 0 0 20px rgba(255, 255, 255, 0.6),
+      inset 0 0 50px rgba(150, 200, 255, 0.4),
+      0 10px 30px rgba(0, 0, 0, 0.2),
+      0 0 40px rgba(150, 200, 255, 0.3);
+    
+    /* Smooth outline */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    &-button {
+      background: #000;
+      padding-block: .8rem;
+      padding-inline: 1.6rem;
+      margin-block: 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 3px 1px #000;
+      transition: all .2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px 2px #000;
+      }
+    }
+    
+  }
+
+  .button {
+    width: 25rem;
+    height: 25rem;
+    position: absolute;
+    overflow: hidden;
+
+    &.choice {
+      box-shadow: inset 0 0 20px 10px white;
+    } 
+  }
+
+  .brutus {
+    background: #3A2614;
+    border-top-left-radius: 100%;
+    top: 1%;
+    left: 1%;
+    
+    &.choice {
+      background-color: #D89A3D;
+    }
+  }
+
+  .sparkplug {
+    background: #163545;
+    border-top-right-radius: 100%;
+    top: 1%;
+    right: 1%;
+
+    &.choice {
+      background-color: #4FC3FF;
+    }
+  }
+
+  .burnella {
+    background: #1F3A1D;
+    border-bottom-right-radius: 100%;
+    bottom: 1%;
+    right: 1%;
+
+    &.choice {
+      background-color: #5FAF4A;
+    }
+  }
+
+  .grumbit {
+    background: #2C1B45;
+    border-bottom-left-radius: 100%;
+    bottom: 1%;
+    left: 1%;
+
+    &.choice {
+      background-color: #B07CFF;
+    }
+  }
+  
+}

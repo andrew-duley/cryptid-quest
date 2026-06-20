@@ -42,4 +42,12 @@ export const GAMES = [
     difficulty: 1,
     cardImageUrl: '/games/orb-catcher/images/hero',
   },
+  {
+    slug: 'controlled-chaos',
+    title: 'Controlled Chaos',
+    blurb: 'Keep the crew focused and prevent disaster. One wrong move and somebody\'s invention is going to go BOOM!',
+    status: 'comingSoon',
+    difficulty: 2,
+    cardImageUrl: '/games/orb-catcher/images/hero',
+  },
 ];
