@@ -88,6 +88,31 @@ export const CREW_MEMBERS = [
     ],
   },
   {
+    name: "Burnella Crumbwick",
+    slug: "burnella-crumbwick",
+    tagline: "Nothing brings people together quite like a good meal... and I plan on making a great one!",
+
+    summary:
+      "Burnella Crumbwick is the heart of the crew's campfire. Whether she's baking fresh bread, stirring a bubbling stew, or scribbling another recipe into one of her many cookbooks, nothing makes her happier than seeing the people she cares about gathered around a warm meal. To Burnella, cooking isn't just about filling empty stomachs—it's how she shows kindness.",
+
+    lore: [
+      `Burnella's passion for cooking borders on legendary. Shelves throughout her kitchen overflow with handwritten recipe journals filled with everything from treasured family meals to dishes inspired by ingredients gathered during the crew's latest expedition. She firmly believes there's always another recipe waiting to be discovered, another technique to learn, or another smile to earn around the dinner table.`,
+
+      `Her warm personality makes newcomers feel at home almost immediately. While the others prepare equipment, maps, or instruments before setting out, Burnella quietly makes sure everyone leaves with a full stomach and returns to a hot meal waiting by the fire. Taking care of the crew isn't a responsibility to her—it's something she genuinely loves doing.`,
+
+      `Although Burnella's recipes are widely celebrated, she occasionally introduces an unusual regional ingredient that leaves the rest of the crew exchanging cautious glances across the dinner table. Burnella is always surprised by their hesitation—after all, she'd never thought twice about eating it herself.`
+    ],
+
+    funFacts: [
+      "Species: Gnome.",
+      "Height: 3'2\"—though the chef's hat adds at least another six inches.",
+      "Likes: Baking fresh bread, collecting recipe books, trying new ingredients, cast-iron cookware, and feeding hungry adventurers.",
+      "Dislikes: Wasting food, empty pantries, burned bread, and seeing anyone eat alone.",
+      "Personality: Warm, welcoming, caring, optimistic, and endlessly approachable.",
+      "Dream: To become one of the greatest chefs the Northern Fringe has ever known."
+    ]
+  },
+  {
   name: "Dredsky",
   slug: "dredsky",
   tagline: "Smells like low tide... must be showtime. Wait, where's my guitar tech? Do I even have a guitar tech? I never got my pants...",
@@ -96,7 +121,7 @@ export const CREW_MEMBERS = [
     "Dredsky (pronounced dread-skee) never intended to be called Dredsky. His real name was Dredseksy—because honestly, look at him, he's a devastatingly handsome undead! But after a chaotic dungeon brawl in a great hall, a groupmate kept shouting 'Dredsky!' by mistake… and the name stuck harder than rigor mortis. Now, even he uses it.",
 
   lore: [
-    `When he's not donning his battered metal armor and tanking for anyone brave (or foolish) enough to venture into the Cryptid Quest Woods, Dredsky can almost always be found shredding on his iconic blackened V-shaped guitar, which he affectionately calls "Frostbite." The icy blue runes, dverger carved into it pulse with faint energy—maybe magic, maybe attitude.`,
+    `When he's not donning his battered metal armor and tanking for anyone brave (or foolish) enough to venture into the Cryptid Quest Woods, Dredsky can almost always be found shredding on his iconic blackened V-shaped guitar, which he affectionately calls "Frostbite." The icy blue runes, and the dverger that have been carved into it pulse with faint energy—maybe magic, maybe attitude.`,
 
     `Because of his undead nature, most assume he's something to fear. He does look intimidating, with that permanent scowl and deep gravelly voice that sounds like it crawled out of a crypt at sunrise. But in truth, he's humble, respectful, and surprisingly easy to talk to. Dredsky is the first to help when someone's in trouble—though his voice tends to make the offer sound like a threat.`,
 
@@ -107,7 +132,7 @@ export const CREW_MEMBERS = [
     "Species: Nordic Forest Undead.",
     "Height: 5'7\" in his usual hunched stance, but a full 6'0\" if he ever remembered to stand up straight.",
     "Likes: Death metal, brutal death metal, melodic death metal, black metal, progressive metal—and wearing metal armor while swinging a metal sword. Basically, if it's metal, he's into it.",
-    "Dislikes: Gnomes, anything labeled 'fresh-scented', guitars that aren't tuned down at least a whole step, and rogues who over-aggro and then blame the tank.",
+    "Dislikes: Anything labeled 'fresh-scented', guitars that aren't tuned down at least a whole step, and rogues who over-aggro and then blame the tank.",
     "Personality: Respectful, humble, intelligent, and unintentionally intimidating.",
     "First recorded appearance: Spotted deep within a mysterious tower located somewhere within the rugged landscape of Deadwind Pass."
   ]
