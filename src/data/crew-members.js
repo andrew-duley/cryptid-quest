@@ -168,25 +168,38 @@ export const CREW_MEMBERS = [
 },{
   name: "Grumbit Bitterroot",
   slug: "grumbit-bitterroot",
+
   tagline:
-    "The crew's brilliant gnome alchemist—kind, anxious, and famous for 'helpful' potions that rarely do what the label says.",
+    "Every map begins with a single question. Let's go find the answer.",
+
 
   summary:
-    "Grumbit Bitterroot is the Cryptid Quest crew's alchemist/engineer: a three-foot-tall gnome with a head full of genius and pockets full of misplaced tools. He's not a fighter—he's a fixer—patching gear, brewing concoctions, and improvising solutions while nervously apologizing the entire time. The crew adores him… and double-checks anything he hands them before they drink it.",
+    "Grumbit Bitterroot is the Cryptid Quest crew's explorer, cartographer, and keeper of forgotten stories. Rarely seen without an overstuffed backpack and a weathered field journal, he spends his days charting the Northern Fringe, documenting ancient ruins, and returning with maps, artifacts, and knowledge that help keep the crew one step ahead. Though perfectly capable of brewing a useful potion or inventing a clever tool, he sees those skills as a means to an end—the real adventure begins the moment the trail disappears.",
+
 
   lore: [
-    "Grumbit travels with a workshop strapped to his body: oversized goggles, a forehead lens, a canister-rigged forearm gauntlet, and enough pouches to lose an entire inventory inside. He's quick, nimble, and perpetually on edge—always one clink away from panic, and one idea away from brilliance.",
-    "As the band's alchemical engineer, he keeps the show alive behind the scenes: repairing equipment mid-haul, upgrading instruments with strange little improvements, and brewing utility mixtures for emergencies. His solutions are often unconventional—but when the crew is stuck, Grumbit is usually the first one to find a way through.",
-    "His greatest weakness is also his legend: he misplaces, mislabels, and 'temporarily' reorganizes everything—especially under stress. When Grumbit offers a 'Potion of Levitation,' the crew politely smiles, prepares for anything except levitation, and braces for whatever bizarrely useful effect it actually has."
+
+    "Long before most of the crew wakes, Grumbit is already on the trail. He has an uncanny ability to notice the things everyone else walks past: an unusual feather caught on a branch, weathered carvings hidden beneath moss, or a forgotten footpath that hasn't been traveled in generations. Every expedition adds another page to his journals and another story to the ever-growing archive he safeguards for the Northern Fringe.",
+
+    "When the crew prepares for a dangerous journey, Grumbit is almost always the one unfolding the maps. He studies old routes, marks safe campsites, estimates travel times, and quietly packs every tool the expedition might need—from climbing rope and specimen jars to waterproof journals and emergency supplies. If he builds a gadget or brews a potion, it's because the wilderness demanded it, not because he enjoys tinkering for its own sake.",
+
+    "Despite decades of wandering some of the most dangerous corners of the Northern Fringe, Grumbit has never lost his sense of wonder. Every mountain promises another view. Every ruin hides another story. Every strange footprint is simply another mystery waiting to be understood. To him, preserving those discoveries is just as important as making them."
   ],
+
+
   funFacts: [
+
     "Species: Gnome",
-    "Height: ~3 ft (about 0.9 m)",
-    "Eyes: Hidden behind oversized round goggles",
-    "Likes: Organizing tools (briefly), solving problems, helping the crew, tinkering late at night, working with Sparkplug",
-    "Dislikes: Fighting, being rushed, loud surprises, realizing he 'put it somewhere safe'",
-    "Personality: Kind, anxious, brilliant, absent-minded, apologetic, eager-to-help",
-    "Most notable fact: His potions are infamous—rarely what the label claims, but almost always useful in the wrong way."
+
+    "Height: About 3 feet tall.",
+
+    "Likes: Ancient ruins, forgotten trails, maps, fossils, field journals, long expeditions, and asking questions no one else thinks to ask.",
+
+    "Dislikes: Needless destruction, unfinished maps, losing historical knowledge, and taking shortcuts that leave mysteries unsolved.",
+
+    "Personality: Curious, thoughtful, patient, quietly adventurous, and endlessly prepared.",
+
+    "Most notable fact: Before every major expedition, the crew gathers around Grumbit's maps to hear his briefing. If Grumbit says a trail is dangerous... everyone listens."
   ]
 },
 {
