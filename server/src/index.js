@@ -179,6 +179,16 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   hero_image_url = (hero_image_url ?? "").trim() || null;
   hero_image_alt = (hero_image_alt ?? "").trim() || null;
 
+  if(status !== "draft" && status !== "published") {
+    return res.status(400).json({
+      error: {
+        status: 400,
+        code: "INVALID_STATUS",
+        message: "Status must be 'draft' or 'published'"
+      }
+    });
+  }
+
   // Auto generate excerpts here
   const cleanedBody = body.replace(/\s+/g, ' ').trim();
 
@@ -199,7 +209,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
     return res.status(400).json({ error: { status: 400, code: "MISSING_FIELDS", message: `Missing required fields: ${missingFields.join(", ")}` } });
   } 
   try {
-    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [title, slug, body, category, autoExcerpt, status, hero_image_url, hero_image_alt]);
+    const result = await pool.query(`INSERT INTO posts (title, slug, body, category, excerpt, status, hero_image_url, hero_image_alt) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [title, slug, body, category, autoExcerpt, status, hero_image_url, hero_image_alt]);
   
     return res.status(201).set("Location", `/posts/${slug}`).json({ data: result.rows[0] });
   } catch (err) {
