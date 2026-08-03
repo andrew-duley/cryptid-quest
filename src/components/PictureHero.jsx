@@ -1,22 +1,5 @@
-// Script to add picture element for hero images
-import React from 'react';
 
 const IMAGE_WIDTHS = [768, 1024, 1536];
-
-export default function Picture({ 
-  src,
-  alt,
-  className = '', 
-  imgClassName = '',
-}) {
-
-  if (!src) {
-    console.warn("Picture missing src");
-    return null;
-  }
-  
-  // URL to the master image from R2 with -master.<extension> removed
-  const basePath = src.replace(/-master\.[^.]+$/, "-");
 
   const avifSrcSet = IMAGE_WIDTHS.map(width => {
     return `${basePath}${width}.avif ${width}w`
@@ -42,4 +25,3 @@ export default function Picture({
       />
     </picture>
   );
-}
