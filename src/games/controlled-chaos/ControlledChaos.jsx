@@ -7,7 +7,8 @@ import PageTemplate from '../../layout/PageTemplate';
 import Block from '../../layout/Block';
 import PageFooter from '../../layout/PageFooter';
 
-import PictureBackground from '../../components/PictureBackground';
+import ImageWidths from '../../config/imageWidths.js';
+import Picture from '../../components/Picture';
 
 export default function ControlledChaos() {
 
@@ -28,7 +29,15 @@ export default function ControlledChaos() {
   return(
     <PageTemplate slug="controlled-chaos" title="Controlled Chaos" className="cc">
 
-      <PictureBackground src="https://media.cryptid.quest/the-crypt/game-backgrounds/controlled-chaos/controlled-chaos-master.png" alt="Controlled chaos" className="cc__background" imgClassName="cc__background-img" />
+      <Picture 
+        imagePath="https://media.cryptid.quest/the-crypt/game-backgrounds/controlled-chaos/controlled-chaos-"
+        imageWidths={IMAGE_WIDTHS_BACKGROUND}
+        alt = "Controlled chaos"
+        className = "cc__background" 
+        imgClassName = "cc__background-img"
+        loading="eager"
+        fetchPriority="high"
+      />
 
       <Block label="Controlled Chaos">
         <section className="cc__board">

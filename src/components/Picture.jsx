@@ -4,13 +4,13 @@ import React from 'react';
 export default function Picture({ 
   imagePath,
   imageWidths,
-  fallbackFormat = 'jpg',
-  sizes = '100vw',
+  fallbackFormat = "jpg",
+  sizes = "100vw",
   alt = '',
-  className = '', 
-  imgClassName = '',
+  className = "", 
+  imgClassName = "",
   loading,
-  decoding = 'async',
+  decoding = "async",
   fetchPriority,
 }) {
 
@@ -19,7 +19,7 @@ export default function Picture({
   }
 
   if (!Array.isArray(imageWidths) || imageWidths.length === 0) {
-    console.warn('"Picture: imageWidths must be a non-empty array.');
+    console.warn('Picture: imageWidths must be a non-empty array.');
     return null;
   }
 
