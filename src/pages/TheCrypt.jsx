@@ -7,8 +7,8 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import imageWidths from '../../config/imageWidths.js';
-import Picture from '../../components/Picture';
+import { IMAGE_WIDTHS_BACKGROUND } from '../config/imageWidths.js';
+import Picture from '../components/Picture';
 
 export default function TheCrypt() {
   return(
@@ -17,7 +17,6 @@ export default function TheCrypt() {
       <Picture 
         imagePath="https://media.cryptid.quest/the-crypt/backgrounds/summer/dredsky-stairs/dredsky-stairs-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
-        alt = "Dredsky holding a torch going down into the crypt"
         className = "the-crypt__background" 
         imgClassName = "the-crypt__background-img"
         loading="eager"

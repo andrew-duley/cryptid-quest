@@ -5,7 +5,9 @@ import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
 import PostCard from '../components/PostCard';
-import PictureBackground from '../components/PictureBackground';
+
+import { IMAGE_WIDTHS_BACKGROUND } from '../config/imageWidths.js';
+import Picture from '../components/Picture';
 
 import '../scss/pages/_blog.scss';  
 
@@ -45,7 +47,14 @@ export default function TheCampfire() {
   return(
     <PageTemplate slug="the-campfire" title="The Campfire" className="the-campfire">
 
-      <PictureBackground src="https://media.cryptid.quest/the-campfire/backgrounds/autumn/the-campfire-gathering/the-campfire-gathering-master.png" alt="The Crew gathering around the fire during a peaceful autumn evening" className="the-campfire__background" imgClassName="the-campfire__background-img" />
+      <Picture 
+        imagePath="https://media.cryptid.quest/the-campfire/backgrounds/autumn/the-campfire-gathering/the-campfire-gathering-"
+        imageWidths={IMAGE_WIDTHS_BACKGROUND}
+        className = "the-campfire__background" 
+        imgClassName = "the-campfire__background-img"
+        loading="eager"
+        fetchPriority="high"
+      />
 
       <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster">
     

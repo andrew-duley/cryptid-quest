@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import PictureHero from './PictureHero';
+
+import { IMAGE_WIDTHS_HERO } from '../config/imageWidths.js';
+import Picture from '../components/Picture';
 
 export default function PostCard({ post }) {
 
@@ -11,7 +13,14 @@ export default function PostCard({ post }) {
     <article className="post-card card">
       <Link to={`/the-campfire/${post.slug}`} className="post-card__media-link">
         <div className="post-card__media">
-          <PictureHero src={post.hero_image_url} alt={post.hero_image_alt} />
+          <Picture 
+            imagePath={post.hero_image_url}
+            imageWidths={IMAGE_WIDTHS_HERO}
+            alt={post.hero_image_alt}
+            className = "post-card__hero"
+            imgClassName = "post-card__hero-img"
+            loading="lazy"
+          />
         </div>
       </Link>
 

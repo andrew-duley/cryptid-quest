@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import PictureGameCard from './PictureGameCard';
+import { IMAGE_WIDTHS_GAME_CARD } from '../config/imageWidths.js';
+import Picture from '../components/Picture';
 
 const STATUS_LABEL = {
   playable: 'Playable',
@@ -40,51 +41,13 @@ export default function GameCard({ game }) {
       <Link to={`/the-crypt/${slug}`} 
       className="game-card__media-link">
         <div className="game-card__media">
-          <PictureGameCard src={cardImageUrl} alt={title} className={`${slug}__background`} imgClassName={`${slug}__background-img`} />
-          {/* {coverBase ? (
-            <picture>
-              <source 
-                type="image/avif"
-                srcSet={`
-                  ${coverBase}-640.avif 640w,
-                  ${coverBase}-960.avif 960w,
-                  ${coverBase}-1200.avif 1200w
-                `}
-                sizes={sizes}
-              />
-              <source 
-                type="image/webp"
-                srcSet={`
-                  ${coverBase}-640.webp 640w,
-                  ${coverBase}-960.webp 960w,
-                  ${coverBase}-1200.webp 1200w
-                `}
-                sizes={sizes}
-              />
-              <img src={`${coverBase}-640.jpg`}
-                srcSet={`
-                  ${coverBase}-640.jpg 640w,
-                  ${coverBase}-960.jpg 960w,
-                  ${coverBase}-1200.jpg 1200w
-                `}
-                sizes={sizes} 
-                alt={`${title} — cover art`}
-                width="1200"
-                height="675"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-          ) : (
-            <img  
-              src={cover} 
-              alt={`${title} — cover art`}
-              width="800"
-              height="450"
-              loading="lazy"
-              decoding="async"
-            />
-          )} */}
+          <Picture 
+            imagePath={cardImageUrl}
+            imageWidths={IMAGE_WIDTHS_GAME_CARD}
+            className = "game-card__background" 
+            imgClassName = "game-card__background-img"
+            loading="lazy"
+          />
         </div>
       </Link>
 
