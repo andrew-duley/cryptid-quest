@@ -6,7 +6,7 @@ export default function Picture({
   imageWidths,
   fallbackFormat = "jpg",
   sizes = "100vw",
-  alt = '',
+  alt = "",
   className = "", 
   imgClassName = "",
   loading,

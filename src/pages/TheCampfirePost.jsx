@@ -8,8 +8,8 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import PictureHero from '../components/PictureHero';
-import PictureBackground from '../components/PictureBackground';
+import { IMAGE_WIDTHS_BACKGROUND, IMAGE_WIDTHS_HERO } from '../../config/imageWidths.js';
+import Picture from '../../components/Picture';
  
 import '../scss/pages/_the-campfire-post.scss';    
 
@@ -70,7 +70,13 @@ export default function TheCampfirePost() {
   return(
     <PageTemplate className="the-campfire-post" slug={`the-campfire/${slug}`} title={post.title} narrow={true}>
 
-      <PictureBackground src="https://media.cryptid.quest/the-campfire/post-backgrounds/northern-ocean/northern-ocean-master.png" alt="A dreamy night at sea" className="the-campfire-post__background" imgClassName="the-campfire-post__background-img" />
+      <Picture 
+        imagePath="https://media.cryptid.quest/the-campfire/post-backgrounds/northern-ocean/northern-ocean-"
+        imageWidths={IMAGE_WIDTHS_BACKGROUND}
+        className = "the-campfire-post__background" 
+        imgClassName = "the-campfire-post__background-img"
+        loading="eager"
+      />
 
       <Block label="Meta data">
         <div className="the-campfire-post__meta">
@@ -82,7 +88,15 @@ export default function TheCampfirePost() {
       </Block>
 
       <Block label="Hero Image" className="the-campfire-post__hero-image">
-        <PictureHero src={post.hero_image_url} alt={post.hero_image_alt} />
+        <Picture 
+          imagePath={post.hero_image_url}
+          imageWidths={IMAGE_WIDTHS_HERO}
+          alt = {post.hero_image_alt}
+          className = "the-campfire-post__hero" 
+          imgClassName = "the-campfire-post__hero-img"
+          loading="eager"
+          fetchPriority="high"
+        />
       </Block>
 
       <Block label="Body">

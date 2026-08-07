@@ -9,7 +9,7 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import ImageWidths from '../../config/imageWidths.js';
+import { IMAGE_WIDTHS_BACKGROUND } from '../../config/imageWidths.js';
 import Picture from '../../components/Picture';
 
 export default function Admin() {
@@ -339,7 +339,6 @@ export default function Admin() {
       <Picture 
         imagePath="https://media.cryptid.quest/admin/backgrounds/admin-lake-overlook/admin-lake-overlook-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
-        alt = "The awesome background image for the awesome admin area"
         className = "admin__background" 
         imgClassName = "admin__background-img"
         loading="eager"

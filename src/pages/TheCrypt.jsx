@@ -7,7 +7,7 @@ import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import ImageWidths from '../../config/imageWidths.js';
+import imageWidths from '../../config/imageWidths.js';
 import Picture from '../../components/Picture';
 
 export default function TheCrypt() {

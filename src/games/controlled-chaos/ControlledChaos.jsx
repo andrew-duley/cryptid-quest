@@ -7,7 +7,7 @@ import PageTemplate from '../../layout/PageTemplate';
 import Block from '../../layout/Block';
 import PageFooter from '../../layout/PageFooter';
 
-import ImageWidths from '../../config/imageWidths.js';
+import { IMAGE_WIDTHS_BACKGROUND } from '../../config/imageWidths.js';
 import Picture from '../../components/Picture';
 
 export default function ControlledChaos() {
@@ -32,7 +32,6 @@ export default function ControlledChaos() {
       <Picture 
         imagePath="https://media.cryptid.quest/the-crypt/game-backgrounds/controlled-chaos/controlled-chaos-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
-        alt = "Controlled chaos"
         className = "cc__background" 
         imgClassName = "cc__background-img"
         loading="eager"
