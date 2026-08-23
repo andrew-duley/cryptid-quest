@@ -28,7 +28,7 @@ export default function TheCampfire() {
         if (!res.ok) {
           throw new Error('Error retrieving posts ' + res.statusText);
         }
-        return res.json();
+        return res.json(); 
       })
       .then(json => {
         setPosts(json.data ?? []);

@@ -52,6 +52,6 @@ export default function ControlledChaos() {
         </section>
       </Block>
       <PageFooter />
-    </PageTemplate>
+    </PageTemplate> 
   );
 }

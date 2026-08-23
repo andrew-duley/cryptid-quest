@@ -19,7 +19,7 @@ import { createSessionMiddleware } from "../middleware/session.js";
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.set("trust proxy", 1);
+app.set("trust proxy", 1);  
 
 
 const allowedOrigins = [
@@ -46,7 +46,8 @@ app.use(cors({
 
 app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
-app.get("/admin/drafts", async (req, res, next) => {
+// *Does this need requireAdminSession?*
+app.get("/admin/drafts", requireAdminSession, async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, body, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
 
@@ -61,7 +62,7 @@ app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, body, slug, status, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
 
-    const result = await pool.query(`${baseSql}`);
+    const result = await pool.query(baseSql);
     return res.status(200).json({ data: result.rows });
 
   } catch (err) {

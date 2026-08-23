@@ -8,7 +8,7 @@ export const checkAdminKey = (req, res, next) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const keyValue = authHeader.trim().split(/\s+/)[1];
+  const keyValue = authHeader.trim().split(/\s+/)[1]; 
 
   if (keyValue === process.env.ADMIN_KEY) {
     next();

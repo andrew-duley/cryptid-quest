@@ -1,15 +1,15 @@
-import session from "express-session";
+import expressSession from "express-session";
 import connectPgSimple from "connect-pg-simple";
 
 export function createSessionMiddleware(pool) {
   
-  const PgSession = connectPgSimple(session);
+  const PgSession = connectPgSimple(expressSessionconnect);
   const store = new PgSession({ pool, tableName: "session", createTableIfMissing: true });
   
-  return session({ 
+  return expressSession({ 
     name: "cq.sid",
     store, 
-    secret: process.env.SESSION_SECRET, 
+    secret: process.env.SESSION_SECRET,  
     resave: false, 
     saveUninitialized: false,
     cookie: {

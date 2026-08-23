@@ -48,7 +48,7 @@ export default function Admin() {
     checkAuth();
   }, []);
 
-  async function checkAuth() {
+  async function checkAuth() { 
     setError(null);
     setAuthStatus("checking");
     fetch(`${API_BASE}/admin/me`, { credentials: "include" })
