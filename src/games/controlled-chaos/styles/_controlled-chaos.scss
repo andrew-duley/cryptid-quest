@@ -67,7 +67,7 @@
       background: #000;
       padding-block: .8rem;
       padding-inline: 1.6rem;
-      margin-block: 1rem;
+      margin-block: .6rem;
       border-radius: 2rem;
       cursor: pointer;
       box-shadow: 0 2px 3px 1px #000;
@@ -76,6 +76,14 @@
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 6px 2px #000;
+      }
+
+      &:disabled {
+        transition: none;
+        font-size: 1.1rem;
+        padding: .8rem .4rem;
+        color: red;
+        text-shadow: 0 0 1px #fff;
       }
     }
     
@@ -99,7 +107,7 @@
     top: 1%;
     left: 1%;
     
-    &.choice {
+    &.active {
       background-color: #D89A3D;
     }
   }
@@ -110,7 +118,7 @@
     top: 1%;
     right: 1%;
 
-    &.choice {
+    &.active {
       background-color: #4FC3FF;
     }
   }
@@ -121,7 +129,7 @@
     bottom: 1%;
     right: 1%;
 
-    &.choice {
+    &.active {
       background-color: #5FAF4A;
     }
   }
@@ -132,7 +140,7 @@
     bottom: 1%;
     left: 1%;
 
-    &.choice {
+    &.active {
       background-color: #B07CFF;
     }
   }

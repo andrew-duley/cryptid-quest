@@ -20,9 +20,14 @@ export class Game {
       this.update();
       await this.actionDelay(this.delay)
     }
+    this.finishShowingPattern();
   }
 
   start() {
+    if (this.state !== 'idle' && this.state !== 'game-over') {
+      return;
+    }
+
     this.round = 1;
     this.score = 0;
     this.playerStep = 0;
@@ -30,6 +35,7 @@ export class Game {
     this.sequence.reset();
     this.sequence.addChoice();
     this.update();
+    this.showPattern();
   }
 
   reset() {
@@ -45,13 +51,15 @@ export class Game {
     this.round ++;
     this.score ++;
     this.playerStep = 0;
-    this.state = 'showing-pattern';
+    this.state = 'showing-pattern'; 
     this.sequence.addChoice();
     this.update();
   }
 
   finishShowingPattern() {
     this.state = 'player-input';
+    this.activeChoice = null;
+    this.update();
   }
 
   handlePlayerChoice(choice) {

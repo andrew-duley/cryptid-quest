@@ -15,13 +15,15 @@ export default function ControlledChaos() {
   const [activeChoice, setActiveChoice] = useState(null);
   const [pattern, setPattern] = useState([]);
   const [round, setRound] = useState(0);
-  // const [score, setScore] = useState(0);
+  const [state, setState] = useState('idle');
+  const [score, setScore] = useState(0);
 
   const update = () => {
     setActiveChoice(gameRef.current.activeChoice);
-    setPattern(gameRef.current.sequence.pattern.slice());
+    setPattern(gameRef.current.sequence.pattern.slice()); 
     setRound(gameRef.current.round);
-    // setActiveChoice(gameRef.current.activeChoice);
+    setState(gameRef.current.state);
+    setScore(gameRef.current.score)
   }
 
   const gameRef = useRef(new Game(update));
@@ -41,14 +43,14 @@ export default function ControlledChaos() {
       <Block label="Controlled Chaos">
         <section className="cc__board">
           <div className="cc__ui">
-            <div className="cc__ui-button start" onClick={() => gameRef.current.start()}>Start</div>
-            <div className="cc__ui-button reset" onClick={() => gameRef.current.reset()}>Reset</div>
-            <div className="cc__ui-button round">{round}</div>
+            <button className="cc__ui-button start" disabled={state !== 'idle'} onClick={() => gameRef.current.start()}>{state === 'idle' ? "Start" : "CHAOS IN PROGRESS..."}</button>
+            <button className="cc__ui-button reset" onClick={() => gameRef.current.reset()}>Reset</button>
+            <button className="cc__ui-button round">{round}</button>
           </div>
-          <div className="button brutus"></div>
-          <div className="button sparkplug choice"></div>
-          <div className="button burnella"></div>
-          <div className="button grumbit"></div>
+          <div className={activeChoice === 'brutus' ? 'button brutus active' : 'button brutus'}></div>
+          <div className={activeChoice === 'sparkplug' ? 'button sparkplug active' : 'button sparkplug'}></div>
+          <div className={activeChoice === 'burnella' ? 'button burnella active' : 'button burnella'}></div>
+          <div className={activeChoice === 'grumbit' ? 'button grumbit active' : 'button grumbit'}></div>
         </section>
       </Block>
       <PageFooter />
