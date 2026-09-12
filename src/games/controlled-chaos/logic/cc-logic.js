@@ -1,5 +1,3 @@
-import { GalleryThumbnailsIcon } from "lucide-react";
-
 export class Game {
   constructor(update) {
     this.round = 0;
@@ -7,9 +5,12 @@ export class Game {
     this.activeChoice = null;
     this.playbackID = 0;
     this.patternDelay = 750;
-    this.delay = 500;
-    this.gap = 200
+    this.delay = 400;
+    this.gap = 200;
+    this.playerDelay = 250;
+    this.inputID = 0;
     this.state = 'idle';
+    this.loser = '';
     this.sequence = new Sequence();
     this.update = update;
   }
@@ -79,14 +80,26 @@ export class Game {
     }
 
     if (choice !== this.sequence.pattern[this.playerStep]) {
+      this.loser = choice;
       this.lose();
       return;
     }
-
     this.playerStep ++;
+    let didComplete = this.playerStep === this.sequence.pattern.length ? true : false;
+    this.inputID ++;
+    const currentInputID = this.inputID;
+
+    this.activeChoice = choice;
+    this.update();
+    await this.actionDelay(this.playerDelay);
+    if (currentInputID === this.inputID) {
+      this.activeChoice = null;
+      this.update();
+    }
+    
     const currentID = this.playbackID;
 
-    if (this.playerStep === this.sequence.pattern.length) {
+    if (didComplete) {
         await this.actionDelay(this.patternDelay);
         if (currentID !== this.playbackID) return;
         this.nextRound();
