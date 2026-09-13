@@ -37,25 +37,30 @@ export default function ControlledChaos() {
     setState(gameRef.current.state);
     setInputID(gameRef.current.inputID);
     setLoser(gameRef.current.loser);
-  }
-
-  const loseOverlay = () => {
-    const disasterMessage = disasters[loser][Math.floor(Math.random() * disasters[loser].length)];
-    setDisasterMessage(disasterMessage);
-    console.log(disasterMessage);
+    
+    if (gameRef.current.state === 'game-over') {
+      const disasterMessage = disasters[gameRef.current.loser][Math.floor(Math.random() * disasters[gameRef.current.loser].length)];
+      setDisasterMessage(disasterMessage);
+    }
   }
 
   const handleStart = () => {
-  setStartMessage(chaosMessages[Math.floor(Math.random() * chaosMessages.length)]);
-  gameRef.current.start();
-}
+    setStartMessage(chaosMessages[Math.floor(Math.random() * chaosMessages.length)]);
+    gameRef.current.start();
+  }
+
+  const handleReset = () => {
+    setStartMessage(chaosMessages[Math.floor(Math.random() * chaosMessages.length)]);
+    gameRef.current.reset();
+  }
 
   const gameRef = useRef(new Game(update));
   const audioRef = useRef({
     brutus: new Audio("https://media.cryptid.quest/audio/controlled-chaos/brutus.wav"),
     burnella: new Audio("https://media.cryptid.quest/audio/controlled-chaos/burnella.wav"),
     grumbit: new Audio("https://media.cryptid.quest/audio/controlled-chaos/grumbit.wav"),
-    sparkplug: new Audio("https://media.cryptid.quest/audio/controlled-chaos/sparkplug.wav")
+    sparkplug: new Audio("https://media.cryptid.quest/audio/controlled-chaos/sparkplug.wav"),
+    disaster: new Audio("https://media.cryptid.quest/audio/controlled-chaos/disaster.wav")
   });
 
   useEffect(() => {
@@ -65,11 +70,14 @@ export default function ControlledChaos() {
     currentAudio.play();
   }, [activeChoice, inputID]);
 
-  useEffect(() =>{
+  useEffect(() => {
+    const currentDisaster = audioRef.current?.disaster
+    if (!currentDisaster) return;
     if (state === 'game-over') {
-      loseOverlay();
+      currentDisaster.currentTime = 0;
+      currentDisaster.play();
     }
-  })
+  });
 
   return(
     <PageTemplate slug="controlled-chaos" title="Controlled Chaos" className="cc">
@@ -101,10 +109,10 @@ export default function ControlledChaos() {
         <Block label="Disaster Overlay">
           <div className="cc__overlay">
             <div className="cc__overlay-message">
-              <h2>DISASTER!</h2>
+              <h2>THANKS, {loser.toUpperCase()}!</h2>
               <p>{disasterMessage}</p>
             </div>
-             <button className="cc__ui-button start"  onClick={handleStart}>Play Again</button>
+             <button className="cc__ui-button start"  onClick={handleReset}>Play Again</button>
           </div>
         </Block>
       )}

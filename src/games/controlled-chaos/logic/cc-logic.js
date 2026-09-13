@@ -88,7 +88,7 @@ export class Game {
     let didComplete = this.playerStep === this.sequence.pattern.length ? true : false;
     this.inputID ++;
     const currentInputID = this.inputID;
-
+    const currentID = this.playbackID;
     this.activeChoice = choice;
     this.update();
     await this.actionDelay(this.playerDelay);
@@ -96,8 +96,6 @@ export class Game {
       this.activeChoice = null;
       this.update();
     }
-    
-    const currentID = this.playbackID;
 
     if (didComplete) {
         await this.actionDelay(this.patternDelay);
@@ -107,6 +105,9 @@ export class Game {
   }
 
   lose() {
+    this.playbackID ++;
+    this.inputID ++;
+    this.activeChoice = null;
     this.state = 'game-over';
     this.update();
   }
