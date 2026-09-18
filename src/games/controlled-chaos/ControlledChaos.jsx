@@ -60,8 +60,28 @@ export default function ControlledChaos() {
     burnella: new Audio("https://media.cryptid.quest/audio/controlled-chaos/burnella.wav"),
     grumbit: new Audio("https://media.cryptid.quest/audio/controlled-chaos/grumbit.wav"),
     sparkplug: new Audio("https://media.cryptid.quest/audio/controlled-chaos/sparkplug.wav"),
-    disaster: new Audio("https://media.cryptid.quest/audio/controlled-chaos/disaster.wav")
+    disaster: new Audio("https://media.cryptid.quest/audio/controlled-chaos/disaster.wav"),
+    goTime: new Audio("https://media.cryptid.quest/audio/controlled-chaos/go-time.mp3")
   });
+
+  useEffect(() => {
+    const currentGoTime = audioRef.current?.goTime;
+    if (!currentGoTime) return;
+
+    currentGoTime.volume = 0.25;
+
+    if (state === 'idle') {
+      currentGoTime.pause();
+      currentGoTime.currentTime = 0;
+    } 
+    if (state === 'game-over') {
+      currentGoTime.pause();
+      currentGoTime.currentTime = 0;
+    }
+    if (state === 'showing-pattern') {
+      currentGoTime.play();
+    }
+  }, [state]);
 
   useEffect(() => {
     const currentAudio = audioRef.current?.[activeChoice];
@@ -71,7 +91,7 @@ export default function ControlledChaos() {
   }, [activeChoice, inputID]);
 
   useEffect(() => {
-    const currentDisaster = audioRef.current?.disaster
+    const currentDisaster = audioRef.current?.disaster;
     if (!currentDisaster) return;
     if (state === 'game-over') {
       currentDisaster.currentTime = 0;
