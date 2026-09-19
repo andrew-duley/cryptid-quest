@@ -9,11 +9,10 @@ function Header() {
 
   return(
     <header id="header" className="header">
-
       <Picture 
-        imagePath="https://media.cryptid.quest/headers/winter/winter-tracks/winter-tracks-"
+        imagePath="https://media.cryptid.quest/headers/main/main-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
-        className = "header__background"
+        className = "header__background" 
         imgClassName = "header__background-img"
         loading="eager"
         fetchPriority="high"
@@ -29,10 +28,10 @@ function Header() {
 
           <NavLink to="/" className="header__home" aria-label="Crypted Quest home">
             <picture className="header__logo">
-              <source type="image/avif" srcSet="https://media.cryptid.quest/site-ui/logos/logo-img-600.avif 1x" />
-              <source type="image/webp" srcSet="https://media.cryptid.quest/site-ui/logos/logo-img-600.webp 1x" />
-              <img className="hero__logo-img" src="https://media.cryptid.quest/site-ui/logos/logo-img-600.png" alt="Cryptid Quest logo" width="600" height="600" />                
-            </picture>
+              <source type="image/avif" srcSet="https://media.cryptid.quest/site-ui/logos/cq-logo-600.avif" />
+              <source type="image/webp" srcSet="https://media.cryptid.quest/site-ui/logos/cq-logo-600.webp" />
+              <img className="hero__logo-img" src="https://media.cryptid.quest/site-ui/logos/cq-logo-600.png" alt="Cryptid Quest logo" width="600" height="600" />                
+            </picture>   
           </NavLink>
 
           <div className="header__title-tag">

@@ -69,6 +69,7 @@ export default function ControlledChaos() {
     if (!currentGoTime) return;
 
     currentGoTime.volume = 0.25;
+    currentGoTime.loop = true;
 
     if (state === 'idle') {
       currentGoTime.pause();
