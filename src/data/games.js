@@ -46,7 +46,7 @@ export const GAMES = [
     slug: 'controlled-chaos',
     title: 'Controlled Chaos',
     blurb: 'Keep the crew focused and prevent disaster. One wrong move and something is going to go BOOM!',
-    status: 'comingSoon',
+    status: 'playable',
     difficulty: 2,
     cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/controlled-chaos/controlled-chaos-',
   },

@@ -8,21 +8,15 @@
   isolation: isolate;
   color: $color-text-light;
   border-bottom: 1px solid $color-border;
+  aspect-ratio: 16 / 9;
 
-  min-height: clamp(18rem, 42vw, 26rem);
-  min-height: clamp(30rem, 50vh, 60rem);
-
-  &__background,
-  &__overlay,
-  &__fog {
+  &__background {
+    display: block;
     position: absolute;
     inset: 0;
     pointer-events: none;
+    z-index: 0;
   }
-
-  &__background { z-index: 0; display: block; }
-  &__overlay { z-index: 1; }
-  &__fog { z-index: 1; }
 
   &__background-img {
     width: 100%;
@@ -31,23 +25,17 @@
     object-position: center;
   }
 
-  &__overlay {
-    background-image:
-      linear-gradient(to bottom, rgba($color-bg-dark, .15), rgba($color-bg-dark, .72)),
-      linear-gradient(rgba($color-neon-purple, .10), rgba($color-neon-purple, 0));
-    background-blend-mode: normal, multiply;
-  }
-
   &__inner {
     position: relative; 
     z-index: 2;
 
-    max-width: 106rem;
+    max-width: 120rem;
     margin-inline: auto;
     padding-block: clamp(1.6rem, 3vw, 2.6rem);
     padding-inline: clamp(1rem, 3vw, 2rem);
 
     display: grid;
+    gap: clamp(1rem, 2.4vw, 1.6rem);
     gap: clamp(1rem, 2.4vw, 1.6rem);
 
     grid-template-areas:
@@ -67,8 +55,8 @@
     display: inline-flex; 
   }
 
-  &__logo-img {
-    width: clamp(12rem, 14vw, 18rem);
+  &__logo {
+    width: clamp(16rem, 26vw, 30rem);
     height: auto;
     display: block;
   }
@@ -76,11 +64,7 @@
   &__title-tag {
     display: grid;
     justify-items: center;
-    gap: .5rem;
-
-    > * {
-      margin-bottom: .6rem;
-    }
+    gap: .8rem;
   }
 
   &__title {
@@ -91,12 +75,19 @@
   &__title-link {
     color: $color-text-light;
     text-decoration: none;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 
   &__tagline {
     margin: 0;
     font-family: "Roboto", sans-serif;
-    color: $color-text-muted;
+    font-size: 2rem;
+    font-weight: 500;
+    color: $color-text-light;
   }
 
   &__note {
@@ -106,6 +97,12 @@
 
   &__nav {
     grid-area: nav;
+
+    padding: .6rem .8rem;
+    background: rgba($color-bg-dark, .8);
+    border: 1px solid rgba($color-border, .8);
+    border-radius: .8rem;
+    font-size: 1.8rem;
   }
 
   &__nav-list {
@@ -123,28 +120,18 @@
     color: $color-text-light;
     padding: .35rem .55rem;
     border-radius: .6rem;
+
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  &__nav-list a:hover {
+    background: rgba($color-accent-teal, .10);
   }
 
   &__nav-list a.active {
-    box-shadow: 0 0 0 1px rgba($color-neon-green, .55);
-    background: rgba($color-neon-green, .08);
+    box-shadow: 0 0 0 1px rgba($color-accent-teal, .55);
+    background: rgba($color-accent-teal, .28);
   }
-
-  /* fog */
-  &__fog {
-    inset: -12% -20%;
-    mix-blend-mode: screen;
-    filter: blur(1.8rem) saturate(110%);
-    will-change: transform;
-    background:
-      radial-gradient(45% 40% at 22% 35%, rgba($color-fog,.16), transparent 60%),
-      radial-gradient(40% 35% at 70% 55%, rgba($color-fog,.12), transparent 62%),
-      radial-gradient(35% 30% at 40% 75%, rgba($color-fog,.10), transparent 60%);
-    background-repeat: no-repeat;
-  }
-
-  &__fog--near { opacity: .32; animation: fog-drift-near 120s linear infinite; }
-  &__fog--far  { opacity: .20; animation: fog-drift-far 180s linear infinite; }
 }
 
 @media (min-width: $bp-xl) {
@@ -163,10 +150,6 @@
     column-gap: 1rem;
   }
 
-  .header__logo-img {
-    // width: 16rem;
-  }
-
   .header__title-tag {
     justify-items: start;
   }
@@ -176,18 +159,8 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .header__fog { animation: none; }
-}
-
-@keyframes fog-drift-near {
-  0%   { transform: translate3d(0, 0, 0) scale(1.05); }
-  50%  { transform: translate3d(-4rem, -.5rem, 0) scale(1.06); }
-  100% { transform: translate3d(0, 0, 0) scale(1.05); }
-}
-
-@keyframes fog-drift-far {
-  0%   { transform: translate3d(0, 0, 0) scale(1.08); }
-  50%  { transform: translate3d(3rem, .6rem, 0)  scale(1.07); }
-  100% { transform: translate3d(0, 0, 0) scale(1.08); }
+@media (max-width: $bp-xl) {
+  .header {
+    aspect-ratio: 4 / 3;
+  }
 }

@@ -2,7 +2,7 @@
 
 .media-frame {
   display: block;
-  background: rgba($color-bg-light, .35);
+  background: rgba($color-bg-slate, .35);
 
   /* Uses a CSS variable if set, otherwise defaults to 12rem */
   height: var(--media-h, 12rem);

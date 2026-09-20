@@ -18,11 +18,6 @@ function Header() {
         fetchPriority="high"
       />
 
-      {/* Overlay tint so text reads well */}
-      <div className="header__overlay" aria-hidden="true" />
-
-      <div className="header__fog header__fog--far" aria-hidden="true"></div>
-      <div className="header__fog header__fog--near" aria-hidden="true"></div>
       <section className="header__inner">
         <div className="header__brand">
 
@@ -35,12 +30,12 @@ function Header() {
           </NavLink>
 
           <div className="header__title-tag">
-            <h1 className="header__title">
+            {/* <h1 className="header__title">
               <NavLink to="/" className="header__title-link">Cryptid Quest</NavLink>
-            </h1>
+            </h1> */}
             <h3 className="header__tagline">Welcome to the Northern Fringe—Where the Woods Watch Back...</h3>
             <p className="header__note">
-              <small><em>A living portfolio</em> of polished React + UI craft.</small>
+              <em>A living portfolio</em> of polished React + UI craft.
               </p>
           </div>
         </div>

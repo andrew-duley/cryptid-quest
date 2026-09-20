@@ -32,7 +32,7 @@
     margin: 0 auto;
     padding: 1rem;
     border: 1px solid $color-border;
-    background-image: linear-gradient($color-forest-deep, $color-bg-light);
+    background-image: linear-gradient($color-forest-deep, $color-bg-slate);
     border-radius: 1rem;
     font-weight: 700;
     box-shadow: 0 2px 20px 4px $color-bg-dark;
@@ -199,7 +199,6 @@
     margin: 1rem auto 0;
     padding: 1.4rem 1rem;
     background: rgba(10, 15, 28, .55);
-    // background: $color-bg-light;
     border: 1px solid rgba(255, 255, 255, .08);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .25);
     backdrop-filter: blur(.4rem);

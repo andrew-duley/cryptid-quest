@@ -83,31 +83,26 @@ a {
   transition: color .2s ease;
 }
 
-// Unvisited
-a:link {
-  color: $color-text-muted;
-}
-
-// Visited (subtle purple tint)
+a:link,
 a:visited {
-  color: color.mix($color-neon-purple, $color-text-muted, 28%);
+  color: $color-text-light;
 }
 
 // Hover
 a:hover {
-  color: $color-text-light;
-  text-decoration: underline;
-  text-decoration-color: rgba($color-neon-green, .9);
+  // color: $color-accent-teal;
+  // text-decoration: underline;
+  // text-decoration-color: $color-accent-teal;
 }
 
 // Focus/focus-visible (keyboard first)
 a:focus-visible,
 a:hover:focus-visible {
-  outline: 2px solid $color-neon-green;
+  outline: 2px solid $color-accent-teal;
   outline-offset: 2px;
   border-radius: .25rem;
-  text-decoration: underline;
-  text-decoration-color: $color-neon-green;
+  // text-decoration: underline;
+  // text-decoration-color: $color-neon-green;
 }
 
 a:focus {
@@ -121,8 +116,7 @@ a:focus:not(:focus-visible) {
 }
 
 a:active {
-  color: color.mix($color-neon-green, $color-neon-blue, 35%);
-  text-decoration-color: currentColor;
+  color: $color-accent-teal;
 }
 
 em,
