@@ -225,17 +225,6 @@ export default function CryptidMixup() {
   return (
     <PageTemplate slug="cryptid-mixup" title="Cryptid Mixup" className="cmx">
 
-      <Block title="How to Play">
-        <p>
-          Flip two cards at a time and match the cryptids. Fewer moves and faster time wins.
-        </p>
-
-        {/* Live region for screen readers */}
-        <div className="sr-only" aria-live="polite">
-          {liveText}
-        </div>
-      </Block>
-
       {/* Win banner */}
         {
           isWin && (

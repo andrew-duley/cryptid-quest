@@ -11,22 +11,21 @@ export default function PostCard({ post }) {
 
   return(
     <article className="post-card card">
-      <Link to={`/the-campfire/${post.slug}`} className="post-card__media-link">
-        <div className="post-card__media">
-          <Picture 
-            imagePath={post.hero_image_url}
-            imageWidths={IMAGE_WIDTHS_HERO}
-            alt={post.hero_image_alt}
-            className = "post-card__hero"
-            imgClassName = "post-card__hero-img"
-            loading="lazy"
-          />
-        </div>
-      </Link>
+      
+      <div className="post-card__media">
+        <Picture 
+          imagePath={post.hero_image_url}
+          imageWidths={IMAGE_WIDTHS_HERO}
+          alt={post.hero_image_alt}
+          className = "post-card__hero"
+          imgClassName = "post-card__hero-img"
+          loading="lazy"
+        />
+      </div>
 
       <div className="post-card__body">
         <h2 className="post-card__title">
-          <Link to={`/the-campfire/${post.slug}`}>{post.title}</Link>
+          <Link to={`/the-campfire/${post.slug}`} className="post-card__link">{post.title}</Link>
         </h2>
 
         <section className="post-card__meta">
@@ -37,7 +36,7 @@ export default function PostCard({ post }) {
         </section>
 
         <p className="post-card__excerpt">{plainExcerpt}</p>
-        <Link to={`/the-campfire/${post.slug}`} className="post-card__more">Read more</Link>
+        <span className="post-card__more">Read more</span>
       </div>
       
     </article>

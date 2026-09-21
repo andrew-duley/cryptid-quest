@@ -11,12 +11,9 @@
   text-decoration: none;
   overflow: hidden;
   border-radius: 1rem;
-  box-shadow: 0 1rem 2rem rgba(#000, .35);
-
-  .pill {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-  }
+  background: $color-bg-slate;
+  border: 1px solid $color-border;
+  box-shadow: 0 .6rem 1.4rem rgba(#000, .20);
 }
 
 /* Optional: respect reduced motion preferences */
@@ -60,7 +57,6 @@
     box-shadow 0.18s ease,
     border-color 0.18s ease,
     filter 0.18s ease;
-  
 }
 
 /* =========
@@ -68,53 +64,32 @@
    ========= */
   
 .post-card {
-  border: 1px solid rgba($color-accent-ice, .50);
+  transition: border-color .2s ease, box-shadow .2s ease;
+  position: relative;
 
-  // &:hover {
-  //   transform: translateY(-2px);
-  //   border-color: rgba($color-border, 0.95);
-  //   box-shadow:
-  //     0 1.2rem 2.2rem rgba(#000, 0.36),
-  //     0 0 1rem rgba($color-accent-ice, 0.4);
-  // }
-
-  // &:focus-within {
-  //   transform: translateY(-2px);
-  //   border-color: rgba($color-border, 0.95);
-  //   box-shadow:
-  //     0 1.2rem 2.2rem rgba(#000, 0.36),
-  //     0 0 1rem rgba($color-accent-ice, 0.16);
-  // }
-
-  // &:active {
-  //   transform: translateY(0);
-  //   box-shadow:
-  //     0 0.7rem 1.4rem rgba(#000, 0.24),
-  //     0 0 0.55rem rgba($color-accent-ice, 0.1);
-  // }
-
-  &__body {
-    background-image: linear-gradient(rgba($color-neon-blue, .1),rgba($color-forest-deep, .1));
-    // background-image:
-    // radial-gradient(circle at top right, rgba($color-neon-blue, .12), transparent 40%),
-    // linear-gradient(rgba($color-neon-blue, .08), rgba($color-forest-deep, .12));
-    // background:
-    // radial-gradient(
-    //   circle at 85% 15%,
-    //   rgba($color-neon-blue, .12),
-    //   transparent 40%
-    // ),
-    // linear-gradient(
-    //   to bottom,
-    //   rgba($color-neon-blue, .06),
-    //   rgba($color-forest-deep, .12)
-    // );
+  &:hover,
+  &:focus-within {
+    border-color: rgba($color-accent-teal, .65);
+    box-shadow:
+      0 .6rem 1.4rem rgba(#000, .24),
+      0 0 .6rem rgba($color-accent-teal, .08);
   }
 
-   &__meta {
+  &__meta {
     display: flex;
     align-items: center;
     margin-block: 1rem;
+  }
+
+  &__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .pill {
+    margin-right: 1rem;
+    border-color: rgba($color-accent-teal, .6);
   }
 }
 
@@ -124,38 +99,6 @@
 
 .game-card {
   transition: transform 0.18s ease;
-    
-  &:hover {
-    transform: translateY(-2px);
-    border-color: rgba($color-border, 0.95);
-    box-shadow:
-      0 1.2rem 2.2rem rgba(#000, 0.36),
-      0 0 1rem rgba($color-neon-blue, 0.4);
-  }
-
-  &:focus-within {
-    transform: translateY(-2px);
-    border-color: rgba($color-border, 0.95);
-    box-shadow:
-      0 1.2rem 2.2rem rgba(#000, 0.36),
-      0 0 1rem rgba($color-neon-blue, 0.16);
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow:
-      0 0.7rem 1.4rem rgba(#000, 0.24),
-      0 0 0.55rem rgba($color-neon-blue, 0.1);
-  }
-
-  &__body {
-    background-image: linear-gradient(rgba(#000, 0), rgba($color-neon-blue, .1));
-    //  background-image:
-    // radial-gradient(circle at 80% 20%, rgba($color-neon-green, .14), transparent 35%),
-    // linear-gradient(rgba($color-forest-deep, .18), rgba($color-bg-dark, .95));
-
-    
-  }
 
   &__body::after {
       content: "";
@@ -216,7 +159,6 @@
    ========= */
 
 .crew-card {
-  border: 1px solid rgba($color-neon-purple, .30);
   background: rgba(#000, .28);
   backdrop-filter: blur(.6rem);
 
