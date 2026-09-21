@@ -46,7 +46,7 @@ export default function NewestPosts() {
 
       {
         !isLoading && !error ? (
-        newestPosts.length === 0 ? 
+        newestPosts.length > 0 ? 
         <div className="newest-posts">
           <div className="card-grid newest-posts__grid">
             {newestPosts.slice(0, 3).map(p => (
