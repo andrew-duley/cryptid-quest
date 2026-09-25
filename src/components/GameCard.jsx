@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { IMAGE_WIDTHS_GAME_CARD } from '../config/imageWidths.js';
 import Picture from '../components/Picture';
 
+import VanillaTilt from 'vanilla-tilt';
+
 export default function GameCard({ game }) {
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+
+    if (!card) return;
+
+    VanillaTilt.init(card, {
+      max: 4,
+      speed: 400,
+      scale: 1.02,
+      glare: false,
+    });
+
+    return () => {
+      card.vanillaTilt?.destroy();
+    };
+  }, []);
 
   const {
     slug,
@@ -14,7 +34,7 @@ export default function GameCard({ game }) {
   } = game;
 
   return(
-    <article className={`game-card card`}>
+    <article ref={cardRef} className={`game-card card`}>
       <Link to={`/the-crypt/${slug}`} 
       className="game-card__media-link">
         <div className="game-card__media">
