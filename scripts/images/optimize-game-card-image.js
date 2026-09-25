@@ -25,7 +25,7 @@ function isMasterFile(fileName) {
 
 async function processAssetDir(assetPath) {
   const assetDir = path.join(MEDIA_DIR, assetPath);
-
+  
   if (!fs.existsSync(assetDir)) {
     console.warn(`⚠️  Game card folder not found: ${assetDir}`);
     return;

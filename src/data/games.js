@@ -5,7 +5,7 @@ export const GAMES = [
     blurb: 'Something has scattered the cryptids through the woods. Find them all before nightfall—or worse, dinner.',
     status: 'playable',
     difficulty: 1,
-    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptid-mixup/cryptid-mixup-card-master.png', 
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptid-mixup/cryptid-mixup-', 
     featured: true,
   },
   {
@@ -14,7 +14,7 @@ export const GAMES = [
     blurb: 'Sasquatch. Dogman. Nine squares. One ancient rivalry finally settled in the least dramatic way imaginable.',
     status: 'playable',
     difficulty: 1,
-    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptac-toe/cryptac-toe-master.png',
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptac-toe/cryptac-toe-',
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ export const GAMES = [
     blurb: 'The lake is calm, the cabin is quiet, and somebody is about to take this game way too seriously. Grab a friend and settle it in Cryptipong.',
     status: 'playable',
     difficulty: 1,
-    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptipong/cryptipong-master.png',
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptipong/cryptipong-',
     featured: true,
   },
   // {
