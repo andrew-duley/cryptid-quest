@@ -39,7 +39,7 @@ export default function NewestPosts() {
   }, []);
 
     return(
-    <Block title="What's new in the Cryptid Quest Woods" subtitle="New footprints on the trail—some definitely not human" actions={<Link to="/the-campfire" className="btn btn--the-campfire">View all campfire posts</Link>}>
+    <Block title="What's New at the Campfire" subtitle="Follow the crew as life in Baird continues to unfold" actions={<Link to="/the-campfire" className="btn btn--the-campfire">View all campfire posts</Link>}>
 
       {isLoading ? <p className="newest-posts__loading">Loading posts...</p> : null}
       {error ? <p className="newest-posts__error">{error}</p> : null}

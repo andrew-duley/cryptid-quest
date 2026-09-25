@@ -33,6 +33,7 @@
 
 .post-card,
 .game-card {
+  position: relative;
 
   &__media {
     display: block;
@@ -65,7 +66,6 @@
   
 .post-card {
   transition: border-color .2s ease, box-shadow .2s ease;
-  position: relative;
 
   &:hover,
   &:focus-within {
@@ -98,59 +98,15 @@
    ========= */
 
 .game-card {
-  transition: transform 0.18s ease;
-
-  &__body::after {
-      content: "";
-      position: absolute;
-      inset: auto 1.2rem 1rem auto;
-      width: .6rem;
-      height: .6rem;
-      border-radius: 50%;
-      background: rgba($color-neon-green, .7);
-      box-shadow:
-        1rem 0 rgba($color-neon-green, .45),
-        2.4rem -.8rem rgba($color-neon-blue, .35);
-      opacity: .6;
-      pointer-events: none;
-    }
-
-  &__top {
-    display: flex; 
-    justify-content: space-between;
+  
+  &__title {
+    margin-bottom: 1rem;
   }
 
-  &__status {
-    font-size: 1.2rem;
-    padding: .3rem .6rem;
-    border-radius: 10rem;
-    border: 1px solid $color-border;
-    color: $color-text-muted;
-    white-space: nowrap;
-  }
-
-  &__status--playable {
-    color: $color-text-light;
-    border-color: rgba($color-neon-green, .6);
-  }
-
-  &__meta {
-    margin-block: 1rem;
-  }
-
-  &__difficulty {
-    color: $color-text-muted;
-    letter-spacing: .08rem;
-
-    span {
-      color: green;
-      font-size: 2.4rem;
-    }
-    
-  }
-
-  &__cta--disabled {
-    color: $color-text-muted;
+  &__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
   }
 }
 

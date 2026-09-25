@@ -2,7 +2,7 @@ export const GAMES = [
   {
     slug: 'cryptid-mixup',
     title: 'Cryptid Mix-up',
-    blurb: 'Match the cryptids and find the pairs.',
+    blurb: 'Something has scattered the cryptids through the woods. Find them all before nightfall—or worse, dinner.',
     status: 'playable',
     difficulty: 1,
     cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptid-mixup/cryptid-mixup-card-master.png', 
@@ -11,7 +11,7 @@ export const GAMES = [
   {
     slug: 'cryptac-toe',
     title: 'Cryptac-Toe',
-    blurb: 'Be the first to get three in a row.',
+    blurb: 'Sasquatch. Dogman. Nine squares. One ancient rivalry finally settled in the least dramatic way imaginable.',
     status: 'playable',
     difficulty: 1,
     cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptac-toe/cryptac-toe-master.png',
@@ -20,7 +20,7 @@ export const GAMES = [
   {
     slug: 'cryptipong',
     title: 'Cryptipong',
-    blurb: 'Who can score the most points in this classic game of pong?',
+    blurb: 'The lake is calm, the cabin is quiet, and somebody is about to take this game way too seriously. Grab a friend and settle it in Cryptipong.',
     status: 'playable',
     difficulty: 1,
     cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptipong/cryptipong-master.png',
@@ -45,7 +45,7 @@ export const GAMES = [
   {
     slug: 'controlled-chaos',
     title: 'Controlled Chaos',
-    blurb: 'Keep the crew focused and prevent disaster. One wrong move and something is going to go BOOM!',
+    blurb: 'Keep your eyes on the Crew and remember the sequence. One mistake is all it takes to turn controlled chaos into the regular kind.',
     status: 'playable',
     difficulty: 2,
     cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/controlled-chaos/controlled-chaos-',
