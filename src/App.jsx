@@ -21,6 +21,7 @@ import TheCrypt from './pages/TheCrypt.jsx';
 import CryptidMixup from './games/cryptid-mixup/CryptidMixup.jsx';
 import CryptacToe from './games/cryptac-toe/CryptacToe.jsx';
 import Cryptipong from './games/cryptipong/Cryptipong.jsx';
+import LongfireFour from './games/longfire-four/LongfireFour.jsx';
 import DypetsBrikker from './games/dypets-brikker/DypetsBrikker.jsx';
 import ControlledChaos from './games/controlled-chaos/ControlledChaos.jsx';
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/the-crypt/cryptid-mixup" element={<CryptidMixup />} />
           <Route path="/the-crypt/cryptac-toe" element={<CryptacToe />} />
           <Route path="/the-crypt/cryptipong" element={<Cryptipong />} />
+          <Route path="/the-crypt/longfire-four" element={<LongfireFour />} />
           <Route path="/the-crypt/dypets-brikker" element={<DypetsBrikker />} />
           <Route path="/the-crypt/controlled-chaos" element={<ControlledChaos />} />
           <Route path="/the-crypt" element={<TheCrypt />} />

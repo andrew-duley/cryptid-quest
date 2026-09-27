@@ -26,6 +26,12 @@ export const GAMES = [
     cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/cryptipong/cryptipong-',
     featured: true,
   },
+  {
+    slug: 'longfire-four',
+    title: 'Longfire Four',
+    blurb: 'Pull up a chair, pick your pieces, and line up four before your opponent does. Simple enough—right up until the fourth piece drops and somebody starts flipping tables.',
+    cardImageUrl: 'https://media.cryptid.quest/the-crypt/game-cards/longfire-four/longfire-four-',
+  },
   // {
   //   slug: 'dypets-brikker',
   //   title: 'Dypets Brikker',

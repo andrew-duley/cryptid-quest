@@ -1,0 +1,33 @@
+@use '../../../scss/abstracts' as *;
+
+.longfire-four {
+  background: teal;
+
+  &__row {
+    display: flex;
+  }
+
+  &__drop-zone,
+  &__board {
+    width: 100%;
+    max-width: 75rem;
+    background: blue;
+  }
+
+  &__drop-zone {
+    display: flex;
+    background: yellow;
+  }
+
+  &__drop-zone-cell {
+    flex: 1;
+    border: 1px solid green;
+    height: 16rem;
+  }
+
+  &__cell {
+    flex: 1;
+    aspect-ratio: 1/1;
+    border: 1px solid red;
+  }
+}

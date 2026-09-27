@@ -16,8 +16,8 @@ export default function GameCard({ game }) {
 
     VanillaTilt.init(card, {
       max: 4,
-      speed: 400,
-      scale: 1.02,
+      speed: 600,
+      scale: 1.01,
       glare: false,
     });
 
