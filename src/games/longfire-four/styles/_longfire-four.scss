@@ -1,7 +1,25 @@
 @use '../../../scss/abstracts' as *;
 
 .longfire-four {
-  background: teal;
+  
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+
+  &__background {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 100vh;
+    z-index: 0;
+  }
+
+  &__background-img {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+  }
 
   &__row {
     display: flex;
