@@ -7,57 +7,80 @@ import PageFooter from '../../layout/PageFooter';
 import '../a11y/index.scss';
 import './styles/index.scss';
 
+const newBoard = [
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+  ];
+
+  const winCheck = (copiedBoard) => {
+    const rows = copiedBoard.length;
+    const cols = copiedBoard[0].length;
+
+    for (let r = 0; r < rows; r ++) {
+      for (let c = 0; c < cols; c ++) {
+
+        const value = copiedBoard[r][c];
+        if (!value) continue;
+
+        if (c + 3 < cols && value === copiedBoard[r][c+1] && value === copiedBoard[r][c+2] && value === copiedBoard[r][c+3]) {
+          return true;
+        }
+
+        if (r + 3 < rows && value === copiedBoard[r+1][c] && value === copiedBoard[r+2][c] && value === copiedBoard[r+3][c]) {
+          return true;
+        }
+
+        if (r + 3 < rows && c + 3 < cols && value === copiedBoard[r+1][c+1] && value === copiedBoard[r+2][c+2] && value === copiedBoard[r+3][c+3]) {
+          return true;
+        }
+
+        if (r + 3 < rows && c > 2 && value === copiedBoard[r+1][c-1] && value === copiedBoard[r+2][c-2] && value === copiedBoard[r+3][c-3]) {
+          return true;
+        }
+      }
+    } return false;
+  }
+
 export default function LongfireFour() {
 
-  const newBoard = [
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-  ]
+  const [board, setBoard] = useState(newBoard.map(row => row.slice()));
+  const [playerTurn, setPlayerTurn] = useState("Player 1");
+  const [playerWin, setPlayerWin] = useState(null);
 
-  const dropPiece = (columnIndex, player) => {
+  const playerMove = (columnIndex, player) => {
+
     const copiedBoard = board.map(row => row.slice());
+
     for (let i = 5; i >= 0; i--) {
+
       if (board[i][columnIndex] === null) {
-        // Drop that player's piece
-        // Set that location in the array to that player's number
         copiedBoard[i][columnIndex] = player;
         setBoard(copiedBoard)
-        playerTurn === "Player 1" ? setPlayerTurn("Player 2") : setPlayerTurn("Player 1");
-        let horCheck = 1;
-        let verCheck = 1;
-        for (let j = 0; j < 6; j ++) {
-          // if (copiedBoard[i][j] !== null && copiedBoard[i][j] === copiedBoard[i][j + 1]) {
-          //   horCheck ++
-          //   if (horCheck === 4) {
-          //     // Call win func
-          //     console.log('You win!')
-          //   }
-          // } else {
-          //   horCheck = 1;
-          // }
-          if (copiedBoard[i][columnIndex] !== null && copiedBoard[5][columnIndex] === copiedBoard[5 - 1][columnIndex]) {
-            verCheck ++
-            console.log(verCheck)
-            if (verCheck === 4) {
-              // Call win func
-              console.log('You win!')
-            }
-          } else {
-            verCheck = 1;
-          }
+       
+        const didWin = winCheck(copiedBoard);
+
+        if (didWin) {
+          setPlayerWin(player);
+          return;
         }
+
+        player === "Player 1" ? setPlayerTurn("Player 2") : setPlayerTurn("Player 1");
+
         break;
       }
     }
     
   }
 
-  const [board, setBoard] = useState(newBoard);
-  const [playerTurn, setPlayerTurn] = useState("Player 1");
+  const resetGame = () => {
+    setBoard(newBoard.map(row => row.slice()));
+    setPlayerTurn("Player 1");
+    setPlayerWin(null);
+  }
 
 
   return (
@@ -67,7 +90,7 @@ export default function LongfireFour() {
 
         <div className="longfire-four__drop-zone">
           {board[0].map((__, idx) => {
-          return <div key={idx} className="longfire-four__drop-zone-cell" onClick={() => dropPiece(idx, playerTurn)}></div>
+          return <div key={idx} className="longfire-four__drop-zone-cell" onClick={() => playerMove(idx, playerTurn)}></div>
         })}
         </div>
 
@@ -77,17 +100,17 @@ export default function LongfireFour() {
             return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell}</div>;
           })}</div>
         })}
+
+        <div className="longfire-four__ui">
+          <div className="longfire-four__reset">
+            <button className="btn" type="button" onClick={resetGame}>Reset</button>
+          </div>
+          <div className="longfire-four__winner">{playerWin ? `${playerWin} wins!` : ''}</div>
+
+        </div>
         </div>
         
       </Block>
-
-      {/* <Block title="" className="">
-        <div className="">
-          <button className="" type="" onClick={}>
-            Reset game
-          </button>
-        </div>
-      </Block> */}
 
       <PageFooter />
     </PageTemplate>
