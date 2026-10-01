@@ -4,6 +4,10 @@ import PageTemplate from '../../layout/PageTemplate';
 import Block from '../../layout/Block';
 import PageFooter from '../../layout/PageFooter';
 
+import { IMAGE_WIDTHS_BACKGROUND } from '../../config/imageWidths.js';
+import Picture from '../../components/Picture';
+
+
 import '../a11y/index.scss';
 import './styles/index.scss';
 
