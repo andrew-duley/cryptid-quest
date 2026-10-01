@@ -90,13 +90,13 @@ export default function LongfireFour() {
 
         <div className="longfire-four__drop-zone">
           {board[0].map((__, idx) => {
-          return <div key={idx} className="longfire-four__drop-zone-cell" onClick={() => playerMove(idx, playerTurn)}></div>
+          return <div key={idx} className={playerWin ? "longfire-four__drop-zone-cell no-click" : "longfire-four__drop-zone-cell"} onClick={() => playerMove(idx, playerTurn)}></div>
         })}
         </div>
 
         <div className="longfire-four__board">
           {board.map((row, rowIndex) => {
-          return <div key={rowIndex} className="longfire-four__row">{row.map((cell, columnIndex) => {
+          return <div key={rowIndex} className={"longfire-four__row"}>{row.map((cell, columnIndex) => {
             return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell}</div>;
           })}</div>
         })}

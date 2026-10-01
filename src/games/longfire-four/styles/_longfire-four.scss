@@ -30,4 +30,9 @@
     aspect-ratio: 1/1;
     border: 1px solid red;
   }
+
+  .no-click {
+    pointer-events: none;
+    background: orange;
+  }
 }
