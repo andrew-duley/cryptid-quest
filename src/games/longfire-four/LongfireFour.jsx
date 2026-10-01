@@ -84,7 +84,17 @@ export default function LongfireFour() {
 
 
   return (
-    <PageTemplate slug="longfire-four" title="Longfire Four" className="longfire-four">
+    <PageTemplate slug="longfire-four" title="Longfire Four" 
+    className="longfire-four">
+
+      <Picture 
+        imagePath="https://media.cryptid.quest/the-crypt/game-backgrounds/longfire-four/longfire-four-"
+        imageWidths={IMAGE_WIDTHS_BACKGROUND}
+        className = "longfire-four__background" 
+        imgClassName = "longfire-four__background-img"
+        loading="eager"
+        fetchPriority="high"
+      />
 
       <Block label="Board">
 
