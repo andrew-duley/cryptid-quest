@@ -5,11 +5,18 @@ import Block from '../../layout/Block';
 import PageFooter from '../../layout/PageFooter';
 
 import { IMAGE_WIDTHS_BACKGROUND } from '../../config/imageWidths.js';
+import { IMAGE_WIDTHS_LARGE_GAME_ELEMENT } from '../../config/imageWidths.js';
+
 import Picture from '../../components/Picture';
 
 
 import '../a11y/index.scss';
 import './styles/index.scss';
+
+const tokens = {
+  player1: 'https://media.cryptid.quest/the-crypt/game-elements/longfire-four/polished-green-marble-token-256',
+  player2: 'https://media.cryptid.quest/the-crypt/game-elements/longfire-four/polished-black-marble-token-256'
+}
 
 const newBoard = [
     [null, null, null, null, null, null, null],
@@ -52,8 +59,9 @@ const newBoard = [
 export default function LongfireFour() {
 
   const [board, setBoard] = useState(newBoard.map(row => row.slice()));
-  const [playerTurn, setPlayerTurn] = useState("Player 1");
+  const [playerTurn, setPlayerTurn] = useState("player1");
   const [playerWin, setPlayerWin] = useState(null);
+  const [playerDraw, setPlayerDraw] = useState(null);
 
   const playerMove = (columnIndex, player) => {
 
@@ -72,7 +80,7 @@ export default function LongfireFour() {
           return;
         }
 
-        player === "Player 1" ? setPlayerTurn("Player 2") : setPlayerTurn("Player 1");
+        player === "player1" ? setPlayerTurn("player2") : setPlayerTurn("player1");
 
         break;
       }
@@ -101,6 +109,8 @@ export default function LongfireFour() {
       />
 
       <Block label="Board">
+        {playerWin && <div className="longfire-four__overlay">Congratulations, {playerTurn.charAt(0).toUpperCase() + playerTurn.slice(1)} wins!</div>}
+        {playerDraw && <div className="longfire-four__overlay"></div>}
         <div className="longfire-four__game">
           <div className="longfire-four__drop-zone">
             {board[0].map((__, idx) => {
@@ -108,12 +118,27 @@ export default function LongfireFour() {
           })}
           </div>
 
-          <div className="longfire-four__board">
-            {board.map((row, rowIndex) => {
-            return <div key={rowIndex} className={"longfire-four__row"}>{row.map((cell, columnIndex) => {
-              return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell}</div>;
-            })}</div>
-          })}
+          <div className="longfire-four__board-area">
+            <Picture 
+              imagePath="https://media.cryptid.quest/the-crypt/game-elements/longfire-four/longfire-four-board-"
+              imageWidths={IMAGE_WIDTHS_LARGE_GAME_ELEMENT}
+              className = "longfire-four__board" 
+              imgClassName = "longfire-four__board-img"
+              loading="eager"
+              fetchPriority="high"
+            />
+            <div className="longfire-four__grid">
+               {board.map((row, rowIndex) => {
+                  return <div key={rowIndex} className={"longfire-four__row"}>{row.map((cell, columnIndex) => {
+                    return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell ? <picture className="longfire-four__piece">
+                      <source srcSet={`${tokens[cell]}.avif`} type="image/avif" />
+                      <source srcSet={`${tokens[cell]}.webp`} type="image/webp" />
+                      <img src={`${tokens[cell]}.png`} alt={playerTurn} />
+                    </picture> : null}</div>;
+                  })}</div>
+                })}
+            </div>
+           
         </div>
 
         <div className="longfire-four__ui">

@@ -47,12 +47,8 @@ async function processAssetDir(assetPath) {
 
   // Load the master image and resize the new generated images to the target widths.
   for (const width of TARGET_WIDTHS) {
-    const height = Math.round(width * 7 / 5);
     const image = sharp(fullPath).resize({ 
       width, 
-      height,
-      fit: 'cover',
-      position: 'center',
       withoutEnlargement: true 
     });
 
