@@ -80,14 +80,13 @@
     display: flex;
     position: absolute;
     bottom: 92.5%; 
+    z-index: 10;
   }
 
   &__drop-zone-cell {
     flex: 1;
-    border: 1px solid green;
     aspect-ratio: 3/4;
     cursor: pointer;
-    background: blue;
   }
 
   &__grid {
@@ -111,10 +110,23 @@
     position: relative;
     transform: scale(1.1);
     margin: -1rem;
+
+    &--dropping {
+      animation: slideIn var(--drop-duration) ease-in 0s; 
+    }
   }
 
   .no-click {
     pointer-events: none;
     background: orange;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(var(--drop-distance));
+  }
+  to {
+    transform: translateY(0);
   }
 }

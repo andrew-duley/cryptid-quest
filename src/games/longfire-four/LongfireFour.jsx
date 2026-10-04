@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import PageTemplate from '../../layout/PageTemplate';
 import Block from '../../layout/Block';
@@ -58,10 +58,15 @@ const newBoard = [
 
 export default function LongfireFour() {
 
+  const audioRef = useRef({
+      impact: new Audio("https://media.cryptid.quest/audio/longfire-four/longfire-token-impact-01.wav"),
+    });
+
   const [board, setBoard] = useState(newBoard.map(row => row.slice()));
   const [playerTurn, setPlayerTurn] = useState("player1");
   const [playerWin, setPlayerWin] = useState(null);
   const [playerDraw, setPlayerDraw] = useState(null);
+  const [coord, setCoord] = useState(null);
 
   const playerMove = (columnIndex, player) => {
 
@@ -71,21 +76,27 @@ export default function LongfireFour() {
 
       if (board[i][columnIndex] === null) {
         copiedBoard[i][columnIndex] = player;
-        setBoard(copiedBoard)
-       
-        const didWin = winCheck(copiedBoard);
-
-        if (didWin) {
-          setPlayerWin(player);
-          return;
-        }
-
-        player === "player1" ? setPlayerTurn("player2") : setPlayerTurn("player1");
+        setBoard(copiedBoard);
+        setCoord({ row: i, column: columnIndex});
 
         break;
       }
     }
     
+  }
+
+  const animationEnd = () => {
+    const currentImpact = audioRef.current?.impact;
+    currentImpact.play();
+   
+    const didWin = winCheck(board);
+    if (didWin) {
+      
+      setPlayerWin(playerTurn);
+      return;
+    }
+    playerTurn === "player1" ? setPlayerTurn("player2") : setPlayerTurn("player1");
+    setCoord(null);
   }
 
   const resetGame = () => {
@@ -127,13 +138,17 @@ export default function LongfireFour() {
               loading="eager"
               fetchPriority="high"
             />
-            <div className="longfire-four__grid">
+
+
+            <div className="longfire-four__grid" onAnimationEnd={animationEnd}>
                {board.map((row, rowIndex) => {
                   return <div key={rowIndex} className={"longfire-four__row"}>{row.map((cell, columnIndex) => {
-                    return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell ? <picture className="longfire-four__piece">
+                    const isDropping = (coord !== null) && rowIndex === coord.row && columnIndex === coord.column;
+                    return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell ? <picture className={ isDropping ? "longfire-four__piece longfire-four__piece--dropping" : "longfire-four__piece"} style={isDropping ? { "--drop-distance" : `-${130 + (coord.row * 94)}%`,
+                    "--drop-duration" : `${.15 + (coord.row * .05)}s` } : null}>
                       <source srcSet={`${tokens[cell]}.avif`} type="image/avif" />
                       <source srcSet={`${tokens[cell]}.webp`} type="image/webp" />
-                      <img src={`${tokens[cell]}.png`} alt={playerTurn} />
+                      <img src={`${tokens[cell]}.png`} alt="" />
                     </picture> : null}</div>;
                   })}</div>
                 })}
