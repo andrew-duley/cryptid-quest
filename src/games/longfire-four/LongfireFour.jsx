@@ -59,7 +59,7 @@ const newBoard = [
 export default function LongfireFour() {
 
   const audioRef = useRef({
-      impact: new Audio("https://media.cryptid.quest/audio/longfire-four/longfire-token-impact-01.wav"),
+      impact: new Audio("https://media.cryptid.quest/audio/longfire-four/longfire-four-token-impact-01.wav"),
     });
 
   const [board, setBoard] = useState(newBoard.map(row => row.slice()));
@@ -67,6 +67,7 @@ export default function LongfireFour() {
   const [playerWin, setPlayerWin] = useState(null);
   const [playerDraw, setPlayerDraw] = useState(null);
   const [coord, setCoord] = useState(null);
+  const [colHover, setColHover] = useState(null);
 
   const playerMove = (columnIndex, player) => {
 
@@ -87,6 +88,7 @@ export default function LongfireFour() {
 
   const animationEnd = () => {
     const currentImpact = audioRef.current?.impact;
+    currentImpact.volume = 1.0;
     currentImpact.play();
    
     const didWin = winCheck(board);
@@ -105,6 +107,15 @@ export default function LongfireFour() {
     setPlayerWin(null);
   }
 
+  const handleMouseEnter = (idx) => {
+    setColHover(idx);
+  }
+
+  const handleMouseLeave = () => {
+    setColHover(null);
+  }
+
+
 
   return (
     <PageTemplate slug="longfire-four" title="Longfire Four" 
@@ -122,10 +133,17 @@ export default function LongfireFour() {
       <Block label="Board">
         {playerWin && <div className="longfire-four__overlay">Congratulations, {playerTurn.charAt(0).toUpperCase() + playerTurn.slice(1)} wins!</div>}
         {playerDraw && <div className="longfire-four__overlay"></div>}
+
         <div className="longfire-four__game">
           <div className="longfire-four__drop-zone">
             {board[0].map((__, idx) => {
-            return <div key={idx} className={playerWin ? "longfire-four__drop-zone-cell no-click" : "longfire-four__drop-zone-cell"} onClick={() => playerMove(idx, playerTurn)}></div>
+            return <div key={idx} className={playerWin ? "longfire-four__drop-zone-cell no-click" : "longfire-four__drop-zone-cell longfire-four__drop-zone-cell--token"} onClick={() => playerMove(idx, playerTurn)}>
+              <picture>
+                <source srcSet={`${tokens[playerTurn]}.avif`}     type="image/avif" />
+                  <source srcSet={`${tokens[playerTurn]}.webp`} type="image/webp" />
+                  <img src={`${tokens[playerTurn]}.png`} alt="" />
+              </picture>
+            </div>
           })}
           </div>
 
@@ -138,7 +156,21 @@ export default function LongfireFour() {
               loading="eager"
               fetchPriority="high"
             />
-
+            
+            <div className="longfire-four__ui">
+              {
+                playerWin ? 
+                  <div className="longfire-four__winner">
+                    {
+                    playerWin === 'player1' ? 'Green wins!' : 'Black wins!'
+                    }
+                  </div>
+                :
+                ""
+              }
+                <button className="btn" type="button" onClick={resetGame}>{playerWin ? 'Play Again' : 'New Game'}</button>
+             
+            </div>
 
             <div className="longfire-four__grid" onAnimationEnd={animationEnd}>
                {board.map((row, rowIndex) => {
@@ -153,17 +185,9 @@ export default function LongfireFour() {
                   })}</div>
                 })}
             </div>
-           
-        </div>
-
-        <div className="longfire-four__ui">
-          <div className="longfire-four__play">Play</div>
-          <div className="longfire-four__reset">
-            <button className="btn" type="button" onClick={resetGame}>Reset</button>
-          </div>
-          <div className="longfire-four__winner">{playerWin ? `${playerWin} wins!` : ''}</div>
-          </div>
-        </div>
+  
+        </div> 
+       </div>
         
         
       </Block>

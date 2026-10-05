@@ -5,26 +5,11 @@
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  overflow: hidden;
   aspect-ratio: 16 / 9;
 
   @media (max-width: $bp-xxl) {
     aspect-ratio: auto;
     min-height: 100vh;
-  }
-
-  &__overlay {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    right: 10%;
-    height: 20rem;
-    background-color: rgba(0, 0, 0, .8);
-    border: 3px $color-bg-slate solid;
-    text-align: center;
-    padding: 5rem;
-    z-index: 20;
-    font-size: 3rem;
   }
 
   &__background {
@@ -47,6 +32,7 @@
     z-index: 5;
     width: min(80rem, 100%);
     margin: 0 auto;
+    top: 10rem;
   }
 
   &__row {
@@ -84,9 +70,18 @@
   }
 
   &__drop-zone-cell {
+    position: relative;
     flex: 1;
     aspect-ratio: 3/4;
     cursor: pointer;
+
+    &--token {
+      opacity: 0;
+
+      &:hover {
+        opacity: .6;
+      }
+    }
   }
 
   &__grid {
@@ -116,9 +111,37 @@
     }
   }
 
+  &__ui {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    border: 0;
+
+    @media(max-width: $bp-sm) {
+      bottom: 16%
+    }
+
+    .btn {
+      background: none;
+      border: none;
+      font-family: 'skranji';
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 2rem;
+
+      @media(max-width: $bp-sm) {
+      font-size: 1.6rem;
+    }
+    
+    }
+  }
+
   .no-click {
     pointer-events: none;
-    background: orange;
   }
 }
 
