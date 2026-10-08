@@ -109,6 +109,10 @@
     &--dropping {
       animation: slideIn var(--drop-duration) ease-in 0s; 
     }
+
+    &--win {
+      animation: victoryGlow 2.2s ease-in-out infinite;
+    }
   }
 
   &__ui {
@@ -151,5 +155,20 @@
   }
   to {
     transform: translateY(0);
+  }
+}
+
+@keyframes victoryGlow {
+  0%, 100% {
+    filter:
+      brightness(1.05)
+      drop-shadow(0 0 5px rgba(255, 174, 65, 0.35));
+  }
+
+  50% {
+    filter:
+      brightness(1.3)
+      drop-shadow(0 0 15px rgba(255, 174, 65, 0.95))
+      drop-shadow(0 0 28px rgba(255, 130, 35, 0.55));
   }
 }

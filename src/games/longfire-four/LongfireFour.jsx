@@ -38,19 +38,19 @@ const newBoard = [
         if (!value) continue;
 
         if (c + 3 < cols && value === copiedBoard[r][c+1] && value === copiedBoard[r][c+2] && value === copiedBoard[r][c+3]) {
-          return true;
+          return [[r, c], [r, c+1], [r, c+2], [r, c+3]];
         }
 
         if (r + 3 < rows && value === copiedBoard[r+1][c] && value === copiedBoard[r+2][c] && value === copiedBoard[r+3][c]) {
-          return true;
+          return [[r, c], [r+1, c], [r+2, c], [r+3, c]];
         }
 
         if (r + 3 < rows && c + 3 < cols && value === copiedBoard[r+1][c+1] && value === copiedBoard[r+2][c+2] && value === copiedBoard[r+3][c+3]) {
-          return true;
+          return [[r, c], [r+1, c+1], [r+2, c+2], [r+3, c+3]];
         }
 
         if (r + 3 < rows && c > 2 && value === copiedBoard[r+1][c-1] && value === copiedBoard[r+2][c-2] && value === copiedBoard[r+3][c-3]) {
-          return true;
+          return [[r, c], [r+1, c-1], [r+2, c-2], [r+3, c-3]];
         }
       }
     } return false;
@@ -68,6 +68,8 @@ export default function LongfireFour() {
   const [playerDraw, setPlayerDraw] = useState(null);
   const [coord, setCoord] = useState(null);
   const [colHover, setColHover] = useState(null);
+  const [placeToken, setPlaceToken] = useState(false);
+  const [winCondition, setWinCondition] = useState([]);
 
   const playerMove = (columnIndex, player) => {
 
@@ -79,6 +81,7 @@ export default function LongfireFour() {
         copiedBoard[i][columnIndex] = player;
         setBoard(copiedBoard);
         setCoord({ row: i, column: columnIndex});
+        setPlaceToken(true);
 
         break;
       }
@@ -92,19 +95,22 @@ export default function LongfireFour() {
     currentImpact.play();
    
     const didWin = winCheck(board);
-    if (didWin) {
-      
+  
+    if (didWin.length === 4) {
+      setWinCondition(didWin);
       setPlayerWin(playerTurn);
       return;
     }
     playerTurn === "player1" ? setPlayerTurn("player2") : setPlayerTurn("player1");
     setCoord(null);
+    setPlaceToken(false);
   }
 
   const resetGame = () => {
     setBoard(newBoard.map(row => row.slice()));
     setPlayerTurn("Player 1");
     setPlayerWin(null);
+    setWinCondition([]);
   }
 
   const handleMouseEnter = (idx) => {
@@ -131,13 +137,10 @@ export default function LongfireFour() {
       />
 
       <Block label="Board">
-        {playerWin && <div className="longfire-four__overlay">Congratulations, {playerTurn.charAt(0).toUpperCase() + playerTurn.slice(1)} wins!</div>}
-        {playerDraw && <div className="longfire-four__overlay"></div>}
-
         <div className="longfire-four__game">
           <div className="longfire-four__drop-zone">
             {board[0].map((__, idx) => {
-            return <div key={idx} className={playerWin ? "longfire-four__drop-zone-cell no-click" : "longfire-four__drop-zone-cell longfire-four__drop-zone-cell--token"} onClick={() => playerMove(idx, playerTurn)}>
+            return <div key={idx} className={playerWin || placeToken ? "longfire-four__drop-zone-cell longfire-four__drop-zone-cell--token no-click" : "longfire-four__drop-zone-cell longfire-four__drop-zone-cell--token"} onClick={() => playerMove(idx, playerTurn)}>
               <picture>
                 <source srcSet={`${tokens[playerTurn]}.avif`}     type="image/avif" />
                   <source srcSet={`${tokens[playerTurn]}.webp`} type="image/webp" />
@@ -174,15 +177,31 @@ export default function LongfireFour() {
 
             <div className="longfire-four__grid" onAnimationEnd={animationEnd}>
                {board.map((row, rowIndex) => {
-                  return <div key={rowIndex} className={"longfire-four__row"}>{row.map((cell, columnIndex) => {
+
+                  return <div key={rowIndex} className={"longfire-four__row"}>
+                    
+                  {row.map((cell, columnIndex) => {
+
                     const isDropping = (coord !== null) && rowIndex === coord.row && columnIndex === coord.column;
-                    return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">{cell ? <picture className={ isDropping ? "longfire-four__piece longfire-four__piece--dropping" : "longfire-four__piece"} style={isDropping ? { "--drop-distance" : `-${130 + (coord.row * 94)}%`,
-                    "--drop-duration" : `${.15 + (coord.row * .05)}s` } : null}>
+
+                    const winToken = winCondition.some(loc => loc[0] === rowIndex && loc[1] === columnIndex);
+
+                    return <div key={`${rowIndex}-${columnIndex}`} className="longfire-four__cell">
+                      
+                      {cell ? <picture className={ `longfire-four__piece ${isDropping ? "longfire-four__piece--dropping" : ""} ${winToken ?"longfire-four__piece--win" : ""}` } 
+                      
+                      style={isDropping ? { "--drop-distance" : `-${130 + (coord.row * 94)}%`,
+                    "--drop-duration" : `${.15 + (coord.row * .05)}s` } 
+                    : 
+                    null}>
                       <source srcSet={`${tokens[cell]}.avif`} type="image/avif" />
                       <source srcSet={`${tokens[cell]}.webp`} type="image/webp" />
                       <img src={`${tokens[cell]}.png`} alt="" />
                     </picture> : null}</div>;
-                  })}</div>
+                  })}
+                  
+                  </div>
+
                 })}
             </div>
   
