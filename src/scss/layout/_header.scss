@@ -9,6 +9,7 @@
   color: $color-text-light;
   border-bottom: 1px solid $color-border;
   aspect-ratio: 16 / 9;
+  z-index: 1;
 
   &__background {
     display: block;
@@ -27,7 +28,7 @@
 
   &__inner {
     position: relative; 
-    z-index: 2;
+    z-index: 5;
 
     max-width: 120rem;
     margin-inline: auto;

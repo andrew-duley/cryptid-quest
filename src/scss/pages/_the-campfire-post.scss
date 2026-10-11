@@ -1,36 +1,70 @@
 @use '../abstracts' as *;
 
 .the-campfire-post {
+  background: relative;
   background-color: #05070b;
+  isolation: isolate;
 
-  background: linear-gradient(
-    rgba(0, 0, 0, .5),
-    rgba(0, 0, 0, .5)
-  ),
-  url('https://media.cryptid.quest/backgrounds/northern-ocean/northern-ocean.avif');
-  
-  background-repeat: no-repeat; 
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
+  &__background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  &__background-img {
+    display: block;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    object-position: center;
+    animation: ocean-parallax linear both;
+    animation-timeline: scroll(root);
+  }
+
+  &__meta,
+  &__post {
+    position: relative;
+    z-index: 5;
+    background: rgba(0, 0, 0, .4);
+    padding: 1rem;
+    
+  }
 
   &__meta {
     padding-bottom: 0;
+    border-radius: .6rem .6rem 0 0;
   }
 
   &__post {
+    border-radius: 0 0 .6rem .6rem;
+    overflow: hidden;
+
     h2,
     h3 {
       line-height: 1.1;
       margin: 6rem 0 1.4rem;
     }
 
-    h3:first-child {
-      margin-top: 0;
-    }
+    // h3:first-child {
+    //   margin-top: 0;
+    // }
 
-    p:first-child {
-      margin-top: 2rem;
-    }
+    // p:first-child {
+    //   margin-top: 2rem;
+    // }
+  }
+}
+
+@keyframes ocean-parallax {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-16.67%);
   }
 }
