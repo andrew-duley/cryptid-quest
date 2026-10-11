@@ -23,56 +23,56 @@ export default function TheCampfirePost() {
 
   const { slug } = useParams();
 
-  const fakePost = {
-  id: 1,
-  slug: "test-post",
-  title: "Grumbit's Extremely Long Investigation",
-  category: "Campfire",
-  created_at: new Date().toISOString(),
-  hero_image_url: null,
-  hero_image_alt: "",
-  body: Array(60)
-    .fill(
-      "<p>Grumbit adjusted his hat, checked his compass, consulted three maps, and announced that the expedition was proceeding exactly according to plan. Nobody believed him.</p>"
-    )
-    .join(""),
-};
+//   const fakePost = {
+//   id: 1,
+//   slug: "test-post",
+//   title: "Grumbit's Extremely Long Investigation",
+//   category: "Campfire",
+//   created_at: new Date().toISOString(),
+//   hero_image_url: null,
+//   hero_image_alt: "",
+//   body: Array(60)
+//     .fill(
+//       "<p>Grumbit adjusted his hat, checked his compass, consulted three maps, and announced that the expedition was proceeding exactly according to plan. Nobody believed him.</p>"
+//     )
+//     .join(""),
+// };
 
-useEffect(() => {
-  setPost(fakePost);
-  setIsLoading(false);
-}, []);
+// useEffect(() => {
+//   setPost(fakePost);
+//   setIsLoading(false);
+// }, []);
   
-  // useEffect(() => {
-  //   setPost();
-  //   setIsLoading(true);
-  //   setError(null);
-  //   setIs404(false);
-  //   fetch(`${API_BASE}/posts/${slug}`)
-  //     .then(res => {
-  //       if (res.status === 404) {
-  //         setIs404(true);
-  //         return null;
-  //       }
-  //       if (!res.ok) {
-  //         throw new Error('Error retrieving posts ' + res.statusText);
-  //       }
-  //       return res.json();
-  //     })
-  //     .then(json => {
-  //       if (json === null) {
-  //         return;
-  //       }
-  //       setPost(json.data);
-  //     }) 
-  //     .catch(error => {
-  //       setError("An error has occurred")
-  //       console.log("Error fetching data:", error);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });     
-  // }, [slug]);
+  useEffect(() => {
+    setPost();
+    setIsLoading(true);
+    setError(null);
+    setIs404(false);
+    fetch(`${API_BASE}/posts/${slug}`)
+      .then(res => {
+        if (res.status === 404) {
+          setIs404(true);
+          return null;
+        }
+        if (!res.ok) {
+          throw new Error('Error retrieving posts ' + res.statusText);
+        }
+        return res.json();
+      })
+      .then(json => {
+        if (json === null) {
+          return;
+        }
+        setPost(json.data);
+      }) 
+      .catch(error => {
+        setError("An error has occurred")
+        console.log("Error fetching data:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });     
+  }, [slug]);
 
   const safeHTML = useMemo(() => {
     return DOMPurify.sanitize(post?.body ?? '');
