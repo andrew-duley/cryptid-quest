@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 import {NavLink} from 'react-router-dom';
 
 
@@ -6,6 +6,29 @@ import { IMAGE_WIDTHS_BACKGROUND } from '../config/imageWidths.js';
 import Picture from '../components/Picture';
 
 function Header() {
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+      setIsMobile(window.innerWidth <= 576);
+      if (window.innerWidth > 576) setIsOpen(false); 
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
+
+  }, [])
+
+  const handleSandwichButton = () => {
+    setIsOpen(prevState => !prevState);
+  }
 
   return(
     <header id="header" className="header">
@@ -33,13 +56,30 @@ function Header() {
             {/* <h1 className="header__title">
               <NavLink to="/" className="header__title-link">Cryptid Quest</NavLink>
             </h1> */}
-            <h3 className="header__tagline">Welcome to the Northern Fringe—Where the Woods Watch Back...</h3>
-            <p className="header__note">
-              <em>A living portfolio</em> of polished React + UI craft.
-              </p>
+            <h3 className="header__tagline">Welcome to the Northern Fringe—Where the Woods Watch Back</h3>
           </div>
         </div>
-        <nav className="header__nav" aria-label="Main">
+        {
+          isMobile ?
+        <div className="header__nav-list--mobile">
+          <div className={`header__sandwich-button ${isMobile ? 'open' : ''}`} onClick={handleSandwichButton}>
+            <div className={`line line-1 ${isOpen ? 'open' : ''}`}></div>
+            <div className={`line line-2 ${isOpen ? 'open' : ''}`}></div>
+            <div className={`line line-3 ${isOpen ? 'open' : ''}`}></div>
+          </div>
+          <nav className={`header__nav--sm ${isOpen ? 'open' : ''}`} aria-label="Main">
+            
+            <ul className="header__nav-list">
+              <li><NavLink to="/" end>Home</NavLink></li>
+              <li><NavLink to="/about">About</NavLink></li>
+              <li><NavLink to="/the-campfire">The Campfire</NavLink></li>
+              <li><NavLink to="/the-crew">The Crew</NavLink></li>
+              <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
+            </ul>
+          </nav>
+        </div>
+        :
+        <nav className="header__nav--lg" aria-label="Main">
           <ul className="header__nav-list">
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
@@ -48,6 +88,8 @@ function Header() {
             <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
           </ul>
         </nav>
+        }
+        
       </section>
     </header>
   );
