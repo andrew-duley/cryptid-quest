@@ -26,7 +26,7 @@ function Header() {
 
   }, [])
 
-  const handleSandwichButton = () => {
+  const handleHamburgerButton = () => {
     setIsOpen(prevState => !prevState);
   }
 
@@ -62,7 +62,7 @@ function Header() {
         {
           isMobile ?
         <div className="header__nav-list--mobile">
-          <div className={`header__sandwich-button ${isMobile ? 'open' : ''}`} onClick={handleSandwichButton}>
+          <div className={`header__hamburger-button ${isMobile ? 'open' : ''}`} onClick={handleHamburgerButton}>
             <div className={`line line-1 ${isOpen ? 'open' : ''}`}></div>
             <div className={`line line-2 ${isOpen ? 'open' : ''}`}></div>
             <div className={`line line-3 ${isOpen ? 'open' : ''}`}></div>

@@ -23,6 +23,9 @@ body {
   color: $color-text-light;
   font-size: 1.6rem;
   line-height: 1.6;
+
+  // Sitewide tap highlight-color remover
+  -webkit-tap-highlight-color: transparent;
 }
 
 img,

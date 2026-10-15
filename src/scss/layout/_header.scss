@@ -3,8 +3,8 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
-  overflow: hidden;
   isolation: isolate;
   color: $color-text-light;
   border-bottom: 1px solid $color-border;
@@ -29,7 +29,6 @@
   &__inner {
     position: relative; 
     z-index: 5;
-
     max-width: 120rem;
     margin-inline: auto;
     padding-block: clamp(1.6rem, 3vw, 2.6rem);
@@ -42,7 +41,6 @@
     grid-template-areas:
       "brand"
       "nav";
-    text-align: center;
 
      @media (max-width: $bp-sm) {
       position: absolute;
@@ -55,12 +53,18 @@
     display: grid;
     justify-items: center;
     gap: .8rem;
+    margin: 0 auto;
+    justify-self: center;
     
 
     @media (max-width: $bp-sm) {
       padding-top: 8rem;
-      font-size: 1rem;
-      min-height: 8rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: $bp-xsm) {
+      padding-top: 4rem;
     }
   }
 
@@ -102,9 +106,15 @@
     font-size: 2rem;
     font-weight: 500;
     color: $color-text-light;
+    text-align: center;
+
+    @media (max-width: $bp-sm) {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
 
     @media (max-width: $bp-xsm) {
-      visibility: hidden;
+      font-size: 1.4rem;
     }
   }
 
@@ -119,7 +129,7 @@
       display: none;
     }
 
-    .header__sandwich-button {
+    .header__hamburger-button {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -131,6 +141,7 @@
       height: 4.8rem;
       cursor: pointer;
       display: none;
+      z-index: 20;
 
       &.open {
         display: block;
