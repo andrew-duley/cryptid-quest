@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import {NavLink} from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 
 import { IMAGE_WIDTHS_BACKGROUND } from '../config/imageWidths.js';
@@ -7,9 +7,12 @@ import Picture from '../components/Picture';
 
 function Header() {
 
+  const location = useLocation();
+
   const [width, setWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
   const [isOpen, setIsOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState(location.pathname)
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,7 +27,12 @@ function Header() {
       window.removeEventListener("resize", handleResize);
     }
 
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const handleHamburgerButton = () => {
     setIsOpen(prevState => !prevState);
