@@ -1,11 +1,13 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CREW_MEMBERS } from '../data/crew-members';
-import CrewMemberImage from '../components/CrewMemberImage.jsx';
 
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
+
+import Picture from '../components/Picture';
+import { IMAGE_WIDTHS_CREW_MEMBER } from '../config/ImageWidths.js';
 
 export default function CrewMember() {
   const { slug } = useParams();
@@ -25,50 +27,52 @@ export default function CrewMember() {
     );
   }
 
-  const hasFunFacts = Array.isArray(crewMember.funFacts) && crewMember.funFacts.length > 0;
-
   return (
     <PageTemplate slug={`the-crew/${crewMember.slug}`} title={crewMember.name} className={'crew-member'} narrow={true}>
-    
-      <Block label="Back to the crew">
+
+      <Block label={crewMember.name}> 
+
         <Link to="/the-crew" className="crew-member__back">
           ← Back to the crew
         </Link>
-      </Block>
 
-      <Block label={crewMember.name}> 
-        <div className="crew-member__hero">
-          <div className="crew-member__media">
-            <CrewMemberImage
-              slug={crewMember.slug}
-              alt={crewMember.name}
-              className="crew-member__image"
-              loading="eager"
-              sizes="(min-width: 991px) 320px, 100vw"
-            />
-          </div>
-          <div className="crew-member__text">
-            <h2 className="crew-member__tagline">{crewMember.tagline}</h2>
-            <p className="crew-member__summary">{crewMember.summary}</p>
-          </div>
-        </div>
+        <div className="crew-member__page">
+          <Picture 
+            imagePath={crewMember.imagePath}
+            imageWidths={IMAGE_WIDTHS_CREW_MEMBER}
+            alt={crewMember.imageAlt}
+            className = "crew-member__portrait" 
+            imgClassName = "crew-member__portrait-img"
+            loading="eager"
+            sizes="(min-width: 1000px) 1000px, 100vw"
+          />
+          {crewMember.tagline && (
+            <p className="crew-member__tagline">{crewMember.tagline}</p>
+          )}
+          <div className="crew-member__bio">{
+             crewMember.bio?.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}</div>
+          {
+            crewMember.facts.length > 0 && (
+              <section className="crew-member__facts">
+                <h2>Character Details</h2>
+                <dl>
+                  {
+                    crewMember.facts?.map((fact) => (
+                      <div className="crew-member__fact" key={fact.label}>
+                        <dt>{fact.label}</dt>
+                        <dd>{fact.value}</dd>
+                      </div>
+                    ))
+                  }
+                </dl>
+              </section>
+            )
+          }
+        </div>      
+      
       </Block>
-        
-      <Block title="Legend">
-        {crewMember.lore?.map((paragraph, i) => (
-          <p key={i}>{paragraph}</p>
-        ))}
-      </Block>
-
-      {hasFunFacts && (
-        <Block title="Fun Facts">
-          <ul>
-            {crewMember.funFacts.map((fact, i) => (
-              <li key={i}>{fact}</li>
-            ))}
-          </ul>
-        </Block>
-      )}
 
       <PageFooter />
     </PageTemplate>
