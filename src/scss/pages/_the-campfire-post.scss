@@ -1,8 +1,8 @@
 @use '../abstracts' as *;
 
 .the-campfire-post {
-  background: relative;
-  background-color: #05070b;
+  position: relative;
+  background-color: $color-bg-dark;
   isolation: isolate;
 
   &__background {

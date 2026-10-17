@@ -6,15 +6,35 @@ export const CREW_MEMBERS = [
     imageAlt: "Maerith standing on the rocky shore of a misty Baird Lake.",
     tageline: "She came from the frozen seas of the north.",
     bio: [
-      "",
-      "",
+      "Maerith is a selkie who came to Baird from the cold northern seas. She has since made her home along the shores of Baird Lake, where the surrounding forests, mountains, and quiet waters offer plenty of opportunities for exploration. Although she maintains a strong connection to the water, she is equally comfortable wandering the woodland trails or spending an afternoon among the residents of Baird.",
+      "Cheerful, thoughtful, and gentle by nature, Maerith enjoys good company and has a subtle sense of humor that occasionally leaves her friends wondering whether she has made a joke at their expense. She is an accomplished seamstress, an avid reader, and an enthusiastic explorer with a particular fondness for unusual stones and beautiful gems. Her curiosity often leads her to interesting discoveries, some of which find their way into Grumbit's hands for further investigation.",
+      "Perhaps Maerith's most endearing quality is her humility. She is quick to lend a hand, whether helping Burnella in the kitchen, mending something for a friend, or simply offering a little encouragement when it is needed. She rarely seeks recognition for her efforts, believing that even the smallest contributions have their place. As she is fond of saying, \"We all do our part.\""
     ],
     facts: [
       { label: "Species", value: "Selkie" },
       { label: "Height", value: "5'7\"" },
-      { label: "Residence", value: "Baird Lake" },
+      { label: "Origin", value: "The Northern Seas" },
+      { label: "Interests", value: "Reading, exploring, collecting stones and gems" },
+      { label: "Notable Skills", value: "Sewing, tailoring" }
     ]
-  }
+  },
+  // {
+  //   name: "Maerith",
+  //   slug: "maerith",
+  //   imagePath: "https://media.cryptid.quest/the-crew/maerith/maerith-",
+  //   imageAlt: "Maerith standing on the rocky shore of a misty Baird Lake.",
+  //   tageline: "She came from the frozen seas of the north.",
+  //   bio: [
+  //     "Origins and residence",
+  //     "Personality",
+  //     "Place in the world"
+  //   ],
+  //   facts: [
+  //     { label: "Species", value: "Selkie" },
+  //     { label: "Height", value: "5'7\"" },
+  //     { label: "Residence", value: "Baird Lake" },
+  //   ]
+  // },
 ];
 
 

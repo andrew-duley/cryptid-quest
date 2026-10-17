@@ -1,86 +1,113 @@
 @use '../abstracts' as *;
 
 .crew-member {
+  position: relative;
+  background-color: $color-bg-dark;
+  isolation: isolate;
 
-  /* Back link */
+  &__background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  &__background-img {
+    display: block;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    object-position: center;
+    animation: waterfall-pool-parallax linear both;
+    animation-timeline: scroll(root);
+  }
+
   &__back {
+    display: inline-block;
+    margin-bottom: 1rem;
     font-weight: 700;
+    text-decoration: none;
+    transition: color .2s ease;
 
     &:hover,
     &:focus-visible {
-      text-decoration: underline;
+      color: $color-accent-teal;
     }
   }
 
-  /* Hero layout */
-  &__hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-
-    @media (min-width: $bp-lg) {
-      flex-direction: row;
-      align-items: flex-start;
-    }
+  &__page {
+    position: relative;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 0.6rem;
+    backdrop-filter: blur(3px);
   }
 
-  /* Media block */
-  &__media {
-    margin-bottom: 5rem;
-
-    @media (min-width: $bp-md) {
-    
-    }
-
-    @media (min-width: $bp-lg) {
-      margin-right: 2rem;
-      flex: 1;
-      margin-bottom: 1rem;
-    }
-
-    /* picture needs to behave like a block and fill the media box */
-    picture {
-      display: block;
-      width: 100%;
-    }
+  &__portrait {
+    display: block;
+    width: 100%;
   }
 
-  /* The actual image */
-  &__image {
+  &__portrait-img {
     display: block;
     width: 100%;
     height: auto;
-    // max-width: 100%;
-    border-radius: 1.25rem;
-    border: 1px solid rgba($color-neon-purple, .35);
-    box-shadow: 0 0 1.4rem rgba($color-neon-purple, .18);
   }
 
-  &__text {
-    flex: 2;
+  &__bio {
+    margin-top: 2rem;
   }
 
-  &__tagline {
-    margin-bottom: 1.4rem;
-  }
-
-  &__summary {
-    margin-bottom: 5rem;
-  }
-
-  &__legend {
-    margin-bottom: 5rem;
+  &__facts {
+    margin-top: 3rem;
 
     h2 {
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    dl {
+      margin: 0;
     }
   }
 
-  &__fun-facts {
-    
-    h2 {
-      margin-bottom: 1.4rem;
+  &__fact {
+    display: grid;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid $color-border;
+
+    dt {
+      color: $color-text-muted;
+      font-weight: 600;
     }
+
+    dd {
+      margin: 0;
+      color: $color-text-light;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+      gap: .25rem;
+    }
+  }
+}
+
+@keyframes waterfall-pool-parallax {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-16.67%);
   }
 }

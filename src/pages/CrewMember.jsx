@@ -7,7 +7,7 @@ import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
 import Picture from '../components/Picture';
-import { IMAGE_WIDTHS_CREW_MEMBER } from '../config/ImageWidths.js';
+import { IMAGE_WIDTHS_BACKGROUND, IMAGE_WIDTHS_CREW_MEMBER } from '../config/ImageWidths.js';
 
 export default function CrewMember() {
   const { slug } = useParams();
@@ -29,6 +29,14 @@ export default function CrewMember() {
 
   return (
     <PageTemplate slug={`the-crew/${crewMember.slug}`} title={crewMember.name} className={'crew-member'} narrow={true}>
+
+      <Picture 
+        imagePath="https://media.cryptid.quest/the-crew/backgrounds/summer/waterfall-pool/waterfall-pool-"
+        imageWidths={IMAGE_WIDTHS_BACKGROUND}
+        className = "crew-member__background" 
+        imgClassName = "crew-member__background-img"
+        loading="eager"
+      />
 
       <Block label={crewMember.name}> 
 
