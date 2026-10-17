@@ -7,7 +7,7 @@ import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
 import Picture from '../components/Picture';
-import { IMAGE_WIDTHS_BACKGROUND, IMAGE_WIDTHS_CREW_MEMBER } from '../config/ImageWidths.js';
+import { IMAGE_WIDTHS_BACKGROUND, IMAGE_WIDTHS_CREW_MEMBER } from '../config/imageWidths.js';
 
 export default function CrewMember() {
   const { slug } = useParams();
