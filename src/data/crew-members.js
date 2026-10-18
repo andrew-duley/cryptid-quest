@@ -4,7 +4,7 @@ export const CREW_MEMBERS = [
     slug: "maerith",
     imagePath: "https://media.cryptid.quest/the-crew/maerith/maerith-",
     imageAlt: "Maerith standing on the rocky shore of a misty Baird Lake.",
-    tageline: "She came from the frozen seas of the north.",
+    tagline: "Selkie of Baird Lake",
     bio: [
       "Maerith is a selkie who came to Baird from the cold northern seas. She has since made her home along the shores of Baird Lake, where the surrounding forests, mountains, and quiet waters offer plenty of opportunities for exploration. Although she maintains a strong connection to the water, she is equally comfortable wandering the woodland trails or spending an afternoon among the residents of Baird.",
       "Cheerful, thoughtful, and gentle by nature, Maerith enjoys good company and has a subtle sense of humor that occasionally leaves her friends wondering whether she has made a joke at their expense. She is an accomplished seamstress, an avid reader, and an enthusiastic explorer with a particular fondness for unusual stones and beautiful gems. Her curiosity often leads her to interesting discoveries, some of which find their way into Grumbit's hands for further investigation.",

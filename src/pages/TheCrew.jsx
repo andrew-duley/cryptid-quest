@@ -1,58 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CREW_MEMBERS } from '../data/crew-members';
-import CrewMemberImage from '../components/CrewMemberImage.jsx';
 
 import PageTemplate from '../layout/PageTemplate';
 import Block from '../layout/Block';
 import PageFooter from '../layout/PageFooter';
 
-import { IMAGE_WIDTHS_BACKGROUND } from '../config/imageWidths.js';
+import { IMAGE_WIDTHS_BACKGROUND, IMAGE_WIDTHS_CREW_MEMBER } from '../config/imageWidths.js';
 import Picture from '../components/Picture';
+
+const crewMembers = CREW_MEMBERS;
 
 export default function TheCrew() {
   return (
-    <PageTemplate slug="the-crew" title="The Cryptid Quest Crew" className="the-crew">
 
-      <Picture 
+    <PageTemplate slug="the-crew" title="Faces of the Northern Fringe" className="the-crew">
+
+      {/* <Picture 
         imagePath="https://media.cryptid.quest/the-crew/backgrounds/spring/portrait-hall/portrait-hall-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
         className = "the-crew__background" 
         imgClassName = "the-crew__background-img"
         loading="eager"
         fetchPriority="high"
-      />
+      /> */}
    
-      <Block label="The faces of Cryptid Quest">
+      <Block label="The faces of Baird">
         <p>
-          Meet the faces of Cryptid Quest — guardians, legends, and… oddities of the wild.
-        </p>
-
-        <p>
-          Click a crew member to learn their story, role, and lore.
+          Every corner of the Northern Fringe has its characters. Explorers, craftsmen, musicians, wanderers, and the occasional troublemaker all have a story to tell.
         </p>
       </Block>
           
       <Block label="Crew Members">
         <div className="card-grid crew-grid">
-          {CREW_MEMBERS.map(crewMember => (
+          {crewMembers.map(crewMember => (
             <Link
               key={crewMember.slug}
               to={`/the-crew/${crewMember.slug}`}
               className="card crew-card"
             >
-              <div className="crew-card__header">
+              <div className="crew-card__media">
+                <Picture 
+                  imagePath={crewMember.imagePath}
+                  imageWidths={IMAGE_WIDTHS_CREW_MEMBER}
+                  className = "crew-card__portrait" 
+                  imgClassName = "crew-card__portrait-img"
+                  loading="lazy"
+                />
+              </div>
+              <div className="crew-card__body">
                 <h3 className="crew-card__name">{crewMember.name}</h3>
                 <p className="crew-card__tagline">{crewMember.tagline}</p>
-              </div>
-
-              <div className="crew-card__media">
-                <CrewMemberImage
-                  slug={crewMember.slug}
-                  size={400}
-                  alt={crewMember.name}
-                  className="crew-card__image"
-                />
               </div>
             </Link>
           ))}

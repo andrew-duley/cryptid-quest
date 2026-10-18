@@ -54,9 +54,6 @@ export default function CrewMember() {
             loading="eager"
             sizes="(min-width: 1000px) 1000px, 100vw"
           />
-          {crewMember.tagline && (
-            <p className="crew-member__tagline">{crewMember.tagline}</p>
-          )}
           <div className="crew-member__bio">{
              crewMember.bio?.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
