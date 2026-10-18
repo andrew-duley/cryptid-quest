@@ -1,5 +1,41 @@
 export const CREW_MEMBERS = [
   {
+    name: "Grimlight",
+    slug: "grimlight",
+    imagePath: "https://media.cryptid.quest/the-crew/grimlight/grimlight-",
+    imageAlt: "Grimlight standing on a path around Baird Lake.",
+    tagline: "The Moonlit Mothman",
+    bio: [
+      "Little is known of Grimlight's origins, and even those closest to him cannot say with certainty where his travels began. He has wandered through distant lands and worlds beyond the Northern Fringe, encountering places and phenomena that most would struggle to imagine. Portals, shifting boundaries between realms, and other strange occurrences are hardly unfamiliar to him.",
+
+      "Somewhere along those travels, stories began to circulate of a strange winged figure whose appearance became entwined with a tragedy in a distant riverside town. Whether Grimlight had any connection to those events, or what he may have been trying to communicate, remains a mystery.",
+
+      "For all the extraordinary places he has visited, it was the village of Baird that finally gave Grimlight a reason to stop wandering. Among its unusual inhabitants, he found something that had often eluded him elsewhere: companionship, understanding, and a place where his peculiar nature was accepted without question.",
+
+      "These days, Grimlight calls Baird home, though he can frequently be found wandering the surrounding forests beneath the moonlight. Where he goes on these solitary excursions is largely his own business, and his friends have long since learned that he will return when he is ready.",
+
+      "Despite his imposing appearance and mysterious nature, Grimlight is a surprisingly gentle and easygoing fellow. Quietly observant and considerate of those around him, he has a habit of noticing the little things others overlook. Whether retrieving something a forgetful friend has left behind or offering a helping hand without being asked, Grimlight rarely makes a fuss over his own kindness. He also possesses a peculiar sense of humor, occasionally sharing an amusing observation that leaves Dredsky chuckling while everyone else wonders what they missed.",
+
+      "Although Grimlight understands spoken language perfectly well, his anatomy is not suited to producing words. Instead, he communicates through soft coos and a form of telepathy consisting of images, sensations, emotions, and impressions rather than conventional speech. Most find these messages difficult to interpret, but Dredsky has spent enough time with Grimlight to develop an understanding of his unusual language.",
+
+      "For all his intelligence and worldly experience, Grimlight remains very much a moth at heart. Shiny objects have an almost irresistible appeal, and his nocturnal instincts occasionally lead him on long, solitary excursions beneath the stars. He may miss an evening meal simply because something caught his attention in the moonlit woods, only to return hours later as though nothing unusual had happened. Those who know him well have learned to accept these little peculiarities as part of his charm.",
+
+      "Grimlight's extraordinary flying abilities make him an invaluable companion on the crew's expeditions. With exceptional night vision, heightened senses, and an instinctive mastery of flight, he can navigate dense forests and unfamiliar terrain with astonishing precision, even in near-total darkness. Though Brimstone is a powerful and accomplished flyer in her own right, even she cannot match Grimlight's agility and effortless maneuverability in the air. Whether scouting from above or slipping silently through the treetops, Grimlight is often aware of things long before the others notice them.",
+
+      "His travels across distant worlds have also given him an unusual familiarity with portals, ley lines, and the strange phenomena that occasionally trouble the Northern Fringe. While he may recognize something the others have never encountered, communicating that knowledge can prove challenging. Dredsky helps interpret his impressions, while Grumbit's boundless curiosity and talent for developing theories often turn those fragments of understanding into something the entire crew can investigate. Together, the three make an unlikely but remarkably effective team.",
+
+      "Despite his remarkable abilities and mysterious past, Grimlight has no particular desire for recognition or importance. He is content to explore alongside his friends, lend his abilities where they are needed, and occasionally disappear into the moonlit skies simply for the pleasure of flying. Of all the places his travels have taken him, it is here in Baird that Grimlight has finally found a place to belong."
+
+    ],
+    facts: [
+      { label: "Species", value: "Mothman" },
+      { label: "Height", value: "7'2\"" },
+      { label: "Origin", value: "Unknown—Beyond the Northern Fringe" },
+      { label: "Interests", value: "Reading, exploring, collecting stones and gems" },
+      { label: "Notable Skills", value: "Sewing, tailoring" }
+    ]
+  },
+  {
     name: "Maerith",
     slug: "maerith",
     imagePath: "https://media.cryptid.quest/the-crew/maerith/maerith-",
