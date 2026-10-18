@@ -26,13 +26,13 @@ export const CREW_MEMBERS = [
 
       "Despite his remarkable abilities and mysterious past, Grimlight has no particular desire for recognition or importance. He is content to explore alongside his friends, lend his abilities where they are needed, and occasionally disappear into the moonlit skies simply for the pleasure of flying. Of all the places his travels have taken him, it is here in Baird that Grimlight has finally found a place to belong."
 
-    ],
+    ], 
     facts: [
       { label: "Species", value: "Mothman" },
       { label: "Height", value: "7'2\"" },
       { label: "Origin", value: "Unknown—Beyond the Northern Fringe" },
-      { label: "Interests", value: "Reading, exploring, collecting stones and gems" },
-      { label: "Notable Skills", value: "Sewing, tailoring" }
+      { label: "Interests", value: "Moonlit flights, shiny objects, voicing" },
+      { label: "Notable Skills", value: "Telepathic communication, agile flight, exceptional night vision, heightened senses" }
     ]
   },
   {
