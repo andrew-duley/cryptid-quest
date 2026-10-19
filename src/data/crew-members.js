@@ -54,6 +54,23 @@ export const CREW_MEMBERS = [
       { label: "Notable Skills", value: "Sewing, tailoring" }
     ]
   },
+  {
+    name: "Sparkplug",
+    slug: "sparkplug",
+    imagePath: "https://media.cryptid.quest/the-crew/sparkplug/sparkplug-",
+    imageAlt: "Sparkplug admiring her blacksmithing handy work.",
+    tagline: "Transcended Blacksmith of Baird",
+    bio: [
+      "Her Bio goes here"
+    ],
+    facts: [
+      { label: "Species", value: "???" },
+      { label: "Height", value: "3'" },
+      { label: "Origin", value: "Timberfell Basin" },
+      { label: "Interests", value: "Hammering, explosions, fire, electricity, metallurgy" },
+      { label: "Notable Skills", value: "Blacksmithing, crash test dummy" }
+    ]
+  },
   // {
   //   name: "Maerith",
   //   slug: "maerith",
