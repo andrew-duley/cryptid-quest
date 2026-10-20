@@ -36,6 +36,24 @@ export const CREW_MEMBERS = [
     ]
   },
   {
+    name: "Jervas Ironfur",
+    slug: "jervas-ironfur",
+    imagePath: "https://media.cryptid.quest/the-crew/jervas-ironfur/jervas-ironfur-",
+    imageAlt: "Jervas Ironfur judging you.",
+    tagline: "One half of ",
+    bio: [
+      "Bio goes here."
+
+    ], 
+    facts: [
+      { label: "Species", value: "Dire Wolverine" },
+      { label: "Height", value: "6'6\"" },
+      { label: "Origin", value: "The Northern Fringe" },
+      { label: "Interests", value: "Discipline, oatmeal, solving crimes" },
+      { label: "Notable Skills", value: "Deduction, resolve, hand-to-hand combat" }
+    ]
+  },
+  {
     name: "Maerith",
     slug: "maerith",
     imagePath: "https://media.cryptid.quest/the-crew/maerith/maerith-",
