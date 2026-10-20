@@ -61,14 +61,32 @@ export const CREW_MEMBERS = [
     imageAlt: "Sparkplug admiring her blacksmithing handy work.",
     tagline: "Transcended Blacksmith of Baird",
     bio: [
-      "Her Bio goes here"
+      "Sparkplug is an Ildren from the Ironbark clan, a community of small, nimble woodland folk who make their home in the Ironbark Burrows of Timberfell Basin. Raised in a loving family, she developed an early fascination with metalworking, spending much of her youth studying the techniques of local craftsmen and experimenting with a forge her father had provided to encourage her growing talents.",
+
+      "Her father, a trader who frequently traveled between settlements, occasionally brought Sparkplug along on his journeys. It was during one such expedition, roughly ten years ago, that she first visited Baird. Never one to pass up an opportunity to visit a smithy, Sparkplug sought out the settlement's resident blacksmith. By the end of that visit, she had somehow found herself in possession of his apron, his hammer, and, rather unexpectedly, his profession.",
+
+      "With her father's blessing, Sparkplug remained in Baird and quickly earned a reputation for exceptional craftsmanship. Over the following decade, she transformed the modest smithy into a thriving workshop, where she continues to forge everything from everyday tools and household fittings to elaborate weapons and experimental alloys.",
+
+      "Though she remains fond of her family and her home in Timberfell Basin, Sparkplug has found a place of her own in Baird, surrounded by friends and a community that has come to depend on her remarkable talents.",
+
+      "Sparkplug possesses an infectious enthusiasm for life, an insatiable curiosity, and a cheerful disposition that rarely fails to brighten the mood of those around her. Quick to smile and eager to lend a hand, she approaches even the most ordinary tasks with a sense of purpose and excitement. Her greatest passion, however, lies in the forge, where an endless fascination with metals, heat, and the possibilities of her craft keeps her constantly experimenting with new techniques and materials.",
+
+      "Highly intelligent and exceptionally skilled, Sparkplug takes tremendous pride in her work. She is methodical when precision matters, yet adventurous enough to challenge conventional wisdom when she believes something can be improved. Her experiments occasionally produce unexpected results, but she views these moments as opportunities to learn rather than reasons to abandon an idea. When discussing her latest discovery, her excitement can become so contagious that even those who understand very little of what she is saying find themselves sharing in her enthusiasm.",
+
+      "Despite her remarkable abilities, Sparkplug remains humble, approachable, and genuinely delighted by the accomplishments of others. She is as happy repairing a neighbor's broken hinge as she is forging an extraordinary weapon, finding satisfaction not merely in what she creates, but in knowing that her work makes someone's life a little better.",
+
+      "As Baird's resident blacksmith, Sparkplug plays an essential role in the daily life of the settlement. From maintaining the tools and equipment that keep its farms and workshops running to crafting specialized weapons and armor, her talents are sought after by tradespeople, adventurers, and ordinary townsfolk alike. Her workshop has become a familiar destination for anyone in need of skilled metalwork, though visitors occasionally find themselves drawn into an enthusiastic explanation of whatever new technique or unusual material has captured her attention.",
+
+      "Among her friends, Sparkplug is especially valued for her ingenuity and willingness to tackle difficult challenges. Whether collaborating with Brutus on a project requiring both wood and metal, discussing an unusual discovery with Grumbit, or forging equipment sturdy enough to withstand Stoneblood's tremendous strength, she approaches every request with the same dedication and curiosity. Few problems fail to interest her, particularly when solving them requires thinking beyond the limits of conventional craftsmanship.",
+
+      "Yet for all her extraordinary talent, Sparkplug's greatest contribution to Baird may be something far less tangible. Her warmth, generosity, and boundless enthusiasm have made her a beloved member of the community. She is always ready to help a friend, celebrate someone else's success, or share the excitement of a new discovery. In a world filled with strange creatures, ancient mysteries, and uncertain dangers, Sparkplug remains a cheerful reminder that sometimes the greatest adventure is simply doing what you love, surrounded by people who are happy to have you there."
     ],
     facts: [
-      { label: "Species", value: "???" },
+      { label: "Species", value: "Ildren" },
       { label: "Height", value: "3'" },
       { label: "Origin", value: "Timberfell Basin" },
-      { label: "Interests", value: "Hammering, explosions, fire, electricity, metallurgy" },
-      { label: "Notable Skills", value: "Blacksmithing, crash test dummy" }
+      { label: "Interests", value: "Metallurgy, experimental forging, pyrotechnics" },
+      { label: "Notable Skills", value: "Master blacksmithing, metalworking, welding, alloy development" }
     ]
   },
   // {
