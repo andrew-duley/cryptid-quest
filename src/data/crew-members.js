@@ -40,17 +40,35 @@ export const CREW_MEMBERS = [
     slug: "jervas-ironfur",
     imagePath: "https://media.cryptid.quest/the-crew/jervas-ironfur/jervas-ironfur-",
     imageAlt: "Jervas Ironfur judging you.",
-    tagline: "One half of ",
+    tagline: "The Silent Pursuer",
     bio: [
-      "Bio goes here."
+      "Jervas Ironfur hails from the Frostscar Expanse, a vast and unforgiving wilderness in the far northwestern reaches of the Northern Fringe. Bitter winds, violent snowstorms, and seemingly endless stretches of frozen terrain make the region inhospitable to all but its hardiest inhabitants. Raised in one of the small settlements scattered throughout the expanse, Jervas developed a keen understanding of the wilderness and an extraordinary ability to recognize even the faintest signs of passage through it.",
+
+      "During a particularly violent snowstorm, a mysterious disturbance occurred near his home settlement. The following morning, Jervas discovered an unusual collection of tracks and other evidence that he could not readily explain. Determined to uncover what had happened, he began following the trail south, piecing together clues wherever he could find them. Although the trail eventually disappeared, his investigation carried him far beyond the frozen reaches of his homeland and ultimately to the village of Baird.",
+
+      "Initially intending to stay only long enough to rest and continue his search, Jervas secured a room at Longfire Lodge. As the days passed, however, he began getting acquainted with the residents and exploring the surrounding countryside. His keen observational skills and willingness to lend a hand quickly made him a welcome presence, and he found himself growing increasingly fond of the little community. What began as a brief stop along an uncertain trail gradually became something much more permanent.",
+
+      "These days, Jervas calls Baird home, though he frequently ventures into the surrounding forests and wilderness. His watchful nature and keen investigative instincts have made him someone the townspeople can depend on whenever something seems amiss. Whether following an unusual trail, investigating a disturbance, or quietly keeping an eye on the surrounding countryside, Jervas takes the safety of his adopted home seriously. He has never needed an official title or position to look out for the people he considers his own.",
+
+      "Jervas is a serious and deliberate fellow who approaches most situations with a calm, methodical mindset. Naturally observant and remarkably patient, he has a habit of noticing details that others overlook, often taking time to consider what he has seen before drawing conclusions. Once something catches his attention, he is not easily distracted, and an unanswered question can occupy his thoughts long after everyone else has moved on.",
+
+      "Despite his imposing appearance and stern demeanor, Jervas is neither unfriendly nor particularly difficult to get along with. He enjoys the company of his friends, values honesty and reliability, and possesses a strong sense of fairness. While he seldom seeks attention, he is always willing to offer assistance when someone needs it. Those who know him well understand that his seriousness comes not from a lack of warmth, but from a genuine desire to understand the world around him and do right by the people in it.",
+
+      "Jervas also possesses a peculiar talent for making perfectly ordinary observations sound like matters of tremendous importance. His briefings are delivered with unwavering gravity, occasionally leaving his companions struggling to contain their laughter. He rarely understands what they find so amusing, but has learned to accept their reactions with good-natured patience. When Jervas announces, \"Heads up,\" however, everyone knows that whatever follows is worth listening to.",
+
+      "Jervas's exceptional tracking abilities and keen investigative instincts have made him one of Baird's most dependable residents. Whether examining unfamiliar tracks, investigating a suspicious disturbance, or piecing together clues that others have overlooked, he approaches every mystery with patience and determination. His familiarity with the wilderness allows him to navigate difficult terrain, recognize subtle changes in his surroundings, and follow trails that most would consider hopelessly lost. Though he holds no official position, the townspeople have come to rely on his watchful presence, knowing that Jervas will rarely let a potential danger go unnoticed.",
+
+      "Over time, Jervas has developed a particularly effective partnership with Brimstone, whose strength and ability to fly complement his skills on the ground. What began as two capable individuals independently lending a hand around Baird gradually became a natural working relationship. Whether searching for someone lost in the wilderness, investigating unusual activity, or helping a stranded traveler reach safety, the two work together with remarkable efficiency. Neither considers themselves the other's superior, and their mutual respect has grown into a lasting friendship. Together, they have become an unofficial pair of protectors whom the people of Baird know they can count on.",
+
+      "Among the crew, Jervas is a trusted companion whose careful observations often provide a much-needed perspective during their expeditions. His methodical approach makes an interesting contrast to Grumbit's enthusiasm for elaborate theories, while Dredsky and the others have learned to appreciate his ability to recognize when something simply does not add up. Although he seldom seeks recognition for his contributions, Jervas takes considerable pride in knowing that his abilities can make a difference. For him, there is little greater satisfaction than following a difficult trail to its conclusion or knowing that someone has made it home safely."
 
     ], 
     facts: [
       { label: "Species", value: "Dire Wolverine" },
       { label: "Height", value: "6'6\"" },
-      { label: "Origin", value: "The Northern Fringe" },
-      { label: "Interests", value: "Discipline, oatmeal, solving crimes" },
-      { label: "Notable Skills", value: "Deduction, resolve, hand-to-hand combat" }
+      { label: "Origin", value: "The Frostscar Expanse" },
+      { label: "Interests", value: "Discipline, oatmeal, solving mysteries" },
+      { label: "Notable Skills", value: "Tracking, deduction, paw-to-hand combat" }
     ]
   },
   {
