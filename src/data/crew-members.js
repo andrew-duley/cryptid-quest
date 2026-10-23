@@ -3,8 +3,8 @@ export const CREW_MEMBERS = [
     name: "Brimstone",
     slug: "brimstone",
     imagePath: "https://media.cryptid.quest/the-crew/brimstone/brimstone-",
-    imageAlt: "Grimlight standing on a path around Baird Lake.",
-    tagline: "",
+    imageAlt: "Brimstone overlooking the landscape of the Blight.",
+    tagline: "The Reluctant Warrior",
     bio: [
       "Brimstone was born into a world of towering stone cathedrals, immense metalwork, and magnificent cities suspended above seemingly bottomless gorges. Great arches stretched between distant cliffs, while elaborate spires rose hundreds of feet into the sky. These extraordinary structures were built eons ago through the combined efforts of two civilizations: the gargoyles, whose mastery of stone was complemented by the remarkable metalworking abilities of the Palladiuns. Whatever harmony once existed between them had long since disappeared, replaced by an ancient and seemingly endless war. By the time Brimstone was born, generations had lived and died without knowing anything resembling peace.",
 
@@ -69,6 +69,43 @@ export const CREW_MEMBERS = [
       { label: "Origin", value: "Unknown—Beyond the Northern Fringe" },
       { label: "Interests", value: "Moonlit flights, shiny objects, voicing" },
       { label: "Notable Skills", value: "Telepathic communication, agile flight, exceptional night vision, heightened senses" }
+    ]
+  },
+  {
+    name: "Grumbit",
+    slug: "grumbit",
+    imagePath: "https://media.cryptid.quest/the-crew/grumbit/grumbit-",
+    imageAlt: "Grumbit overlooking his surroundings from the top of a mountain.",
+    tagline: "The Insatiable Explorer",
+    bio: [
+      "Grumbit hails from Cogsprocket, a bustling gnomish settlement renowned for its ingenious inventions, elaborate machinery, and residents whose curiosity frequently exceeds their sense of caution. Surrounded by workshops, winding streets, and the constant sounds of industrious tinkering, Grumbit developed an insatiable fascination with the world beyond his hometown. While many of his fellow gnomes devoted themselves to mechanical pursuits, Grumbit preferred venturing into the wilderness, studying unusual creatures, collecting peculiar specimens, and investigating anything that caught his attention. Over the years, he became an experienced and resourceful explorer, assembling an impressive collection of specialized equipment to accompany him on his expeditions.",
+
+      "It was during one such expedition that Grumbit's life took an entirely unexpected turn. While exploring the countryside beyond Cogsprocket, he became fascinated by a particularly elusive thistled hare and eagerly followed it deeper into the wilderness. So absorbed was he in his pursuit that he failed to notice the increasingly peculiar changes taking place around him. The vegetation grew unfamiliar, the atmosphere seemed subtly altered, and the surrounding landscape gradually became something altogether different. Unbeknownst to Grumbit, he had wandered through an area where the boundaries between realities had weakened, emerging into the Northern Fringe without ever realizing he had left his own world.",
+
+      "Undeterred by his unfamiliar surroundings, Grumbit continued exploring until his travels eventually brought him to the village of Baird. There, he began asking residents for directions to Cogsprocket and several other settlements he knew, only to discover that nobody recognized any of the names. Initially convinced that the locals were simply unfamiliar with the surrounding geography, he became increasingly intrigued as each new inquiry produced the same bewildering response. Gradually, Grumbit came to understand that he had stumbled into an entirely different realm. Rather than despair at his predicament, however, he found himself overwhelmed by the extraordinary possibilities of a whole new world waiting to be explored.",
+
+      "Grumbit eventually made his home in Baird, where the surrounding forests, mountains, lakes, and mysterious ruins offered seemingly endless opportunities for discovery. His enthusiasm and considerable knowledge soon brought him into the company of other adventurous residents, and he became a familiar presence among the crew's expeditions into the Northern Fringe. Though he occasionally reflects on his life in Cogsprocket, Grumbit has embraced his unexpected circumstances with characteristic enthusiasm. For a gnome who has spent his life wondering what might lie beyond the next hill, finding himself in an entirely new world may well be the greatest discovery he has ever made.",
+
+      "Grumbit possesses an almost boundless curiosity and an enthusiasm for discovery that rarely diminishes, regardless of the circumstances. Cheerful, inquisitive, and endlessly talkative when discussing his latest findings, he approaches the unknown with the excitement of someone who has just discovered the world's greatest secret. His mind is constantly at work, connecting observations, considering possibilities, and developing theories that range from remarkably insightful to spectacularly improbable. Though his imagination occasionally gets the better of him, Grumbit is far more perceptive than his eccentric manner might initially suggest.",
+
+      "Despite his tendency to become distracted by unusual plants, mysterious tracks, or peculiar sounds in the distance, Grumbit is a knowledgeable and resourceful adventurer. Years of exploration have given him a practical understanding of wilderness survival, unfamiliar creatures, and the importance of proper preparation. He takes considerable pride in his equipment, carrying an astonishing assortment of tools, instruments, maps, and supplies for nearly every conceivable situation. While others may question the necessity of some of his more unusual gadgets, Grumbit can usually explain precisely why he brought them, often at considerable length.",
+
+      "Grumbit's familiarity with the strange and extraordinary means that even the most unusual inhabitants of the Northern Fringe seldom surprise him simply by existing. Instead, he is fascinated by the ways they differ from creatures and peoples he has encountered elsewhere. He is particularly intrigued by Stoneblood, whose thoughtful and gentle disposition challenges everything Grumbit previously understood about trolls. Such discoveries delight him, serving as welcome reminders that even a lifetime of exploration can leave one's understanding of the world wonderfully incomplete.",
+
+      "Friendly and good-natured, Grumbit enjoys the company of his fellow adventurers and rarely misses an opportunity to share a story, offer an observation, or propose an explanation for something nobody else has thought to question. His theories tend to become increasingly elaborate after a few drinks, occasionally wandering into territory that even his closest companions find difficult to follow. Remarkably, some of his most outlandish suggestions have proven unexpectedly accurate, a fact Grumbit is always delighted to remind everyone of. Beneath his eccentricities lies a loyal and capable friend whose enthusiasm for the unknown is matched only by his willingness to explore it.",
+
+      "Grumbit has become one of the crew's most enthusiastic explorers, accompanying his companions on expeditions throughout the Northern Fringe. His extensive knowledge of plants, wildlife, unusual creatures, and wilderness environments makes him an invaluable resource whenever their travels lead into unfamiliar territory. Whether identifying a rare botanical specimen, examining mysterious tracks, or investigating the remains of an ancient structure, Grumbit approaches each discovery with a combination of careful observation and infectious excitement.",
+
+      "Although his small stature and eccentric collection of equipment might cause strangers to underestimate him, Grumbit is remarkably capable in the field. His resourcefulness, attention to detail, and seemingly endless assortment of specialized tools have proven useful on countless occasions. He is equally comfortable navigating difficult terrain, documenting unusual findings, or offering an unexpected explanation for something his companions have overlooked. His enthusiasm sometimes carries him farther into a mystery than common sense would advise, but his experience and ingenuity frequently help him find a way through.",
+
+      "Among his companions, Grumbit has found kindred spirits who share his appetite for adventure, even if they do not always share his enthusiasm for lengthy explanations. His curiosity complements Dredsky's measured judgment, Bif's perceptiveness, and Stoneblood's practical nature, while his exchanges with Brutus frequently provide a source of amusement for the rest of the crew. For Grumbit, Baird has become more than a convenient base for his expeditions. It is a place of friendship, belonging, and seemingly limitless possibilities, where every journey into the wilderness offers another opportunity to discover something extraordinary."
+    ], 
+    facts: [
+      { label: "Species", value: "Gnome" },
+      { label: "Height", value: "3'4\"" },
+      { label: "Origin", value: "Cogsprocket" },
+      { label: "Interests", value: "Exploration, history, cartography, artifacts, alchemy, lost civilizations, cryptids, botany, ancient languages" },
+      { label: "Notable Skills", value: "Wilderness survival, navigation, field research, mechanical engineering" }
     ]
   },
   {
