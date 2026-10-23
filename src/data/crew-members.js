@@ -1,5 +1,41 @@
 export const CREW_MEMBERS = [
   {
+    name: "Brimstone",
+    slug: "brimstone",
+    imagePath: "https://media.cryptid.quest/the-crew/brimstone/brimstone-",
+    imageAlt: "Grimlight standing on a path around Baird Lake.",
+    tagline: "",
+    bio: [
+      "Brimstone was born into a world of towering stone cathedrals, immense metalwork, and magnificent cities suspended above seemingly bottomless gorges. Great arches stretched between distant cliffs, while elaborate spires rose hundreds of feet into the sky. These extraordinary structures were built eons ago through the combined efforts of two civilizations: the gargoyles, whose mastery of stone was complemented by the remarkable metalworking abilities of the Palladiuns. Whatever harmony once existed between them had long since disappeared, replaced by an ancient and seemingly endless war. By the time Brimstone was born, generations had lived and died without knowing anything resembling peace.",
+
+      "Like many of her kind, Brimstone was trained for battle from an early age. Though still considered young by gargoyle standards at approximately two hundred years old, she had already endured more conflict than most could imagine. Disciplined, capable, and accustomed to following orders, she became a formidable soldier, though she never shared the enthusiasm for warfare that some of her comrades possessed. She fought because fighting was all she had ever known, and because survival demanded it. During a particularly violent engagement, an unexpected malfunction involving one of the battlefield's powerful weapons briefly tore open a gateway between worlds. Caught in the resulting disturbance, Brimstone was violently transported from the battlefield, arriving badly wounded in the frozen wilderness of the Northern Fringe.",
+
+      "Disoriented and struggling against a fierce snowstorm, Brimstone made her way south through unfamiliar territory, occasionally taking flight when her injuries permitted. Eventually, exhausted and unable to continue, she collapsed in a forest not far from the village of Baird. There, she was discovered by Grumbit, a curious gnome explorer who had ventured into the wilderness with several companions in search of a rare flower known as the Vermilion Flamecup. Recognizing the severity of her injuries, the group carried her back to Longfire Lodge, where she was given a room and tended to during her recovery. When Brimstone finally regained consciousness, she found herself in an unfamiliar place, surrounded by people who had gone out of their way to save someone they had never met.",
+
+      "As her strength returned, Brimstone began exploring Baird and getting acquainted with its residents. The quiet streets, surrounding forests, and peaceful waters of the lake were unlike anything she had known in her homeland. Even more remarkable was the kindness of the people, who seemed perfectly content to go about their lives without the constant threat of violence. Grateful for the care she had received, Brimstone began offering her own assistance wherever it was needed, putting her strength, discipline, and ability to fly to far more rewarding use. What began as an unexpected refuge gradually became a place she could call home. For the first time in nearly two centuries, Brimstone was free to imagine a future that did not revolve around war.",
+
+      "Brimstone is a disciplined and remarkably composed individual whose mannerisms reflect nearly two centuries spent in a world consumed by warfare. Direct, practical, and accustomed to making decisions under pressure, she approaches most situations with the confidence of a seasoned soldier. She speaks plainly, rarely wastes words, and has little patience for unnecessary complications. Although her imposing appearance and stern demeanor can be intimidating to those meeting her for the first time, Brimstone is neither cruel nor particularly aggressive. Having spent much of her life surrounded by conflict, she has developed a deep appreciation for peace and prefers resolving problems without resorting to violence whenever possible.",
+
+      "Brimstone also has an unintentionally humorous side, largely owing to her unfamiliarity with the expressions and double meanings commonly understood by the people of Baird. Her straightforward manner and military vocabulary occasionally produce remarks that leave her companions struggling to contain their laughter. Brutus and Grumbit, in particular, seem to find endless amusement in these misunderstandings, much to Brimstone's bewilderment. She rarely understands what was so funny about an otherwise perfectly reasonable statement, but generally takes their reactions in stride. To Brimstone, words are meant to communicate clearly, and she sees little reason to complicate matters by searching for meanings that were never intended.",
+
+      "Despite her military upbringing, Brimstone possesses a genuine warmth that becomes increasingly apparent to those who know her. She values loyalty, honesty, and the simple pleasure of spending time among friends without constantly looking over her shoulder. Her experiences have made her fiercely protective of others, particularly those who cannot readily defend themselves, though she has little interest in being celebrated for her efforts. She is equally content lending a hand around the village, enjoying a quiet evening at Longfire Lodge, or simply watching the ordinary activities of a community that has welcomed her as one of its own.",
+
+      "Brimstone's extraordinary strength, ability to fly, and extensive military experience make her a formidable presence in the Northern Fringe. Years of combat training have sharpened her instincts, allowing her to assess dangerous situations quickly and respond with remarkable precision. Although she has little desire to return to the life of a soldier, she has found that the skills she once used to survive can serve a far more meaningful purpose in Baird. Whether assisting with difficult work, helping someone in distress, or protecting the village from an unexpected threat, Brimstone is always willing to put her abilities to good use.",
+
+      "Among her closest companions is Jervas Ironfur, whose investigative instincts and exceptional tracking abilities complement her own strengths. While Jervas is particularly skilled at following trails and piecing together evidence, Brimstone can survey the surrounding countryside from above, reach otherwise inaccessible locations, and provide assistance where strength or flight is required. Their partnership developed naturally through their shared willingness to help the people of Baird, eventually becoming a friendship built on trust and mutual respect. Neither holds an official position of authority, but together they have become two of the village's most dependable unofficial protectors.",
+
+      "Brimstone has also become a valued companion to the crew, accompanying them when their adventures call for an experienced fighter or an extra pair of wings. Though her practical approach occasionally clashes with Grumbit's elaborate theories or Brutus's stubbornness, she has grown genuinely fond of their company and the peculiar friendships that come with it. For someone who spent nearly two centuries surrounded by conflict, the opportunity to explore, laugh, and help others without the demands of war is something she never takes for granted. She may always carry the instincts of a soldier, but in Baird, Brimstone has finally found a place where she can be something more."
+
+    ], 
+    facts: [
+      { label: "Species", value: "Gargoyle" },
+      { label: "Height", value: "6'6\"" },
+      { label: "Origin", value: "The Blight" },
+      { label: "Interests", value: "Peace, helping others, exploring the countryside" },
+      { label: "Notable Skills", value: "Exceptional strength, flight, compat expertise" }
+    ]
+  },
+  {
     name: "Grimlight",
     slug: "grimlight",
     imagePath: "https://media.cryptid.quest/the-crew/grimlight/grimlight-",
