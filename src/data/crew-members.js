@@ -40,7 +40,7 @@ export const CREW_MEMBERS = [
     slug: "brutus-the-belligerent-beaver",
     imagePath: "https://media.cryptid.quest/the-crew/brutus-the-belligerent-beaver/brutus-the-belligerent-beaver-",
     imageAlt: "Brutus surveying his lumber mill.",
-    tagline: "The Reluctant Warrior",
+    tagline: "The Cantankerous Carpenter",
     bio: [
       "Born along the shores of Baird Lake, Brutus spent his early years quite content with the life of a beaver. The growing settlement of Baird was a familiar sight across the water, though he had never felt particularly compelled to investigate it. That changed one day when, for no particular reason beyond curiosity, he decided to swim ashore and see what all the fuss was about.",
 
