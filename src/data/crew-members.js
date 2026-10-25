@@ -127,7 +127,7 @@ export const CREW_MEMBERS = [
     slug: "dredsky",
     imagePath: "https://media.cryptid.quest/the-crew/dredsky/dredsky-",
     imageAlt: "Dredsky with his sword down in the sepulchre.",
-    tagline: "Baird's Undead Warrior",
+    tagline: "A Heart of Gold. A Face of Death. A Taste for Meta",
     bio: [
       "Dredsky (pronounced dread-skee) wasn't always known by that name. Among his former companions, he was affectionately called Dredseksy, a nickname inspired by his devastatingly handsome undead appearance and his friends' questionable sense of humor. During one particularly chaotic adventure, a female companion repeatedly called him \"Dredsky\" instead. He found the mistake so amusing that he never bothered correcting her. Eventually, the name stuck, and these days, it's the only one he uses.",
 
