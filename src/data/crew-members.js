@@ -123,6 +123,45 @@ export const CREW_MEMBERS = [
     ]
   },
   {
+    name: "Dredsky",
+    slug: "dredsky",
+    imagePath: "https://media.cryptid.quest/the-crew/dredsky/dredsky-",
+    imageAlt: "Dredsky with his sword down in the sepulchre.",
+    tagline: "Baird's Undead Warrior",
+    bio: [
+      "Dredsky (pronounced dread-skee) wasn't always known by that name. Among his former companions, he was affectionately called Dredseksy, a nickname inspired by his devastatingly handsome undead appearance and his friends' questionable sense of humor. During one particularly chaotic adventure, a female companion repeatedly called him \"Dredsky\" instead. He found the mistake so amusing that he never bothered correcting her. Eventually, the name stuck, and these days, it's the only one he uses.",
+
+      "Where Dredsky came from, however, is another matter entirely. Much of his life before the Northern Fringe remains a mystery, even to him. Occasionally, fragments surface in his thoughts: a forest of towering pines, an unfamiliar name, or the faint impression of a place he once knew. He tries to make sense of them, but the connections never quite come together. Even after a century in the Fringe, his origins remain elusive.",
+
+      "When Dredsky first arrived in Baird, the settlement was home to barely a hundred residents. With no particular place to stay, he discovered an empty grave that had recently been dug and decided it looked comfortable enough for a long-overdue rest. What began as an improvised sleeping arrangement eventually gave way to something considerably more permanent. Stoneblood helped with the excavation, while a couple of local masons oversaw the construction of the stone sepulchre Dredsky now calls home, nestled within Baird's graveyard.",
+
+      "Though he has made a life for himself in Baird, Dredsky hasn't given up trying to remember his past. He often takes long walks beneath the night sky, allowing his thoughts to wander as he enjoys the peace and quiet. Sometimes Grimlight accompanies him, and the two share the sort of comfortable silence that comes naturally to old friends. Whether those walks will ever bring Dredsky closer to remembering where he came from remains to be seen.",
+
+      "With his sunken features, glowing blue eyes, permanent scowl, and deep, gravelly voice, Dredsky has a way of making even the friendliest greeting sound vaguely threatening. Those meeting him for the first time often assume the worst, but beneath his intimidating appearance is a humble, respectful, and surprisingly easygoing fellow. He's quick to offer assistance when someone is in trouble, though his attempts to reassure people occasionally have the opposite effect.",
+
+      "Dredsky possesses a dry, understated sense of humor and rarely goes out of his way to draw attention to himself. He's intelligent, observant, and quick to assess a situation, drawing on years of experience to determine his next move. While perfectly capable of exercising patience and restraint, he's just as comfortable charging headlong into the fray when the occasion calls for it. He isn't particularly talkative, but he enjoys good company and is perfectly comfortable spending time with friends without saying much at all.",
+
+      "He also has a particular fondness for metal in nearly every form. Whether it's a finely crafted sword, a battered suit of armor, or music loud enough to rattle the windows of his sepulchre, Dredsky appreciates it all. An accomplished guitarist with a talent for building and modifying instruments, he takes his music seriously, though he's never above finding humor in his own rather unusual interests.",
+
+      "Despite his formidable appearance and considerable experience as a warrior, Dredsky has little interest in intimidating others or proving himself. He treats people with respect, values loyalty and friendship, and would much rather settle a disagreement with a few quiet words than draw his sword. Of course, when words aren't enough, he's more than capable of handling himself.",
+
+      "Having called Baird home for more than a century, Dredsky has become a familiar presence in the settlement, even if his appearance still occasionally startles newcomers. He has watched the small community grow from a handful of homes into a thriving village, forming lasting friendships with many of its residents along the way. Though he holds no official position of authority, his experience and willingness to lend a hand have earned him the respect and trust of those who know him.",
+
+      "Among his closest companions is Grimlight, with whom he shares a particularly strong friendship. The two are often found exploring the surrounding woods or walking the quieter paths near Baird, sometimes discussing matters at length and other times enjoying the silence. Their understanding of one another runs deep, and Grimlight's unusual abilities make him an especially valuable companion when trouble arises.",
+
+      "When danger threatens Baird or its inhabitants, Dredsky is rarely far from the action. A seasoned warrior with a talent for making quick decisions under pressure, he frequently takes the initiative during dangerous encounters. He is equally comfortable working alongside the crew or acting independently when circumstances demand it, though he knows the value of having capable friends at his side.",
+
+      "Despite his formidable abilities, Dredsky leads a relatively modest life. He enjoys the familiarity of Baird, the company of his friends, and the quiet moments between adventures. Whether lending a hand to a neighbor, exploring the surrounding wilderness, or simply enjoying an evening beneath the stars, he asks for little and appreciates much. After a century in the Northern Fringe, Baird has become far more than a place to reside. It's his home."
+    ], 
+    facts: [
+      { label: "Species", value: "Undead Human" },
+      { label: "Height", value: "5'7\" (hunched), 6' (standing straight)" },
+      { label: "Origin", value: "???" },
+      { label: "Interests", value: "All things metal, guitars, swordplay, quiet nighttime walks" },
+      { label: "Notable Skills", value: "Swordsmanship, battlefield tactics, guitar playing, instrument crafting" }
+    ]
+  },
+  {
     name: "Grimlight",
     slug: "grimlight",
     imagePath: "https://media.cryptid.quest/the-crew/grimlight/grimlight-",
