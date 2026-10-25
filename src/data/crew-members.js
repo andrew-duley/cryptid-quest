@@ -54,7 +54,7 @@ export const CREW_MEMBERS = [
 
       "His vocabulary is nearly as legendary as his temper. When particularly agitated, Brutus has been known to produce remarkably creative combinations of words that leave bystanders struggling to decide whether to laugh or cover their children's ears. His friends have long since grown accustomed to these outbursts, often responding with little more than a raised eyebrow or an amused observation. Stoneblood, in particular, has been known to calmly continue eating his pie while Brutus launches into a tirade loud enough to be heard halfway across Baird.",
 
-      "Despite his perpetual grumbling, Brutus is genuinely happy with his life. His temper is not the result of bitterness or resentment, nor does he harbor any particular dislike for the people around him. He simply has strong opinions, very little patience, and an almost complete inability to let something go when he believes it has been done incorrectly. He takes satisfaction in a job well done, enjoys the familiar routines of his sawmill, and sees no contradiction between having a perfectly pleasant day and spending half of it shouting at things",
+      "Despite his perpetual grumbling, Brutus is genuinely happy with his life. His temper is not the result of bitterness or resentment, nor does he harbor any particular dislike for the people around him. He simply has strong opinions, very little patience, and an almost complete inability to let something go when he believes it has been done incorrectly. He takes satisfaction in a job well done, enjoys the familiar routines of his sawmill, and sees no contradiction between having a perfectly pleasant day and spending half of it shouting at things.",
 
       "Beneath his abrasive manner is a fiercely dependable friend who cares far more about others than he is likely to admit. When someone needs help, Brutus rarely hesitates to lend a hand, though his assistance may come accompanied by a running commentary on everything they should have done differently. He has little interest in praise or recognition, and expressions of gratitude are often met with an impatient wave or another complaint. Those who know him best understand that his willingness to show up, work hard, and see a problem through says far more about his character than anything he might shout along the way.",
 
@@ -71,6 +71,55 @@ export const CREW_MEMBERS = [
       { label: "Origin", value: "Baird Lake" },
       { label: "Interests", value: "Others minding their own business, descriptive language, writing, arguing" },
       { label: "Notable Skills", value: "Exceptional woodworking, building things properly, sawmill operation, swimming" }
+    ]
+  },
+  {
+    name: "Burnella Crumbwick",
+    slug: "burnella-crumbwick",
+    imagePath: "https://media.cryptid.quest/the-crew/burnella-crumbwick/burnella-crumbwick-",
+    imageAlt: "Burnella enjoying her kitchen.",
+    tagline: "You'll Be Gobblin' Up Her Cooking!",
+    bio: [
+      "Burnella Crumbwick hails from the cheerful gnome settlement of Fiddlewick, where she once operated a popular little café known for its hearty meals, freshly baked bread, and welcoming atmosphere. Though she remembers her life in Fiddlewick quite clearly, the circumstances that brought her to the Northern Fringe remain a mystery, even to her.",
+
+      "Approximately twenty years ago, a traveling merchant discovered Burnella unconscious beside the road north of Baird. Heading south with his wagon, the merchant made an unexpected stop in the settlement, bringing her to the Old Trapper's Lodge, where she could rest and recover.",
+
+      "When Burnella awoke, she found herself in unfamiliar surroundings with no recollection of how she had gotten there. Fortunately, she was safe, and the lodge's proprietor was happy to offer her a place to stay.",
+
+      "Burnella had no intention of settling in Baird. In fact, she fully expected to be on her way as soon as she had recovered. But when she noticed the proprietor struggling to keep up with the demands of the kitchen, she offered to lend a hand.",
+
+      "One meal led to another. Then there was bread to bake, a pantry to organize, and supper to prepare for a fresh group of travelers. Somehow, there was always one more thing that needed doing.",
+
+      "Before long, Burnella had become an indispensable part of the lodge. Eventually, she took over its operation, transforming the modest establishment into one of Baird's most beloved gathering places. As its popularity grew, the old building underwent an extensive renovation and expansion, becoming the Longfire Lodge that stands today.",
+
+      "Twenty years after arriving in Baird, Burnella still hasn't quite gotten around to leaving. And as far as the townspeople are concerned, they wouldn't have it any other way.",
+
+      "Warmhearted, cheerful, and endlessly hospitable, Burnella Crumbwick has a way of making nearly everyone feel at home. Whether she's preparing breakfast for a weary traveler or setting an extra place at the table for an unexpected guest, she believes a good meal and a little kindness can go a long way.",
+
+      "Rarely one to sit still, Burnella is happiest when there's something that needs doing. She rises early, works tirelessly, and somehow manages to keep track of a dozen things at once. From tending her sourdough starter to preparing supper for a crowded dining room, she approaches each task with the same care and enthusiasm.",
+
+      "Despite her busy schedule, Burnella rarely seems overwhelmed. She has a cheerful disposition, a playful sense of humor, and an easygoing nature that makes her a welcome presence among Baird's many colorful inhabitants. She's quick to share a laugh, offer encouragement, or lend a helping hand whenever someone needs it.",
+
+      "Of course, her kindness doesn't mean she's above a little playful discipline. Anyone caught sneaking food from her kitchen before supper might find themselves on the receiving end of a well-aimed dish towel, particularly if that someone happens to be Brutus.",
+
+      "For Burnella, caring for others isn't something she makes a point of doing. It's simply who she is.",
+
+      "As the proprietor of Longfire Lodge, Burnella Crumbwick oversees one of Baird's most beloved gathering places. With its enormous hearth, comfortable rooms, and lively dining hall, the lodge welcomes everyone from weary travelers and passing merchants to local residents looking for a good meal and familiar company.",
+
+      "Burnella is the heart of the establishment. She's often awake before sunrise, preparing fresh bread, churning butter, and making sure the kitchen is ready for whatever the day might bring. Her biscuits and gravy, hearty mushroom stew, and famous herb-infused butter chicken have earned her a reputation that extends well beyond Baird.",
+
+      "Although she manages the lodge's daily operations, Burnella is rarely confined to the kitchen. She knows many of the town's residents by name, keeps up with the latest happenings, and always seems to find time for a conversation, even when there's a dozen other things demanding her attention.",
+
+      "Longfire Lodge has become a natural meeting place for the crew, who frequently gather around its tables to share stories, discuss their latest discoveries, or simply enjoy a meal together. Burnella welcomes their company, even if their antics occasionally require a little intervention.",
+
+      "For many in Baird, Longfire Lodge is more than an inn or tavern. It's a place to gather, celebrate, rest, and feel at home. And much of that is thanks to Burnella."
+    ], 
+    facts: [
+      { label: "Species", value: "Gnome" },
+      { label: "Height", value: "3'2\"" },
+      { label: "Origin", value: "Fiddlewick" },
+      { label: "Interests", value: "Baking, gardening, good company, feeding hungry travelers" },
+      { label: "Notable Skills", value: "Cooking, hospitality, lodge management" }
     ]
   },
   {
