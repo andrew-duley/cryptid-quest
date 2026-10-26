@@ -4,7 +4,7 @@ export const CREW_MEMBERS = [
     slug: "bif-goot",
     imagePath: "https://media.cryptid.quest/the-crew/bif-goot/bif-goot-",
     imageAlt: "Brimstone overlooking the landscape of the Blight.",
-    tagline: "The Reluctant Warrior",
+    tagline: "The Polyrhythmic Sasquatch",
     bio: [
       "Bif Goot was born and raised in the forests of the Northern Fringe, where Sasquatches have lived for countless generations. Found throughout the various regions of the Fringe, Sasquatches are a wandering, inquisitive people with a deep appreciation for the natural world. Their traditions are rich with rhythm and percussion, from the steady knocking of hollow trees to intricate patterns passed between family members. For Bif, those sounds were as familiar growing up as the rustling leaves and calls of woodland creatures.",
 
