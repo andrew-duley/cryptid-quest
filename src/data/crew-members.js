@@ -1,5 +1,47 @@
 export const CREW_MEMBERS = [
   {
+    name: "Bif Goot",
+    slug: "bif-goot",
+    imagePath: "https://media.cryptid.quest/the-crew/bif-goot/bif-goot-",
+    imageAlt: "Brimstone overlooking the landscape of the Blight.",
+    tagline: "The Reluctant Warrior",
+    bio: [
+      "Bif Goot was born and raised in the forests of the Northern Fringe, where Sasquatches have lived for countless generations. Found throughout the various regions of the Fringe, Sasquatches are a wandering, inquisitive people with a deep appreciation for the natural world. Their traditions are rich with rhythm and percussion, from the steady knocking of hollow trees to intricate patterns passed between family members. For Bif, those sounds were as familiar growing up as the rustling leaves and calls of woodland creatures.",
+
+      "At eighteen, Bif decided it was time to see more of the world beyond the forests he called home. With his family's encouragement, he set out to explore the Northern Fringe, following winding trails, crossing unfamiliar territories, and satisfying a curiosity that had been growing since childhood. His travels eventually brought him to the settlement of Baird, where he found a welcoming community and an assortment of unusual inhabitants who quickly captured his interest.",
+
+      "What began as another stop along his journey gradually became something more permanent. Bif formed friendships, grew familiar with the surrounding wilderness, and discovered that Baird offered both the companionship he enjoyed and the freedom to continue exploring. Though he still loves wandering the forests and occasionally ventures farther afield, he has called Baird home ever since.",
+
+      "Now fifty-three, Bif has spent thirty-five years among the people of Baird. He still makes occasional journeys back to the forests of his youth to visit his family, returning with stories of his travels and news of the friends he's made along the way. Though his roots remain firmly planted in the place where he grew up, Baird has become every bit as much a home to him.",
+
+      "Despite his towering nine-foot frame and considerable strength, Bif Goot is a friendly, good-natured fellow who enjoys the company of others. He's naturally curious, quick to laugh, and always interested in discovering something new. Though perfectly comfortable joining in a lively conversation, Bif is just as happy sitting quietly among friends, listening to their stories and enjoying the occasional bit of nonsense. He rarely feels the need to draw attention to himself, but his easygoing manner and warm personality make him welcome company.",
+
+      "Years spent wandering the forests of the Northern Fringe have made Bif exceptionally observant. He has a particular talent for recognizing the intentions of others, often picking up on subtle changes in behavior that his companions might overlook. While he generally prefers to give others the benefit of the doubt, he's not easily fooled. On the rare occasion that something genuinely troubles him, his normally cheerful demeanor can give way to a much more serious and imposing presence.",
+
+      "Rhythm has been part of Bif's life for as long as he can remember. Raised among a people whose traditions are deeply rooted in percussion, he developed an extraordinary talent for drumming, eventually taking his abilities far beyond the patterns he learned growing up. He's particularly fond of complex rhythms, unusual time signatures, and intricate polyrhythms, though he approaches even the most demanding compositions with an almost effortless sense of ease. Bif has little interest in showing off. He simply loves to play, whether the music calls for a straightforward, steady groove or something considerably more adventurous.",
+
+      "Even away from his drums, Bif rarely sits completely still. His enormous fingers are often found tapping rhythms against tabletops, fallen logs, or his own knees, sometimes without him even realizing it. What sounds like an absentminded bit of tapping to everyone else might actually be a complicated pattern he's been working through for days. For Bif, music isn't something he switches on and off. It's simply part of how he experiences the world.",
+
+      "Above all, Bif values friendship, family, and the freedom to explore. He's loyal to those he cares about, dependable when trouble arises, and always willing to lend a hand. Although his imposing size can make him a formidable presence when necessary, he'd much rather spend his days enjoying good company, wandering unfamiliar trails, or finding a new rhythm in the sounds of the forest.",
+
+      "After thirty-five years in Baird, Bif Goot has become a familiar and well-liked member of the community. His enormous stature makes him difficult to overlook, but it's his friendly nature and willingness to help others that have earned him the affection of his neighbors. Whether lending his considerable strength to a difficult task, sharing stories of his travels, or simply enjoying an evening at Longfire Lodge, Bif is perfectly content being part of everyday village life.",
+
+      "Although Baird has long been his home, Bif has never lost his enthusiasm for exploration. He frequently ventures into the surrounding wilderness, sometimes alone and often in the company of his friends. His familiarity with the forests, keen observational skills, and ability to recognize when something isn't quite right make him a valuable companion on these excursions. He's rarely the first to assume danger, but when trouble does arise, his friends know they can depend on him.",
+
+      "Among his companions, Bif is a steady, reassuring presence who brings both warmth and a healthy sense of humor to their adventures. He enjoys the different personalities within the group, from their spirited disagreements to their occasional moments of complete absurdity. While he doesn't always have the most to say, he's an attentive listener who often understands more than he lets on.",
+
+      "For Bif, life in the Northern Fringe offers everything he could ask for: good friends, a place to call home, family he can return to visit, and a seemingly endless world waiting to be explored. And wherever his travels take him, there's a good chance he'll be tapping out a rhythm along the way."
+
+    ], 
+    facts: [
+      { label: "Species", value: "Sasquatch" },
+      { label: "Height", value: "9'" },
+      { label: "Origin", value: "The Northern Fringe" },
+      { label: "Interests", value: "Drumming, exploring, spending time with friends and family" },
+      { label: "Notable Skills", value: "Progressive percussion, exceptional strength, keen intuition" }
+    ]
+  },
+  {
     name: "Brimstone",
     slug: "brimstone",
     imagePath: "https://media.cryptid.quest/the-crew/brimstone/brimstone-",
@@ -127,7 +169,7 @@ export const CREW_MEMBERS = [
     slug: "dredsky",
     imagePath: "https://media.cryptid.quest/the-crew/dredsky/dredsky-",
     imageAlt: "Dredsky with his sword down in the sepulchre.",
-    tagline: "A Heart of Gold. A Face of Death. A Taste for Meta",
+    tagline: "A Heart of Gold. A Face of Death. A Taste for Metal",
     bio: [
       "Dredsky (pronounced dread-skee) wasn't always known by that name. Among his former companions, he was affectionately called Dredseksy, a nickname inspired by his devastatingly handsome undead appearance and his friends' questionable sense of humor. During one particularly chaotic adventure, a female companion repeatedly called him \"Dredsky\" instead. He found the mistake so amusing that he never bothered correcting her. Eventually, the name stuck, and these days, it's the only one he uses.",
 
