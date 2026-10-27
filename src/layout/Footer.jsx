@@ -1,49 +1,56 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { IMAGE_WIDTHS_FOOTER_BACKGROUND } from '../config/imageWidths.js';
+
+import Picture from '../components/Picture';
+
 function Footer() {
 
-  let year = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return(
-    <footer id="footer" className="">
+    <footer className="footer">
       <h2 className="sr-only">Footer</h2> 
-      <div className="orb orb-1"></div>
-      <div className="orb orb-2"></div>
-      <div className="orb orb-3"></div>
-      <div className="orb orb-4"></div>
-      <div className="sasquatch"></div>
+
+      <Picture 
+        imagePath="https://media.cryptid.quest/footers/master/footer-"
+        imageWidths={IMAGE_WIDTHS_FOOTER_BACKGROUND}
+        className = "footer__background" 
+        imgClassName = "footer__background-img"
+        loading="lazy"
+        fetchPriority="high"
+      />
+      
       <div className="footer__columns">
         <section className="footer__column footer__column--1">
-          <h3>Cryptid Quest</h3>
-          <p>A <em>living</em> world of games, lore, and UI craft from the Northern Fringe</p>
+          <h2>Cryptid Quest</h2>
           <ul>
-            <li><NavLink to="/">Home—Return to Campfire</NavLink></li>
-            <li><NavLink to="/the-crew">Meet the Crew</NavLink></li>
-            <li><NavLink to="/the-crypt">Enter the Crypt</NavLink></li>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/the-campfire">The Campfire</NavLink></li>
+            <li><NavLink to="/the-crew">The Crew</NavLink></li>
+            <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
           </ul>
         </section>
         <section className="footer__column footer__column--2">
-          <h3>Camp Notes</h3>
+          <h2>Information</h2>
           <ul>
-            <li><NavLink to="/about">About the Project</NavLink></li>
-            <li><NavLink to="/contact">Contact Us</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
             <li><NavLink to="/privacy-policy">Privacy Policy</NavLink></li>
             <li><NavLink to="/accessibility">Accessibility</NavLink></li>
           </ul>
         </section>
         <section className="footer__column footer__column--3">
-          <h3>Campfire Board</h3>
+          <h2>Behind the Scenes</h2>
           <ul>
-            <li><NavLink to="/community-rules">Camp Rules</NavLink></li>
-            <li><NavLink to="/submit-a-sighting">Submit a Sighting</NavLink></li>
-            <li><NavLink to="/how-to-report">How to Report</NavLink></li>
-            <li><NavLink to="/faq">FAQ</NavLink></li>
+            <li><a href="https://github.com/andrew-duley" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/andrew-duley/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
         </section>
       </div> 
       <section className="copy">
-        <small>&copy; 2025-{year} <strong>Cryptid Quest</strong>. All rights reserved.</small>
+        <p>&copy; 2025—{year} <strong>Cryptid Quest</strong> | All rights reserved</p>
       </section>
     </footer>
   );

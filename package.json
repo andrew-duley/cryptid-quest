@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "optimize:background-image": "node scripts/images/optimize-background-image.js",
     "optimize:crew-member-image": "node scripts/images/optimize-crew-member-image.js",
+    "optimize:footer-background-image": "node scripts/images/optimize-footer-background-image.js",
     "optimize:game-card-image": "node scripts/images/optimize-game-card-image.js",
     "optimize:game-element-image": "node scripts/images/optimize-game-element-image.js",
     "optimize:hero-image": "node scripts/images/optimize-hero-image.js",
