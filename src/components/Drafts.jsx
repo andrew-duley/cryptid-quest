@@ -23,4 +23,4 @@ export default function Drafts({ drafts, onSelectedDraft }) {
       })}
     </ul>
   );
-}
+} 

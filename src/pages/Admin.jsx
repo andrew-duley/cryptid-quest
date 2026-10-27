@@ -45,7 +45,7 @@ export default function Admin() {
   const headers = { "Content-Type": "application/json" };  
 
   useEffect(() => {
-    checkAuth();
+    checkAuth(); 
   }, []);
 
   async function checkAuth() { 

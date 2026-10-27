@@ -3,7 +3,7 @@ import connectPgSimple from "connect-pg-simple";
 
 export function createSessionMiddleware(pool) {
   
-  const PgSession = connectPgSimple(expressSessionconnect);
+  const PgSession = connectPgSimple(expressSession);
   const store = new PgSession({ pool, tableName: "session", createTableIfMissing: true });
   
   return expressSession({ 

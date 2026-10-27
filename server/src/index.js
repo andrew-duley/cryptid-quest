@@ -38,7 +38,7 @@ const pool = new Pool({
 
 // Middleware
 app.use(express.json());
-app.use(createSessionMiddleware(pool));
+app.use(createSessionMiddleware(pool)); 
 app.use(cors({ 
   origin: allowedOrigins,
   credentials: true
@@ -104,7 +104,7 @@ app.get("/admin/me", (req, res, next) => {
   if (req.session?.isAdmin === true) {
     return res.json({ isAuthed: true, isAdmin: true});
   }
-  return res.json({ isAuthed: false });
+  return res.json({ isAuthed: false, isAdmin: false });
 });
 
 // Check that email and password match
