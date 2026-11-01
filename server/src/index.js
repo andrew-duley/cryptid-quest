@@ -44,9 +44,13 @@ app.use(cors({
   credentials: true
 }));
 
-app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
+// app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
 
-// *Does this need requireAdminSession?*
+
+////////////////////////////////////////////////////////////////////////
+// The sections below will be combined into one super route handler
+
+//  This absolutely needs requireAdminSession!
 app.get("/admin/drafts", requireAdminSession, async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, body, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
@@ -58,6 +62,7 @@ app.get("/admin/drafts", requireAdminSession, async (req, res, next) => {
   }
 });
 
+//  This absolutely needs requireAdminSession!
 app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, body, slug, status, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
@@ -70,6 +75,12 @@ app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
   }
 });
 
+// add query for Dev Posts
+// add query for Dev Drafts
+////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////
+// change the query limit logic 
 app.get("/posts", async (req, res, next) => {
   try {
     const baseSql = "SELECT id, title, slug, category, excerpt, created_at, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
@@ -85,6 +96,7 @@ app.get("/posts", async (req, res, next) => {
       return next(err)
   }
 });
+////////////////////////////////////////////////////////////////////////
 
 app.get("/posts/:slug", async (req, res, next) => {
   try {
@@ -100,6 +112,12 @@ app.get("/posts/:slug", async (req, res, next) => {
 });
 
 // Check if there is a valid admin session
+
+// TODO: Revisit authentication when adding user accounts
+// Currently isAuthed and isAdmin both reflect the admin session
+// Future users will need authentication without admin privileges
+
+// TODO: Add rate limiting to prevent brute-force login attempts.
 app.get("/admin/me", (req, res, next) => {
   if (req.session?.isAdmin === true) {
     return res.json({ isAuthed: true, isAdmin: true});
@@ -146,6 +164,8 @@ app.post("/admin/login", async (req, res, next) => {
   }
 });
 
+// TODO: Verify clearCookie uses cookie options consistent
+// with session.js so logout reliably clears the cookie.
 app.post("/admin/logout", (req, res) => {
   req.session.destroy(err => {
     if (err) {
@@ -171,6 +191,13 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
       .replace(/^-+|-+$/g, "");
   }
 
+// TODO: Define content types and category structure
+// before changing category normalization or defaults.
+
+// TODO: Add content_type to distinguish Campfire and Development Log.
+// Reevaluate whether category is needed at all.
+// Keep existing category handling until database changes are planned.
+category = (category ?? "").trim() || "Field-notes";
   title = (title ?? "").trim();
   slug = normalizeString(slug);
   body = (body ?? "").trim();
@@ -180,6 +207,7 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   hero_image_url = (hero_image_url ?? "").trim() || null;
   hero_image_alt = (hero_image_alt ?? "").trim() || null;
 
+  // not sure what this check is doing. There is no option to tell it anything
   if(status !== "draft" && status !== "published") {
     return res.status(400).json({
       error: {
@@ -221,6 +249,10 @@ app.post("/admin/posts", requireAdminSession,  async (req, res, next) => {
   }
 });
 
+// TODO: Remove obsolete admin-key authentication code
+// after confirming all active routes use session authentication.
+// TODO: Regenerate excerpt when updating a post,
+// using the same logic as the POST route.
 app.put('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
   const urlId = req.params.id;
   let { title, body, category, status, hero_image_url, hero_image_alt } = req.body;
@@ -289,11 +321,12 @@ app.put('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
 //   }
 // });
 
-app.delete('/posts/:slug', checkAdminKey, async (req, res, next) => {
-  const urlSlug = req.params.slug;
+// TODO: Validate URL ID as a positive integer before querying PostgreSQL.
+app.delete('/admin/posts/:id', requireAdminSession, async (req, res, next) => {
+  const urlId = req.params.id;
 
   try{
-    const didRemove = await pool.query(`DELETE FROM posts WHERE slug = $1`, [urlSlug]);
+    const didRemove = await pool.query(`DELETE FROM posts WHERE id = $1`, [urlId]);
 
     if (didRemove.rowCount === 1) {
       return res.status(200).json({ data: { message: "Post deleted successfully" } });
@@ -308,6 +341,7 @@ app.delete('/posts/:slug', checkAdminKey, async (req, res, next) => {
   }
 });
 
+////////////////////////////////////////////////////////////////////////// For production, we might eventually want to return a generic message for unexpected 500 errors while logging the actual error on the server
 app.use((err, req, res, next) => {
   const status = err.status || 500;
   const code = err.code || "INTERNAL_ERROR";
@@ -315,6 +349,7 @@ app.use((err, req, res, next) => {
 
   res.status(status).json({ error: { message, code, status }});
 });
+////////////////////////////////////////////////////////////////////////
 
 app.listen(PORT, () => {
   console.log(`API running on http://localhost:${PORT}`);

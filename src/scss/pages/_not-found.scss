@@ -1,5 +1,6 @@
 @use '../abstracts' as *;
 @use 'sass:color';
+@use 'sass:math';
 
 .not-found {
   display: flex;
@@ -7,18 +8,32 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
 
-  &__title { 
-    // margin: 0 0 .5rem; 
+  h1 { 
+    position: relative;
+    margin-block: 2rem 0;
+    z-index: 5;
   }
 
-  &__lede  { 
-    color: $color-text-muted; 
-    margin-bottom: 2rem;  
+  &__content {
+    z-index: 5;
+    // visibility: hidden;
+  }
+
+  &__message  { 
+    font-size: clamp(1.8rem, 1.4rem + 1vw, 2.4rem);
+    line-height: 1.5;
+    max-width: 65rem;
+    margin-inline: auto;
+    text-align: center;
+    color: $color-text-light;  
   }
 
   &__actions {
     display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 1.6rem;
 
@@ -28,84 +43,86 @@
       justify-content: center;
       align-items: center;
       gap: .4rem;
-      padding: .6rem 1rem;
+      padding: 1rem 1.8rem;
+      font-weight: 500;
       border-radius: .6rem;
       border: 1px solid $color-border;
       background: transparent;
       color: $color-text-light;
       text-decoration: none;
       cursor: pointer;
-      outline: none;
       transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
 
-      &:hover {
-        // use color.mix if you imported sass:color
-        background: rgba(255, 255, 255, .03);
-        // border-color: mix($color-text-light, $color-border, 30%);
-        // border-color: color.mix($color-text-light, $color-border, 30%); // if using sass:color
-      }
-
       &:focus-visible {
-        box-shadow: 0 0 0 .2rem rgba(62, 231, 247, .25); // neon-blue halo
-        border-color: $color-neon-blue;
+        outline: 2px solid $color-accent-teal;
+        outline-offset: 3px;
       }
 
       &:active { transform: translateY(1px); }
     }
 
-    /* Primary (seafoam) */
     .btn--primary {
-      // NOTE: your palette variable is spelled 'grean' in the file you sent
-      background: $color-seafoam-green;  // #1ea97c
+      background: $color-accent-teal; 
       color: $color-bg-dark;
       border-color: transparent;
 
       &:hover {
-        background: color.mix(#fff, $color-seafoam-green, 18%);
-        // transform: translateY(-1px);
-        box-shadow: 0 .6rem 1.4rem rgba(0, 0, 0, .18)
-      }
-
-      &:active {
-        // transform: translateY(0);
-        box-shadow: none;
+        background: color.mix(#fff, $color-accent-teal, 24%);
+        box-shadow: 0 .6rem 1.4rem rgba(0, 0, 0, .18);
       }
     }
 
-    /* Warm accent */
-    .btn--warm {
-      background: $color-accent-warm;
-      color: $color-bg-dark;
-      border-color: transparent;
-
-      &:hover {
-        background: color.mix(#fff, $color-accent-warm, 16%);
-        // transform: translateY(-1px);
-        box-shadow: 0 6px 14px rgba(0,0,0,.18);
-      }
-
-      &:active {
-        // transform: translateY(0);
-        box-shadow: none;
-      }
-    }
-
-    /* Ghost */
-    .btn--ghost {
+    .btn--go-back {
       background: transparent;
       color: $color-text-light;
-      border-color: $color-border;
 
-      &:hover { background: rgba(255, 255, 255, .05); }
+      &:hover { 
+        background-color: $color-bg-slate; }
     }
   }
 
-  &__hint { color: $color-text-muted; }
-
-  &__img {
-    width: 220px;
-    margin: 0 auto 1rem;
-    display: block;
-    opacity: .9;
+  &__hint { 
+    color: $color-text-muted; 
   }
+
+  // &__footprints {
+  //   position: fixed;
+  //   inset: 0;
+  //   z-index: 0;
+  //   width: 100%;
+  //   pointer-events: none;
+  //   overflow: hidden;
+  // }
+
+  // &__footprint {
+  //   position: absolute;
+  //   width: clamp(4rem, 5vw, 7rem);
+  //   height: auto;
+
+  //    // Shared trail dimensions
+  //   $stride: 11rem;
+  //   $stance: 4rem;
+
+  //   @for $i from 1 through 8 {
+  //     &:nth-child(#{$i}) {
+  //       // Progress along the diagonal
+  //       $step: $i - 1;
+
+  //       left: calc(5vw + #{$step * $stride});
+  //       bottom: calc(5vh + #{$step * $stride * 0.45});
+
+  //       // Alternate left and right feet
+  //       @if $i % 2 == 1 {
+  //         translate: 0 (-$stance);
+  //         transform: scaleX(-1) rotate(-74deg);
+  //       } @else {
+  //         translate: 0 $stance;
+  //         transform: rotate(74deg);
+  //       }
+
+  //       // Fade from 100% to 20%
+  //       opacity: 1 - math.div($step * 0.8, 7);
+  //     }
+  //   }
+  // }
 }

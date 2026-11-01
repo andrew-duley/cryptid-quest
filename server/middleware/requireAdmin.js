@@ -1,4 +1,5 @@
-export const checkAdminKey = (req, res, next) => {
+// checkAdminKey might possibly get axed
+export function checkAdminKey(req, res, next) {
   const authHeader = req.header('authorization');
   if (!authHeader || typeof authHeader !== "string" || authHeader.trim().length === 0) {
     return res.status(401).json({ error: 'Unauthorized' });
@@ -15,7 +16,7 @@ export const checkAdminKey = (req, res, next) => {
   } else {
       return res.status(401).json({ error: 'Unauthorized' });
   }
-};  
+} 
 
 export function requireAdminSession(req, res, next) {
   if (req.session?.isAdmin === true) return next();

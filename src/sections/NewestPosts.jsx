@@ -49,7 +49,7 @@ export default function NewestPosts() {
         newestPosts.length > 0 ? 
         <div className="newest-posts">
           <div className="card-grid newest-posts__grid">
-            {newestPosts.slice(0, 3).map(p => (
+            {newestPosts.map(p => (
               <PostCard key={p.id ?? p.slug} post={p} />
             ))}
           </div>
