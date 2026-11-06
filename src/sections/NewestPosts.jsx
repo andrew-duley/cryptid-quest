@@ -17,7 +17,7 @@ export default function NewestPosts() {
     setIsLoading(true);
     setError(null);
 
-    fetch(`${API_BASE}/posts?limit=3`)
+    fetch(`${API_BASE}/lore?limit=3`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Network response was not okay: ' + res.statusText);
@@ -39,7 +39,7 @@ export default function NewestPosts() {
   }, []);
 
     return(
-    <Block title="What's New at the Campfire" subtitle="Follow the crew as life in Baird continues to unfold" actions={<Link to="/the-lore" className="btn btn--the-lore">View all campfire posts</Link>}>
+    <Block title="Latest from the Fringe" subtitle="Follow the crew and the residents of Baird as their stories continue to unfold" actions={<Link to="/the-lore" className="btn btn--the-lore">View all campfire posts</Link>}>
 
       {isLoading ? <p className="newest-posts__loading">Loading posts...</p> : null}
       {error ? <p className="newest-posts__error">{error}</p> : null}
