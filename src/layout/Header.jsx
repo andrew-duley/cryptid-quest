@@ -80,7 +80,7 @@ function Header() {
             <ul className="header__nav-list">
               <li><NavLink to="/" end>Home</NavLink></li>
               <li><NavLink to="/about">About</NavLink></li>
-              <li><NavLink to="/the-campfire">The Campfire</NavLink></li>
+              <li><NavLink to="/the-Lore">The Lore</NavLink></li>
               <li><NavLink to="/the-crew">The Crew</NavLink></li>
               <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
             </ul>
@@ -91,7 +91,7 @@ function Header() {
           <ul className="header__nav-list">
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
-            <li><NavLink to="/the-campfire">The Campfire</NavLink></li>
+            <li><NavLink to="/the-lore">The Lore</NavLink></li>
             <li><NavLink to="/the-crew">The Crew</NavLink></li>
             <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
           </ul>

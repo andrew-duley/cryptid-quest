@@ -11,7 +11,7 @@ import PageFooter from '../layout/PageFooter';
 import { IMAGE_WIDTHS_BACKGROUND, IMAGE_WIDTHS_HERO } from '../config/imageWidths.js';
 import Picture from '../components/Picture';
  
-import '../scss/pages/_the-campfire-post.scss';    
+import '../scss/pages/_the-lore-post.scss';    
 
 export default function TheCampfirePost() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
@@ -88,18 +88,18 @@ export default function TheCampfirePost() {
   console.log("TheCampfirePost hero:", post?.hero_image_url);
 
   return(
-    <PageTemplate className="the-campfire-post" slug={`the-campfire/${slug}`} title={post.title} narrow={true}>
+    <PageTemplate className="the-lore-post" slug={`the-lore/${slug}`} title={post.title} narrow={true}>
 
       <Picture 
-        imagePath="https://media.cryptid.quest/the-campfire/post-backgrounds/northern-ocean/northern-ocean-"
+        imagePath="https://media.cryptid.quest/the-lore/post-backgrounds/northern-ocean/northern-ocean-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
-        className = "the-campfire-post__background" 
-        imgClassName = "the-campfire-post__background-img"
+        className = "the-lore-post__background" 
+        imgClassName = "the-lore-post__background-img"
         loading="eager"
       />
 
       <Block label="Meta data">
-        <div className="the-campfire-post__meta">
+        <div className="the-lore-post__meta">
           <span>Filed in: {post.category} </span>
           <time dateTime={post.created_at}>
             {new Date(post.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
@@ -109,12 +109,12 @@ export default function TheCampfirePost() {
           imagePath={post.hero_image_url}
           imageWidths={IMAGE_WIDTHS_HERO}
           alt = {post.hero_image_alt}
-          className = "the-campfire-post__hero" 
-          imgClassName = "the-campfire-post__hero-img"
+          className = "the-lore-post__hero" 
+          imgClassName = "the-lore-post__hero-img"
           loading="eager"
           fetchPriority="high"
         />
-        <div className="the-campfire-post__post"
+        <div className="the-lore-post__post"
           dangerouslySetInnerHTML={{ __html: safeHTML }}
         /> 
       </Block>

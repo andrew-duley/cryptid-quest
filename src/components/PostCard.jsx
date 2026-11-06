@@ -25,7 +25,7 @@ export default function PostCard({ post }) {
 
       <div className="post-card__body">
         <h2 className="post-card__title">
-          <Link to={`/the-campfire/${post.slug}`} className="post-card__link">{post.title}</Link>
+          <Link to={`/the-lore/${post.slug}`} className="post-card__link">{post.title}</Link>
         </h2>
 
         <section className="post-card__meta">

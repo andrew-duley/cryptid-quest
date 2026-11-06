@@ -25,7 +25,7 @@ export default function TiptapEditor({ body, onEditorChange }) {
         inline: false,
         allowBase64: false,
         HTMLAttributes: {
-          class: 'the-campfire-post-image'
+          class: 'the-lore-post-image'
         }
       }),
     ],

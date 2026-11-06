@@ -8,7 +8,7 @@ const siteUrl = 'https://cryptid.quest';
 const routes = [
   '/',                                // home
   '/about',                           // about
-  '/the-campfire',                            // blog
+  '/the-lore',                            // blog
   '/the-crypt',                           // games hub
   '/the-crypt/cryptid-mixup',             // first game
   '/the-crypt/cryptac-toe',               // second game

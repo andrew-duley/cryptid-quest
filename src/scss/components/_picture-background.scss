@@ -1,11 +1,11 @@
 @use '../abstracts' as *;
 
 .admin,
-.the-campfire,
+.the-lore,
 .the-codex,
 .the-crew,
 .the-crypt,
-.the-campfire-post {
+.the-lore-post {
   position: relative;
   overflow: hidden;
   
@@ -52,6 +52,6 @@
   } 
 }
 
-.the-campfire-post {
+.the-lore-post {
 
 }

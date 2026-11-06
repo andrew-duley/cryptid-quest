@@ -27,7 +27,7 @@ function Footer() {
           <h2>Cryptid Quest</h2>
           <ul>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/the-campfire">The Campfire</NavLink></li>
+            <li><NavLink to="/the-lore">The Lore</NavLink></li>
             <li><NavLink to="/the-crew">The Crew</NavLink></li>
             <li><NavLink to="/the-crypt">The Crypt</NavLink></li>
           </ul>
