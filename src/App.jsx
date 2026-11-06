@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Admin from './pages/Admin';
 
-import TheCampfire from './pages/TheCampfire.jsx';
+import TheCampfire from './pages/TheLore.jsx';
 import TheCampfirePost from './pages/TheCampfirePost.jsx';
 import TheCrew from './pages/TheCrew.jsx';
 import CrewMember from './pages/CrewMember.jsx';
@@ -39,8 +39,8 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/the-campfire" element={<TheCampfire />} />
-          <Route path="/the-campfire/:slug" element={<TheCampfirePost />} />
+          <Route path="/the-lore" element={<TheCampfire />} />
+          <Route path="/the-lore/:slug" element={<TheCampfirePost />} />
           <Route path="/the-crew" element={<TheCrew />} />
           <Route path="/the-crew/:slug" element={<CrewMember />} />
           <Route path="/the-crypt/cryptid-mixup" element={<CryptidMixup />} />

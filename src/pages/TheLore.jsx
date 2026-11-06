@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 
-import PageTemplate from '../layout/PageTemplate';
-import Block from '../layout/Block';
-import PageFooter from '../layout/PageFooter';
+import PageTemplate from '../layout/PageTemplate.jsx';
+import Block from '../layout/Block.jsx';
+import PageFooter from '../layout/PageFooter.jsx';
 
-import PostCard from '../components/PostCard';
+import PostCard from '../components/PostCard.jsx';
 
 import { IMAGE_WIDTHS_BACKGROUND } from '../config/imageWidths.js';
-import Picture from '../components/Picture';
+import Picture from '../components/Picture.jsx';
 
 import '../scss/pages/_blog.scss';  
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-export default function TheCampfire() {
+export default function TheLore() {
 
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function TheCampfire() {
     setIsLoading(true);
     setError(null);
 
-    fetch(`${API_BASE}/posts?limit=10`)
+    fetch(`${API_BASE}/lore?limit=10`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Error retrieving posts ' + res.statusText);
@@ -45,33 +45,29 @@ export default function TheCampfire() {
   }, []); 
 
   return(
-    <PageTemplate slug="the-campfire" title="The Campfire" className="the-campfire">
+    <PageTemplate slug="the-lore" title="The Lore" className="the-lore">
 
       <Picture 
         imagePath="https://media.cryptid.quest/the-campfire/backgrounds/autumn/the-campfire-gathering/the-campfire-gathering-"
         imageWidths={IMAGE_WIDTHS_BACKGROUND}
-        className = "the-campfire__background" 
-        imgClassName = "the-campfire__background-img"
+        className = "the-lore__background" 
+        imgClassName = "the-lore__background-img"
         loading="eager"
         fetchPriority="high"
       />
 
-      <Block label="The Campfire" subtitle="Where the crew shares sightings, stories, and the occasional disaster">
-    
-        <p className="the-campfire__dev-note dev-note">
-          <small><strong>Build note:</strong> All Campfire entries—cryptid encounters, crew mishaps, project updates, and whatever else wanders in from the woods...</small>
-        </p>
+      <Block label="The Lore" subtitle="Discover the characters, places, and stories that make up the Northern Fringe">
 
         {isLoading && !error && ( 
-          <p className="the-campfire__loading">Loading posts...</p> 
+          <p className="the-lore__loading">Loading posts...</p> 
         )}
 
         {error && !isLoading && (
-          <p className="the-campfire__error">{error}</p>
+          <p className="the-lore__error">{error}</p>
         )}
 
         {!isLoading && !error && posts.length === 0 && (
-          <div className="the-campfire__posts-none">
+          <div className="the-lore__posts-none">
             <p>No posts yet—check back soon</p>
           </div>
         )}
@@ -80,7 +76,7 @@ export default function TheCampfire() {
       
       {!isLoading && !error && posts.length > 0 &&
       <Block label="At the Fire">
-        <div className="the-campfire__newest-posts">
+        <div className="the-lore__newest-posts">
           {posts.slice(0, 3).map(p => (
               <PostCard key={p.id ?? p.slug} post={p} />
           ))}
@@ -89,7 +85,7 @@ export default function TheCampfire() {
  
       {!isLoading && !error && posts.length > 3 &&
       <Block title="More from the Fire">
-        <div className="card-grid the-campfire__archive-posts">
+        <div className="card-grid the-lore__archive-posts">
           {posts.slice(3).map(p => (
             <PostCard key={p.id ?? p.slug} post={p} />
           ))}

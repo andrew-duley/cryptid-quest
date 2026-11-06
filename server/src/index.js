@@ -98,9 +98,14 @@ app.get("/admin/posts/:id", requireAdminSession, async (req, res, next) => {
 app.get("/lore", async (req, res, next) => {
 
   let pageNumber = Number(req.query.page);
+  let postLimit = Number(req.query.limit);
 
-  if (!req.query.page) {
+  if (req.query.page === undefined) {
     pageNumber = 1;
+  }
+
+  if (req.query.limit === undefined) {
+    postLimit = 10;
   }
 
   if (!Number.isSafeInteger(pageNumber) || pageNumber < 1) {
@@ -109,20 +114,38 @@ app.get("/lore", async (req, res, next) => {
     });
   }
 
-  if (req.query.limit < 1 || req.query.limit > 50) {
+  if (!Number.isSafeInteger(postLimit) || postLimit < 1 || postLimit > 50) {
       return res.status(400).json({ error: { status: 400,
-      code: "INVALID_POST_LIMIT", message: "Invalid post limit" }
+      code: "INVALID_PAGE_NUMBER", message: "Invalid page number" }
     });
   }
 
-  const postLimit = req.query.limit ? req.query.limit : 10;
   const postOffset = (pageNumber - 1) * postLimit;
 
+  if(!Number.isSafeInteger(postOffset)) {
+    return res.status(400).json({ error: { status: 400,
+    code: "INVALID_OFFSET", message: "Invalid offset" }
+    });
+  }
+
   try {
-    const baseSql = "SELECT id, title, slug, category, excerpt, created_at, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' AND content_type = 'lore' ORDER BY created_at DESC LIMIT $1 OFFSET $2";
-   
+    const baseSql = "SELECT id, title, slug, category, excerpt, created_at, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' AND content_type = 'lore' ORDER BY created_at DESC, id DESC LIMIT $1 OFFSET $2";
+
+    const lorePostCountSql = "SELECT COUNT(*) FROM posts WHERE status = 'published' AND content_type = 'lore'";
+
     const result = await pool.query(baseSql, [postLimit, postOffset]);
-    return res.status(200).json({ data: result.rows, meta: { limit: postLimit } });
+    const countResult = await pool.query(lorePostCountSql);
+    const totalPosts = Number(countResult.rows[0].count);
+    const totalPages = Math.ceil(totalPosts / postLimit);
+    
+    return res.status(200).json({ 
+      data: result.rows,
+      meta: {
+        page: pageNumber, 
+        limit: postLimit,
+        totalPosts,
+        totalPages
+      } });
 
   } catch (err) {
       return next(err)
