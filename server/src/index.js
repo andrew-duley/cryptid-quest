@@ -44,52 +44,84 @@ app.use(cors({
   credentials: true
 }));
 
-// app.get("/version", (req, res) => res.json({ ok: true, name: "cryptid-api" }));
+// Security: admin post data must never be accessible without authentication.
+app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
 
+  const { content_type, status } = req.query;
 
-////////////////////////////////////////////////////////////////////////
-// The sections below will be combined into one super route handler
+  if((content_type !== 'lore' && content_type !== 'devlog') || (status !== 'draft' && status !== 'published')) {
+    return res.status(400).json({ error: { status: 400,
+      code: "INVALID_QUERY_PARAMS", message: "Invalid content type or publication status" }
+    });
+  }
 
-//  This absolutely needs requireAdminSession!
-app.get("/admin/drafts", requireAdminSession, async (req, res, next) => {
+  const sortOrder = status === 'draft' ? "ASC" : "DESC";
+
   try {
-    const baseSql = "SELECT id, title, body, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'draft' ORDER BY created_at ASC";
+    const baseSql = `SELECT id, title, created_at, category FROM posts WHERE content_type = $1 AND status = $2 ORDER BY created_at ${sortOrder} LIMIT 10`;
 
-    const result = await pool.query(baseSql);
+    const result = await pool.query(baseSql, [content_type, status]);
     return res.status(200).json({ data: result.rows });
   } catch (err) {
       return next(err);
   }
 });
 
-//  This absolutely needs requireAdminSession!
-app.get("/admin/posts", requireAdminSession, async (req, res, next) => {
+app.get("/admin/posts/:id", requireAdminSession, async (req, res, next) => {
+
+  const postId = Number(req.params.id);
+
+  if (!Number.isSafeInteger(postId) || postId < 1) {
+     return res.status(400).json({ error: { status: 400,
+      code: "INVALID_POST_ID", message: "Invalid post ID" }
+    });
+  }
+
   try {
-    const baseSql = "SELECT id, title, body, slug, status, created_at, category, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
+    const baseSql = `SELECT id, title, slug, body, category, status, hero_image_url, hero_image_alt FROM posts WHERE id = $1`;
 
-    const result = await pool.query(baseSql);
-    return res.status(200).json({ data: result.rows });
+    const result = await pool.query(baseSql, [postId]);
 
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: { status: 404,
+        code: "POST_NOT_FOUND", message: "Post not found" }
+      });
+    }
+
+    return res.status(200).json({ data: result.rows[0] });
   } catch (err) {
-    return next(err);
+      return next(err);
   }
 });
 
-// add query for Dev Posts
-// add query for Dev Drafts
-////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////
 // change the query limit logic 
-app.get("/posts", async (req, res, next) => {
-  try {
-    const baseSql = "SELECT id, title, slug, category, excerpt, created_at, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' ORDER BY created_at DESC";
-    const limit = Number(req.query.limit);
-    const postLimit = limit > 0 && limit <= 50 ? limit : null;
+app.get("/lore", async (req, res, next) => {
 
-    const result = postLimit ? await pool.query(`${baseSql} LIMIT $1`, [postLimit])
-    :
-    await pool.query(baseSql);
+  let pageNumber = Number(req.query.page);
+
+  if (!req.query.page) {
+    pageNumber = 1;
+  }
+
+  if (!Number.isSafeInteger(pageNumber) || pageNumber < 1) {
+    return res.status(400).json({ error: { status: 400,
+    code: "INVALID_PAGE_NUMBER", message: "Invalid page number" }
+    });
+  }
+
+  if (req.query.limit < 1 || req.query.limit > 50) {
+      return res.status(400).json({ error: { status: 400,
+      code: "INVALID_POST_LIMIT", message: "Invalid post limit" }
+    });
+  }
+
+  const postLimit = req.query.limit ? req.query.limit : 10;
+  const postOffset = (pageNumber - 1) * postLimit;
+
+  try {
+    const baseSql = "SELECT id, title, slug, category, excerpt, created_at, hero_image_url, hero_image_alt FROM posts WHERE status = 'published' AND content_type = 'lore' ORDER BY created_at DESC LIMIT $1 OFFSET $2";
+   
+    const result = await pool.query(baseSql, [postLimit, postOffset]);
     return res.status(200).json({ data: result.rows, meta: { limit: postLimit } });
 
   } catch (err) {
