@@ -16,8 +16,17 @@ import bcrypt from "bcrypt";
 import { checkAdminKey, requireAdminSession } from "../middleware/requireAdmin.js";
 import { createSessionMiddleware } from "../middleware/session.js";
 
+import { rateLimit } from "express-rate-limit";
+
 const app = express();
 const PORT = process.env.PORT || 3001;
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+	limit: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  skipSuccessfulRequests: true
+})
 
 app.set("trust proxy", 1);  
 
@@ -94,7 +103,6 @@ app.get("/admin/posts/:id", requireAdminSession, async (req, res, next) => {
   }
 });
 
-// change the query limit logic 
 app.get("/lore", async (req, res, next) => {
 
   let pageNumber = Number(req.query.page);
@@ -151,52 +159,57 @@ app.get("/lore", async (req, res, next) => {
       return next(err)
   }
 });
-////////////////////////////////////////////////////////////////////////
 
-app.get("/posts/:slug", async (req, res, next) => {
+app.get("/lore/:slug", async (req, res, next) => {
   try {
+
     const urlSlug = req.params.slug;
-    const result = await pool.query("SELECT id, title, slug, category, excerpt, body, created_at, hero_image_url, hero_image_alt FROM posts WHERE slug = $1 AND status = 'published'", [urlSlug]);
+
+    const baseSql = "SELECT id, title, slug, category, body, created_at, hero_image_url, hero_image_alt FROM posts WHERE slug = $1 AND status = 'published' AND content_type = 'lore'";
+
+    const result = await pool.query(baseSql, [urlSlug]);
+
     if (result.rows.length === 0) {
       return res.status(404).json( { error: { status: 404, code: "POST_NOT_FOUND", message: "Post not found" } });
     }
     return res.status(200).json({ data: result.rows[0]});
   } catch (err) {
-      return next(err)
+      return next(err);
   } 
 });
 
 // Check if there is a valid admin session
-
 // TODO: Revisit authentication when adding user accounts
 // Currently isAuthed and isAdmin both reflect the admin session
 // Future users will need authentication without admin privileges
-
-// TODO: Add rate limiting to prevent brute-force login attempts.
-app.get("/admin/me", (req, res, next) => {
+app.get("/admin/me", (req, res) => {
   if (req.session?.isAdmin === true) {
     return res.json({ isAuthed: true, isAdmin: true});
   }
   return res.json({ isAuthed: false, isAdmin: false });
 });
 
+// TODO: Add rate limiting to prevent brute-force login attempts.
 // Check that email and password match
-app.post("/admin/login", async (req, res, next) => {
+app.post("/admin/login", loginLimiter, async (req, res, next) => {
+  console.log("Client IP:", req.ip);
   try {
     const { email, password } = req.body ?? {};
 
-    if (!email || !password) {
-      return res.status(401).json({ error: { status: 401, code: "EMAIL_OR_PASSWORD_MISSING", message: "One or more fields missing" } });
+    if (typeof(email) !== 'string' || typeof(password) !== 'string' || !email.trim() || password.length === 0) {
+      return res.status(400).json({ error: { status: 400, code: "INVALID_CREDENTIALS_FORMAT", message: "Email and password must be strings" } });
     }
 
-    const result = await pool.query("SELECT id, email, password_hash, role FROM users WHERE email = $1", [email.trim().toLowerCase()]);
+    const baseSql = "SELECT id, email, password_hash, role FROM users WHERE email = $1"
+
+    const result = await pool.query(baseSql, [email.trim().toLowerCase()]);
 
     if (result.rows.length === 0) {
-      return res.status(400).json({ error: { status: 400, code: "DENIED", message: "Login denied" } }); 
+      return res.status(401).json({ error: { status: 401, code: "DENIED", message: "Login denied" } }); 
     }
 
     if (result.rows[0].role !== "admin") {
-      return res.status(403).json({ error: { status: 403, code: "ROLE_MUST_BE_ADMIN_TO_POST", message: "You must be an admin to post" } })
+      return res.status(401).json({ error: { status: 401, code: "DENIED", message: "Login denied" } })
     }
 
     const passwordMatch = await bcrypt.compare(password, result.rows[0].password_hash);
@@ -205,6 +218,9 @@ app.post("/admin/login", async (req, res, next) => {
        return res.status(401).json({ error: { status: 401, code: "DENIED", message: "Login denied" } }); 
     }
 
+    req.session.regenerate(err => {
+      if (err) return next(err);
+
       req.session.isAdmin = true;
       req.session.userId = result.rows[0].id;
       req.session.role = result.rows[0].role;
@@ -212,7 +228,7 @@ app.post("/admin/login", async (req, res, next) => {
         if (err) return next(err);
         return res.status(200).json({ data: {message: "Login Successful"} });
       });
-
+    });
   }
   catch (err) {
       return next(err);
